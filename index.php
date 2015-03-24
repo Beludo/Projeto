@@ -9,8 +9,7 @@
     <script src="./js/bootstrap.min.js"></script>
 </head>
 
-<body style="height:2000px;">
-    <!-- TIRAR DEPOIS O 2000 QUANDO NAO PRECISARMOS!!! -->
+<body style="height:2000px;"><!-- TIRAR DEPOIS O 2000 QUANDO NAO PRECISARMOS!!! -->
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -59,13 +58,9 @@
     <div class="container theme-showcase" role="main">
 
         <div class="jumbotron" style="margin:1px; padding-bottom:1px;">
-            <img src="./imagens/logotipo-banner.png" alt="logotipo">
+            <img src="./imagens/logotipo-banner.png" alt="logotipo" height="150" width="1140">
         </div>
         <!-- /banner -->
-        <ol class="breadcrumb" style="margin-bottom:1px;">
-            <li class="active">Página Inicial
-            </li>
-        </ol>
 
         <div id="noticias e outras cenas" style="float:left; margin:1px;">
 
@@ -92,6 +87,11 @@
     </div>
 
 
+<<<<<<< HEAD
+=======
+
+    </div>
+>>>>>>> parent of a21d39d... poi
 </body>
 
 </html>
