@@ -36,16 +36,6 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Iniciar sessão</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -54,10 +44,29 @@
     <!-- /conteudo -->
     <div class="container theme-showcase" role="main">
     
-    <div class="jumbotron">
-      <img src="./imagens/logotipo-banner.png" alt="logotipo" height="150" width="1140">   
-  </div><!-- /banner -->
-    
+        <div class="jumbotron" style="margin:1px;">
+    <img src="./imagens/logotipo-banner.png" alt="logotipo" height="150" width="1140">
+</div>
+<!-- /banner -->
+
+<div id="noticias e outras cenas" style="float:left; margin:1px;">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Panel title</h3>
+        </div>
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+</div>
     
     
   
