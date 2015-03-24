@@ -9,7 +9,7 @@
     <script src="./js/bootstrap.min.js"></script>
 </head>
 
-<body style="height:2000px;">
+<body style="height:2000px;"><!-- TIRAR DEPOIS O 2000 QUANDO NAO PRECISARMOS!!! -->
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -23,13 +23,14 @@
                 </button>
                 <a class="navbar-brand" style="padding: 5px 5px" href="#"><img src="./imagens/logotipo-pequeno-menu.png" alt="logotipo" style="margin-top:0px;">
                 </a>
-                <a class="navbar-brand" href="#">Inicio</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Visita virtual</a>
+                    <li class="active"><a href="#">Página Inicial</a>
+                    </li>
+                    <li><a href="#">Visita virtual</a>
                     </li>
                     <li><a href="#">Loja</a>
                     </li>
@@ -56,7 +57,7 @@
     <!-- /conteudo -->
     <div class="container theme-showcase" role="main">
 
-        <div class="jumbotron" style="margin:1px;">
+        <div class="jumbotron" style="margin:1px; padding-bottom:1px;">
             <img src="./imagens/logotipo-banner.png" alt="logotipo" height="150" width="1140">
         </div>
         <!-- /banner -->
