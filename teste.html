@@ -1,44 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-  <title>Bootstrap Case</title>
+  <title>Museu</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <script src="./js/bootstrap.min.js"></script>
 </head>
-<body>
-
-<div class="container">
-  <div class="jumbotron">
-    <h1>My first Bootstrap website!</h1>      
-    <p>This page will grow as we add more and more components from Bootstrap...</p>      
-    <a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Search</a>
-  </div>
-
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Menu 1</a></li>
-    <li><a href="#">Menu 2</a></li>
-    <li><a href="#">Menu 3</a></li>
-  </ul>
-
-  <div class="row">
-    <div class="col-md-3">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<body style="height:2000px;">  
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">  
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> 
+        <a class="navbar-brand" href="#"><img src="./imagens/logotipo-pequeno-menu.png" alt="logotipo" style="margin-top:0px;"></a>
+      <a class="navbar-brand" href="#">Home</a>
     </div>
-    <div class="col-md-3"> 
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-    <div class="col-md-3"> 
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div class="col-md-3"> 
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
-</div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    
+    <!-- /conteudo -->
+    <div class="container theme-showcase" role="main">
+    
+    <div class="jumbotron">
+      <img src="./imagens/logotipo-banner.png" alt="logotipo" height="150" width="1140">   
+  </div><!-- /banner -->
+    
+    
+    
+  
+
+    </div>
 </body>
 </html>
