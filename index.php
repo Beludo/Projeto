@@ -9,8 +9,7 @@
     <script src="./js/bootstrap.min.js"></script>
 </head>
 
-<body style="height:2000px;">
-    <!-- TIRAR DEPOIS O 2000 QUANDO NAO PRECISARMOS!!! -->
+<body>
     
      <!-- MENU!! -->
 
@@ -61,20 +60,21 @@
     <!-- /conteudo -->
     <div class="container theme-showcase" role="main">
 
-        <div class="jumbotron" style="margin:1px; padding-bottom:1px;">
+		<!-- /banner -->
+        <div class="jumbotron" style="margin:0px; margin-bottom:1px; padding-bottom:1px;">
             <img src="./imagens/logotipo-banner.png" alt="logotipo">
         </div>
-        <!-- /banner -->
+        <!-- /Acaba o banner -->
         
          <!-- BREADCRUMB -->
-        <ol class="breadcrumb" style="margin-bottom:1px;">
+        <ol class="breadcrumb" style="margin-bottom:0px;">
             <li class="active">Página Inicial
             </li>
         </ol>
         
         
         <!-- Opções Laterais -->
-        <div id="noticias e outras cenas" style="float:left; margin:1px; width:25%;">
+        <div id="noticias e outras cenas" style="float:left; margin-top:10px; margin-right:0px; width:25%;">
 
              <!-- Primeiro Painel -->
             <div class="panel panel-default">
@@ -82,10 +82,10 @@
                     <h3 class="panel-title">Noticias</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
+                    Noticia 1 <br>
+                    Noticia 2 <br>
+                    Noticia 3 <br>
+                    Noticia 4 <br>
                 </div>
             </div>
             
@@ -95,19 +95,19 @@
                     <h3 class="panel-title">Outras Cenas</h3>
                 </div>
                 <div class="panel-body">
-                     Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
+                    Outras cenas 1 <br>
+                    Outras cenas 2 <br>
+                    Outras cenas 3 <br>
+                    Outras cenas 4 <br>
                 </div>
             </div>
         </div>
         
-         <div class="panel-body" id="conteudo" style="float:right; padding:1px; margin:1px; width:73%;">
-               Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
+         <div class="panel panel-default" id="conteudo" style="float:right; padding:10px; margin-top:10px; width:74%;">
+               Conteudo principal <br>
+                    Linha 1 <br>
+                    Linha 2 <br>
+                    Linha 3 <br>
         </div>
 
     </div>
