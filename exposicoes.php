@@ -24,20 +24,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="padding: 5px 5px" href="#"><img src="./imagens/logotipo-pequeno-menu.png" alt="logotipo" style="margin-top:0px;">
+                <a class="navbar-brand" style="padding: 5px 5px" href="./index.php"><img src="./imagens/logotipo-pequeno-menu.png" alt="logotipo" style="margin-top:0px;">
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Página Inicial</a>
+                    <li><a href="./index.php">Página Inicial</a>
                     </li>
                     <li><a href="#">Visita virtual</a>
                     </li>
                     <li><a href="#">Loja</a>
                     </li>
-                    <li><a href="#">Exposições</a>
+                    <li class="active"><a href="exposicoes.php">Exposições</a>
                     </li>
                     <li><a href="#">Ligações</a>
                     </li>
@@ -68,50 +68,20 @@
         
          <!-- BREADCRUMB -->
         <ol class="breadcrumb" style="margin-bottom:1px;">
-            <li class="active">Página Inicial
+            <li>Página Inicial
             </li>
+            <li class="active">Exposições</li>
         </ol>
         
         
         <!-- Opções Laterais -->
-        <div id="noticias e outras cenas" style="float:left; margin:1px; width:25%;">
-
-             <!-- Primeiro Painel -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Noticias</h3>
-                </div>
-                <div class="panel-body">
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                </div>
-            </div>
-            
-             <!-- Segundo Painel -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Outras Cenas</h3>
-                </div>
-                <div class="panel-body">
-                     Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                </div>
-            </div>
+        <div id="sub-menu" style="float:left; margin:1px; width:10%;">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active" style="background-color: grey"><a href="#">Exposições Atuais</a></li>
+                <li role="presentation"><a href="#">Exposições Feitas</a></li>
+                <li role="presentation"><a href="#">Exposições Reservadas</a></li>
+            </ul>
         </div>
-        
-         <div class="panel-body" id="conteudo" style="float:right; padding:1px; margin:1px; width:73%;">
-               Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-                    Panel content <br>
-        </div>
-
-    </div>
-
 
 </body>
 
