@@ -11,6 +11,8 @@
 
 <body style="height:2000px;">
     <!-- TIRAR DEPOIS O 2000 QUANDO NAO PRECISARMOS!!! -->
+    
+     <!-- MENU!! -->
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -54,6 +56,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+     <!-- Acaba MENU!! -->
 
     <!-- /conteudo -->
     <div class="container theme-showcase" role="main">
@@ -62,31 +65,49 @@
             <img src="./imagens/logotipo-banner.png" alt="logotipo">
         </div>
         <!-- /banner -->
+        
+         <!-- BREADCRUMB -->
         <ol class="breadcrumb" style="margin-bottom:1px;">
             <li class="active">Página Inicial
             </li>
         </ol>
+        
+        
+        <!-- Opções Laterais -->
+        <div id="noticias e outras cenas" style="float:left; margin:1px; width:25%;">
 
-        <div id="noticias e outras cenas" style="float:left; margin:1px;">
-
-
-
+             <!-- Primeiro Painel -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Noticias</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                    Panel content <br>
+                    Panel content <br>
+                    Panel content <br>
+                    Panel content <br>
                 </div>
             </div>
+            
+             <!-- Segundo Painel -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Outras Cenas</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                     Panel content <br>
+                    Panel content <br>
+                    Panel content <br>
+                    Panel content <br>
                 </div>
             </div>
+        </div>
+        
+         <div class="panel-body" id="conteudo" style="float:right; padding:1px; margin:1px; width:73%;">
+               Panel content <br>
+                    Panel content <br>
+                    Panel content <br>
+                    Panel content <br>
         </div>
 
     </div>
