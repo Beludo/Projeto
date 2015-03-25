@@ -37,7 +37,7 @@
                     </li>
                     <li><a href="#">Loja</a>
                     </li>
-                    <li><a href="./exposicoes.php">Exposições</a>
+                    <li><a href="#">Exposições</a>
                     </li>
                     <li><a href="#">Ligações</a>
                     </li>
