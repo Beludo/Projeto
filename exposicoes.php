@@ -9,8 +9,7 @@
     <script src="./js/bootstrap.min.js"></script>
 </head>
 
-<body style="height:2000px;">
-    <!-- TIRAR DEPOIS O 2000 QUANDO NAO PRECISARMOS!!! -->
+<body>
     
      <!-- MENU!! -->
 
@@ -68,21 +67,38 @@
         
          <!-- BREADCRUMB -->
         <ol class="breadcrumb" style="margin-bottom:1px;">
-            <li>Página Inicial
+            <li><a href="index.php">Página Inicial</a>
             </li>
             <li class="active">Exposições</li>
         </ol>
-        
-        
-        <!-- Opções Laterais -->
-        <div id="sub-menu" style="float:left; margin:1px; width:10%;">
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active" style="background-color: grey"><a href="#">Exposições Atuais</a></li>
-                <li role="presentation"><a href="#">Exposições Feitas</a></li>
-                <li role="presentation"><a href="#">Exposições Reservadas</a></li>
-            </ul>
-        </div>
+		
+		<!-- Menu Lateral -->
+		<div style="float:left; margin-top:10px; margin-right:0px; width:25%;">
+			<div class="list-group">
+			<!-- Exemplo de opção ativa
+			
+			  <a href="#" class="list-group-item active">
+				Cras justo odio
+			  </a>
+			  -->
+			  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+			  <a href="#" class="list-group-item">Morbi leo risus</a>
+			  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+			  <a href="#" class="list-group-item">Vestibulum at eros</a>
+			</div>
+		</div>
+		<!-- Acaba menu Lateral -->
 
+		<!-- Conteudo -->
+		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
+               Conteudo principal <br>
+                    Linha 1 <br>
+                    Linha 2 <br>
+                    Linha 3 <br>
+        </div>
+		<!-- Acaba o conteudo -->
+		
+	</div>
 </body>
 
 </html>

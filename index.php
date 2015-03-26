@@ -73,8 +73,8 @@
         </ol>
         
         
-        <!-- Opções Laterais -->
-        <div id="noticias e outras cenas" style="float:left; margin-top:10px; margin-right:0px; width:25%;">
+        <!-- Informações Laterais -->
+        <div style="float:left; margin-top:10px; margin-right:0px; width:25%;">
 
              <!-- Primeiro Painel -->
             <div class="panel panel-default">
@@ -103,7 +103,7 @@
             </div>
         </div>
         
-         <div class="panel panel-default" id="conteudo" style="float:right; padding:10px; margin-top:10px; width:74%;">
+         <div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
                Conteudo principal <br>
                     Linha 1 <br>
                     Linha 2 <br>
