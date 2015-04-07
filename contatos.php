@@ -36,13 +36,13 @@
                     </li>
                     <li><a href="#">Loja</a>
                     </li>
-                    <li class="active"><a href="exposicoes.php">Exposições</a>
+                    <li><a href="exposicoes.php">Exposições</a>
                     </li>
                     <li><a href="#">Ligações</a>
                     </li>
                     <li><a href="#">Atividades</a>
                     </li>
-                    <li><a href="#">Informações</a>
+                    <li  class="active"><a href="contatos.php">Informações</a>
                     </li>
                 </ul>
 
@@ -68,8 +68,9 @@
          <!-- BREADCRUMB -->
         <ol class="breadcrumb" style="margin-bottom:1px;">
             <li><a href="index.php">Página Inicial</a>
+            </li><li><a href="contatos.php">Informações</a>
             </li>
-            <li class="active">Exposições</li>
+            <li class="active">Contatos</li>
         </ol>
 		
 		<!-- Menu Lateral -->
@@ -81,10 +82,10 @@
 				Cras justo odio
 			  </a>
 			  -->
-			  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-			  <a href="#" class="list-group-item">Morbi leo risus</a>
-			  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-			  <a href="#" class="list-group-item">Vestibulum at eros</a>
+			  <a href="contatos.php" class="active list-group-item">Contatos</a>
+			  <a href="horario.php" class="list-group-item">Horário de Funcionamento</a>
+			  <a href="mapasite.php" class="list-group-item">Mapa do Site</a>
+			  <a href="normas.php" class="list-group-item">Normas de Conduta</a>
 			</div>
 		</div>
 		<!-- Acaba menu Lateral -->

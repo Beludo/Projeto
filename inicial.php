@@ -45,10 +45,17 @@
                     <li><a href="#">Informações</a>
                     </li>
                 </ul>
-
+                
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.php">Iniciar sessão</a>
+                    <li class="dropdown" role="menu" aria-labelledby="menu1" style="z-index: 1">
+                         <a id="menu1" data-toggle="dropdown">Zé Tobias<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li><a href="#">Área de Cliente</a></li>
+                            <li><a href="#">Carrinho de Compras</a></li>
+                            <li><a href="#">Terminar Sessão</a></li>
+                        </ul>
                     </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -111,9 +118,9 @@
         </div>
 
     </div>
- <script src="./js/jquery.min.js"></script>
+    
+    <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-
 
 </body>
 
