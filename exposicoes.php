@@ -42,12 +42,12 @@
                     </li>
                     <li><a href="#">Atividades</a>
                     </li>
-                    <li><a href="#">Informações</a>
+                    <li><a href="contatos.php">Informações</a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Iniciar sessão</a>
+                    <li><a href="login.php">Iniciar sessão</a>
                     </li>
                 </ul>
             </div>

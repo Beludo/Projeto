@@ -42,7 +42,7 @@
                     </li>
                     <li><a href="#">Atividades</a>
                     </li>
-                    <li><a href="#">Informações</a>
+                    <li><a href="contatos.php">Informações</a>
                     </li>
                 </ul>
 
