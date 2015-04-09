@@ -70,7 +70,7 @@
             <li><a href="index.php">Página Inicial</a>
             </li><li><a href="contatos.php">Informações</a>
             </li>
-            <li class="active">Contatos</li>
+            <li class="active">Normas de Conduta</li>
         </ol>
 		
 		<!-- Menu Lateral -->
