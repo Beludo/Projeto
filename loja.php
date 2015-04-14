@@ -62,7 +62,7 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="https://scontent-ams.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10891530_999533060075848_759461906375724568_n.jpg?oh=bd3f78e92b99f7c9e06d7930024e09b6&oe=55E0FA11" alt="">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
                                 </div>
                                 <div class="item">
                                     <img class="slide-image" src="http://placehold.it/800x300" alt="">
