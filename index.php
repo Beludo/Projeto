@@ -11,7 +11,10 @@
 
 <body>
 	<!-- MENU!! -->
-	<?php include "inc-cabecalho.php" ?>
+	<?php
+		$pagina = "index";
+		include "inc-cabecalho.php";
+	?>
 	<!-- Acaba MENU!! -->
 
 	<!-- /conteudo -->

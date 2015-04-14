@@ -11,7 +11,7 @@
 
 <body>
 	<!-- MENU!! -->
-	<?php include "inc-cabecalho.php" ?>
+	<?php include "inc-cabecalho.php"; ?>
 	<!-- Acaba MENU!! -->
 
 	<!-- /conteudo -->
