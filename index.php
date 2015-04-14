@@ -13,58 +13,7 @@
     
      <!-- MENU!! -->
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" style="padding: 5px 5px" href="#"><img src="./imagens/logotipo-pequeno-menu.png" alt="logotipo" style="margin-top:0px;">
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="./index.php">Página Inicial</a>
-                    </li>
-                    <li><a href="#">Visita virtual</a>
-                    </li>
-                    <li><a href="#">Loja</a>
-                    </li>
-                    <li><a href="./exposicoes.php">Exposições</a>
-                    </li>
-                    <li><a href="#">Ligações</a>
-                    </li>
-                    <li><a href="#">Atividades</a>
-                    </li>
-                    <li><a href="contatos.php">Informações</a>
-                    </li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.php">Iniciar sessão</a>
-                    </li>
-                </ul>
-                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-               <form class="navbar-form navbar-left" role="search">
-   
-                   <input type="text" class="form-control" placeholder="Search">
-
-                </form></li>
-                
-                </ul>
-                
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+    <?php include "inc-cabecalho.php" ?>
      <!-- Acaba MENU!! -->
 
     <!-- /conteudo -->
