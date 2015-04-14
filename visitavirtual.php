@@ -32,7 +32,7 @@
 		</ol>
 
 		<!-- Conteudo -->
-		<div class="panel panel-default" style="padding:10px; margin-top:10px; width:100%;">
+		<div class="panel panel-default" style="padding:10px; margin-top:10px;">
 			   Aplicação Multimédia <br>
 		</div>
 		<!-- Acaba o conteudo -->
