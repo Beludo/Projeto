@@ -45,6 +45,7 @@
 			  <a href="horario.php" class="list-group-item">Horário de Funcionamento</a>
 			  <a href="mapasite.php" class="active list-group-item">Mapa do Site</a>
 			  <a href="normas.php" class="list-group-item">Normas de Conduta</a>
+              <a href="ligacoes.php" class="list-group-item">Ligações</a>
 			</div>
 		</div>
 		<!-- Acaba menu Lateral -->
