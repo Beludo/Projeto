@@ -51,7 +51,7 @@
 		<!-- Acaba menu Lateral -->
 
 		<!-- Conteudo -->
-		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
+		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%; min-height: 205px;">
 			   
             <!-- Content Row -->
         <div class="row">

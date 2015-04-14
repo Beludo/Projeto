@@ -51,12 +51,22 @@
 		<!-- Acaba menu Lateral -->
 
 		<!-- Conteudo -->
-		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
-			   Conteudo principal <br>
-					Linha 1 <br>
-					Linha 2 <br>
-					Linha 3 <br>
-		</div>
+        <div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%; min-height: 205px;">
+            <h3>Normas de conduta</h3>
+
+            <ul>
+                <li style="list-style:none;"><b>No interior do Museu de Lanifícios é proibido:</b>
+                </li> <br> 
+                <li>Comer ou beber nas áreas de exposição;</li>
+                <li>Falar em voz alta;</li>
+                <li>Fazer-se acompanhar de objectos volumosos;</li>
+                <li>Fotografar ou filmar com flash ou tripé;</li>
+                <li>Fumar;</li>
+                <li>Introduzir animais de qualquer espécie;</li>
+                <li>Tocar nas peças expostas;</li>
+                <li>Usar telemóvel.</li>
+            </ul>
+        </div>
 		<!-- Acaba o conteudo -->
 		
 	</div>
