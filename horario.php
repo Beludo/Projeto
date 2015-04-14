@@ -51,11 +51,21 @@
 		<!-- Acaba menu Lateral -->
 
 		<!-- Conteudo -->
-		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
-			   Conteudo principal <br>
-					Linha 1 <br>
-					Linha 2 <br>
-					Linha 3 <br>
+		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%; min-height: 205px;">
+            
+            <h3>Horário de Funcionamento</h3>
+			   <i class="fa fa-clock-o"></i> 
+                   <ul style="display: inline-block;list-style: none;">
+                       <li><b>Abertura do Edifício:</b></li>
+                       <li><b> Encerramento do Edifício:</b></li>
+                       <li><b>Atendimento telefónico:</b></li>
+                    </ul>
+                    
+                    <ul style="display: inline-block; list-style: none;">
+                       <li>2.ª Feira a 6.ª Feira - 8h30</li>
+                       <li> 2.ª Feira a 6.ª Feira - 17h00</li>
+                       <li>Dias úteis das 10h00 às 12h00 e das 14h00 às 17h00</li>
+                    </ul> 
 		</div>
 		<!-- Acaba o conteudo -->
 		
