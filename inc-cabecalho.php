@@ -17,7 +17,7 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.php">Página Inicial</a>
 				</li>
-				<li><a href="#">Visita virtual</a>
+				<li><a href="visitavirtual.php">Visita virtual</a>
 				</li>
 				<li><a href="#">Loja</a>
 				</li>
