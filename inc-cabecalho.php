@@ -23,8 +23,6 @@
 				</li>
 				<li <?php echo($pagina == "exposicoes" ? "class=\"active\"": ""); ?>><a href="exposicoes.php">Exposições</a>
 				</li>
-				<li <?php echo($pagina == "ligacoes" ? "class=\"active\"": ""); ?>><a href="ligacoes.php">Ligações</a>
-				</li>
 				<li <?php echo($pagina == "atividades" ? "class=\"active\"": ""); ?>><a href="atividades.php">Atividades</a>
 				</li>
 				<li <?php echo($pagina == "informacoes" ? "class=\"active\"": ""); ?>><a href="contatos.php">Informações</a>
