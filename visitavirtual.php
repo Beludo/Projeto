@@ -11,7 +11,9 @@
 
 <body>
 	<!-- MENU!! -->
-	<?php include "inc-cabecalho.php" ?>
+   <?php 
+        $pagina = "visitavirtual";
+        include "inc-cabecalho.php" ?>
 	<!-- Acaba MENU!! -->
 
 	<!-- /conteudo -->

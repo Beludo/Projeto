@@ -15,19 +15,19 @@
 		<!-- Guardar as opções de menu para o menu movel (lá pra cima) -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li <?php echo($pagina == "index" ? 'class="active"'); ?>><a href="index.php">Página Inicial</a>
+				<li <?php echo($pagina == "index" ? "class=\"active\"" : ""); ?>><a href="index.php">Página Inicial</a>
 				</li>
-				<li <?php echo($pagina == "visitavirtual" ? 'class="active"'); ?>><a href="visitavirtual.php">Visita virtual</a>
+				<li <?php echo($pagina == "visitavirtual" ? "class=\"active\"": ""); ?>><a href="visitavirtual.php">Visita virtual</a>
 				</li>
-				<li <?php echo($pagina == "loja" ? 'class="active"'); ?>><a href="loja.php">Loja</a>
+				<li <?php echo($pagina == "loja" ? "class=\"active\"": ""); ?>><a href="loja.php">Loja</a>
 				</li>
-				<li <?php echo($pagina == "exposicoes" ? 'class="active"'); ?>><a href="exposicoes.php">Exposições</a>
+				<li <?php echo($pagina == "exposicoes" ? "class=\"active\"": ""); ?>><a href="exposicoes.php">Exposições</a>
 				</li>
-				<li <?php echo($pagina == "ligacoes" ? 'class="active"'); ?>><a href="ligacoes.php">Ligações</a>
+				<li <?php echo($pagina == "ligacoes" ? "class=\"active\"": ""); ?>><a href="ligacoes.php">Ligações</a>
 				</li>
-				<li <?php echo($pagina == "atividades" ? 'class="active"'); ?>><a href="atividades.php">Atividades</a>
+				<li <?php echo($pagina == "atividades" ? "class=\"active\"": ""); ?>><a href="atividades.php">Atividades</a>
 				</li>
-				<li <?php echo($pagina == "informacoes" ? 'class="active"'); ?>><a href="contatos.php">Informações</a>
+				<li <?php echo($pagina == "informacoes" ? "class=\"active\"": ""); ?>><a href="contatos.php">Informações</a>
 				</li>
 			</ul>
 
