@@ -2,7 +2,7 @@
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Adicionar Utilizador</title>
+	<title>Admin | Gerir Utilizadores</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -36,7 +36,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Adicionar Utilizador
+			Gerir Utilizadores
 			<small>Texto pequeno</small>
 		  </h1>
 		  <ol class="breadcrumb">
