@@ -26,7 +26,7 @@
 		
 		 <!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
-			<li><a href="eventos.php">Loja</a>
+			<li><a href="loja.php">Loja</a> 
 			</li>
             <li class="active">Produto Xpto</li>
 		</ol>
