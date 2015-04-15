@@ -12,7 +12,7 @@
 <body>
 	<!-- MENU!! -->
    <?php 
-        $pagina = "visitavirtual";
+        $pagina = "eventos";
         include "inc-cabecalho.php" ?>
 	<!-- Acaba MENU!! -->
 
@@ -28,7 +28,7 @@
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="eventos.php">Eventos</a>
 			</li>
-			<li class="active">Mostra Evento
+            <li class="active">Mostra Evento</li>
 		</ol>
 
 		<!-- Conteudo -->
@@ -121,7 +121,5 @@
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
 	
-	<script src="./js/jquery.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

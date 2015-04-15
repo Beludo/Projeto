@@ -65,7 +65,5 @@
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
 	
-	<script src="./js/jquery.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

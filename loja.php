@@ -86,133 +86,72 @@
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <a href="produto.php"><img src="http://placehold.it/320x150" alt=""></a>
                             <div class="caption">
                                 <h4 class="pull-right">€24.99</h4>
-                                <h4><a href="#">Primeiro Produto</a>
+                                <h4><a href="produto.php">Primeiro Produto</a>
                                 </h4>
                                 <p>Temos que definir o tamanho fixo destas caixas de modo a ficar todos do mesmo tamanho.</p>
                             </div>
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
-                            </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <a href="produto.php"><img src="http://placehold.it/320x150" alt=""></a>
                             <div class="caption">
                                 <h4 class="pull-right">€64.99</h4>
-                                <h4><a href="#">Segundo Produto</a>
+                                <h4><a href="produto.php">Segundo Produto</a>
                                 </h4>
                                 <p>Lê o primeiro produto! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">12 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <a href="produto.php"><img src="http://placehold.it/320x150" alt=""></a>
                             <div class="caption">
                                 <h4 class="pull-right">€74.99</h4>
-                                <h4><a href="#">Terceiro Produto</a>
+                                <h4><a href="produto.php">Terceiro Produto</a>
                                 </h4>
                                 <p>Lê o primeiro produto! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">31 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <a href="produto.php"><img src="http://placehold.it/320x150" alt=""></a>
                             <div class="caption">
                                 <h4 class="pull-right">€84.99</h4>
-                                <h4><a href="#">Quarto Produto</a>
+                                <h4><a href="produto.php">Quarto Produto</a>
                                 </h4>
                                 <p>Lê o primeiro produto! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">6 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <a href="produto.php"><img src="http://placehold.it/320x150" alt=""></a>
                             <div class="caption">
                                 <h4 class="pull-right">€94.99</h4>
-                                <h4><a href="#">Quinto Produto</a>
+                                <h4><a href="produto.php">Quinto Produto</a>
                                 </h4>
                                 <p>Lê o primeiro produto! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right">18 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="http://placehold.it/320x150" alt="">
+                            <a href="produto.php"><img src="http://placehold.it/320x150" alt=""></a>
                             <div class="caption">
                                 <h4 class="pull-right">€14.99</h4>
-                                <h4><a href="#">Sexto Produto</a>
+                                <h4><a href="produto.php">Sexto Produto</a>
                                 </h4>
                                 <p>Lê o primeiro produto! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                            
-                            <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </p>
                             </div>
                         </div>
                     </div>
