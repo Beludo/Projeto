@@ -66,7 +66,7 @@
 			  </a>
 			  <ul class="treeview-menu">
 				<li class="active"><a href="#"><i class="fa fa-user"></i> Adicionar utilizador</a></li>
-				<li><a href="gere-utilizadores.php"><i class="fa fa-users"></i> Gerir utilizadores</a></li>
+				<li><a href="gerir-utilizadores.php"><i class="fa fa-users"></i> Gerir utilizadores</a></li>
 			  </ul>
 			</li>
 			<li class="treeview">

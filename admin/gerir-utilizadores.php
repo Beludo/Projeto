@@ -1,125 +1,152 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta charset="UTF-8">
-	<title>Admin | Gerir Utilizadores</title>
-	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-	<!-- Bootstrap 3.3.2 -->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<!-- Font Awesome Icons -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<!-- Ionicons -->
-	<link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-	<!-- Theme style -->
-	<link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-	<!-- AdminLTE Skins. Choose a skin from the css/skins 
-		 folder instead of downloading all of them to reduce the load. -->
-	<link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>AdminLTE 2 | Gerir Utilizadores</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- DATA TABLES -->
+    <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-	<![endif]-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body class="skin-blue">
-	<div class="wrapper">
-	  
-	<?php
+    <div class="wrapper">
+      
+	  <?php
 		include("cabecalho-admin.php");
 		include("lateral-admin.php");
-	?>
+	  ?>
 
-	  <!-- Content Wrapper. Contains page content -->
-	  <div class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<section class="content-header">
-		  <h1>
-			Gerir Utilizadores
-			<small>Texto pequeno</small>
-		  </h1>
-		  <ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li><a href="#">Gestão de utilizadores</a></li>
-			<li class="active">Adicionar utilizador</li>
-		  </ol>
-		</section>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Gerir Utilizadores
+            <small>descrição</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Data tables</li>
+          </ol>
+        </section>
 
-		<!-- Main content -->
-		<section class="content">
-		  <div class="row">
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Utilizadores registados</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nome completo</th>
+                        <th>Nome de utilizador</th>
+                        <th>Email</th>
+                        <th>Estado</th>
+                        <th>Acções</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Marco Beludo</td>
+                        <td>marco.beludo</td>
+                        <td>marco.beludo@hotmai.com</td>
+                        <td>Ativo</td>
+                        <td>
+						  <div class="btn-group">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+                              <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                            </ul>
+                          </div>
+						</td>
+                      </tr>
+                      <tr>
+                        <td>Diogo Ressureição</td>
+                        <td>diogo.alenxandre99</td>
+                        <td>diogo.alenxandre99@hotmail.com</td>
+                        <td>Desativo</td>
+                        <td>
+						  <div class="btn-group">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+                              <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                            </ul>
+                          </div>
+						</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+	  
+      <?php
+		include("rodape-admin.php");
+	  ?>
+    </div><!-- ./wrapper -->
 
-			  <!-- general form elements -->
-			  <div class="box box-primary">
-				<div class="box-header">
-				  <h3 class="box-title">Dados do utilizador</h3>
-				</div><!-- /.box-header -->
-				<!-- form start -->
-				<form role="form">
-				  <div class="box-body">
-					<div class="form-group">
-					  <label>Nome completo</label>
-					  <input type="text" class="form-control" placeholder="Insira nome"/>
-					</div>
-					<div class="form-group has-error">
-					  <label>Nome de utilizador</label>
-					  <br><label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Já existe alguém com este nome de utilizador</label><br>
-					  <input type="text" class="form-control" placeholder="Insira o nome de utilizador"/>
-					</div>
-					<div class="form-group has-warning">
-					  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Password demasiado simples!</label>
-					  <br><label for="exampleInputPassword1">Password</label>
-					  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-					</div>
-					<div class="form-group has-error">
-					  <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> As passwords não são iguais!</label>
-					  <br><label for="exampleInputPassword1">Confirmar Password</label>
-					  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirme a password">
-					</div>
-					<div class="form-group has-success">
-					  <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> O Email ta OK</label>
-					  <br><label for="exampleInputEmail1">Email</label>
-					  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email">
-					</div>
-					<div class="form-group">
-					  <label for="exampleInputFile">Foto</label>
-					  <input type="file" id="exampleInputFile">
-					  <p class="help-block">Seleccione uma foto de perfil.</p>
-					</div>
-					<div class="checkbox">
-					  <label>
-						<input type="checkbox"> Li e concordo com os <a href="">termos</a>
-					  </label>
-					</div>
-				  </div><!-- /.box-body -->
+    <!-- jQuery 2.1.3 -->
+    <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- DATA TABES SCRIPT -->
+    <script src="plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <!-- SlimScroll -->
+    <script src="plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src='plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js" type="text/javascript"></script>
+    <!-- page script -->
+    <script type="text/javascript">
+      $(function () {
+        $("#example1").dataTable();
+        $('#example2').dataTable({
+          "bPaginate": true,
+          "bLengthChange": false,
+          "bFilter": false,
+          "bSort": true,
+          "bInfo": true,
+          "bAutoWidth": false
+        });
+      });
+    </script>
 
-				  <div class="box-footer">
-					<button type="submit" class="btn btn-primary">Guardar</button>
-				  </div>
-				</form>
-			  </div><!-- /.box -->
-
-		  </div>   <!-- /.row -->
-		</section><!-- /.content -->
-	  </div><!-- /.content-wrapper -->
-	  <footer class="main-footer">
-		<div class="pull-right hidden-xs">
-		  <b>Versão</b> 0.1
-		</div>
-		<strong>Copyright &copy; 2015 <a href="http://www.facebook.com/dnovais91">Novais</a>, <a href="http://www.facebook.com/diogoalexandre99">Ressureição</a> e <a href="http://www.facebook.com/marco.beludo">Beludo</a>.</strong> Todos os direitos reservados.
-	  </footer>
-	</div><!-- ./wrapper -->
-
-	<!-- jQuery 2.1.3 -->
-	<script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-	<!-- Bootstrap 3.3.2 JS -->
-	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<!-- FastClick -->
-	<script src='plugins/fastclick/fastclick.min.js'></script>
-	<!-- AdminLTE App -->
-	<script src="dist/js/app.min.js" type="text/javascript"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="dist/js/demo.js" type="text/javascript"></script>
   </body>
 </html>
