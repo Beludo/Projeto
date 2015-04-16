@@ -103,12 +103,10 @@
 		  </div>   <!-- /.row -->
 		</section><!-- /.content -->
 	  </div><!-- /.content-wrapper -->
-	  <footer class="main-footer">
-		<div class="pull-right hidden-xs">
-		  <b>Versão</b> 0.1
-		</div>
-		<strong>Copyright &copy; 2015 <a href="http://www.facebook.com/dnovais91">Novais</a>, <a href="http://www.facebook.com/diogoalexandre99">Ressureição</a> e <a href="http://www.facebook.com/marco.beludo">Beludo</a>.</strong> Todos os direitos reservados.
-	  </footer>
+	  
+	  <?php
+		include("rodape-admin.php");
+	  ?>
 	</div><!-- ./wrapper -->
 
 	<!-- jQuery 2.1.3 -->
