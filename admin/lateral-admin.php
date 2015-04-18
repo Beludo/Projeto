@@ -58,6 +58,18 @@
 				<li><a href="graficos-humid.php"><i class="fa fa-tint"></i> Humidade</a></li>
 			  </ul>
 			</li>
+			<li class="treeview">
+			  <a href="#">
+				<i class="fa fa-users"></i>
+				<span>Utilizadores</span>
+				<i class="fa fa-angle-left pull-right"></i>
+			  </a>
+			  <ul class="treeview-menu">
+				<li><a href="ad-utilizador.php"><i class="fa fa-user"></i> Adicionar utilizador</a></li>
+				<li><a href="gerir-utilizadores.php"><i class="fa fa-users"></i> Gerir utilizadores</a></li>
+			  </ul>
+			</li>
+			<!--
 			<li class="treeview active">
 			  <a href="#">
 				<i class="fa fa-users"></i>
@@ -69,6 +81,7 @@
 				<li><a href="gerir-utilizadores.php"><i class="fa fa-users"></i> Gerir utilizadores</a></li>
 			  </ul>
 			</li>
+			-->
 			<li class="treeview">
 			  <a href="#">
 				<i class="fa fa-camera"></i> <span>Visita virtual</span>
