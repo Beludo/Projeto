@@ -19,7 +19,7 @@
 
 		<!-- /banner -->
 		<div class="jumbotron" style="margin:0px; margin-bottom:1px; padding-bottom:1px;">
-			<img src="./imagens/logotipo-banner.png" alt="logotipo">
+			<img src="./imagens/logotipo-banner.png" alt="logotipo" style="width:100%;">
 		</div>
 		<!-- /Acaba o banner -->
 
