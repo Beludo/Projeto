@@ -123,23 +123,13 @@
 											<td><a href="detail.html">Age Of Wisdom Tan Graphic Tee</a>
 											</td>
 											<td>
-												<input type="number" class="form-control text-center" value="1" min="1" max="10">
+												<input type="number" class="form-control" value="1" min="1" max="10">
 											</td>
-											<td>marco.beludo@hotmai.com</td>
+											<td>€9.5</td>
 											<td>Ativo</td>
 											<td>
-												<div class="btn-group">
-													<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<span class="caret"></span>
-													</button>
-													<ul class="dropdown-menu">
-														<li><a href="#"><i class="fa fa-fw fa-edit"></i>Editar</a>
-														</li>
-														<li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
-														</li>
-														<li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
-														</li>
-													</ul>
+													<a class="btn btn-primary btn-flat" href="#"><i class="fa fa-fw glyphicon glyphicon-trash"></i> Remover</a>
+													</a>
 												</div>
 											</td>
 										</tr>
@@ -152,24 +142,12 @@
 											<td><a href="detail.html">Age Of Wisdom Tan Graphic Tee</a>
 											</td>
 											<td>
-												<input type="number" class="form-control text-center" value="1" min="1" max="10">
+												<input type="number" class="form-control" value="1" min="1" max="10">
 											</td>
-											<td>diogo.alenxandre99@hotmail.com</td>
+											<td>€7.85</td>
 											<td>Desativo</td>
 											<td>
-												<div class="btn-group">
-													<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-														<span class="caret"></span>
-													</button>
-													<ul class="dropdown-menu">
-														<li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a>
-														</li>
-														<li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
-														</li>
-														<li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
-														</li>
-													</ul>
-												</div>
+												<a class="btn btn-primary btn-flat" role ="button" href="#"><i class="fa fa-fw glyphicon glyphicon-trash"></i> Remover</a>
 											</td>
 										</tr>
 										</tfoot>
