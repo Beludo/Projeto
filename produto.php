@@ -120,6 +120,8 @@
 			</div>
 			<!-- /container -->
 			<!-- /content -->
+			
+			<a class="btn btn-primary btn-flat pull-right" href="loja.php"><i class="fa fa-fw glyphicon glyphicon-arrow-left"></i> Voltar</a>
 
 		</div>
 		<!-- Acaba o conteudo -->

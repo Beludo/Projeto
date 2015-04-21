@@ -92,76 +92,98 @@
 		<!-- Conteudo -->
 		<div class="panel-default" style="padding:10px; margin-top:10px;">
 
-			<!-- Main content -->
-			<section class="content">
+			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
-						<div class="box">
-							<div class="box-header">
-								<h3 class="box-title">Carrinho de Compras</h3>
+					<div class="col-xs-12" st>
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<div class="panel-title">
+									<div class="row">
+										<div class="col-xs-6">
+											<h5><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho de Compras</h5>
+										</div>
+										<div class="col-xs-6">
+											<button type="button" class="btn btn-primary btn-sm btn-block">
+												<span class="glyphicon glyphicon-share-alt"></span> Continuar a Comprar
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
-							<!-- /.box-header -->
-							<div class="box-body">
-								<table id="example1" class="table table-bordered table-striped">
-									<thead>
-										<tr>
-											<th>Imagem</th>
-											<th>Nome do Produto</th>
-											<th>Quantidade</th>
-											<th>Preço</th>
-											<th>Observações</th>
-											<th>Remover</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<a href="detail.html">
-													<img src="http://placehold.it/47x47" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47" />
-												</a>
-											</td>
-											<td><a href="detail.html">Age Of Wisdom Tan Graphic Tee</a>
-											</td>
-											<td>
-												<input type="number" class="form-control" value="1" min="1" max="10">
-											</td>
-											<td>€9.5</td>
-											<td>Ativo</td>
-											<td>
-													<a class="btn btn-primary btn-flat" href="#"><i class="fa fa-fw glyphicon glyphicon-trash"></i> Remover</a>
-													</a>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<a href="detail.html">
-													<img src="http://placehold.it/47x47" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47" />
-												</a>
-											</td>
-											<td><a href="detail.html">Age Of Wisdom Tan Graphic Tee</a>
-											</td>
-											<td>
-												<input type="number" class="form-control" value="1" min="1" max="10">
-											</td>
-											<td>€7.85</td>
-											<td>Desativo</td>
-											<td>
-												<a class="btn btn-primary btn-flat" role ="button" href="#"><i class="fa fa-fw glyphicon glyphicon-trash"></i> Remover</a>
-											</td>
-										</tr>
-										</tfoot>
-								</table>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+									</div>
+									<div class="col-xs-4">
+										<h4 class="product-name"><strong>Nome do Produto</strong></h4>
+										<h4><small>Descrição do Produto</small></h4>
+									</div>
+									<div class="col-xs-6">
+										<div class="col-xs-6 text-right">
+											<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+										</div>
+										<div class="col-xs-4">
+											<input type="text" class="form-control input-sm" value="1">
+										</div>
+										<div class="col-xs-2">
+											<button type="button" class="btn btn-link btn-xs">
+												<span class="glyphicon glyphicon-trash"> </span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+									</div>
+									<div class="col-xs-4">
+										<h4 class="product-name"><strong>Nome do Produto</strong></h4>
+										<h4><small>Descrição do Produto</small></h4>
+									</div>
+									<div class="col-xs-6">
+										<div class="col-xs-6 text-right">
+											<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+										</div>
+										<div class="col-xs-4">
+											<input type="text" class="form-control input-sm" value="1">
+										</div>
+										<div class="col-xs-2">
+											<button type="button" class="btn btn-link btn-xs">
+												<span class="glyphicon glyphicon-trash"> </span>
+											</button>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="text-center">
+										<div class="col-xs-9">
+											<h6 class="text-right">Adicionou items?</h6>
+										</div>
+										<div class="col-xs-3">
+											<button type="button" class="btn btn-default btn-sm btn-block">
+												Atualizar Carrinho
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
-							<!-- /.box-body -->
+							<div class="panel-footer">
+								<div class="row text-center">
+									<div class="col-xs-9">
+										<h4 class="text-right">Total <strong>€50.00</strong></h4>
+									</div>
+									<div class="col-xs-3">
+										<button type="button" class="btn btn-success btn-block">
+											Checkout
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
-						<!-- /.box -->
 					</div>
-					<!-- /.col -->
 				</div>
-				<!-- /.row -->
-			</section>
-			<!-- /.content -->
+			</div>
 
 
 		</div>

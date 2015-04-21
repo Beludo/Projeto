@@ -52,6 +52,8 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
 			</div>
+			<a class="btn btn-primary btn-flat pull-right" href="eventos.php"><i class="fa fa-fw glyphicon glyphicon-arrow-left"></i> Voltar</a>
+			<br>
 			<hr>
 
 			<!-- Blog Comments -->
