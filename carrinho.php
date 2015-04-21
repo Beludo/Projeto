@@ -99,7 +99,7 @@
 								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho de Compras</h5>
 							</div>
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-primary btn-sm btn-block">
+								<button type="button" class="btn btn-primary btn-sm pull-right">
 									<span class="glyphicon glyphicon-share-alt"></span> Continuar a Comprar
 								</button>
 							</div>
