@@ -62,13 +62,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <a href="produto.php"><img class="slide-image" src="http://placehold.it/800x300" alt=""></a>
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <a href="produto.php"><img class="slide-image" src="http://placehold.it/800x300" alt=""></a>
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <a href="produto.php"><img class="slide-image" src="http://placehold.it/800x300" alt=""></a>
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
