@@ -101,7 +101,11 @@
 							</div>
 
 							<div class="tab-pane" id="informacao">
-								<p>Correio Normal: 1 a 5 Dias utéis- €7.95</p>
+								<h4>Dimensões</h4>
+								<p>144x52</p>
+								<hr>
+								<h4>Portes</h4>
+								<p>Correio Normal: 5-7 dias utéis - €7</p>
 								<p>Correio Azul: 2 dias utéis - €15</p>
 								<p>Avião: Algumas horas - €30</p>
 
