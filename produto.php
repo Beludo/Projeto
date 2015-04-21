@@ -28,7 +28,7 @@
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="loja.php">Loja</a> 
 			</li>
-            <li class="active">Produto Xpto</li>
+            <li class="active">Carrinho</li>
 		</ol>
 
 		<!-- Conteudo -->

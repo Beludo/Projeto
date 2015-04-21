@@ -48,7 +48,7 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                             <li><a href="#">Área de Cliente</a>
                             </li>
-                            <li><a href="#">Carrinho de Compras</a>
+                            <li><a href="carrinho.php">Carrinho de Compras</a>
                             </li>
                             <li><a href="#">Terminar Sessão</a>
                             </li>
