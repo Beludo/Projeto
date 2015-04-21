@@ -11,9 +11,7 @@
 
 <body>
 	<!-- MENU!! -->
-   <?php 
-        $pagina = "visitavirtual";
-        include "inc-cabecalho.php" ?>
+	<?php $pagina="visitavirtual" ; include "inc-cabecalho.php" ?>
 	<!-- Acaba MENU!! -->
 
 	<!-- /conteudo -->
@@ -23,8 +21,8 @@
 			<img src="./imagens/logotipo-banner.png" alt="logotipo">
 		</div>
 		<!-- /banner -->
-		
-		 <!-- BREADCRUMB -->
+
+		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="index.php">Página Inicial</a>
 			</li>
@@ -33,15 +31,17 @@
 
 		<!-- Conteudo -->
 		<div class="panel panel-default" style="padding:10px; margin-top:10px;">
-			   Aplicação Multimédia <br>
+			Aplicação Multimédia
+			<br>
 		</div>
 		<!-- Acaba o conteudo -->
-		
+
 	</div>
-	
+
 	<!-- RODAPÉ!! -->
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
-	
+
 </body>
+
 </html>

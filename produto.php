@@ -11,9 +11,7 @@
 
 <body>
 	<!-- MENU!! -->
-   <?php 
-        $pagina = "loja";
-        include "inc-cabecalho.php" ?>
+	<?php $pagina="loja" ; include "inc-cabecalho.php" ?>
 	<!-- Acaba MENU!! -->
 
 	<!-- /conteudo -->
@@ -23,119 +21,115 @@
 			<img src="./imagens/logotipo-banner.png" alt="logotipo">
 		</div>
 		<!-- /banner -->
-		
-		 <!-- BREADCRUMB -->
+
+		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
-			<li><a href="loja.php">Loja</a> 
+			<li><a href="loja.php">Loja</a>
 			</li>
-            <li class="active">Carrinho</li>
+			<li class="active">Produto xpto</li>
 		</ol>
 
 		<!-- Conteudo -->
 		<div class="panel-default" style="padding:10px; margin-top:10px;">
 
-            <!-- Cart -->
-        	
-            		<h3>SHOPPING CART</h3>
-            
-	            <div class="col-lg-12 col-sm-12 hero-feature">
-					<table class="table table-bordered tbl-cart">
-						<thead>
-                            <tr>
-                                <td class="hidden-xs">Image</td>
-                                <td>Product Name</td>
-                                <td>Size</td>
-                                <td>Color</td>
-                                <td class="td-qty">Quantity</td>
-                                <td>Unit Price</td>
-                                <td>Sub Total</td>
-                                <td>Remove</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="hidden-xs">
-                                    <a href="detail.html">
-                                        <img src="images/product-2.jpg" alt="Age Of Wisdom Tan Graphic Tee" title="" width="47" height="47" />
-                                    </a>
-                                </td>
-                                <td><a href="detail.html">Age Of Wisdom Tan Graphic Tee</a>
-                                </td>
-                                <td>
-                                    <select name="">
-                                        <option value="" selected="selected">S</option>
-                                        <option value="">M</option>
-                                    </select>
-                                </td>
-                                <td>-</td>
-                                <td>
-                                    <input type="text" name="" value="1" class="input-qty form-control text-center" />
-                                </td>
-                                <td class="price">$ 122.21</td>
-                                <td>$ 122.21</td>
-                                <td class="text-center">
-                                    <a href="#" class="remove_cart" rel="2">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="hidden-xs">
-                                    <a href="detail.html">
-                                        <img src="images/product-12.jpg" alt="Adidas Men Red Printed T-shirt" title="" width="47" height="47" />
-                                    </a>
-                                </td>
-                                <td><a href="detail.html">Adidas Men Red Printed T-shirt</a>
-                                </td>
-                                <td>
-                                    <select name="">
-                                        <option value="">S</option>
-                                        <option value="" selected="selected">M</option>
-                                    </select>
-                                </td>
-                                <td>
-                                	<select name="">
-                                        <option value="" selected="selected">Red</option>
-                                        <option value="">Blue</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="text" name="" value="2" class="input-qty form-control text-center" />
-                                </td>
-                                <td class="price">$ 20.63</td>
-                                <td>$ 41.26</td>
-                                <td class="text-center">
-                                    <a href="#" class="remove_cart" rel="1">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" align="right">Total</td>
-                                <td class="total" colspan="2"><b>$ 163.47</b>
-                                </td>
-                            </tr>
-                        </tbody>
-					</table>
-					<div class="btn-group btns-cart">
-						<button type="button" class="btn btn-primary" onclick="window.location='catalogue.html'"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</button>
-						<button type="button" class="btn btn-primary">Update Cart</button>
-						<button type="button" class="btn btn-primary" onclick="window.location='checkout.html'">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+			<div class="container">
+				<!-- details-photo -->
+				<div class="details-photo col-sm-5">
+					<a href="#"><img class="img-responsive" src="http://placehold.it/350x400">
+					</a>
+					<br>
+					<div>
+						<a href=""><img src="http://placehold.it/85x84" alt="">
+						</a>
+						<a href=""><img src="http://placehold.it/85x84" alt="">
+						</a>
+						<a href=""><img src="http://placehold.it/85x84" alt="">
+						</a>
+						<a href=""><img src="http://placehold.it/85x84" alt="">
+						</a>
+					</div>
+				</div>
+				<!-- .details-photo -->
+
+
+				<!-- Sidebar Grid -->
+				<div class="col-sm-6 details-right">
+
+					<div class="col-md-6 pull-left">
+						<h3 class="h3"><a href="#"><strong>Primeiro Produto</strong></a></h3>
+						<p class="product-code">Código do Produto: <strong>ECOM1204</strong>
+						</p>
 					</div>
 
-	            </div>
-        	</div>
-        	<!-- End Cart -->
-            
-            
-            </div>
+					<div class="col-md-6 pull-right text-right">
+						<h1 class="big-price"><strong>€34</strong></h1>
+					</div>
+
+					<div class="clearfix"></div>
+					<hr />
+
+					<div class="col-md-12">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="quantity" class="col-sm-2 control-label">Quantidade</label>
+								<div class="col-xs-9">
+									<input style="max-width: 50px;" id="quantity" type="number" min="1" max="5" value="1" name="quantity" />
+								</div>
+							</div>
+
+						</form>
+					</div>
+					<hr>
+
+					<div class="col-md-12 text-center">
+						<button id="loadToSuccess" class="btn btn-primary-custom btn-lg pull-left"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+					</div>
+
+					<div class="col-md-12">
+						<br>
+						<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#detalhes">Detalhes</a>
+							</li>
+							<li><a data-toggle="tab" href="#informacao">Informação Adicional</a>
+							</li>
+						</ul>
+
+						<div class="tab-content">
+							<div class="tab-pane active" id="detalhes">
+								<h4>Informação do Produto</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. Aliquam in felis sit amet augue.</p>
+							</div>
+
+							<div class="tab-pane" id="informacao">
+								<p>Correio Normal: 1 a 5 Dias utéis- €7.95</p>
+								<p>Correio Azul: 2 dias utéis - €15</p>
+								<p>Avião: Algumas horas - €30</p>
+
+							</div>
+						</div>
+						<!-- tab-content-->
+
+					</div>
+					<!-- col-md-12 -->
+				</div>
+				<!--col-sm-6 -->
+				<!-- /Sidebar Grid -->
+
+				<div class="clearfix"></div>
+
+			</div>
+			<!-- /container -->
+			<!-- /content -->
+
+		</div>
 		<!-- Acaba o conteudo -->
-		
+
 	</div>
-	
+
 	<!-- RODAPÉ!! -->
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
 
 </body>
+
 </html>
