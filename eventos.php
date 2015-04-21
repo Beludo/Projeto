@@ -38,10 +38,10 @@
 				Cras justo odio
 			  </a>
 			  -->
-				<a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-				<a href="#" class="list-group-item">Morbi leo risus</a>
-				<a href="#" class="list-group-item">Porta ac consectetur ac</a>
-				<a href="#" class="list-group-item">Vestibulum at eros</a>
+				<a href="#" class="list-group-item">Categoria 1</a>
+				<a href="#" class="list-group-item">Categoria 2</a>
+				<a href="#" class="list-group-item">Categoria 3</a>
+				<a href="#" class="list-group-item">Categoria 4</a>
 			</div>
 		</div>
 		<!-- Acaba menu Lateral -->
@@ -62,8 +62,8 @@
 					</a>
 				</div>
 				<div class="col-md-5">
-					<h3>Project One</h3>
-					<h4>Subheading</h4>
+					<h3>Evento Um</h3>
+					<h4>Subtitulo</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
 					<a class="btn btn-primary" href="mostra-evento.php">Ver Mais</i></a>
 				</div>
@@ -80,8 +80,8 @@
 					</a>
 				</div>
 				<div class="col-md-5">
-					<h3>Project Two</h3>
-					<h4>Subheading</h4>
+					<h3>Evento Dois</h3>
+					<h4>Subtitulo</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
 					<a class="btn btn-primary" href="mostra-evento.php">Ver Mais</i></a>
 				</div>
@@ -98,8 +98,8 @@
 					</a>
 				</div>
 				<div class="col-md-5">
-					<h3>Project Three</h3>
-					<h4>Subheading</h4>
+					<h3>Evento Três</h3>
+					<h4>Subtitulo</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
 					<a class="btn btn-primary" href="mostra-evento.php">Ver Mais</i></a>
 				</div>

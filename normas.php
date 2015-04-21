@@ -52,7 +52,8 @@
 		<!-- Conteudo -->
 		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%; min-height: 205px;">
 			<h3>Normas de conduta</h3>
-
+			<hr>
+			
 			<ul>
 				<li style="list-style:none;"><b>No interior do Museu de Lanifícios é proibido:</b>
 				</li>

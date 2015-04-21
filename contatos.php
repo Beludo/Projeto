@@ -62,6 +62,7 @@
 				<!-- Contact Details Column -->
 				<div class="col-md-4">
 					<h3>Contatos</h3>
+					<hr>
 					<p>
 						<i class="fa fa-envelope-o"></i> Travessa Dona Eulália Tavares Ferreira
 						<br>

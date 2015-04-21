@@ -53,6 +53,7 @@
 		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%; min-height: 205px;">
 
 			<h3>Horário de Funcionamento</h3>
+			<hr>
 			<i class="fa fa-clock-o"></i>
 			<ul style="display: inline-block;list-style: none;">
 				<li><b>Abertura do Edifício:</b>

@@ -52,6 +52,9 @@
 
 		<!-- Conteudo -->
 		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;min-height: 205px;">
+			<h3>Ligações</h3>
+			<hr>
+			
 			Conteudo principal
 			<br> Linha 1
 			<br> Linha 2

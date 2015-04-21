@@ -49,13 +49,10 @@
 		<!-- Conteudo -->
 		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
 
+			<h3>Exposições</h3>
+			<hr>
 
 			<div class="row">
-
-				<div class="col-lg-12">
-					<h3 class="page-header">Exposição X</h3>
-				</div>
-
 				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
 					<a class="thumbnail" href="mostra-peca.php">
 						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
