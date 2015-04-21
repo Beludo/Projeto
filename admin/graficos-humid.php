@@ -73,7 +73,7 @@
 								</div><!-- /.input group -->
 							</div>
 							<div class="box-footer">
-								<button type="submit" class="btn btn-primary">Atualizar gr·ficos</button>
+								<button type="submit" class="btn btn-primary">Atualizar gr√°ficos</button>
 							</div>
 						</div>
 					</form>
