@@ -24,6 +24,23 @@
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
+	
+	<!-- Estilos para formater a tabela de produtos -->
+	<style>
+		td img {
+			width: 128px;
+			height: 128px;
+		}
+		
+		.imagem-tabela{
+			width: 150px;
+		}
+		
+		.descricao-tabela{
+			width: 200px;
+		}
+	</style>
+	
   </head>
   <body class="skin-blue">
 	<div class="wrapper">
@@ -59,21 +76,23 @@
 				  <table id="example1" class="table table-bordered table-striped">
 					<thead>
 					  <tr>
-						<th>Imagem</th>
+						<th class="imagem-tabela">Imagem</th>
 						<th>Nome</th>
 						<th>Código</th>
 						<th>Preço</th>
 						<th>Stock</th>
-						<th>Descrição</th>
+						<th class="descricao-tabela">Descrição</th>
+						<th>Acções</th>
 					  </tr>
 					</thead>
 					<tbody>
 					  <tr>
-						<td><img src=""></td>
+						<td><img src="img-produtos/tshirt.jpg" alt="Descrição do produto"></td>
 						<td>T-shirt do museu</td>
 						<td>TM123</td>
 						<td>5€</td>
 						<td>10</td>
+						<td>É uma t-shirt comemorativa do centenário da ponte de brooklyn</td>
 						<td>
 						  <div class="btn-group">
 							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -81,24 +100,6 @@
 							</button>
 							<ul class="dropdown-menu">
 							  <li><a href="#"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressureição</td>
-						<td>diogo.alenxandre99</td>
-						<td>diogo.alenxandre99@hotmail.com</td>
-						<td>Desativo</td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
 							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
 							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
 							</ul>
