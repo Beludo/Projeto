@@ -87,14 +87,27 @@
 				  <div class="box box-primary">
 					<div class="box-header">
 					  <i class="fa fa-bar-chart-o"></i>
-					  <h3 class="box-title">Line Chart</h3>
+					  <h3 class="box-title">Sensor 1 - Motor de carro</h3>
 					</div>
 					<div class="box-body">
 					  <div id="line-chart" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 20px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 84px; text-align: center;">2</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 149px; text-align: center;">4</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 214px; text-align: center;">6</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 278px; text-align: center;">8</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 341px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 58px; top: 283px; left: 405px; text-align: center;">12</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 270px; left: 1px; text-align: right;">-1.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 225px; left: 1px; text-align: right;">-1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 180px; left: 1px; text-align: right;">-0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 135px; left: 4px; text-align: right;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 90px; left: 4px; text-align: right;">0.5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 45px; left: 4px; text-align: right;">1.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 4px; text-align: right;">1.5</div></div></div><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-overlay"></canvas></div>
 					</div><!-- /.box-body-->
 				  </div><!-- /.box -->
 				</div>
-			</div>   <!-- /.row -->
+				
+				<div class="col-md-6">
+              <!-- Bar chart -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <i class="fa fa-bar-chart-o"></i>
+                  <h3 class="box-title">Historico</h3>
+                </div>
+                <div class="box-body">
+                  <div id="bar-chart" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 22px; text-align: center;">January</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 96px; text-align: center;">February</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 180px; text-align: center;">March</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 261px; text-align: center;">April</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 339px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 414px; text-align: center;">June</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 270px; left: 7px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 203px; left: 7px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 135px; left: 1px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 68px; left: 1px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">20</div></div></div><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-overlay"></canvas></div>
+                </div><!-- /.box-body-->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+			</div><!-- /.row -->
 		  
 		</section><!-- /.content -->
 	  </div><!-- /.content-wrapper -->
@@ -131,13 +144,13 @@
     <script src="plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
 	
 	<!-- FLOT CHARTS -->
-    <script src="/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+    <script src="../../plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
     <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-    <script src="/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+    <script src="../../plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
     <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-    <script src="/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
+    <script src="../../plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-    <script src="/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+    <script src="../../plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 	
 	<!-- Script do seletor de data/hora -->
     <script type="text/javascript">
