@@ -71,7 +71,7 @@
 						<td>Marco Beludo</td>
 						<td>marco.beludo</td>
 						<td>marco.beludo@hotmai.com</td>
-						<td>Ativo</td>
+						<td><span class="label label-success">Ativo</span></td>
 						<td>
 						  <div class="btn-group">
 							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -89,7 +89,7 @@
 						<td>Diogo Ressureição</td>
 						<td>diogo.alenxandre99</td>
 						<td>diogo.alenxandre99@hotmail.com</td>
-						<td>Desativo</td>
+						<td><span class="label label-danger">Desativo</span></td>
 						<td>
 						  <div class="btn-group">
 							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
