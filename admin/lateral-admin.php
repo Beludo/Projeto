@@ -5,7 +5,7 @@
 		  <!-- Sidebar user panel -->
 		  <div class="user-panel">
 			<div class="pull-left image">
-			  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+			  <img src="fotos/people.jpg" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
 			  <p>Diogo Novais</p>
@@ -39,13 +39,20 @@
 			  </a>
 			  <ul class="treeview-menu">
 				<li><a href="ad-artigo.php"><i class="fa fa-edit"></i> Adicionar Artigo</a></li>
-				<li><a href="gere-artigos.php"><i class="fa fa-book"></i> Gerir Artigos</a></li>
+				<li><a href="gerir-artigos.php"><i class="fa fa-book"></i> Gerir Artigos</a></li>
 			  </ul>
 			</li>
 			<li>
 			  <a href="../widgets.html">
-				<i class="fa fa-credit-card"></i> <span>Loja</span> <small class="label pull-right bg-green">novo</small>
+				<i class="fa fa-credit-card"></i>
+				<span>Loja</span>
+				<i class="fa fa-angle-left pull-right"></i>
+				<small class="label pull-right bg-green">novo</small>
 			  </a>
+			  <ul class="treeview-menu">
+				<li><a href="ad-produto.php"><i class="fa fa-edit"></i> Adicionar Produto</a></li>
+				<li><a href="gerir-produtos.php"><i class="fa fa-book"></i> Gerir Produtos</a></li>
+			  </ul>
 			</li>
 			<li class="treeview">
 			  <a href="#">
