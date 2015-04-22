@@ -17,6 +17,19 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins 
 		 folder instead of downloading all of them to reduce the load. -->
 	<link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Estilos para formatar a tabela de produtos -->
+	<style>
+		/* classe para formatar os pontos do poligono */
+		.ponto-imagem{
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			border-style: solid;
+			border-color: #B2CCFF;
+		}
+		
+	</style>
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,20 +66,30 @@
 			<div class="col-xs-12">
 			  <div class="box">
 				<div class="box-header">
-				  <h3 class="box-title">Coiso</h3>
+				  <h3 class="box-title">Imagem XPTO</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
-					<div id="imagem-museu" onclick="obter_posicao(event)" style = "background-image:url('img-museu/01.jpg'); width:800px; height:534px;">
+					<div id="imagem-museu" onclick="adicionar_ponto(event)" style = "background-image:url('img-museu/01.jpg'); width:800px; height:534px;">
 					</div>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->
 			  
 			  <div class="box">
 				<div class="box-header">
-				  <h3 class="box-title">Coordenadas do ponto</h3>
+				  <h3 class="box-title">Dados da página</h3>
 				</div><!-- /.box-header -->
-				<div class="box-body" id="mostra-coordenadas">
-					
+				<div class="box-body" id="nova-imagem">
+					<form role="form">
+					  <div class="box-body">
+						<div class="form-group">
+						  <label>Nome da página</label>
+						  <input type="text" class="form-control" placeholder="Insira o nome"/>
+						</div>
+					  </div><!-- /.box-body -->
+					  <div class="box-footer">
+						<button type="submit" class="btn btn-primary">Guardar</button>
+					  </div>
+					</form>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->
 			</div><!-- /.col -->
@@ -100,19 +123,38 @@
 	<script language="JavaScript">
 	var coordenadas_x = new Array();
 	var coordenadas_y = new Array();
+	var remover = 0;
 	
-	function obter_posicao(event) {
+	function adicionar_ponto(event) {
+		
+		if(remover == 0){
+			// Obter as coorenadas do click do rato
+			pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("imagem-museu").offsetLeft;
+			pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("imagem-museu").offsetTop;
+			
+			console.log("Ponto: X=" + pos_x + " Y=" + pos_y);
+			
+			// Guardar as coordenadas do novo ponto
+			coordenadas_x.push(pos_x-245);
+			coordenadas_y.push(pos_y-106);
+		}else{
+			remover = 0;
+		}
+		
+		mostrar_poligono();
+	}
+	
+	function remover_ponto(num) {
+		coordenadas_x.splice(num, 1);
+		coordenadas_y.splice(num, 1);
+		remover = 1;
+		
+		mostrar_poligono();
+	}
+	
+	function mostrar_poligono() {
+		
 		var html = '<svg width="800" height="534"><polygon points="';
-		
-		// Obter as coorenadas do click do rato
-		pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("imagem-museu").offsetLeft;
-		pos_y = event.offsetY?(event.offsetY):event.pageY-document.getElementById("imagem-museu").offsetTop;
-		
-		document.getElementById("mostra-coordenadas").innerHTML = "X=" + pos_x + " Y=" + pos_y;
-		
-		// Guardar as coordenadas do novo ponto
-		coordenadas_x.push(pos_x-245);
-		coordenadas_y.push(pos_y-106);
 		
 		// Adicionar os pontos ao SVG
 		for(var i=0; i<coordenadas_x.length; i++) {
@@ -124,11 +166,11 @@
 		
 		// Adicionar divs para cada ponto
 		for(var i=0; i<coordenadas_x.length; i++) {
-			html += '<div style="position:absolute; left:' + coordenadas_x[i] + 'px; top:' + coordenadas_y[i] + '; 	border-style: solid; border-color: #B2CCFF; width:10px; height:10px"></div>';
+			html += '<div id="ponto' + i + '" class="ponto-imagem" style="left:' + (coordenadas_x[i]+5) + 'px; top:' + (coordenadas_y[i]+45) + 'px;" onclick="remover_ponto(' + i + ')"></div>';
 		}
 		
-		//  Enviar para a div "imagem-museu"
-		document.getElementById("imagem-museu").innerHTML = html;				
+		// Enviar para a div "imagem-museu"
+		document.getElementById("imagem-museu").innerHTML = html;
 	}
 	</script>
 
