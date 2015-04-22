@@ -17,6 +17,13 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins 
 		 folder instead of downloading all of them to reduce the load. -->
 	<link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Estilos para formatar a tabela de utilizadores -->
+	<style>
+		.accoes-tabela{
+			width: 100px;
+		}
+	</style>
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,7 +70,7 @@
 						<th>Nome de utilizador</th>
 						<th>Email</th>
 						<th>Estado</th>
-						<th>Acções</th>
+						<th class="accoes-tabela">Acções</th>
 					  </tr>
 					</thead>
 					<tbody>
