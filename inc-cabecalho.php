@@ -33,14 +33,6 @@
 				<li><a href="login.php">Iniciar sessão</a>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<form class="navbar-form navbar-left" role="search" method="POST">
-						<input type="text" id="pesquisa" name="pesquisa" class="form-control" placeholder="Search">
-					</form>
-				</li>
-
-			</ul>
 
 		</div>
 		<!-- /.navbar-collapse -->
