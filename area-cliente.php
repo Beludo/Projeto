@@ -84,6 +84,7 @@
 
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
+			<li><a href="index.php">Página Inicial</a></li>
 			<li class="active">Área de Cliente</li>
 		</ol>
 
@@ -126,10 +127,7 @@
 										<p><span>Nome </span>: José Tobias </p>
 									</div>
 									<div class="bio-row">
-										<p><span>País </span>: Portugal</p>
-									</div>
-									<div class="bio-row">
-										<p><span>Data de Nascimento</span>: 27 August 1987</p>
+										<p><span>Data de Registo </span>: 21-04-2015</p>
 									</div>
 									<div class="bio-row">
 										<p><span>Morada </span>: United</p>
@@ -154,46 +152,51 @@
 							<div class="panel-body bio-graph-info">
 								<form class="form-horizontal" role="form">
 									<div class="form-group">
-										<label class="col-lg-2 control-label">Nome</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="name" placeholder=" ">
+										<label class="col-lg-3 control-label">Nome</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="name" placeholder="Insira o Nome...">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-lg-2 control-label">País</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="c-name" placeholder=" ">
+										<label class="col-lg-3 control-label">Username</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="username" placeholder="Insira o Username...">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-lg-2 control-label">Data de Nascimento</label>
-										<div class="col-lg-6">
-											<input type="date" class="form-control" id="b-day" placeholder=" ">
+										<label class="col-lg-3 control-label">Palavra-Passe</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="password" placeholder="Insira a Palavra-Passe...">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-lg-2 control-label">Morada</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="address" placeholder=" ">
+										<label class="col-lg-3 control-label">Confirmar Palavra-Passe</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="password" placeholder="Confirme a Palavra-Passe...">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-lg-2 control-label">Email</label>
-										<div class="col-lg-6">
-											<input type="email" class="form-control" id="email" placeholder=" ">
+										<label class="col-lg-3 control-label">Telefone</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico...">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-lg-2 control-label">Telefone</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="mobile" placeholder=" ">
+										<label class="col-lg-3 control-label">Morada</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="address" placeholder="Insira a Morada...">
 										</div>
 									</div>
-
+									<div class="form-group">
+										<label class="col-lg-3 control-label">Email</label>
+										<div class="col-lg-4">
+											<input type="email" class="form-control" id="email" placeholder="Insira o Email...">
+										</div>
+									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-2 col-lg-10">
-											<button type="submit" class="btn btn-primary">Save</button>
-											<button type="button" class="btn btn-danger">Cancel</button>
+											<button type="submit" class="btn btn-primary">Guardar</button>
+											<button type="button" class="btn btn-danger">Cancelar</button>
 										</div>
 									</div>
 								</form>
