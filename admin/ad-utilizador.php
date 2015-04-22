@@ -60,12 +60,20 @@
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome completo</label>
-					  <input type="text" class="form-control" placeholder="Insira nome"/>
+					  <input type="text" class="form-control" placeholder="Insira o nome"/>
 					</div>
 					<div class="form-group has-error">
 					  <label>Nome de utilizador</label>
 					  <br><label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Já existe alguém com este nome de utilizador</label><br>
 					  <input type="text" class="form-control" placeholder="Insira o nome de utilizador"/>
+					</div>
+					<div class="form-group">
+					  <label>Morada</label>
+					  <input type="text" class="form-control" placeholder="Insira a morada"/>
+					</div>
+					<div class="form-group">
+					  <label>Contacto telefonico</label>
+					  <input type="text" class="form-control" placeholder="Insira o numero de telefone"/>
 					</div>
 					<div class="form-group has-warning">
 					  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Password demasiado simples!</label>
