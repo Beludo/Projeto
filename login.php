@@ -12,16 +12,7 @@
 <body>
 	<!-- MENU!! -->
 	<?php $pagina="login" ; include "inc-cabecalho.php" ?>
-	<!-- Acaba MENU!! -->
-
-	<!-- /conteudo -->
-	<div class="container theme-showcase" role="main">
-
-		<!-- /banner -->
-		<div class="jumbotron" style="margin:0px; margin-bottom:1px; padding-bottom:1px;">
-			<img src="./imagens/logotipo-banner.png" alt="logotipo">
-		</div>
-		<!-- /Acaba o banner -->
+	<!-- Acaba MENU!! Conteudo e Banner-->
 
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">

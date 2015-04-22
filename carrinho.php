@@ -56,7 +56,7 @@
 					</li>
 
 				</ul>
-				
+
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
@@ -68,8 +68,38 @@
 	<div class="container theme-showcase" role="main">
 
 		<!-- /banner -->
-		<div class="jumbotron" style="margin:0px; margin-bottom:1px; padding-bottom:1px;">
-			<img src="./imagens/logotipo-banner.png" alt="logotipo">
+		<div class="" style="margin:1px; margin-top:50px; padding-bottom:1px;">
+
+			<div class="col-md-14">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="item active">
+							<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
+							</a>
+						</div>
+						<div class="item">
+							<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
+							</a>
+						</div>
+						<div class="item">
+							<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
+							</a>
+						</div>
+					</div>
+					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+
 		</div>
 		<!-- /Acaba o banner -->
 

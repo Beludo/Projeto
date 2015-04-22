@@ -12,15 +12,8 @@
 <body>
 	<!-- MENU!! -->
 	<?php $pagina="loja" ; include "inc-cabecalho.php" ?>
-	<!-- Acaba MENU!! -->
+	<!-- Acaba MENU!! Conteudo e Banner-->
 
-	<!-- /conteudo -->
-	<div class="container theme-showcase" role="main">
-
-		<div class="jumbotron" style="margin:1px; padding-bottom:1px;">
-			<img src="./imagens/logotipo-banner.png" alt="logotipo">
-		</div>
-		<!-- /banner -->
 
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">

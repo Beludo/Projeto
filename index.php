@@ -11,23 +11,16 @@
 
 <body>
 	<!-- MENU!! -->
-	<?php $pagina="index" ; include "inc-cabecalho.php" ?> ?>
-	<!-- Acaba MENU!! -->
+	<?php $pagina="index" ; include "inc-cabecalho.php" ?>
+	<!-- Acaba MENU!! Conteudo e Banner-->
 
-	<!-- /conteudo -->
-	<div class="container theme-showcase" role="main">
-
-		<!-- /banner -->
-		<div class="jumbotron" style="margin:0px; margin-bottom:1px; padding-bottom:1px;">
-			<img src="./imagens/logotipo-banner.png" alt="logotipo" style="width:100%;">
-		</div>
-		<!-- /Acaba o banner -->
-
-		<!-- BREADCRUMB -->
-		<ol class="breadcrumb" style="margin-bottom:0px;">
+	<div>	
+	<!-- BREADCRUMB -->
+		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li class="active">Página Inicial
 			</li>
 		</ol>
+		</div>
 
 
 		<!-- Informações Laterais -->
