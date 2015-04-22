@@ -96,7 +96,7 @@
 			  </a>
 			  <ul class="treeview-menu">
 				<li><a href="general.html"><i class="fa fa-circle-o"></i> Adicionar fotos</a></li>
-				<li><a href="advanced.html"><i class="fa fa-circle-o"></i> Gerir museu virtual</a></li>
+				<li><a href="gerir-visita.php"><i class="fa fa-circle-o"></i> Gerir visita virtual</a></li>
 			  </ul>
 			</li>
 			<li>
