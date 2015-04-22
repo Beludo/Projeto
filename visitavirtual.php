@@ -31,8 +31,13 @@
 
 		<!-- Conteudo -->
 		<div class="panel panel-default" style="padding:10px; margin-top:10px;">
-			Aplicação Multimédia
-			<br>
+			<h3>Aplicação Multimédia</h3>
+			<hr>
+			<div style="text-align:center;">
+			<img src="./admin/img-museu/01.jpg" alt="imagem museu">
+			</div>
+			
+			
 		</div>
 		<!-- Acaba o conteudo -->
 
