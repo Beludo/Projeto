@@ -46,7 +46,7 @@
 					<li class="dropdown" role="menu" aria-labelledby="menu1" style="z-index: 1">
 						<a id="menu1" data-toggle="dropdown">Zé Tobias<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-							<li><a href="#">Área de Cliente</a>
+							<li><a href="area-cliente.php">Área de Cliente</a>
 							</li>
 							<li><a href="carrinho.php">Carrinho de Compras</a>
 							</li>
