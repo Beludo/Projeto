@@ -79,16 +79,17 @@
 				  <h3 class="box-title">Dados da página</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body" id="nova-imagem">
-					<form role="form">
+					<form action="gerir-visita-res.php" method="POST" role="form">
 					  <div class="box-body">
 						<div class="form-group">
 						  <label>Nome da página</label>
-						  <input type="text" class="form-control" placeholder="Insira o nome"/>
+						  <input id="nome" name="nome" type="text" class="form-control" placeholder="Insira o nome"/>
 						</div>
 					  </div><!-- /.box-body -->
 					  <div class="box-footer">
 						<button type="submit" class="btn btn-primary">Guardar</button>
 					  </div>
+					  <div id="pontos-enviar"></div>
 					</form>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->
@@ -171,6 +172,14 @@
 		
 		// Enviar para a div "imagem-museu"
 		document.getElementById("imagem-museu").innerHTML = html;
+		
+		// Enviar os pontos para a div do formulario
+		html = '<input type="hidden" id="np" name="np" value="' + coordenadas_x.length + '">';
+		for(var i=0; i<coordenadas_x.length; i++) {
+			html += '<input type="hidden" id="ponto' +  i + 'x" value="' + (coordenadas_x[i]+5) + '">' + 
+			'<input type="hidden" id="ponto' +  i + 'y" value="' + (coordenadas_y[i]+45) + '">';
+		}
+		document.getElementById("pontos-enviar").innerHTML = html;
 	}
 	</script>
 
