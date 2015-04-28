@@ -28,6 +28,12 @@
 			<div style="text-align:center;">
 			<img src="./admin/img-museu/01.jpg" alt="imagem museu" usemap="#Mapa">
 			<map name="Mapa" id="Mapa">
+				<area alt="" title="" href="#" shape="poly" coords="82,257,82,338,163,336,163,257" alt="1" />
+				<area alt="" title="" href="#" shape="poly" coords="408,231,409,292,435,296,434,226" alt="2" />
+				<area alt="" title="" href="#" shape="poly" coords="505,178,505,342,608,333,609,185" alt="3" />
+				<area alt="" title="" href="#" shape="poly" coords="640,193,646,330,719,323,717,197" alt="4" />
+				<area alt="" title="" href="#" shape="poly" coords="302,231,329,223,331,333,300,323" alt="5" />
+				<area alt="" title="" href="#" shape="poly" coords="170,479,456,511,405,375,328,341,222,361,169,366" alt="6" />
 			</map>
 			</div>
 			
