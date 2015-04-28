@@ -2,17 +2,6 @@
 	  <aside class="main-sidebar">
 		<!-- sidebar: style can be found in sidebar.less -->
 		<section class="sidebar">
-		  <!-- Sidebar user panel -->
-		  <div class="user-panel">
-			<div class="pull-left image">
-			  <img src="fotos/people.jpg" class="img-circle" alt="User Image" />
-			</div>
-			<div class="pull-left info">
-			  <p>Diogo Novais</p>
-
-			  <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-			</div>
-		  </div>
 		  <!-- search form -->
 		  <form action="#" method="get" class="sidebar-form">
 			<div class="input-group">
@@ -28,14 +17,20 @@
 			<li class="header">PAINEL DE CONTROLO</li>
 			<li class="treeview">
 			  <a href="#">
-				<i class="fa fa-dashboard"></i> <span>Visão Geral</span></i>
+				<i class="fa fa-dashboard"></i>
+				<span>Geral</span>
+				<i class="fa fa-angle-left pull-right"></i>
 			  </a>
+			  <ul class="treeview-menu">
+				<li><a href="info-gerais.php"><i class="fa fa-dashboard"></i> Informações gerais</a></li>
+				<li><a href="conf-gerais.php"><i class="fa fa-cog"></i> Configurações gerais</a></li>
+			  </ul>
 			</li>
 			<li class="treeview">
 			  <a href="#">
 				<i class="fa fa-files-o"></i>
 				<span>Artigos</span>
-				<span class="label label-primary pull-right">4</span>
+				<i class="fa fa-angle-left pull-right"></i>
 			  </a>
 			  <ul class="treeview-menu">
 				<li><a href="ad-artigo.php"><i class="fa fa-edit"></i> Adicionar Artigo</a></li>
@@ -68,14 +63,44 @@
 			<li class="treeview">
 			  <a href="#">
 				<i class="fa fa-users"></i>
+				<span>Funcionarios</span>
+				<i class="fa fa-angle-left pull-right"></i>
+			  </a>
+			  <ul class="treeview-menu">
+				<li><a href="ad-funcionario.php"><i class="fa fa-user"></i> Adicionar funcionário</a></li>
+				<li><a href="gerir-funcionarios.php"><i class="fa fa-users"></i> Gerir funcionários</a></li>
+			  </ul>
+			</li>
+			<li class="treeview">
+			  <a href="#">
+				<i class="fa fa-users"></i>
 				<span>Utilizadores</span>
 				<i class="fa fa-angle-left pull-right"></i>
 			  </a>
 			  <ul class="treeview-menu">
 				<li><a href="ad-utilizador.php"><i class="fa fa-user"></i> Adicionar utilizador</a></li>
 				<li><a href="gerir-utilizadores.php"><i class="fa fa-users"></i> Gerir utilizadores</a></li>
+				<li><a href="gerir-quotas.php"><i class="fa fa-users"></i> Quotas de sócios</a></li>
 			  </ul>
 			</li>
+			<li class="treeview">
+			  <a href="log-utilizadores.php">
+				<i class="fa fa-users"></i>
+				<span>Log</span>
+				<span class="label label-primary pull-right">4</span>
+			  </a>
+			</li>
+			<li class="treeview">
+              <a href="mailbox.html">
+                <i class="fa fa-envelope"></i> <span>Mensagens</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="mensagens.php"><i class="fa fa-download"></i>Caixa de entrada <span class="label label-primary pull-right">13</span></a></li>
+                <li><a href="nova-mensagem.php"><i class="fa fa-pencil-square-o"></i>Nova mensagem</a></li>
+                <li><a href="read-mail.html"><i class="fa fa-upload"></i>Mensagens enviadas</a></li>
+              </ul>
+            </li>
 			<!--
 			<li class="treeview active">
 			  <a href="#">
