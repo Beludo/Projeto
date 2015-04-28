@@ -96,9 +96,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="mensagens.php"><i class="fa fa-download"></i>Caixa de entrada <span class="label label-primary pull-right">13</span></a></li>
+                <li><a href="mensagens.php"><i class="fa fa-inbox"></i>Caixa de entrada <span class="label label-primary pull-right">13</span></a></li>
                 <li><a href="nova-mensagem.php"><i class="fa fa-pencil-square-o"></i>Nova mensagem</a></li>
-                <li><a href="read-mail.html"><i class="fa fa-upload"></i>Mensagens enviadas</a></li>
+                <li><a href="mensagens-enviadas.php"><i class="fa fa-upload"></i>Mensagens enviadas</a></li>
               </ul>
             </li>
 			<!--
