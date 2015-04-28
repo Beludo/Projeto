@@ -26,7 +26,9 @@
 			<h3>Aplicação Multimédia</h3>
 			<hr>
 			<div style="text-align:center;">
-			<img src="./admin/img-museu/01.jpg" alt="imagem museu">
+			<img src="./admin/img-museu/01.jpg" alt="imagem museu" usemap="#Mapa">
+			<map name="Mapa" id="Mapa">
+			</map>
 			</div>
 			
 			
