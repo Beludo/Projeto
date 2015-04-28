@@ -58,29 +58,28 @@
         <section class="content">
           <div class="row">
             <div class="col-md-3">
-              <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
+              <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Nova Mensagem</a>
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Folders</h3>
+                  <h3 class="box-title">Pastas</h3>
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
-                    <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-waring pull-right">65</span></a></li>
-                    <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-inbox"></i> Caixa Entrada <span class="label label-primary pull-right">12</span></a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> Enviadas</a></li>
+                    <li><a href="#"><i class="fa fa-filter"></i> Lixo <span class="label label-waring pull-right">65</span></a></li>
+                    <li><a href="#"><i class="fa fa-trash-o"></i> Reciclagem</a></li>
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
               <div class="box box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Labels</h3>
+                  <h3 class="box-title">Listas</h3>
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Importante</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promoções</a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
                   </ul>
                 </div><!-- /.box-body -->
@@ -89,10 +88,10 @@
             <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Inbox</h3>
+                  <h3 class="box-title">Caixa Entrada</h3>
                   <div class="box-tools pull-right">
                     <div class="has-feedback">
-                      <input type="text" class="form-control input-sm" placeholder="Search Mail"/>
+                      <input type="text" class="form-control input-sm" placeholder="Pesquisa Email"/>
                       <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                   </div><!-- /.box-tools -->
