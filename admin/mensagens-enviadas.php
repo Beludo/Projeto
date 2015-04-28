@@ -2,7 +2,7 @@
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Caixa de entrada</title>
+	<title>Admin | Mensagens enviadas</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -45,12 +45,12 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Mensagens
+			Mensagens enviadas
 			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li class="active"><a href="#">Caixa de entrada</a></li>
+			<li class="active"><a href="#">Mensagens enviadas</a></li>
 		  </ol>
 		</section>
 
