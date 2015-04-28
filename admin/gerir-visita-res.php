@@ -66,7 +66,14 @@
 			<div class="col-xs-12">
 			  <div class="box">
 				<div class="box-header">
-				  <h3 class="box-title">Pontos lidos da imagem</h3>
+				  <h3 class="box-title">
+					Nome da imagem: 
+					<?php 
+					if(isset($_POST["nome"]) && !empty($_POST["nome"])) {
+						echo $_POST["nome"];
+					}
+					?>
+				  </h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
 
@@ -83,11 +90,11 @@
 					isset($_POST["nome"]) && !empty($_POST["nome"]) &&
 					isset($_POST["np"]) && !empty($_POST["np"])
 					){
-						for($i=0; $i<$_POST["num-pontos"]; $i++) {
+						for($i=0; $i<$_POST["np"]; $i++) {
 							echo '<tr>' .
-									'<td>' + $i + '</td>' .
-									'<td>' + $_POST["ponto" + $i + "x"] + '</td>' .
-									'<td>' + $_POST["ponto" + $i + "y"] + '</td>' .
+									'<td>' . $i . '</td>' .
+									'<td>' . $_POST["ponto" . $i . "x"] . '</td>' .
+									'<td>' . $_POST["ponto" . $i . "y"] . '</td>' .
 								'</tr>';
 						}
 					}else{

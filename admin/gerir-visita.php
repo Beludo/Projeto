@@ -66,7 +66,7 @@
 			<div class="col-xs-12">
 			  <div class="box">
 				<div class="box-header">
-				  <h3 class="box-title">Imagem XPTO</h3>
+				  <h3 class="box-title">Entrada do museu</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
 					<div id="imagem-museu" onclick="adicionar_ponto(event)" style = "background-image:url('img-museu/01.jpg'); width:800px; height:534px;">
@@ -82,7 +82,7 @@
 					<form action="gerir-visita-res.php" method="POST" role="form">
 					  <div class="box-body">
 						<div class="form-group">
-						  <label>Nome da página</label>
+						  <label>Nome do vértice</label>
 						  <input id="nome" name="nome" type="text" class="form-control" placeholder="Insira o nome"/>
 						</div>
 					  </div><!-- /.box-body -->
@@ -176,12 +176,11 @@
 		// Enviar os pontos para a div do formulario
 		html = '<input type="hidden" id="np" name="np" value="' + coordenadas_x.length + '">';
 		for(var i=0; i<coordenadas_x.length; i++) {
-			html += '<input type="hidden" id="ponto' +  i + 'x" value="' + (coordenadas_x[i]+5) + '">' + 
-			'<input type="hidden" id="ponto' +  i + 'y" value="' + (coordenadas_y[i]+45) + '">';
+			html += '<input type="hidden" id="ponto' +  i + 'x" name="ponto' +  i + 'x" value="' + (coordenadas_x[i]+5) + '">' + 
+			'<input type="hidden" id="ponto' +  i + 'y" name="ponto' +  i + 'y" value="' + (coordenadas_y[i]+45) + '">';
 		}
 		document.getElementById("pontos-enviar").innerHTML = html;
 	}
 	</script>
-
   </body>
 </html>
