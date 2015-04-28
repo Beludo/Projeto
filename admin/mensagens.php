@@ -57,35 +57,7 @@
         <!-- Main content -->
         <section class="content">
           <div class="row">
-            <div class="col-md-3">
-              <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Nova Mensagem</a>
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Pastas</h3>
-                </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"><i class="fa fa-inbox"></i> Caixa Entrada <span class="label label-primary pull-right">12</span></a></li>
-                    <li><a href="#"><i class="fa fa-envelope-o"></i> Enviadas</a></li>
-                    <li><a href="#"><i class="fa fa-filter"></i> Lixo <span class="label label-waring pull-right">65</span></a></li>
-                    <li><a href="#"><i class="fa fa-trash-o"></i> Reciclagem</a></li>
-                  </ul>
-                </div><!-- /.box-body -->
-              </div><!-- /. box -->
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Listas</h3>
-                </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> Importante</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promoções</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
-                  </ul>
-                </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-            <div class="col-md-9">
+            <div class="col-md-12">
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Caixa Entrada</h3>
