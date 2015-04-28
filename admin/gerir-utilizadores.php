@@ -70,15 +70,17 @@
 						<th>Nome de utilizador</th>
 						<th>Email</th>
 						<th>Estado</th>
+						<th>Sócio</th>
 						<th class="accoes-tabela">Acções</th>
 					  </tr>
 					</thead>
 					<tbody>
 					  <tr>
 						<td>Marco Beludo</td>
-						<td>marco.beludo</td>
-						<td>marco.beludo@hotmai.com</td>
+						<td>marcobeludo</td>
+						<td>marcobeludo@hotmail.com</td>
 						<td><span class="label label-success">Ativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
 						<td>
 						  <div class="btn-group">
 							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -93,10 +95,239 @@
 						</td>
 					  </tr>
 					  <tr>
-						<td>Diogo Ressureição</td>
-						<td>diogo.alenxandre99</td>
-						<td>diogo.alenxandre99@hotmail.com</td>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
 						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
+						<td>
+						  <div class="btn-group">
+							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							  <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+							</ul>
+						  </div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Diogo Ressurreição</td>
+						<td>diogoalex</td>
+						<td>diogoalex@hotmail.com</td>
+						<td><span class="label label-danger">Desativo</span></td>
+						<td><span class="label label-success">Sim</span></td>
 						<td>
 						  <div class="btn-group">
 							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
