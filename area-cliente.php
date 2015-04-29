@@ -129,6 +129,11 @@
 							<i class="icon-envelope"></i> Editar Perfil
 						</a>
 					</li>
+					<li class="">
+						<a data-toggle="tab" href="#edit-password">
+							<i class="icon-envelope"></i> Alterar Palavra-Passe
+						</a>
+					</li>
 				</ul>
 				<div class="tab-content">
 
@@ -186,18 +191,6 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-lg-3 control-label">Palavra-Passe</label>
-										<div class="col-lg-4">
-											<input type="text" class="form-control" id="password" placeholder="Insira a Palavra-Passe...">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-lg-3 control-label">Confirmar Palavra-Passe</label>
-										<div class="col-lg-4">
-											<input type="text" class="form-control" id="password" placeholder="Confirme a Palavra-Passe...">
-										</div>
-									</div>
-									<div class="form-group">
 										<label class="col-lg-3 control-label">Telefone</label>
 										<div class="col-lg-4">
 											<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico...">
@@ -225,6 +218,35 @@
 							</div>
 						</section>
 					</div>
+					<!-- edit-passorw -->
+					<div id="edit-password" class="tab-pane">
+						<section class="panel">
+							<div class="panel-body bio-graph-info">
+								<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label class="col-lg-3 control-label">Palavra-Passe</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="password" placeholder="Insira a Palavra-Passe...">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label">Confirmar Palavra-Passe</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="password" placeholder="Confirme a Palavra-Passe...">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-lg-offset-3 col-lg-10">
+											<button type="submit" class="btn btn-primary">Guardar</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</section>
+					</div>
+					
+					
+					
 				</div>
 		</div>
 		</section>
