@@ -5,7 +5,7 @@ include_once "AcoesUtilizadores.php";
 
 
 
-class DaoAcoesUtilizadores{
+class GereLog{
             private $bd;
 
             public function __construct() {
@@ -13,8 +13,8 @@ class DaoAcoesUtilizadores{
             }
     function guardarAcaoUtilizador($acao){
         try{
-            $instrucao = $LigacaoBD->prepare("INSERT INTO Logs SET (U_id, L_dataHora, L_descricao) VALUES(?, ?, ?)");
-            $instrucao->bind_param($acao->userId, $acao->dataHora, $acao->descricao);
+            $instrucao = $LigacaoBD->prepare("INSERT INTO Logs SET (U_id, L_dataHora, L_acao) VALUES(?, ?, ?)");
+            $instrucao->bind_param($acao->userId, $acao->dataHora, $acao->acao);
             $sucesso_funcao = $instrucao->execute();
             $instrucao->close();
         } catch(PDOException $e){
@@ -34,7 +34,7 @@ class DaoAcoesUtilizadores{
            
             
             for($i=0; $i<count($instrucao); $i++){
-                    $dados[] = new AcoesUtilizadores($instrucao[$i]["L_ID"],$instrucao[$i]["U_ID"],$instrucao[$i]["L_DATAHORA"],$instrucao[$i]["L_DESCRICAO"]);
+                    $dados[] = new AcoesUtilizadores($instrucao[$i]["L_ID"],$instrucao[$i]["U_ID"],$instrucao[$i]["L_DATAHORA"],$instrucao[$i]["L_acao"]);
 
 
             }
