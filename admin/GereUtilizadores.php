@@ -19,8 +19,9 @@ class GereUtilizadores {
             !empty($_POST["password"]) && !empty($_POST["email"]) &&
             !empty($_POST["foto"])){
             $data = time();
-
-            $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $_POST["foto"], true, 1);
+            $novaFoto = "./fotos/".$_POST["username"].$_POST["foto"];
+            copy($_POST["foto"], "./fotos/".$_POST["username"].$_POST["foto"]);
+            $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $novaFoto, true, 1);
 
         $sql = "INSERT into utilizadores (U_NOMECOMPLETO,U_USERNAME, U_PASSWORD, U_DATAREGISTO, U_CONTATOTELEFONICO,
         U_EMAIL,U_MORADA, U_FOTOGRAFIA, U_ATIVO) VALUES(:U_NOMECOMPLETO , :U_USERNAME, :U_PASSWORD, :U_DATAREGISTO, :U_CONTATOTELEFONICO,
