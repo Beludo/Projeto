@@ -204,14 +204,14 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				  <!-- Imagem do icone do utilizador (160x160 pixels) -->
 				  <img src="fotos/people.jpg" class="user-image" alt="User Image"/>
-				  <span class="hidden-xs">Diogo Novais</span>
+				  <span class="hidden-xs"><?php echo $_SESSION["user"]; ?></span>
 				</a>
 				<ul class="dropdown-menu">
 				  <!-- Imagem grande do utilizador (160x160 pixels) -->
 				  <li class="user-header">
 					<img src="fotos/people.jpg" class="img-circle" alt="User Image" />
 					<p>
-					  Diogo Novais - Administrador
+					  <?php echo $_SESSION["user"]; ?> - Administrador
 					  <small>Membro desde Abril de 2015</small>
 					</p>
 				  </li>
