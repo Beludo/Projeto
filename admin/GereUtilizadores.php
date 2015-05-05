@@ -108,19 +108,17 @@ class GereUtilizadores {
             echo $e->getMessage();
         }
     }
-	
-	/*  POR FAZERR !!!!!!!! */
-	
+
     public function listarUtilizador(){
 		$dados = array();
 
-            $instrucao = $this->bd->query("SELECT * FROM utilizadores");
-
-        
-            
-            for($i=0; $i<count($instrucao); $i++){
-                	$dados[] = new Utilizadores($instrucao[$i]["U_ID"],$instrucao[$i]["U_NOME"],$instrucao[$i]["U_NUMEROFUNCIONARIO"],$instrucao[$i]["U_NOMEUTILIZADOR"],$instrucao[$i]["U_PALAVRAPASSE"],$instrucao[$i]["U_TIPOUTILIZADOR"],$instrucao[$i]["U_DATAREGISTO"],$instrucao[$i]["U_MORADA"],$instrucao[$i]["U_CONTACTOTELEFONICO"],$instrucao[$i]["U_DATANASCIMENTO"],$instrucao[$i]["U_FUNCAO"],$instrucao[$i]["U_ACTIVO"],$instrucao[$i]["U_FOTOGRAFIA"]);
-
+            $registo = $this->bd->query("SELECT * FROM utilizadores");
+            for($i=0; $i<count($registo); $i++){
+                	$dados[$i] = new Utilizadores($registo[$i]["U_ID"], $registo[$i]["U_NOMECOMPLETO"], $registo[$i]["U_USERNAME"],
+                        $registo[$i]["U_PASSWORD"], $registo[$i]["U_DATAREGISTO"],
+                        $registo[$i]["U_CONTATOTELEFONICO"], $registo[$i]["U_EMAIL"],
+                        $registo[$i]["U_MORADA"], $registo[$i]["U_FOTOGRAFIA"],
+                        $registo[$i]["U_ATIVO"]);
             }
             return $dados;
     }
