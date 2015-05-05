@@ -45,8 +45,9 @@ if($bd->contar("utilizadores") == 0){
           </div>
           <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="Password" name="password"/>
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-              <?php
+						<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+					<?php
               if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                   if($_GET["erro"] == 1){
                       echo '<div class="alert alert-danger">Utilizador ou palavra-passe errados!</div>';
@@ -62,15 +63,7 @@ if($bd->contar("utilizadores") == 0){
                   echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
               }
               ?>
-          </div>
           <div class="row">
-            <div class="col-xs-7">
-              <div class="checkbox icheck">
-                <label>
-                  <input type="checkbox"> Manter sessão iniciada
-                </label>
-              </div>                        
-            </div><!-- /.col -->
             <div class="col-xs-5">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Iniciar Sessão"/>
             </div><!-- /.col -->
