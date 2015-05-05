@@ -27,11 +27,11 @@ class GerePermissoes {
     }
 
     function atribuiPermissao($idUtilizador, $idPermissao){
-        $sql = "INSERT into 'gm'.'utilizadores_permissoes' ('P_id', 'U_id') VALUES (:P_id, :U_id)";
+        $sql = "INSERT into utilizadores_permissoes ('P_ID', 'U_ID') VALUES (:P_ID, :U_ID)";
 
         $dados_tabela = array(
-            'P_id' => $idPermissao,
-            'U_id' => $idUtilizador
+            'P_ID' => $idPermissao,
+            'U_ID' => $idUtilizador
         );
 
         $this->bd->inserir($sql, $dados_tabela);

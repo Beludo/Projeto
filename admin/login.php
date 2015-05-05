@@ -26,7 +26,7 @@ if(
     // abrir ligação à base de dados
     $bd = new BaseDados();
     $gereUtilizador = new GereUtilizadores();
-    $utilizador = new Utilizadores(0, "", "", "", "", 0, "", "", "", 1);
+    $utilizador = new Utilizadores(0, "", "", "", "", 0, "", "", "", 1, 1);
 
     // carrega o utilizador com o username dado
 
