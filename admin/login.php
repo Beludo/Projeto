@@ -26,7 +26,7 @@ if(
     // abrir ligação à base de dados
     $bd = new BaseDados();
     $gereUtilizador = new GereUtilizadores();
-    $utilizador = new Utilizadores("", "", "", "", "", "", "");
+    $utilizador = new Utilizadores(0, "", "", "", "", 0, "", "", "", 1);
 
     // carrega o utilizador com o username dado
 
@@ -50,7 +50,7 @@ if(
             if($utilizador->getPermissao() == 1){
                 header("Location: gerir-utilizadores.php");
             } else {
-                //header("Location: loja.php");
+                header("Location: loja.php");
             }
 
         }else{

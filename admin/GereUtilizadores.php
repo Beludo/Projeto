@@ -86,17 +86,17 @@ class GereUtilizadores {
 
             $registo = $this->bd->query("SELECT * FROM utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
 
-            if (!$registo == null) {
+            if ($registo != null) {
                 $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOMECOMPLETO"], $registo[0]["U_USERNAME"],
                     $registo[0]["U_PASSWORD"], $registo[0]["U_DATAREGISTO"],
                     $registo[0]["U_CONTATOTELEFONICO"], $registo[0]["U_EMAIL"],
                     $registo[0]["U_MORADA"], $registo[0]["U_FOTOGRAFIA"],
                     $registo[0]["U_ATIVO"]);
 
-                $id = array("U_id" => $utilizador->getId());
-                $permissao = $this->bd->query("SELECT * FROM utilizadores_permissoes WHERE U_id = :U_id", $id);
+                $id = array("U_ID" => $utilizador->getId());
+                $permissao = $this->bd->query("SELECT * FROM utilizadores_permissoes WHERE U_ID = :U_ID", $id);
 
-                if(!$permissao == null){
+                if($permissao != null){
                     $utilizador->setPermissao($permissao[0]["P_ID"]);
                 }
 
