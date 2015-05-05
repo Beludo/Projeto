@@ -3,6 +3,7 @@
 include_once "GerePermissoes.php";
 include_once "acessobd.php";
 include_once "Utilizadores.php";
+include_once "Permissoes.php";
 
 class GereUtilizadores {
 
@@ -13,7 +14,7 @@ class GereUtilizadores {
     }
 
     function adicionarUtilizador(Utilizadores $utilizador){
-        $sql = "INSERT into 'gm'.'utilizadores' ('U_nomeCompleto','U_username', 'U_password', 'U_dataRegisto', 'U_contatoTelefonico',
+        $sql = "INSERT into utilizadores ('U_nomeCompleto','U_username', 'U_password', 'U_dataRegisto', 'U_contatoTelefonico',
         'U_email','U_morada', 'U_fotografia', 'U_ativo') VALUES(:U_nomeCompleto , :U_username, :U_password, :U_dataRegisto, :U_contatoTelefonico,
         :U_email,:U_morada, :U_fotografia, :U_ativo)";
 
@@ -92,11 +93,11 @@ class GereUtilizadores {
                     $registo[0]["U_MORADA"], $registo[0]["U_FOTOGRAFIA"],
                     $registo[0]["U_ATIVO"]);
 
-                $id = $utilizador->getId();
+                $id = array("U_id" => $utilizador->getId());
                 $permissao = $this->bd->query("SELECT * FROM utilizadores_permissoes WHERE U_id = :U_id", $id);
 
                 if(!$permissao == null){
-                    $utilizador->setPermissao($permissao[0]["P_id"]);
+                    $utilizador->setPermissao($permissao[0]["P_ID"]);
                 }
 
                 return $utilizador;

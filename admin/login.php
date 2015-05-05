@@ -45,12 +45,12 @@ if(
 
             // Guardar o nome de utilizador da sessão
             $_SESSION["user"] = $utilizador->getUsername();
-
+            echo $utilizador->getPermissao();
             // Verificar se se trata de um utilizador comum ou administrador
-            if($utilizador->getPermissao() == "1"){
-                header("Location: Admin/gerir-utilizadores.php");
+            if($utilizador->getPermissao() == 1){
+                header("Location: gerir-utilizadores.php");
             } else {
-                header("Location: loja.php");
+                //header("Location: loja.php");
             }
 
         }else{
