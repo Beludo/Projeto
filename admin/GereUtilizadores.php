@@ -76,15 +76,13 @@ class GereUtilizadores {
             echo $e->getMessage();
         }
     }
-	
-	/*  POR FAZERR !!!!!!!! */
 
     function obtemUtilizadorUsername($nomeUtilizador) {
 
         try {
             $user = array('U_USERNAME' => $nomeUtilizador);
 
-            $registo = $this->bd->query("SELECT * FROM 'gm'.'utilizadores' WHERE U_USERNAME = :U_USERNAME", $user);
+            $registo = $this->bd->query("SELECT * FROM utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
 
             if (!$registo == null) {
                 $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOMECOMPLETO"], $registo[0]["U_USERNAME"],
@@ -94,7 +92,7 @@ class GereUtilizadores {
                     $registo[0]["U_ATIVO"]);
 
                 $id = $utilizador->getId();
-                $permissao = $this->bd->query("SELECT * FROM 'gm'.'utilizadores_permissoes' WHERE U_id = :U_id", $id);
+                $permissao = $this->bd->query("SELECT * FROM utilizadores_permissoes WHERE U_id = :U_id", $id);
 
                 if(!$permissao == null){
                     $utilizador->setPermissao($permissao[0]["P_id"]);
