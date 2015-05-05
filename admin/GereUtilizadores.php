@@ -3,7 +3,6 @@
 include_once "GerePermissoes.php";
 include_once "acessobd.php";
 include_once "Utilizadores.php";
-include_once "Permissoes.php";
 
 class GereUtilizadores {
 
@@ -41,11 +40,11 @@ class GereUtilizadores {
 
         $this->bd->inserir($sql, $dados_utilizador);
 
-        $registo = $this->bd->query("SELECT FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $utilizador->getNomeCompleto());
+        $registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $utilizador->getNomeCompleto());
 
-        $gere = new GerePermissoes();
+        $gerePermissoes = new GerePermissoes();
 
-        $gere->atribuiPermissao($registo[0]["U_ID"], $utilizador->getPermissao());
+        $gerePermissoes->atribuiPermissao($registo, $utilizador->getPermissao());
         }
     }
 	
