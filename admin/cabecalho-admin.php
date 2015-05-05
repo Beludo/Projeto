@@ -1,4 +1,12 @@
-	  <header class="main-header">
+<?php
+include_once "GereUtilizadores.php";
+
+$gereUtilizadores = new GereUtilizadores();
+$utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
+
+?>
+
+<header class="main-header">
 		<a href="index2.html" class="logo"><b>Admin</b>Backoffice</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
@@ -203,13 +211,13 @@
 			  <li class="dropdown user user-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				  <!-- Imagem do icone do utilizador (160x160 pixels) -->
-				  <img src="fotos/people.jpg" class="user-image" alt="User Image"/>
+				  <img src="<?php echo $utilizador->getFotografia(); ?>"class="user-image" alt="User Image"/>
 				  <span class="hidden-xs"><?php echo $_SESSION["user"]; ?></span>
 				</a>
 				<ul class="dropdown-menu">
 				  <!-- Imagem grande do utilizador (160x160 pixels) -->
 				  <li class="user-header">
-					<img src="fotos/people.jpg" class="img-circle" alt="User Image" />
+					<img src="<?php echo $utilizador->getFotografia(); ?>" class="img-circle" alt="User Image" />
 					<p>
 					  <?php echo $_SESSION["user"]; ?> - Administrador
 					  <small>Membro desde Abril de 2015</small>
