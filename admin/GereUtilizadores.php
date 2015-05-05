@@ -80,19 +80,25 @@ class GereUtilizadores {
 	/*  POR FAZERR !!!!!!!! */
 
     function obtemUtilizadorUsername($nomeUtilizador) {
-        
+
         try {
             $user = array('U_NOMEUTILIZADOR' => $nomeUtilizador);
-            
-            $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_NOMEUTILIZADOR = :U_NOMEUTILIZADOR", $user);
- 
+
+            $registo = $this->bd->query("SELECT * FROM 'gm'.'utilizadores' WHERE U_NOMEUTILIZADOR = :U_NOMEUTILIZADOR", $user);
             if (!$registo == null) {
-                $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOME"], $registo[0]["U_NUMEROFUNCIONARIO"],
-                                           $registo[0]["U_NOMEUTILIZADOR"], $registo[0]["U_PALAVRAPASSE"],
-                                           $registo[0]["U_TIPOUTILIZADOR"], $registo[0]["U_DATAREGISTO"],
-                                           $registo[0]["U_MORADA"], $registo[0]["U_CONTACTOTELEFONICO"],
-                                           $registo[0]["U_DATANASCIMENTO"], $registo[0]["U_FUNCAO"],
-                                           $registo[0]["U_ACTIVO"], $registo[0]["U_FOTOGRAFIA"]);
+                $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOMECOMPLETO"], $registo[0]["U_USERNAME"],
+                    $registo[0]["U_PASSWORD"], $registo[0]["U_DATAREGISTO"],
+                    $registo[0]["U_CONTATOTELEFONICO"], $registo[0]["U_EMAIL"],
+                    $registo[0]["U_MORADA"], $registo[0]["U_FOTOGRAFIA"],
+                    $registo[0]["U_ATIVO"]);
+
+                $id = $utilizador->getId();
+                $permissao = $this->bd->query("SELECT * FROM 'gm'.'utilizadores_permissoes' WHERE U_id = :U_id", $id);
+
+                if(!$permissao == null){
+                    $utilizador->setPermissao($permissao[0]["P_id"]);
+                }
+
                 return $utilizador;
             }else{
                 return NULL;

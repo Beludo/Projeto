@@ -1,65 +1,14 @@
 <?php
 
-include_once "Utilizadores.php";
-include_once "GereUtilizadores.php";
+include_once "acessobd.php";
 
-session_start();
-// accao "logout" - terminar a sessão, se for pedido
-if(
-    isset($_GET["logout"]) && !empty($_GET["logout"]) &&
-    !strcmp($_GET["logout"], "1")
-){
-    $_SESSION = array();
-    if(isset($_COOKIE[session_name()])){
-        setcookie(session_name(), '', time()-42000, '/');
-    }
-    session_destroy();
-
-    header("Location: ./index.php?logout=1");
-    exit;
+$bd = new BaseDados();
+if($bd->contar("utilizadores") == 0){
+    header("Location: index.php?erro=3");
 }
 
-if(
-    isset($_POST["username"]) && !empty($_POST["username"]) &&
-    isset($_POST["password"]) && !empty($_POST["password"])){
-
-    // abrir ligação à base de dados
-    $bd = new BaseDados();
-    $gereUtilizador = new GereUtilizadores();
-    $utilizador = new Utilizadores("", "", "", "", "", "", "", "", "", "", "", "", "");
-
-    // carrega o utilizador com o username dado
-    $utilizador = $gereUtilizador->obtemUtilizadorUsername($_POST["username"]);
-
-    // verifica se foi carregado um objeto na variável "utilizador"
-    if ($utilizador == null){
-        header("Location: index.php?erro=1");
-    }else{
-
-        //verifica se o username que veio da base de dados é igual ao inserido
-        if(
-            !strcmp($_POST["username"], $utilizador->getUsername()) &&
-            !strcmp($_POST["password"], $utilizador->getPassword()) &&
-            $utilizador->getAtivo() == 1){
-
-            // Guardar o nome de utilizador da sessão
-            $_SESSION["user"] = $utilizador->getUsername();
-
-            // Verificar se se trata de um utilizador comum ou administrador
-            if($utilizador->getPermissao() == "1"){
-                header("Location: Admin/gerir-utilizadores.php");
-            } else {
-                header("Location: loja.php");
-            }
-
-        }else{
-            header("Location: index.php?erro=1");
-        }
-    }
-}else{
-    header("Location: index.php?erro=2");
-}
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -89,7 +38,7 @@ if(
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Inicie sessão para entrar na área de administração</p>
-        <form action="index.php" method="post" action="index.php">
+        <form method="post" action="login.php">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -97,6 +46,22 @@ if(
           <div class="form-group has-feedback">
             <input type="password" class="form-control" placeholder="Password" name="password"/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              <?php
+              if(isset($_GET["erro"]) && !empty($_GET["erro"])){
+                  if($_GET["erro"] == 1){
+                      echo '<div class="alert alert-danger">Utilizador ou palavra-passe errados!</div>';
+                  }
+
+                  if($_GET["erro"] == 2){
+                      echo '<div class="alert alert-danger">Não inseriu o utilizador ou palavra-passe!</div>';
+                  }
+
+              }
+
+              if(isset($_GET["logout"]) && !empty($_GET["logout"]) && $_GET["logout"] == 1){
+                  echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
+              }
+              ?>
           </div>
           <div class="row">
             <div class="col-xs-7">
@@ -107,7 +72,7 @@ if(
               </div>                        
             </div><!-- /.col -->
             <div class="col-xs-5">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar sessão</button>
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Iniciar Sessão"/>
             </div><!-- /.col -->
           </div>
         </form>
