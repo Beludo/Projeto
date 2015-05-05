@@ -24,8 +24,8 @@ class GereUtilizadores {
             $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $_POST["foto"], true, 1);
             $gereUtilizadores = new GereUtilizadores();
 
-        $sql = "INSERT into utilizadores ('U_NOMECOMPLETO','U_USERNAME', 'U_PASSWORD', 'U_DATAREGISTO', 'U_CONTATOTELEFONICO',
-        'U_EMAIL','U_MORADA', 'U_FOTOGRAFIA', 'U_ATIVO') VALUES(:U_NOMECOMPLETO , :U_USERNAME, :U_PASSWORD, :U_DATAREGISTO, :U_CONTATOTELEFONICO,
+        $sql = "INSERT into utilizadores (U_NOMECOMPLETO,U_USERNAME, U_PASSWORD, U_DATAREGISTO, U_CONTATOTELEFONICO,
+        U_EMAIL,U_MORADA, U_FOTOGRAFIA, U_ATIVO) VALUES(:U_NOMECOMPLETO , :U_USERNAME, :U_PASSWORD, :U_DATAREGISTO, :U_CONTATOTELEFONICO,
         :U_EMAIL,:U_MORADA, :U_FOTOGRAFIA, :U_ATIVO)";
 
         $dados_utilizador = array(
