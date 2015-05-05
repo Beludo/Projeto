@@ -13,30 +13,41 @@ class GereUtilizadores {
         $this->bd = new BaseDados();
     }
 
-    function adicionarUtilizador(Utilizadores $utilizador){
-        $sql = "INSERT into utilizadores ('U_nomeCompleto','U_username', 'U_password', 'U_dataRegisto', 'U_contatoTelefonico',
-        'U_email','U_morada', 'U_fotografia', 'U_ativo') VALUES(:U_nomeCompleto , :U_username, :U_password, :U_dataRegisto, :U_contatoTelefonico,
-        :U_email,:U_morada, :U_fotografia, :U_ativo)";
+    function adicionarUtilizador(){
+        if(
+            !empty($_POST["nome"]) && !empty($_POST["username"]) &&
+            !empty($_POST["morada"]) && !empty($_POST["telefone"]) &&
+            !empty($_POST["password"]) && !empty($_POST["email"]) &&
+            !empty($_POST["foto"])){
+            $data = time();
+
+            $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $_POST["foto"], true, 1);
+            $gereUtilizadores = new GereUtilizadores();
+
+        $sql = "INSERT into utilizadores ('U_NOMECOMPLETO','U_USERNAME', 'U_PASSWORD', 'U_DATAREGISTO', 'U_CONTATOTELEFONICO',
+        'U_EMAIL','U_MORADA', 'U_FOTOGRAFIA', 'U_ATIVO') VALUES(:U_NOMECOMPLETO , :U_USERNAME, :U_PASSWORD, :U_DATAREGISTO, :U_CONTATOTELEFONICO,
+        :U_EMAIL,:U_MORADA, :U_FOTOGRAFIA, :U_ATIVO)";
 
         $dados_utilizador = array(
-            'U_nomeCompleto' => $utilizador->getNomeCompleto(),
-            'U_username' => $utilizador->getUsername(),
-            'U_password' => $utilizador->getPassword(),
-            'U_dataRegisto' => $utilizador->getDataRegisto(),
-            'U_contatoTelefonico' => $utilizador->getContatoTelefonico(),
-            'U_email' => $utilizador->getEmail(),
-            'U_morada' => $utilizador->getMorada(),
-            'U_fotografia' => $utilizador->getFotografia(),
-            'U_ativo' => $utilizador->getAtivo()
+            'U_NOMECOMPLETO' => $utilizador->getNomeCompleto(),
+            'U_USERNAME' => $utilizador->getUsername(),
+            'U_PASSWORD' => $utilizador->getPassword(),
+            'U_DATAREGISTO' => $utilizador->getDataRegisto(),
+            'U_CONTATOTELEFONICO' => $utilizador->getContatoTelefonico(),
+            'U_EMAIL' => $utilizador->getEmail(),
+            'U_MORADA' => $utilizador->getMorada(),
+            'U_FOTOGRAFIA' => $utilizador->getFotografia(),
+            'U_ATIVO' => $utilizador->getAtivo()
         );
 
         $this->bd->inserir($sql, $dados_utilizador);
 
-        $registo = $this->bd->query("SELECT FROM 'gm'.'utilizadores' WHERE U_nomeCompleto = :U_nomeCompleto", $utilizador->getNomeCompleto());
+        //$registo = $this->bd->query("SELECT FROM utilizadores_permissoes WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $utilizador->getNomeCompleto());
 
         $gere = new GerePermissoes();
 
-        $gere->atribuiPermissao($registo['U_id'], $utilizador->getPermissao());
+        $gere->atribuiPermissao($dados_utilizador['U_ID'], $utilizador->getPermissao());
+        }
     }
 	
 	/*  POR FAZERR !!!!!!!! */
@@ -86,12 +97,14 @@ class GereUtilizadores {
 
             $registo = $this->bd->query("SELECT * FROM utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
 
-            if ($registo != null) {
+            $id = array("U_ID" => $registo[0]["U_ID"]);
+            $permissao = $this->bd->query("SELECT P_ID FROM utilizadores_permissoes WHERE U_ID = :U_ID", $id);
+            if ($registo != null && $permissao != null) {
                 $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOMECOMPLETO"], $registo[0]["U_USERNAME"],
                     $registo[0]["U_PASSWORD"], $registo[0]["U_DATAREGISTO"],
                     $registo[0]["U_CONTATOTELEFONICO"], $registo[0]["U_EMAIL"],
                     $registo[0]["U_MORADA"], $registo[0]["U_FOTOGRAFIA"],
-                    $registo[0]["U_ATIVO"]);
+                    $registo[0]["U_ATIVO"], $permissao);
 
                 $id = array("U_ID" => $utilizador->getId());
                 $permissao = $this->bd->query("SELECT * FROM utilizadores_permissoes WHERE U_ID = :U_ID", $id);
@@ -124,7 +137,8 @@ class GereUtilizadores {
 						$registo[$i]["U_EMAIL"],
                         $registo[$i]["U_MORADA"],
 						$registo[$i]["U_FOTOGRAFIA"],
-                        $registo[$i]["U_ATIVO"]);
+                        $registo[$i]["U_ATIVO"],
+                        null);
             }
             return $dados;
     }

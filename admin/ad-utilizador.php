@@ -1,3 +1,10 @@
+<?php
+
+include_once "GereUtilizadores.php";
+
+$gereUtilizadores = new GereUtilizadores();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,29 +63,29 @@
 				  <h3 class="box-title">Dados do utilizador</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form">
+				<form role="form" method="post">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome completo</label>
-					  <input type="text" class="form-control" placeholder="Insira o nome"/>
+					  <input type="text" class="form-control" placeholder="Insira o nome" name="nome"/>
 					</div>
 					<div class="form-group has-error">
 					  <label>Nome de utilizador</label>
 					  <br><label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Já existe alguém com este nome de utilizador</label><br>
-					  <input type="text" class="form-control" placeholder="Insira o nome de utilizador"/>
+					  <input type="text" class="form-control" placeholder="Insira o nome de utilizador" name="username"/>
 					</div>
 					<div class="form-group">
 					  <label>Morada</label>
-					  <input type="text" class="form-control" placeholder="Insira a morada"/>
+					  <input type="text" class="form-control" placeholder="Insira a morada" name="morada"/>
 					</div>
 					<div class="form-group">
 					  <label>Contacto telefonico</label>
-					  <input type="text" class="form-control" placeholder="Insira o numero de telefone"/>
+					  <input type="text" class="form-control" placeholder="Insira o numero de telefone" name="telefone"/>
 					</div>
 					<div class="form-group has-warning">
 					  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Password demasiado simples!</label>
 					  <br><label for="exampleInputPassword1">Password</label>
-					  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
 					</div>
 					<div class="form-group has-error">
 					  <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> As passwords não são iguais!</label>
@@ -88,11 +95,11 @@
 					<div class="form-group has-success">
 					  <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> O Email ta OK</label>
 					  <br><label for="exampleInputEmail1">Email</label>
-					  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email">
+					  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email" name="email">
 					</div>
 					<div class="form-group">
 					  <label for="exampleInputFile">Foto</label>
-					  <input type="file" id="exampleInputFile">
+					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma foto de perfil.</p>
 					</div>
 					<div class="checkbox">
@@ -103,7 +110,7 @@
 				  </div><!-- /.box-body -->
 
 				  <div class="box-footer">
-					<button type="submit" class="btn btn-primary">Guardar</button>
+					<input type="submit" class="btn btn-primary" value="Guardar" onsubmit="<?php $gereUtilizadores->adicionarUtilizador() ?>"/>
 				  </div>
 				</form>
 			  </div><!-- /.box -->
