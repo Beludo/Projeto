@@ -1,13 +1,16 @@
-<?php
-include_once "sessaoOk.php";
+<!-- 
+
+<    ?php
+include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
 
 $gere_utilizador = new GereUtilizadores();
 $utilizador = new Utilizadores(0, "username", "password", "12/05/2015", 0, "xpto@email.pt", "morada", "",0);
 
 $utilizador = $gere_utilizador->listarUtilizador();
+< ?
 
-?>
+-->
 
 <!DOCTYPE html>
 <html>
