@@ -9294,7 +9294,7 @@
 			 * Display information string for when the table is empty. Typically the 
 			 * format of this string should match sInfo.
 			 *  @type string
-			 *  @default Showing 0 to 0 of 0 entries
+			 *  @default Não existem resultados
 			 *  @dtopt Language
 			 * 
 			 *  @example
@@ -9306,7 +9306,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Não existem resultados",
 		
 		
 			/**
@@ -9314,19 +9314,19 @@
 			 * to the information (sInfo) to give an idea of how strong the filtering 
 			 * is. The variable _MAX_ is dynamically updated.
 			 *  @type string
-			 *  @default (filtered from _MAX_ total entries)
+			 *  @default (filtrado de _MAX_ resultados)
 			 *  @dtopt Language
 			 * 
 			 *  @example
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "oLanguage": {
-			 *          "sInfoFiltered": " - filtering from _MAX_ records"
+			 *          "sInfoFiltered": " - filtrado de _MAX_ resultados"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(filtrado de _MAX_ resultados)",
 		
 		
 			/**
@@ -9512,7 +9512,7 @@
 			 * displayed after filtering. sEmptyTable is shown when there is simply no
 			 * information in the table at all (regardless of filtering).
 			 *  @type string
-			 *  @default No matching records found
+			 *  @default Não foi encontrado nenhuma correspondência
 			 *  @dtopt Language
 			 * 
 			 *  @example
@@ -9524,7 +9524,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": "Não foi encontrado nenhuma correspondência"
 		},
 	
 	
