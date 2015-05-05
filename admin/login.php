@@ -29,6 +29,7 @@ if(
     $utilizador = new Utilizadores("", "", "", "", "", "", "");
 
     // carrega o utilizador com o username dado
+
     $utilizador = $gereUtilizador->obtemUtilizadorUsername($_POST["username"]);
 
     // verifica se foi carregado um objeto na variável "utilizador"

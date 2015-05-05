@@ -82,9 +82,10 @@ class GereUtilizadores {
     function obtemUtilizadorUsername($nomeUtilizador) {
 
         try {
-            $user = array('U_NOMEUTILIZADOR' => $nomeUtilizador);
+            $user = array('U_USERNAME' => $nomeUtilizador);
 
-            $registo = $this->bd->query("SELECT * FROM 'gm'.'utilizadores' WHERE U_NOMEUTILIZADOR = :U_NOMEUTILIZADOR", $user);
+            $registo = $this->bd->query("SELECT * FROM 'gm'.'utilizadores' WHERE U_USERNAME = :U_USERNAME", $user);
+
             if (!$registo == null) {
                 $utilizador = new Utilizadores($registo[0]["U_ID"], $registo[0]["U_NOMECOMPLETO"], $registo[0]["U_USERNAME"],
                     $registo[0]["U_PASSWORD"], $registo[0]["U_DATAREGISTO"],
