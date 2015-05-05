@@ -3,10 +3,10 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
+include_once "Utilizadores.php";
 
 $gere_utilizador = new GereUtilizadores();
-$utilizador = new Utilizadores(0, "username", "password", "2015/05/25", 213752357, "xpto@email.pt", "morada", "urlfotografia",0);
-
+$utilizador = new Utilizadores(0, "", "", "", "", 0, "", "", "", 1);
 $utilizador = $gere_utilizador->listarUtilizador();
 ?>
 
@@ -88,11 +88,25 @@ $utilizador = $gere_utilizador->listarUtilizador();
 						<th class="accoes-tabela">Acções</th>
 					  </tr>
 					</thead>
+                      <?php
+                      if($utilizador != null){
+
+                          for($i = 0; $i<sizeof($utilizador); $i++){
+
+                      ?>
 					  <tr>
-						<td>Marco Beludo</td>
-						<td>marcobeludo</td>
-						<td>marcobeludo@hotmail.com</td>
-						<td><span class="label label-success">Ativo</span></td>
+
+						<td><?php echo $utilizador[$i]->getNomeCompleto() ?></td>
+						<td><?php echo $utilizador[$i]->getUsername() ?></td>
+						<td><?php echo $utilizador[$i]->getEmail() ?></td>
+						<?php if($utilizador[$i]->getAtivo() == 0){
+                            ?><td><span class="label label-danger">Desativo</span></td>
+                              <?php
+                                } elseif($utilizador[$i]->getAtivo() == 1) {
+                                    ?><td><span class="label label-success">Ativo</span></td>
+                                <?php
+                                }
+                                ?>
 						<td><span class="label label-success">Sim</span></td>
 						<td>
 						  <div class="btn-group">
@@ -106,254 +120,13 @@ $utilizador = $gere_utilizador->listarUtilizador();
 							</ul>
 						  </div>
 						</td>
+
 					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
-					  <tr>
-						<td>Diogo Ressurreição</td>
-						<td>diogoalex</td>
-						<td>diogoalex@hotmail.com</td>
-						<td><span class="label label-danger">Desativo</span></td>
-						<td><span class="label label-success">Sim</span></td>
-						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
+                      <?php
+                            }
+                      }
+
+                      ?>
 					</tfoot>
 				  </table>
 				</div><!-- /.box-body -->
