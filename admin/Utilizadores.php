@@ -30,7 +30,8 @@ class Utilizadores{
     }
     private $ativo;
 
-    function __construct($nomeCompleto, $username, $password, $contatoTelefonico, $email, $morada, $fotografia){
+    function __construct($id, $nomeCompleto, $username, $password, $dataRegisto, $contatoTelefonico, $email, $morada, $fotografia, $ativo = true){
+				$this->id = $id;
         $this->nomeCompleto = $nomeCompleto;
         $this->username = $username;
         $this->password = $password;
@@ -39,7 +40,7 @@ class Utilizadores{
         $this->email = $email;
         $this->morada = $morada;
         $this->fotografia = $fotografia;
-        $this->ativo = true;
+        $this->ativo = $ativo;
     }
 
     /**

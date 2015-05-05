@@ -2,6 +2,7 @@
 
 include_once "GerePermissoes.php";
 include_once "acessobd.php";
+include_once "Utilizadores.php";
 
 class GereUtilizadores {
 
@@ -80,7 +81,7 @@ class GereUtilizadores {
     function obtemUtilizadorUsername($nomeUtilizador) {
 
         try {
-            $user = array('U_USERNAME' => $nomeUtilizador);
+            $user = array("U_USERNAME" => $nomeUtilizador);
 
             $registo = $this->bd->query("SELECT * FROM utilizadores WHERE U_USERNAME = :U_USERNAME", $user);
 
