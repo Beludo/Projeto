@@ -114,10 +114,16 @@ class GereUtilizadores {
 
             $registo = $this->bd->query("SELECT * FROM utilizadores");
             for($i=0; $i<count($registo); $i++){
-                	$dados[$i] = new Utilizadores($registo[$i]["U_ID"], $registo[$i]["U_NOMECOMPLETO"], $registo[$i]["U_USERNAME"],
-                        $registo[$i]["U_PASSWORD"], $registo[$i]["U_DATAREGISTO"],
-                        $registo[$i]["U_CONTATOTELEFONICO"], $registo[$i]["U_EMAIL"],
-                        $registo[$i]["U_MORADA"], $registo[$i]["U_FOTOGRAFIA"],
+                	$dados[] = new Utilizadores(
+						$registo[$i]["U_ID"],
+						$registo[$i]["U_NOMECOMPLETO"],
+						$registo[$i]["U_USERNAME"],
+                        $registo[$i]["U_PASSWORD"],
+						$registo[$i]["U_DATAREGISTO"],
+                        $registo[$i]["U_CONTATOTELEFONICO"],
+						$registo[$i]["U_EMAIL"],
+                        $registo[$i]["U_MORADA"],
+						$registo[$i]["U_FOTOGRAFIA"],
                         $registo[$i]["U_ATIVO"]);
             }
             return $dados;

@@ -211,7 +211,7 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 			  <li class="dropdown user user-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				  <!-- Imagem do icone do utilizador (160x160 pixels) -->
-				  <img src="<?php echo $utilizador->getFotografia(); ?>"class="user-image" alt="User Image"/>
+				  <img src="<?php echo $utilizador->getFotografia(); ?>" class="user-image" alt="User Image"/>
 				  <span class="hidden-xs"><?php echo $_SESSION["user"]; ?></span>
 				</a>
 				<ul class="dropdown-menu">
