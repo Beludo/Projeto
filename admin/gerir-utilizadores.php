@@ -1,6 +1,6 @@
-<!-- 
 
-<    ?php
+
+<?php
 include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
 
@@ -8,9 +8,9 @@ $gere_utilizador = new GereUtilizadores();
 $utilizador = new Utilizadores(0, "username", "password", "2015/05/25", 213752357, "xpto@email.pt", "morada", "urlfotografia",0);
 
 $utilizador = $gere_utilizador->listarUtilizador();
-< ?
+?>
 
--->
+
 
 <!DOCTYPE html>
 <html>
@@ -88,7 +88,6 @@ $utilizador = $gere_utilizador->listarUtilizador();
 						<th class="accoes-tabela">Acções</th>
 					  </tr>
 					</thead>
-					<tbody>
 					  <tr>
 						<td>Marco Beludo</td>
 						<td>marcobeludo</td>

@@ -26,7 +26,7 @@
 		<div class="panel panel-default" style="padding:10px; margin: auto; margin-top: 10px; max-width: 350px;">
 
 
-			<form class="form-signin">
+			<form class="form-signin" >
 				<h2 class="form-signin-heading">Autenticação</h2>
 				<input type="text" class="form-control" placeholder="Utilizador" title="Introduza o seu nome de utilizador" autofocus>
 				<input type="password" class="form-control" placeholder="Palavra-passe" title="Introduza a sua palavra-passe de autenticação">
