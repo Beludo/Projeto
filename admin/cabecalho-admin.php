@@ -242,7 +242,7 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 					  <a href="#" class="btn btn-default btn-flat">Perfil</a>
 					</div>
 					<div class="pull-right">
-					  <a href="#" class="btn btn-default btn-flat">Terminar sessão</a>
+					  <a href="login.php?logout=1" class="btn btn-default btn-flat">Terminar sessão</a>
 					</div>
 				  </li>
 				</ul>
