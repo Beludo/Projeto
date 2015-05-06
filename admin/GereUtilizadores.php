@@ -20,9 +20,9 @@ class GereUtilizadores {
             !empty($_POST["foto"])){
             $data = time();
 
-            $novaFoto = $_POST["username"].$_POST["foto"];
+            //$novaFoto = $_POST["username"].$_POST["foto"];
             $separar = explode(".", $_FILES["foto"]["name"]);
-            $ext = $separar[count($separar)-1];
+            $ext = $separar[count($separar)];
             $nome_foto = $_POST["username"].".". $ext;
 
             // apagar o ficheiro actual
@@ -30,7 +30,7 @@ class GereUtilizadores {
                 unlink("fotos/" . $nome_foto);
             }
 
-            move_uploaded_file($_FILES["logo"]["temp_nome"], "fotos/" . $nome_foto);
+            move_uploaded_file($_FILES["foto"]["temp_name"], "fotos/" . $nome_foto);
 
             $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1);
 
