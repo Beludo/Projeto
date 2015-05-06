@@ -5,14 +5,68 @@ include_once "sessaoAtiva.php";
 
 $gereUtilizadores = new GereUtilizadores();
 
-if(
-!empty($_POST["nome"]) && !empty($_POST["username"]) &&
-!empty($_POST["morada"]) && !empty($_POST["telefone"]) &&
-!empty($_POST["password"]) && !empty($_POST["email"]) &&
-!empty($_POST["foto"])){
 
-    $gereUtilizadores->adicionarUtilizador();
-}
+
+// verificar se todos os campos foram preenchidos
+if(
+	isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+	isset($_POST["username"]) && !empty($_POST["username"]) &&
+	isset($_POST["morada"]) && !empty($_POST["morada"]) &&
+	isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
+	isset($_POST["password"]) && !empty($_POST["password"]) &&
+	isset($_POST["password2"]) && !empty($_POST["password2"]) &&
+	isset($_POST["email"]) && !empty($_POST["email"])
+	){
+		// verificar se foi escolhido um ficheiro de foto
+		if(file_exists($_FILES["foto"]["tmp_name"])){
+		
+			// verificar o tipo e tamanho do ficheiro (< 2Mb)
+			if(
+			(($_FILES["foto"]["type"] == "image/gif") ||
+			($_FILES["foto"]["type"] == "image/jpeg") ||
+			($_FILES["foto"]["type"] == "image/jpg") ||
+			($_FILES["foto"]["type"] == "image/png")) &&
+			$_FILES["foto"]["size"] < 2000000 &&
+			$_FILES["foto"]["error"] == 0
+			){
+				// corrigir o nome do ficheiro
+				$separar = explode(".", $_FILES["foto"]["name"]);
+				$ext = $separar[count($separar)-1];
+				$nome_foto = $_POST["username"] . "." . $ext;
+				
+				// apagar o ficheiro actual
+				if(file_exists("fotos/" . $nome_foto)){
+					unlink("fotos/" . $nome_foto);
+				}
+				
+				move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/" . $nome_foto);
+				
+				
+			}else{
+				// mostrar mensagem de erro
+				header("Location: ad-utilizador.php?erro=1"); 
+			}
+		}else{
+			// usar uma foto por omissão
+			$nome_foto = "sem-foto.png";
+		}
+			
+			$gereUtilizadores->adicionarUtilizador(new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1));
+			//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
+	}
+	
+
+	if(isset($_GET["erro"]) && !empty($_GET["erro"])){
+		// erro 1 - ficheiro invalido
+		$p_erro1 = '';
+		if($_GET["erro"] == 1){
+			$p_erro1 = ' has-error';
+		}
+	}
+
+	// obter os dados da empresa
+	//$dados_empresa = $bd->query("SELECT * FROM empresas LIMIT 1");
+
 ?>
 
 <!DOCTYPE html>
@@ -95,27 +149,22 @@ if(
 					<div class="form-group has-warning">
 					  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Password demasiado simples!</label>
 					  <br><label for="exampleInputPassword1">Password</label>
-					  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+					  <input type="password" class="form-control" id="password" placeholder="Password" name="password">
 					</div>
 					<div class="form-group has-error">
 					  <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> As passwords não são iguais!</label>
 					  <br><label for="exampleInputPassword1">Confirmar Password</label>
-					  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirme a password">
+					  <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a password">
 					</div>
 					<div class="form-group has-success">
 					  <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> O Email ta OK</label>
 					  <br><label for="exampleInputEmail1">Email</label>
 					  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email" name="email">
 					</div>
-					<div class="form-group">
+					<div class="form-group<?php echo $p_erro1; ?>">
 					  <label for="exampleInputFile">Foto</label>
 					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma foto de perfil.</p>
-					</div>
-					<div class="checkbox">
-					  <label>
-						<input type="checkbox"> Li e concordo com os <a href="">termos</a>
-					  </label>
 					</div>
 				  </div><!-- /.box-body -->
 
