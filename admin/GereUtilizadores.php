@@ -13,17 +13,13 @@ class GereUtilizadores {
     }
 
     function adicionarUtilizador(){
-        if(
-            !empty($_POST["nome"]) && !empty($_POST["username"]) &&
-            !empty($_POST["morada"]) && !empty($_POST["telefone"]) &&
-            !empty($_POST["password"]) && !empty($_POST["email"]) &&
-            !empty($_POST["foto"])){
+
             $data = time();
 
             //$novaFoto = $_POST["username"].$_POST["foto"];
             $separar = explode(".", $_FILES["foto"]["name"]);
-            $ext = $separar[count($separar)];
-            $nome_foto = $_POST["username"].".". $ext;
+            $ext = $separar[count($separar)-1];
+            $nome_foto = $_POST["username"] . "." . $ext;
 
             // apagar o ficheiro actual
             if(file_exists("fotos/" . $nome_foto)){
@@ -57,7 +53,7 @@ class GereUtilizadores {
         $gerePermissoes = new GerePermissoes();
 
         $gerePermissoes->atribuiPermissao($registo, $utilizador->getPermissao());
-        }
+
     }
 	
 	/*  POR FAZERR !!!!!!!! */
