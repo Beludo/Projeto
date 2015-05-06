@@ -4,6 +4,15 @@ include_once "GereUtilizadores.php";
 include_once "sessaoAtiva.php";
 
 $gereUtilizadores = new GereUtilizadores();
+
+if(
+!empty($_POST["nome"]) && !empty($_POST["username"]) &&
+!empty($_POST["morada"]) && !empty($_POST["telefone"]) &&
+!empty($_POST["password"]) && !empty($_POST["email"]) &&
+!empty($_POST["foto"])){
+
+    $gereUtilizadores->adicionarUtilizador();
+}
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +73,7 @@ $gereUtilizadores = new GereUtilizadores();
 				  <h3 class="box-title">Dados do utilizador</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" method="post">
+				<form role="form" method="post" action="ad-utilizador.php" enctype="multipart/form-data">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome completo</label>
@@ -111,7 +120,7 @@ $gereUtilizadores = new GereUtilizadores();
 				  </div><!-- /.box-body -->
 
 				  <div class="box-footer">
-					<input type="submit" class="btn btn-primary" value="Guardar" onsubmit="<?php $gereUtilizadores->adicionarUtilizador() ?>"/>
+					<input type="submit" class="btn btn-primary" value="Guardar"/>
 				  </div>
 				</form>
 			  </div><!-- /.box -->
