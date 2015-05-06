@@ -1,6 +1,6 @@
 <?php
 include_once "GereUtilizadores.php";
-include_once "sessaoAtiva.php";
+
 
 $gereUtilizadores = new GereUtilizadores();
 $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
@@ -242,7 +242,7 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 					  <a href="#" class="btn btn-default btn-flat">Perfil</a>
 					</div>
 					<div class="pull-right">
-					  <a href="#" class="btn btn-default btn-flat" onclick="<?php session_destroy(); header("Location: index.php"); ?>">Terminar sessão</a>
+					  <a href="#" class="btn btn-default btn-flat">Terminar sessão</a>
 					</div>
 				  </li>
 				</ul>

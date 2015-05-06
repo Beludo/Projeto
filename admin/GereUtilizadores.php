@@ -19,9 +19,20 @@ class GereUtilizadores {
             !empty($_POST["password"]) && !empty($_POST["email"]) &&
             !empty($_POST["foto"])){
             $data = time();
-            $novaFoto = "./fotos/".$_POST["username"].$_POST["foto"];
-            copy($_POST["foto"], "./fotos/".$_POST["username"].$_POST["foto"]);
-            $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $novaFoto, true, 1);
+
+            $novaFoto = $_POST["username"].$_POST["foto"];
+            $separar = explode(".", $_FILES["foto"]["name"]);
+            $ext = $separar[count($separar)-1];
+            $nome_foto = $_POST["username"].".". $ext;
+
+            // apagar o ficheiro actual
+            if(file_exists("fotos/" . $nome_foto)){
+                unlink("fotos/" . $nome_foto);
+            }
+
+            move_uploaded_file($_FILES["logo"]["temp_nome"], "fotos/" . $nome_foto);
+
+            $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1);
 
         $sql = "INSERT into utilizadores (U_NOMECOMPLETO,U_USERNAME, U_PASSWORD, U_DATAREGISTO, U_CONTATOTELEFONICO,
         U_EMAIL,U_MORADA, U_FOTOGRAFIA, U_ATIVO) VALUES(:U_NOMECOMPLETO , :U_USERNAME, :U_PASSWORD, :U_DATAREGISTO, :U_CONTATOTELEFONICO,

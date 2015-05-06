@@ -1,6 +1,7 @@
 <?php
 
 include_once "GereUtilizadores.php";
+include_once "sessaoAtiva.php";
 
 $gereUtilizadores = new GereUtilizadores();
 ?>
