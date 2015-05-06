@@ -12,23 +12,8 @@ class GereUtilizadores {
         $this->bd = new BaseDados();
     }
 
-    function adicionarUtilizador(){
-
-            $data = time();
-
-            //$novaFoto = $_POST["username"].$_POST["foto"];
-            $separar = explode(".", $_FILES["foto"]["name"]);
-            $ext = $separar[count($separar)-1];
-            $nome_foto = $_POST["username"] . "." . $ext;
-
-            // apagar o ficheiro actual
-            if(file_exists("fotos/" . $nome_foto)){
-                unlink("fotos/" . $nome_foto);
-            }
-
-            move_uploaded_file($_FILES["foto"]["temp_name"], "fotos/" . $nome_foto);
-
-            $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", $data), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1);
+    function adicionarUtilizador($utilizador){
+		$data = time();
 
         $sql = "INSERT into utilizadores (U_NOMECOMPLETO,U_USERNAME, U_PASSWORD, U_DATAREGISTO, U_CONTATOTELEFONICO,
         U_EMAIL,U_MORADA, U_FOTOGRAFIA, U_ATIVO) VALUES(:U_NOMECOMPLETO , :U_USERNAME, :U_PASSWORD, :U_DATAREGISTO, :U_CONTATOTELEFONICO,
@@ -45,15 +30,27 @@ class GereUtilizadores {
             'U_FOTOGRAFIA' => $utilizador->getFotografia(),
             'U_ATIVO' => $utilizador->getAtivo()
         );
+		/*
+		echo
+            $utilizador->getNomeCompleto() . "<br>" .
+            $utilizador->getUsername() . "<br>" .
+            $utilizador->getPassword() . "<br>" .
+            $utilizador->getDataRegisto() . "<br>" .
+            $utilizador->getContatoTelefonico() . "<br>" .
+            $utilizador->getEmail() . "<br>" .
+            $utilizador->getMorada() . "<br>" .
+            $utilizador->getFotografia() . "<br>" .
+            $utilizador->getAtivo() . "<br>"
+        ;
+		*/
 
         $this->bd->inserir($sql, $dados_utilizador);
 
-        $registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $utilizador->getNomeCompleto());
-
+        /*
+		$registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $utilizador->getNomeCompleto());
         $gerePermissoes = new GerePermissoes();
-
         $gerePermissoes->atribuiPermissao($registo, $utilizador->getPermissao());
-
+		*/
     }
 	
 	/*  POR FAZERR !!!!!!!! */
