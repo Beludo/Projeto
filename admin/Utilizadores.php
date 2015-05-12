@@ -1,5 +1,5 @@
 <?php
-
+include "acessobd.php";
 class Utilizadores{
 
     private $id;
@@ -12,23 +12,8 @@ class Utilizadores{
     private $morada;
     private $fotografia;
     private $permissao;
-
-    /**
-     * @param mixed $permissao
-     */
-    public function setPermissao($permissao)
-    {
-        $this->permissao = $permissao;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPermissao()
-    {
-        return $this->permissao;
-    }
     private $ativo;
+    private $bd;
 
     function __construct($id, $nomeCompleto, $username, $password, $dataRegisto, $contatoTelefonico, $email, $morada, $fotografia, $ativo = true, $permissao){
 		$this->id = $id;
@@ -42,14 +27,22 @@ class Utilizadores{
         $this->fotografia = $fotografia;
         $this->ativo = $ativo;
         $this->permissao = $permissao;
+        $this->bd = new BaseDados();
     }
 
     /**
      * @param boolean $ativo
      */
-    public function setAtivo($ativo)
+    public function setAtivo($ativo, $idUtilizador)
     {
         $this->ativo = $ativo;
+        $sql = "UPDATE utilizadores SET U_ATIVO = :U_ATIVO WHERE U_ID = :U_ID";
+        $dados = array(
+            'U_ATIVO' => $ativo,
+            'U_ID' => $idUtilizador
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
@@ -204,7 +197,21 @@ class Utilizadores{
         return $this->username;
     }
 
+    /**
+     * @param mixed $permissao
+     */
+    public function setPermissao($permissao)
+    {
+        $this->permissao = $permissao;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getPermissao()
+    {
+        return $this->permissao;
+    }
 }
 
 ?>
