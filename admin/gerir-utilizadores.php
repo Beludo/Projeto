@@ -50,6 +50,7 @@ $gere_utilizador = new GereUtilizadores();
 	  <?php
 		include("cabecalho-admin.php");
 		include("lateral-admin.php");
+      include_once "Utilizadores.php";
 	  ?>
 
 	  <!-- Content Wrapper. Contains page content -->
@@ -114,9 +115,18 @@ $gere_utilizador = new GereUtilizadores();
 								  <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-								  <li><a href="#"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-								  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-								  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+								  <li><i class="fa fa-fw fa-edit"></i>Editar</li>
+                                    <?php
+                                        if($utilizador[$i]->getAtivo() == 1) {
+                                            ?>
+                                  <li onclick="<?php $utilizador[$i]->setAtivo(false, $utilizador[$i]->getId()) ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</li>
+                                            <?php
+                                        } else {
+                                            ?>
+                                  <li onclick="<?php $utilizador[$i]->setAtivo(true) ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</li>
+                                            <?php
+                                        }
+                                    ?>
 								</ul>
 							  </div>
 							</td>
