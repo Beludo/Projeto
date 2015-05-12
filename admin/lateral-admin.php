@@ -125,34 +125,7 @@
 				<small class="label pull-right bg-yellow">12</small>
 			  </a>
 			</li>
-			<li class="treeview">
-			  <a href="#">
-				<i class="fa fa-share"></i> <span>Menus multi-nivel</span>
-				<i class="fa fa-angle-left pull-right"></i>
-			  </a>
-			  <ul class="treeview-menu">
-				<li><a href="#"><i class="fa fa-circle-o"></i> Nivel 1</a></li>
-				<li>
-				  <a href="#"><i class="fa fa-circle-o"></i> Nivel 1 <i class="fa fa-angle-left pull-right"></i></a>
-				  <ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-circle-o"></i> Nivel 2</a></li>
-					<li>
-					  <a href="#"><i class="fa fa-circle-o"></i> Nivel 2 <i class="fa fa-angle-left pull-right"></i></a>
-					  <ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-circle-o"></i> Nivel 3</a></li>
-						<li><a href="#"><i class="fa fa-circle-o"></i> Nivel 3</a></li>
-					  </ul>
-					</li>
-				  </ul>
-				</li>
-				<li><a href="#"><i class="fa fa-circle-o"></i> Nivel 1</a></li>
-			  </ul>
-			</li>
 			<li><a href="documentation/index.html"><i class="fa fa-question-circle"></i> Ajuda</a></li>
-			<li class="header">AVISOS</li>
-			<li><a href="#"><i class="fa fa-circle-o text-danger"></i> Importante</a></li>
-			<li><a href="#"><i class="fa fa-circle-o text-warning"></i> Aviso</a></li>
-			<li><a href="#"><i class="fa fa-circle-o text-info"></i> Informação</a></li>
 		  </ul>
 		</section>
 		<!-- /.sidebar -->
