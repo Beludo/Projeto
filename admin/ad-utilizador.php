@@ -128,7 +128,7 @@ if(
 				  <h3 class="box-title">Dados do utilizador</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" method="post" action="ad-utilizador.php" enctype="multipart/form-data" style="height: 100%">
+				<form role="form" method="post" action="ad-utilizador.php" enctype="multipart/form-data">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome completo</label>
