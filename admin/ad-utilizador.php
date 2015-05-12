@@ -2,6 +2,7 @@
 
 include_once "GereUtilizadores.php";
 include_once "sessaoAtiva.php";
+include_once "GerePermissoes.php";
 
 $gereUtilizadores = new GereUtilizadores();
 
@@ -127,7 +128,7 @@ if(
 				  <h3 class="box-title">Dados do utilizador</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" method="post" action="ad-utilizador.php" enctype="multipart/form-data">
+				<form role="form" method="post" action="ad-utilizador.php" enctype="multipart/form-data" style="height: 100%">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome completo</label>
@@ -166,8 +167,25 @@ if(
 					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma foto de perfil.</p>
 					</div>
-				  </div><!-- /.box-body -->
-
+                    <div class="form-group">
+                        <label >Permissões</label>
+                        <br><div class="col-lg-3" style="padding-left: 0px">
+                            <?php
+                            $gerePermissoes = new GerePermissoes();
+                            $dados = $gerePermissoes->listaPermissoes();
+                            for($i=0; $i<sizeof($dados); $i++){
+                            ?>
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                <input type="checkbox" aria-label="...">
+                              </span>
+                                <input type="text" class="form-control" aria-label="..." value="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><br>
+                            </div><!-- /input-group -->
+                            <?php } ?>
+                        </div><!-- /.col-lg-3 -->
+                    </div>
+                  </div><!-- /.box-body -->
+                    <br>
 				  <div class="box-footer">
 					<input type="submit" class="btn btn-primary" value="Guardar"/>
 				  </div>

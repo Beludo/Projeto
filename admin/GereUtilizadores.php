@@ -46,11 +46,12 @@ class GereUtilizadores {
 
         $this->bd->inserir($sql, $dados_utilizador);
 
-        /*
-		$registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $utilizador->getNomeCompleto());
+        $user = array('U_NOME_COMPLETO' => $utilizador->getNomeCompleto());
+        $idPermissao = $utilizador->getPermissao();
+		$registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $user);
         $gerePermissoes = new GerePermissoes();
-        $gerePermissoes->atribuiPermissao($registo, $utilizador->getPermissao());
-		*/
+        $gerePermissoes->atribuiPermissao($registo, $$idPermissao);
+
     }
 	
 	/*  POR FAZERR !!!!!!!! */

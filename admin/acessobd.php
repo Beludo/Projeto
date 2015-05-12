@@ -86,7 +86,7 @@
 		
 		// obter registos de uma tabela
 		public function query($sql, $param = null){
-			$dados =null;
+			$dados = null;
 		
 			try{
 				$STH = $this->DBH->prepare($sql);

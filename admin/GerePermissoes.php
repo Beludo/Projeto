@@ -6,6 +6,7 @@
  * Time: 10:54
  */
 
+include_once "Utilizadores.php";
 class GerePermissoes {
     private $bd;
     function __construct(){
@@ -35,5 +36,13 @@ class GerePermissoes {
         );
 
         $this->bd->inserir($sql, $dados_tabela);
+    }
+
+    function listaPermissoes(){
+        $sql = "SELECT * FROM permissoes";
+        $dados = $this->bd->query($sql);
+        if($dados != null){
+            return $dados;
+        }
     }
 } 
