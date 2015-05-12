@@ -178,8 +178,8 @@ if(
 							for($i=0; $i<count($dados); $i++){
 							?>
 												
-									<label><input  type="checkbox" aria-label="..." value="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_PERMISSAO"]?></label><br>
-							<?php } ?>
+									<label><input  type="checkbox" aria-label="..." value ="sim" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_PERMISSAO"]?></label><br>
+							<?php } ?> 
           </div>
                     
         </div><!-- /.box-body -->
