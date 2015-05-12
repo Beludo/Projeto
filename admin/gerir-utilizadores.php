@@ -6,6 +6,17 @@ include_once "GereUtilizadores.php";
 include_once "Utilizadores.php";
 
 $gere_utilizador = new GereUtilizadores();
+
+
+if(isset($_POST["ativo"]) && !empty($_POST["ativo"])){
+    if($_POST["ativo"] == 1){
+        $utilizador[$i]->setAtivo(false, $utilizador[$i]->getId());
+    } elseif($_POST["ativo"] == 0) {
+        $utilizador[$i]->setAtivo(true, $utilizador[$i]->getId());
+    } else {
+        header("Location: gerir-utilizadores.php?erro=1");
+    }
+}
 ?>
 
 
@@ -119,11 +130,11 @@ $gere_utilizador = new GereUtilizadores();
                                     <?php
                                         if($utilizador[$i]->getAtivo() == 1) {
                                             ?>
-                                  <li onclick="<?php $utilizador[$i]->setAtivo(false, $utilizador[$i]->getId()) ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</li>
+                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
                                         } else {
                                             ?>
-                                  <li onclick="<?php $utilizador[$i]->setAtivo(true) ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</li>
+                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
