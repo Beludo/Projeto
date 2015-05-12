@@ -1,3 +1,8 @@
+<?php
+include_once "sessaoAtiva.php";
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,7 +34,8 @@
 	<?php
 		include("cabecalho-admin.php");
 		include("lateral-admin.php");
-	?>
+		?>
+		
 
 	  <!-- Content Wrapper. Contains page content -->
 	  <div class="content-wrapper">

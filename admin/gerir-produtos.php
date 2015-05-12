@@ -1,3 +1,8 @@
+<?php
+include_once "sessaoAtiva.php";
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
