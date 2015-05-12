@@ -130,11 +130,11 @@ if(isset($_POST["ativo"]) && !empty($_POST["ativo"])){
                                     <?php
                                         if($utilizador[$i]->getAtivo() == 1) {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
                                         } else {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
