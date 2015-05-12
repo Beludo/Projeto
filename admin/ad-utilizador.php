@@ -167,24 +167,22 @@ if(
 					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma foto de perfil.</p>
 					</div>
-                    <div class="form-group">
-                        <label >Permissões</label>
-                        <br><div class="col-lg-3" style="padding-left: 0px">
-                            <?php
-                            $gerePermissoes = new GerePermissoes();
-                            $dados = $gerePermissoes->listaPermissoes();
-                            for($i=0; $i<sizeof($dados); $i++){
-                            ?>
-                            <div class="input-group">
-                              <span class="input-group-addon">
-                                <input type="checkbox" aria-label="...">
-                              </span>
-                                <input type="text" class="form-control" aria-label="..." value="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><br>
-                            </div><!-- /input-group -->
-                            <?php } ?>
-                        </div><!-- /.col-lg-3 -->
-                    </div>
-                  </div><!-- /.box-body -->
+          <div class="form-group">
+            	<hr> 
+						<label >Permissões</label>
+						<br>
+					              
+							<?php
+							$gerePermissoes = new GerePermissoes();
+							$dados = $gerePermissoes->listaPermissoes();
+							for($i=0; $i<count($dados); $i++){
+							?>
+												
+									<label><input  type="checkbox" aria-label="..." value="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_PERMISSAO"]?></label><br>
+							<?php } ?>
+          </div>
+                    
+        </div><!-- /.box-body -->
                     <br>
 				  <div class="box-footer">
 					<input type="submit" class="btn btn-primary" value="Guardar"/>
