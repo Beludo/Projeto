@@ -8,10 +8,12 @@ include_once "Utilizadores.php";
 $gere_utilizador = new GereUtilizadores();
 
 
-if(isset($_POST["ativo"]) && !empty($_POST["ativo"])){
-    if($_POST["ativo"] == 1){
-        $utilizador[$i]->setAtivo(false, $utilizador[$i]->getId());
-    } elseif($_POST["ativo"] == 0) {
+if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
+    isset($_GET["id"]) && !empty($_GET["id"]) &&
+    isset($_GET["i"]) && !empty($_GET["i"])){
+    if($_GET["ativo"] == 1){
+        $utilizador[$_GET["i"]]->setAtivo(false, $utilizador[$_GET["i"]]->getId());
+    } elseif($_GET["ativo"] == 0) {
         $utilizador[$i]->setAtivo(true, $utilizador[$i]->getId());
     } else {
         header("Location: gerir-utilizadores.php?erro=1");
@@ -130,11 +132,11 @@ if(isset($_POST["ativo"]) && !empty($_POST["ativo"])){
                                     <?php
                                         if($utilizador[$i]->getAtivo() == 1) {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $utilizador[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
                                         } else {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $utilizador[$i]->getId() ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $utilizador[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
