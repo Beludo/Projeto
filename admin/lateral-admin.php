@@ -1,17 +1,7 @@
 	  <!-- Left side column. contains the logo and sidebar -->
 	  <aside class="main-sidebar">
 		<!-- sidebar: style can be found in sidebar.less -->
-		<section class="sidebar">
-		  <!-- search form -->
-		  <form action="#" method="get" class="sidebar-form">
-			<div class="input-group">
-			  <input type="text" name="q" class="form-control" placeholder="Pesquisa..."/>
-			  <span class="input-group-btn">
-				<button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-			  </span>
-			</div>
-		  </form>
-		  <!-- /.search form -->
+		<section class="sidebar"> 
 		  <!-- sidebar menu: : style can be found in sidebar.less -->
 		  <ul class="sidebar-menu">
 			<li class="header">PAINEL DE CONTROLO</li>
