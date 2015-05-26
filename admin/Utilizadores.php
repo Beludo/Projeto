@@ -1,5 +1,5 @@
 <?php
-include "acessobd.php";
+include_once "acessobd.php";
 class Utilizadores{
 
     private $id;

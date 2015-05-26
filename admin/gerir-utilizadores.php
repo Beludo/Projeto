@@ -6,15 +6,18 @@ include_once "Utilizadores.php";
 
 $gere_utilizador = new GereUtilizadores();
 $utilizador = $gere_utilizador->listarUtilizador();
+
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
-    if($_GET["ativo"] == 1){
-        $utilizador[$_GET["i"]]->setAtivo(false, $utilizador[$_GET["i"]]->getId());
-    } elseif($_GET["ativo"] == 0) {
+
+    if($_GET["ativo"] == true){
         $utilizador[$_GET["i"]]->setAtivo(true, $utilizador[$_GET["i"]]->getId());
+    } elseif($_GET["ativo"] == false){
+        header("Location: index.php");
+        $utilizador[$_GET["i"]]->setAtivo(false, $utilizador[$_GET["i"]]->getId());
     } else {
-        header("Location: gerir-utilizadores.php?erro=1");
+        //header("Location: gerir-utilizadores.php?erro=1");
     }
 }
 ?>
@@ -126,15 +129,15 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 								  <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-								  <li><i class="fa fa-fw fa-edit"></i>Editar</li>
+								  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
                                     <?php
                                         if($utilizadores[$i]->getAtivo() == 1) {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $utilizadores[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=false&id=<?php echo $utilizadores[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
-                                        } else {
+                                        } elseif($utilizadores[$i]->getAtivo() == 0) {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $utilizadores[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=true&id=<?php echo $utilizadores[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
