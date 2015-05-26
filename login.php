@@ -26,16 +26,43 @@
 		<div class="panel panel-default" style="padding:10px; margin: auto; margin-top: 10px; max-width: 350px;">
 
 
-			<form class="form-signin" >
-				<h2 class="form-signin-heading">Autenticação</h2>
-				<input type="text" class="form-control" placeholder="Utilizador" title="Introduza o seu nome de utilizador" autofocus>
-				<input type="password" class="form-control" placeholder="Palavra-passe" title="Introduza a sua palavra-passe de autenticação">
-				<br>
-				<label class="">
-					<a href="esquecer_pass.html">Esqueceu-se da palavra-passe?</a>
-				</label>
-				<a class="btn btn-lg btn-primary btn-block" title="Pressione para concluir a autenticação" href="inicial.php">Entrar</a>
-			</form>
+			   <div class="login-box-body">
+        <p class="login-box-msg">Inicie sessão para entrar na área de administração</p>
+        <form method="post" action="login.php">
+          <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Username" name="username"/>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <input type="password" class="form-control" placeholder="Password" name="password"/>
+						<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+					<?php
+              if(isset($_GET["erro"]) && !empty($_GET["erro"])){
+                  if($_GET["erro"] == 1){
+                      echo '<div class="alert alert-danger">Utilizador ou palavra-passe errados!</div>';
+                  }
+
+                  if($_GET["erro"] == 2){
+                      echo '<div class="alert alert-danger">Não inseriu o utilizador ou palavra-passe!</div>';
+                  }
+
+              }
+
+              if(isset($_GET["logout"]) && !empty($_GET["logout"]) && $_GET["logout"] == 1){
+                  echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
+              }
+              ?>
+          <div class="row">
+            <div class="col-xs-5">
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Iniciar Sessão"/>
+            </div><!-- /.col -->
+          </div>
+        </form>
+
+        <a href="rec-password.php">Esqueci-me da palavra-passe</a><br>
+
+      </div><!-- /.login-box-body -->
 		</div>
 		<!-- fim login - container -->
 
