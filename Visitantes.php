@@ -11,11 +11,10 @@ class Visitantes{
     private $email;
     private $morada;
     private $fotografia;
-    private $permissao;
     private $ativo;
     private $bd;
 
-    function __construct($id, $nomeCompleto, $username, $password, $dataRegisto, $contatoTelefonico, $email, $morada, $fotografia, $ativo = true, $permissao){
+    function __construct($id, $nomeCompleto, $username, $password, $dataRegisto, $contatoTelefonico, $email, $morada, $fotografia, $ativo = true){
 		$this->id = $id;
         $this->nomeCompleto = $nomeCompleto;
         $this->username = $username;
@@ -26,7 +25,6 @@ class Visitantes{
         $this->morada = $morada;
         $this->fotografia = $fotografia;
         $this->ativo = $ativo;
-        $this->permissao = $permissao;
         $this->bd = new BaseDados();
     }
 
