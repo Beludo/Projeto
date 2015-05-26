@@ -30,7 +30,14 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.php">Iniciar sessão</a>
+				<li>
+				<?php
+					if(!isset($_SESSION["user"])){
+						echo '<a href="perfil.php">' . $_SESSION["user"] . '</a> <a href="login.php?logout=1">Logout</a>';
+					}else{
+						echo '<a href="login.php">Iniciar sessão</a>';
+					}
+				?>
 				</li>
 			</ul>
 
