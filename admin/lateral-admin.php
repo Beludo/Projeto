@@ -36,7 +36,6 @@
 					<i class="fa fa-credit-card"></i>
 					<span>Loja</span>
 					<i class="fa fa-angle-left pull-right"></i>
-					<small class="label pull-right bg-green">novo</small>
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="ad-produto.php"><i class="fa fa-edit"></i> Adicionar Produto</a>
@@ -88,7 +87,7 @@
 				<a href="log-utilizadores.php">
 					<i class="fa fa-users"></i>
 					<span>Log</span>
-					<span class="label label-primary pull-right">4</span>
+					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 			</li>
 			<li class="treeview">
@@ -131,15 +130,13 @@
 				</ul>
 			</li>
 			<li>
-				<a href="../calendar.html">
+				<a href="#">
 					<i class="fa fa-archive"></i> <span>Exposições</span>
-					<small class="label pull-right bg-red">3</small>
 				</a>
 			</li>
 			<li>
-				<a href="../mailbox/mailbox.html">
-					<i class="fa fa-calendar"></i> <span>Eventos</span>
-					<small class="label pull-right bg-yellow">12</small>
+				<a href="#">
+					<i class="fa fa-calendar"></i> <span>Eventos</span> 
 				</a>
 			</li>
 			<li><a href="documentation/index.html"><i class="fa fa-question-circle"></i> Ajuda</a>
