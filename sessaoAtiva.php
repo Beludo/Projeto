@@ -6,9 +6,4 @@
 	*/
 	
 	session_start();
-	
-	// verificar se a sessão foi iniciada
-	if(!isset($_SESSION["user"])){
-		header("Location: index.php");
-	}
 ?>

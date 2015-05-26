@@ -1,5 +1,5 @@
 <?php
-	include "sesaoAtiva.php"
+	include "sessaoAtiva.php"
 ?>
 
 <!DOCTYPE html>
