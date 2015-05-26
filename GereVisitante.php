@@ -99,11 +99,11 @@ class GereVisitante {
                     $registo[0]["V_CONTATOTELEFONICO"], $registo[0]["V_EMAIL"],
                     $registo[0]["V_MORADA"], $registo[0]["V_FOTOGRAFIA"],
                     $registo[0]["V_ATIVO"]);
-						
-						}
+							
 					return $visitante;
             }else{
                 return NULL;
+					}
               
         } catch (PDOException $e) {
             echo $e->getMessage();

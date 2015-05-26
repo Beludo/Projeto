@@ -45,15 +45,8 @@ if(
 
             // Guardar o nome de utilizador da sessão
             $_SESSION["user"] = $visitante->getUsername();
-            echo $visitante->getPermissao();
-            // Verificar se se trata de um utilizador comum ou administrador
-            if($visitante->getPermissao() == 1){
-                header("Location: gerir-visitante.php");
-            } else {
                 header("Location: index.php");
-            }
-
-        }else{
+            }else{
             header("Location: login.php?erro=1");
         }
     }
