@@ -26,7 +26,7 @@ if(
     // abrir ligação à base de dados
     $bd = new BaseDados();
     $gereVisitante = new GereVisitante();
-    $visitante = new Visitante(0, "", "", "", "", 0, "", "", "", 1, 1);
+    $visitante = new Visitantes(0, "", "", "", "", 0, "", "", "", 1, 1);
 
     // carrega o utilizador com o username dado
 
@@ -39,8 +39,8 @@ if(
 
         //verifica se o username que veio da base de dados é igual ao inserido
         if(
-            !strcmp($_POST["username"], $utilizador->getUsername()) &&
-            !strcmp($_POST["password"], $utilizador->getPassword()) &&
+            !strcmp($_POST["username"], $visitante->getUsername()) &&
+            !strcmp($_POST["password"], $visitante->getPassword()) &&
             $visitante->getAtivo() == 1){
 
             // Guardar o nome de utilizador da sessão
