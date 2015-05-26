@@ -1,20 +1,18 @@
-
-
 <?php
+
 include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
 include_once "Utilizadores.php";
 
 $gere_utilizador = new GereUtilizadores();
-
-
+$utilizador = $gere_utilizador->listarUtilizador();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
     if($_GET["ativo"] == 1){
         $utilizador[$_GET["i"]]->setAtivo(false, $utilizador[$_GET["i"]]->getId());
     } elseif($_GET["ativo"] == 0) {
-        $utilizador[$i]->setAtivo(true, $utilizador[$i]->getId());
+        $utilizador[$_GET["i"]]->setAtivo(true, $utilizador[$_GET["i"]]->getId());
     } else {
         header("Location: gerir-utilizadores.php?erro=1");
     }
@@ -101,21 +99,21 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 					  </tr>
 					</thead>
                       <?php
-					  $utilizador = $gere_utilizador->listarUtilizador();
-                      if($utilizador != null) {
-                          for($i = 0; $i<count($utilizador); $i++) {
+                      $utilizadores = $gere_utilizador->listarUtilizador();
+                      if($utilizadores != null) {
+                          for($i = 0; $i<count($utilizadores); $i++) {
                       ?>
 						  <tr>
-							<td><?php echo $utilizador[$i]->getNomeCompleto(); ?></td>
-							<td><?php echo $utilizador[$i]->getUsername(); ?></td>
-							<td><?php echo $utilizador[$i]->getEmail(); ?></td>
+							<td><?php echo $utilizadores[$i]->getNomeCompleto(); ?></td>
+							<td><?php echo $utilizadores[$i]->getUsername(); ?></td>
+							<td><?php echo $utilizadores[$i]->getEmail(); ?></td>
 							<?php
-							if($utilizador[$i]->getAtivo() == 0) {
+							if($utilizadores[$i]->getAtivo() == 0) {
 							
 							?>
 							<td><span class="label label-danger">Desativo</span></td>
 							<?php
-							} elseif($utilizador[$i]->getAtivo() == 1) {
+							} elseif($utilizadores[$i]->getAtivo() == 1) {
 							?>
 							<td><span class="label label-success">Ativo</span></td>
 							<?php
@@ -130,13 +128,13 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 								<ul class="dropdown-menu">
 								  <li><i class="fa fa-fw fa-edit"></i>Editar</li>
                                     <?php
-                                        if($utilizador[$i]->getAtivo() == 1) {
+                                        if($utilizadores[$i]->getAtivo() == 1) {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $utilizador[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $utilizadores[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
                                         } else {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $utilizador[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $utilizadores[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
