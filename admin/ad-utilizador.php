@@ -2,6 +2,7 @@
 
 include_once "GereUtilizadores.php";
 include_once "sessaoAtiva.php";
+include_once "Permissoes.php";
 include_once "GerePermissoes.php";
 
 $gereUtilizadores = new GereUtilizadores();
@@ -51,8 +52,39 @@ if(
 			// usar uma foto por omissão
 			$nome_foto = "sem-foto.png";
 		}
+		
+			// Obter as permissoes
+			$permissoesUser = new Permissoes(0, 0, 0, 0, 0, 0, 0, 0);
 			
-			$gereUtilizadores->adicionarUtilizador(new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1));
+			if($_POST['total'] == 'sim') {
+				$permissoesUser->setPermTotal("1");
+			}
+
+			if($_POST['loja'] == 'sim') {
+				$permissoesUser->setPermLoja("1");
+			}
+
+			if($_POST['espaco'] == 'sim') {
+				$permissoesUser->setPermEspaco("1");
+			}
+			
+			if($_POST['inventario'] == 'sim') {
+				$permissoesUser->setPermInventario("1");
+			}
+			
+			if($_POST['acervo'] == 'sim') {
+				$permissoesUser->setPermAcervo("1");
+			}
+			
+			if($_POST['socios'] == 'sim') {
+				$permissoesUser->setPermSocios("1");
+			}
+			
+			if($_POST['museu_virtual'] == 'sim') {
+				$permissoesUser->setPermMuseuVirt("1");
+			}
+			
+			$gereUtilizadores->adicionarUtilizador(new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1), $permissoesUser);
 			//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
 	}
 	
@@ -178,7 +210,7 @@ if(
 							for($i=0; $i<count($dados); $i++){
 							?>
 												
-									<label><input  type="checkbox" aria-label="..." value ="sim" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_PERMISSAO"]?></label><br>
+									<label><input type="checkbox"  value="sim" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_NOME"]?></label><br>
 							<?php } ?> 
           </div>
                     
