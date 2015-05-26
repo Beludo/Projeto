@@ -28,7 +28,7 @@
 
 			   <div class="login-box-body">
         <p class="login-box-msg">Inicie sessão para entrar na área de administração</p>
-        <form method="post" action="login.php">
+        <form method="post" action="iniciaSessao.php">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
