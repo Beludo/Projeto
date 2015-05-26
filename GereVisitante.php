@@ -90,11 +90,10 @@ class GereVisitante {
         try {
             $user = array("V_USERNAME" => $nomeVisitante);
 
-            $registo = $this->bd->query("SELECT * FROM Visitantes WHERE V_USERNAME = :V_USERNAME", $user);
+            $registo = $this->bd->query("SELECT * FROM visitantes WHERE V_USERNAME = :V_USERNAME", $user);
 
             $id = array("V_ID" => $registo[0]["V_ID"]);
-            $permissao = $this->bd->query("SELECT P_ID FROM Visitantes_permissoes WHERE V_ID = :V_ID", $id);
-            if ($registo != null && $permissao != null) {
+            if ($registo != null) {
                 $visitante = new Visitantes($registo[0]["V_ID"], $registo[0]["V_NOMECOMPLETO"], $registo[0]["V_USERNAME"],
                     $registo[0]["V_PASSWORD"], $registo[0]["V_DATAREGISTO"],
                     $registo[0]["V_CONTATOTELEFONICO"], $registo[0]["V_EMAIL"],
