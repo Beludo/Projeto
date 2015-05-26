@@ -1,6 +1,10 @@
 <?php
 	include "sessaoAtiva.php";
 	include_once "GereVisitante.php";
+
+$gereVisitante = new GereVisitante();
+$visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
+
 ?>
 
 <!DOCTYPE html>
@@ -64,24 +68,24 @@
 								<div class="col-lg-2 col-sm-2" style="width:24%;">
 									<h4><?php echo $_SESSION["visit"]; ?></h4>
 									<div class="follow-ava">
-										<img src="http://placehold.it/128x128" height="128px" width="128px" alt="">
+										<img src="fotos/<?php echo $visitante->getFotografia()?>" height="128px" width="128px" alt="">
 									</div>
 								</div>
 								<div class="row">
 									<div class="bio-row">
-										<p><span>Nome </span>: José Tobias </p>
+										<p><span>Nome Completo </span>: <?php echo $visitante->getNomeCompleto()?> </p>
 									</div>
 									<div class="bio-row">
-										<p><span>Data de Registo </span>: 21-04-2015</p>
+										<p><span>Data de Registo </span>: <?php echo $visitante->getDataRegisto() ?> </p>
 									</div>
 									<div class="bio-row">
-										<p><span>Morada </span>: United</p>
+										<p><span>Morada </span>: <?php echo $visitante->getMorada()?> </p>
 									</div>
 									<div class="bio-row">
-										<p><span>Email </span>: jenifer@mailname.com</p>
+										<p><span>Email </span>: <?php echo $visitante->getEmail()?> </p>
 									</div>
 									<div class="bio-row">
-										<p><span>Telefone </span>: (+021) 956 789123</p>
+										<p><span>Telefone </span>: <?php echo $visitante->getContatoTelefonico()?> </p>
 									</div>
 								</div>
 							</div>
