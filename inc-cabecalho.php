@@ -34,7 +34,7 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown" role="menu" aria-labelledby="menu1" style="z-index: 1">
 					<?php
-							echo '<a id="menu1" data-toggle="dropdown" href="perfil.php">' . $_SESSION["visit"] . '<span class="caret"></span></a>';
+							echo '<a id="menu1" data-toggle="dropdown" href="area-cliente.php">' . $_SESSION["visit"] . '<span class="caret"></span></a>';
 					?>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 										<li><a href="area-cliente.php">Area de cliente</a>
