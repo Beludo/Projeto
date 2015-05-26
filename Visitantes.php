@@ -1,5 +1,5 @@
 <?php
-include "admin/acessobd.php";
+include_once "admin/acessobd.php";
 class Visitantes{
 
     private $id;
