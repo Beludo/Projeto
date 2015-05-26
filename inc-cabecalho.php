@@ -28,32 +28,36 @@
 				<li <?php echo($pagina=="informacoes" ? "class=\"active\"": ""); ?>><a href="contatos.php">Informações</a>
 				</li>
 			</ul>
-			
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown" role="menu" aria-labelledby="menu1" style="z-index: 1">
 					<?php
 						if(isset($_SESSION["user"])){
+					?>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown" role="menu" aria-labelledby="menu1" style="z-index: 1">
+					<?php
 							echo '<a id="menu1" data-toggle="dropdown" href="perfil.php">' . $_SESSION["user"] . '<span class="caret"></span></a>';
 					?>
-							<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-								<li><a href="perfil.php">Perfil</a>
-								</li>
-								<li><a href="carrinho.php">Carrinho de Compras</a>
-								</li>
-								<li><a href="login.php?logout=1">Terminar Sessão</a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+										<li><a href="area-cliente.php">Area de cliente</a>
+										</li>
+										<li><a href="carrinho.php">Carrinho de Compras</a>
+										</li>
+										<li><a href="login.php?logout=1">Terminar Sessão</a>
+										</li>
+									</ul>
 								</li>
 							</ul>
 					<?php	
 						}else{
-							echo '<a id="menu1" data-toggle="dropdown" href="login.php">Iniciar sessão<span class="caret"></span></a>';
+					?>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="login.php">Iniciar sessão</a>
+							</li>
+						</ul>
+					<?php		
 						}
 					?>
 					
-					
-					
-				</li>
-			</ul>
-
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
