@@ -12,7 +12,7 @@ class GereUtilizadores {
         $this->bd = new BaseDados();
     }
 
-    function adicionarUtilizador($utilizador){
+    function adicionarUtilizador($utilizador, $permissoes){
 		$data = time();
 
         $sql = "INSERT into utilizadores (U_NOMECOMPLETO,U_USERNAME, U_PASSWORD, U_DATAREGISTO, U_CONTATOTELEFONICO,
@@ -50,8 +50,35 @@ class GereUtilizadores {
         $idPermissao = $utilizador->getPermissao();
 		$registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $user);
         $gerePermissoes = new GerePermissoes();
-        $gerePermissoes->atribuiPermissao($registo, $$idPermissao);
+		
+		// Atribuir permissões
+		if($permissoes->getPermTotal() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "1");
+		}
 
+        if($permissoes->getPermLoja() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "2");
+		}
+
+		if($permissoes->getPermEspaco() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "3");
+		}
+		
+		if($permissoes->getPermInventario() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "4");
+		}
+		
+		if($permissoes->getPermAcervo() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "5");
+		}
+		
+		if($permissoes->getPermSocios() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "6");
+		}
+		
+		if($permissoes->getPermMuseuVirt() == 1) {
+			$gerePermissoes->atribuiPermissao($registo, "7");
+		}
     }
 	
 	/*  POR FAZERR !!!!!!!! */
