@@ -4,7 +4,7 @@ include_once "sessaoAtiva.php";
 include_once "../GereVisitante.php";
 include_once "../Visitantes.php";
 
-$gere_visitantes = new GereVisitantes();
+$gere_visitante = new GereVisitante();
 $visitante = $gere_visitante->listarVisitante();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
