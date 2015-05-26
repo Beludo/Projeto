@@ -99,35 +99,35 @@ $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 					<div id="edit-profile" class="tab-pane">
 						<section class="panel">
 							<div class="panel-body bio-graph-info">
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" role="form" method="post">
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Nome</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="name" placeholder="Insira o Nome...">
+											<input type="text" class="form-control" id="name" placeholder="Insira o Nome..." value="<?php echo $visitante->getNomeCompleto()?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Username</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="username" placeholder="Insira o Username...">
+											<input type="text" class="form-control" id="username" placeholder="Insira o Username..." value="<?php echo $visitante->getUsername()?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Telefone</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico...">
+											<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico..." value="<?php echo $visitante->getContatoTelefonico()?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Morada</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="address" placeholder="Insira a Morada...">
+											<input type="text" class="form-control" id="address" placeholder="Insira a Morada..." value="<?php echo $visitante->getMorada()?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Email</label>
 										<div class="col-lg-4">
-											<input type="email" class="form-control" id="email" placeholder="Insira o Email...">
+											<input type="email" class="form-control" id="email" placeholder="Insira o Email..." value="<?php echo $visitante->getEmail()?>">
 										</div>
 									</div>
 									<div class="form-group">
