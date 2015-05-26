@@ -1,3 +1,7 @@
+<?php
+	include "sessaoAtiva.php"
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
