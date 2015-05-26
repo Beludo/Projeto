@@ -8,42 +8,152 @@
 
 class Permissoes {
 
-    private $id;
-    private $permissao;
+    private $idUser;
+    private $permTotal;
+	private $permLoja;
+	private $permEspaco;
+	private $permInventario;
+	private $permAcervo;
+	private $permSocios;
+	private $permMuseuVirt;
 
-    function __construct($permissao){
-        $this->permissao = $permissao;
+    function __construct($idUser, $permTotal, $permLoja, $permEspaco, $permInventario, $permAcervo, $permSocios, $permMuseuVirt){
+        $this->idUser = $idUser;
+		$this->permTotal = $permTotal;
+		$this->permLoja = $permLoja;
+		$this->permEspaco = $permEspaco;
+		$this->permInventario = $permInventario;
+		$this->permAcervo = $permAcervo;
+		$this->permSocios = $permSocios;
+		$this->permMuseuVirt = $permMuseuVirt;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed idUser
      */
-    public function setId($id)
+    public function setIdUser($idUser)
     {
-        $this->id = $id;
+        $this->idUser = $idUser;
     }
 
     /**
-     * @return mixed
+     * @return mixed idUser
      */
-    public function getId()
+    public function getIdUser()
     {
-        return $this->id;
+        return $this->idUser;
+    }
+
+	/**
+     * @param mixed permTotal
+     */
+    public function setPermTotal($permTotal)
+    {
+        $this->permTotal = $permTotal;
     }
 
     /**
-     * @param mixed $permissao
+     * @return mixed permTotal
      */
-    public function setPermissao($permissao)
+    public function getPermTotal()
     {
-        $this->permissao = $permissao;
+        return $this->permTotal;
+    }
+	
+	/**
+     * @param mixed permLoja
+     */
+    public function setPermLoja($permLoja)
+    {
+        $this->permLoja = $permLoja;
     }
 
     /**
-     * @return mixed
+     * @return mixed permLoja
      */
-    public function getPermissao()
+    public function getPermLoja()
     {
-        return $this->permissao;
+        return $this->permLoja;
     }
+	
+	/**
+     * @param mixed permEspaco
+     */
+    public function setPermEspaco($permEspaco)
+    {
+        $this->permEspaco = $permEspaco;
+    }
+
+    /**
+     * @return mixed permEspaco
+     */
+    public function getPermEspaco()
+    {
+        return $this->permEspaco;
+    }
+	
+	/**
+     * @param mixed permInventario
+     */
+    public function setPermInventario($permInventario)
+    {
+        $this->permInventario = $permInventario;
+    }
+
+    /**
+     * @return mixed permInventario
+     */
+    public function getPermInventario()
+    {
+        return $this->permInventario;
+    }
+	
+	/**
+     * @param mixed permAcervo
+     */
+    public function setPermAcervo($permAcervo)
+    {
+        $this->permAcervo = $permAcervo;
+    }
+
+    /**
+     * @return mixed permAcervo
+     */
+    public function getPermAcervo()
+    {
+        return $this->permAcervo;
+    }
+	
+	/**
+     * @param mixed permSocios
+     */
+    public function setPermSocios($permSocios)
+    {
+        $this->permSocios = $permSocios;
+    }
+
+    /**
+     * @return mixed permSocios
+     */
+    public function getPermSocios()
+    {
+        return $this->permSocios;
+    }
+	
+	/**
+     * @param mixed permMuseuVirt
+     */
+    public function setPermMuseuVirt($permMuseuVirt)
+    {
+        $this->permMuseuVirt = $permMuseuVirt;
+    }
+
+    /**
+     * @return mixed permMuseuVirt
+     */
+    public function getPermMuseuVirt()
+    {
+        return $this->permMuseuVirt;
+    }
+	
 } 
