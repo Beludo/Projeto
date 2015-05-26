@@ -61,8 +61,7 @@
 
 							<div class="panel-body bio-graph-info">
 								<div class="col-lg-2 col-sm-2" style="width:24%;">
-									<h4>Zé Tobias</h4>
-									<h6>Administrador</h6>
+									<h4><?php echo $_SESSION["visit"]; ?></h4>
 									<div class="follow-ava">
 										<img src="http://placehold.it/128x128" alt="">
 									</div>

@@ -44,7 +44,7 @@ if(
             $visitante->getAtivo() == 1){
 
             // Guardar o nome de utilizador da sessão
-            $_SESSION["user"] = $visitante->getUsername();
+            $_SESSION["visit"] = $visitante->getUsername();
                 header("Location: index.php");
             }else{
             header("Location: login.php?erro=1");
