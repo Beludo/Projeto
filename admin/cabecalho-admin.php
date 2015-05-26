@@ -220,26 +220,14 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 				  <li class="user-header">
 					<img src="fotos/<?php echo $utilizador->getFotografia(); ?>" class="img-circle" alt="User Image" />
 					<p>
-					  <?php echo $_SESSION["user"]; ?> - Administrador
+					  <?php echo $_SESSION["user"]; ?>
 					  <small>Membro desde Abril de 2015</small>
 					</p>
-				  </li>
-				  <!-- Menu Body -->
-				  <li class="user-body">
-					<div class="col-xs-4 text-center">
-					  <a href="#">Opção 1</a>
-					</div>
-					<div class="col-xs-4 text-center">
-					  <a href="#">Opção 2</a>
-					</div>
-					<div class="col-xs-4 text-center">
-					  <a href="#">Opção 3</a>
-					</div>
-				  </li>
+					</li>
 				  <!-- Menu Footer-->
 				  <li class="user-footer">
 					<div class="pull-left">
-					  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+					  <a href="perfil.php" class="btn btn-default btn-flat">Perfil</a>
 					</div>
 					<div class="pull-right">
 					  <a href="login.php?logout=1" class="btn btn-default btn-flat">Terminar sessão</a>
