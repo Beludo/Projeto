@@ -63,7 +63,10 @@ function forcaPassword() {
     else if(password.length >= 6) {
         document.getElementById('div-forca-password').innerHTML = "<br>Password média";
     }
+	else if(password.length >= 1) {
+        document.getElementById('div-forca-password').innerHTML = "<br>Password média";
+    }
     else {
-        document.getElementById('div-forca-password').innerHTML = "<br>Password fraca";
+        document.getElementById('div-forca-password').innerHTML = "";
     }
 }
