@@ -133,7 +133,6 @@ $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-10">
 											<button type="submit" class="btn btn-primary">Guardar</button>
-											<button type="button" class="btn btn-danger">Cancelar</button>
 										</div>
 									</div>
 								</form>
