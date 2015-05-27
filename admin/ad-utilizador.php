@@ -126,6 +126,12 @@ if(
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
+	
+	<!-- AJAX para ver so o utilizador já está registado -->
+	<script src="ajax-username.js" ></script>
+	
+	<!-- Verificações no formulario -->
+	<script src="verificacoes-form.js" ></script>
   </head>
   <body class="skin-blue">
 	<div class="wrapper">
@@ -164,12 +170,12 @@ if(
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome completo</label>
-					  <input type="text" class="form-control" placeholder="Insira o nome" name="nome"/>
+					  <input type="text" class="form-control" placeholder="Insira o nome" id="nome" name="nome"/>
 					</div>
-					<div class="form-group has-error">
+					<div class="form-group" id="div-username-ajax">
 					  <label>Nome de utilizador</label>
-					  <br><label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Já existe alguém com este nome de utilizador</label><br>
-					  <input type="text" class="form-control" placeholder="Insira o nome de utilizador" name="username"/>
+					  <div id="div-caixa-erro-username"></div>
+					  <input type="text" class="form-control" placeholder="Insira o nome de utilizador" id="username" name="username" onKeyUp="verificaUsernameExiste();"/>
 					</div>
 					<div class="form-group">
 					  <label>Morada</label>
@@ -179,19 +185,20 @@ if(
 					  <label>Contacto telefonico</label>
 					  <input type="text" class="form-control" placeholder="Insira o numero de telefone" name="telefone"/>
 					</div>
-					<div class="form-group has-warning">
-					  <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Password demasiado simples!</label>
-					  <br><label for="exampleInputPassword1">Password</label>
-					  <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+					<div class="form-group">
+					  <label for="exampleInputPassword1">Password</label>
+					  <input type="password" class="form-control" id="password" name="password" placeholder="Password" onKeyUp="forcaPassword();" onBlur="verificaPasswords();">
+					  <div id="div-barra-forca-password" name="div-barra-forca-password" class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 20px;"></div>
+					  <div id="div-forca-password"></div>
 					</div>
-					<div class="form-group has-error">
-					  <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> As passwords não são iguais!</label>
-					  <br><label for="exampleInputPassword1">Confirmar Password</label>
-					  <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a password">
+					
+					<div id="div-password-utilizador" class="form-group">
+					  <label for="exampleInputPassword1">Confirmar Password</label>
+					  <div id="div-caixa-erro-password"></div>
+					  <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a password" onBlur="verificaPasswords();">
 					</div>
-					<div class="form-group has-success">
-					  <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> O Email ta OK</label>
-					  <br><label for="exampleInputEmail1">Email</label>
+					<div class="form-group">
+					  <label for="exampleInputEmail1">Email</label>
 					  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email" name="email">
 					</div>
 					<div class="form-group<?php echo $p_erro1; ?>">
