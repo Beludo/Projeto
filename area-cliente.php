@@ -146,7 +146,13 @@ $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 							<div class="panel-body bio-graph-info">
 								<form class="form-horizontal" role="form">
 									<div class="form-group">
-										<label class="col-lg-3 control-label">Palavra-Passe</label>
+										<label class="col-lg-3 control-label">Palavra-Passe Antiga</label>
+										<div class="col-lg-4">
+											<input type="text" class="form-control" id="password-antiga" placeholder="Insira a Palavra-Passe...">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label">Palavra-Passe Nova</label>
 										<div class="col-lg-4">
 											<input type="text" class="form-control" id="password" placeholder="Insira a Palavra-Passe...">
 										</div>
@@ -154,7 +160,7 @@ $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Confirmar Palavra-Passe</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="password" placeholder="Confirme a Palavra-Passe...">
+											<input type="text" class="form-control" id="confirma-password" placeholder="Confirme a Palavra-Passe...">
 										</div>
 									</div>
 									<div class="form-group">
