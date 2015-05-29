@@ -57,10 +57,13 @@
             <div class="col-xs-5">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Iniciar Sessão"/>
             </div><!-- /.col -->
+						<div class="col-xs-5">
+							<a href="ad-visitante.php"  class="btn btn-success btn-block btn-flat">Registar</a>
+            </div><!-- /.col -->
           </div>
         </form>
 
-        <a href="rec-password.php">Esqueci-me da palavra-passe</a><br>
+        <br><a href="rec-password.php">Esqueci-me da palavra-passe</a><br>
 
       </div><!-- /.login-box-body -->
 		</div>
