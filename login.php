@@ -58,7 +58,7 @@
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Iniciar Sessão"/>
             </div><!-- /.col -->
 						<div class="col-xs-6">
-							<a href="ad-visitante.php"  class="btn btn-success btn-block btn-flat">Registar</a>
+							<a href="registo-visitante.php"  class="btn btn-success btn-block btn-flat">Registar</a>
             </div><!-- /.col -->
           </div>
         </form>
