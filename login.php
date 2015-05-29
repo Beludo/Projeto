@@ -54,10 +54,10 @@
               }
               ?>
           <div class="row">
-            <div class="col-xs-5">
+            <div class="col-xs-6">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Iniciar Sessão"/>
             </div><!-- /.col -->
-						<div class="col-xs-5">
+						<div class="col-xs-6">
 							<a href="ad-visitante.php"  class="btn btn-success btn-block btn-flat">Registar</a>
             </div><!-- /.col -->
           </div>

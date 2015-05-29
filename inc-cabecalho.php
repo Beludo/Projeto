@@ -80,15 +80,15 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
+								<a href="mostra-evento.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
 								</a>
 							</div>
 							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
+								<a href="mostra-evento.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
 								</a>
 							</div>
 							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
+								<a href="mostra-evento.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
 								</a>
 							</div>
 						</div>
