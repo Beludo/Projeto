@@ -59,12 +59,15 @@ function forcaPassword() {
 	// Mostrar uma descrição
     if(pontuacao >= 12) {
         document.getElementById('div-forca-password').innerHTML = "<br>Password forte";
+		document.getElementById("div-barra-forca-password").className = "progress-bar progress-bar-green";
     }
     else if(password.length >= 6) {
         document.getElementById('div-forca-password').innerHTML = "<br>Password média";
+		document.getElementById("div-barra-forca-password").className = "progress-bar progress-bar-yellow";
     }
 	else if(password.length >= 1) {
         document.getElementById('div-forca-password').innerHTML = "<br>Password média";
+		document.getElementById("div-barra-forca-password").className = "progress-bar progress-bar-red";
     }
     else {
         document.getElementById('div-forca-password').innerHTML = "";
