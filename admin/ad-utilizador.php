@@ -1,7 +1,7 @@
 <?php
 
-include_once "GereUtilizadores.php";
 include_once "sessaoAtiva.php";
+include_once "GereUtilizadores.php";
 include_once "Permissoes.php";
 include_once "GerePermissoes.php";
 
