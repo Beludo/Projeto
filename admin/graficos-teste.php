@@ -76,7 +76,6 @@ include_once "sessaoAtiva.php";
 									</div>
 									<input class="form-control pull-right" id="reservationtime" type="text">
 								</div><!-- /.input group -->
-								<br>
 								<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
   <div id="material"></div>		
 							</div>
@@ -151,32 +150,46 @@ include_once "sessaoAtiva.php";
 			//[new Date(year, month, day, hours, minutes, seconds, milliseconds),  temperatura,  humidade]
       data.addRows([
         [new Date(2014, 0, 2, 10, 30),  -.5,  5.7],
-        [new Date(2014, 0, 10),   .4,  8.7],
-        [new Date(2014, 0, 20),   .5,   12]      
+				 [new Date(2014, 0, 2, 12, 30),  -.5,  5.7],
+        [new Date(2014, 0, 6, 9, 50),   .4,  8.7],
+        [new Date(2014, 0, 11, 17, 40),   .5,   12]      
       ]);
 
       var materialOptions = {
-        chart: {
-          title: 'Gráfico de Temperatura e Humidade'
-        },
+        title: 'Gráfico da Temperatura e Humidade',
         width: 900,
         height: 500,
+        // Gives each series an axis that matches the vAxes number below.
         series: {
-          // Gives each series an axis name that matches the Y-axis below.
-          0: {axis: 'Temps'},
-          1: {axis: 'Daylight'}
+          0: {targetAxisIndex: 0},
+          1: {targetAxisIndex: 1}
         },
-        axes: {
-          // Adds labels to each axis; they don't have to match the axis names.
-          y: {
-            Temps: {label: 'Temperatura (ºC)'},
-            Daylight: {label: 'Humidade (%)'}
-          }
-        }
+        vAxes: {
+          // Adds titles to each axis.
+          0: {title: 'Temperatura (ºC)'},
+          1: {title: 'Humidade (%)'}
+        }, pointSize:5
       };
+			
+			/*
+			**Como definir até onde vai o eixo do x**
+			 hAxis: {
+          ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
+                  new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
+                  new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
+                 ]
+        },
+				**Como definir até onde vai o eixo do y**
+        vAxis: {
+          viewWindow: {
+            max: 30
+          }
+			
+			
+			*/
 
 
-      materialChart = new google.charts.Line(materialDiv);
+      materialChart = new google.visualization.LineChart(materialDiv);
       materialChart.draw(data, materialOptions);
 
     }
