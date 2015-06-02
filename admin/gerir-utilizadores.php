@@ -129,7 +129,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 								  <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-								  <li><a href="editar-utilizador.php"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+								  <li><a href="editar-utilizador.php?id=<?php echo $utilizadores[$i]->getId() ?>"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
                                     <?php
                                         if($utilizadores[$i]->getAtivo() == 1) {
                                             ?>
