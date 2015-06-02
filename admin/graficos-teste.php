@@ -77,13 +77,6 @@ include_once "sessaoAtiva.php";
 									<input class="form-control pull-right" id="reservationtime" type="text">
 								</div><!-- /.input group -->
 							</div>
-							<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
-     <button id="change-chart">Change to Classic</button>
-  <br><br>
-  <div id="classic" class="hide"></div>
-  <div id="material"></div>
-
-							
 							<div class="box-footer">
 								<button type="submit" class="btn btn-primary">Atualizar gráficos</button>
 							</div>
@@ -93,8 +86,32 @@ include_once "sessaoAtiva.php";
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 		
-
-			
+			<div class="row">
+			  <div class="col-md-6">
+				  <!-- Line chart -->
+				  <div class="box box-primary">
+					<div class="box-header">
+					  <i class="fa fa-bar-chart-o"></i>
+					  <h3 class="box-title">Sensor 1 - Temperatura</h3>
+					</div>     
+						<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+  <div id="material"></div>				
+				  </div><!-- /.box -->
+				</div>
+				
+				<div class="col-md-6">
+              <!-- Bar chart -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <i class="fa fa-bar-chart-o"></i>
+                  <h3 class="box-title">Historico</h3>
+                </div>
+                <div class="box-body">
+                  <div id="bar-chart" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 22px; text-align: center;">January</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 96px; text-align: center;">February</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 180px; text-align: center;">March</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 261px; text-align: center;">April</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 339px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 414px; text-align: center;">June</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 270px; left: 7px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 203px; left: 7px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 135px; left: 1px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 68px; left: 1px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">20</div></div></div><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-overlay"></canvas></div>
+                </div><!-- /.box-body-->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+			</div><!-- /.row -->
 		  
 		</section><!-- /.content -->
 	  </div><!-- /.content-wrapper -->
@@ -139,19 +156,17 @@ include_once "sessaoAtiva.php";
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
     <script src="../../plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 	
-	<!-- Script do seletor de data/hora -->
+	<!-- Script do seletor de data/hora -->	
     <script type="text/javascript">
 			
-			    google.load('visualization', '1.1', {packages: ['line', 'corechart']});
+			//funcao do grafico
+			google.load('visualization', '1.1', {packages: ['line', 'corechart']});
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
  
       var materialChart;
-      var classicChart;
-      var button = document.getElementById('change-chart');
-      var materialDiv = document.getElementById('material');
-      var classicDiv = document.getElementById('classic');
+       var materialDiv = document.getElementById('material');
 
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Month');
@@ -193,51 +208,14 @@ include_once "sessaoAtiva.php";
         }
       };
 
-      var classicOptions = {
-        title: 'Average Temperatures and Daylight in Iceland Throughout the Year',
-        width: 900,
-        height: 500,
-        // Gives each series an axis that matches the vAxes number below.
-        series: {
-          0: {targetAxisIndex: 0},
-          1: {targetAxisIndex: 1}
-        },
-        vAxes: {
-          // Adds titles to each axis.
-          0: {title: 'Temps (Celsius)'},
-          1: {title: 'Daylight'}
-        },
-        hAxis: {
-          ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
-                  new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
-                  new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
-                 ]
-        },
-        vAxis: {
-          viewWindow: {
-            max: 30
-          }
-        }
-      };
 
       materialChart = new google.charts.Line(materialDiv);
-      classicChart = new google.visualization.LineChart(classicDiv);
-
-      classicChart.draw(data, classicOptions);
       materialChart.draw(data, materialOptions);
 
-      button.onclick = function () {
-        materialDiv.classList.toggle('hide');
-        classicDiv.classList.toggle('hide');
-
-        if (materialDiv.classList.contains('hide')) {
-          button.innerText = 'Change to Material';
-        } else {
-          button.innerText = 'Change to Classic';
-        }
-
-      };
     }
+			
+			//funcao para adicionar data/hora -->
+			
       $(function () {
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
@@ -305,256 +283,6 @@ include_once "sessaoAtiva.php";
 		  "bInfo": true,
 		  "bAutoWidth": false
 		});
-		
-		<!-- Script para mostrar os gráficos -->
-		/*
-         * Flot Interactive Chart
-         * -----------------------
-         */
-        // We use an inline data source in the example, usually data would
-        // be fetched from a server
-        var data = [], totalPoints = 100;
-        function getRandomData() {
-
-          if (data.length > 0)
-            data = data.slice(1);
-
-          // Do a random walk
-          while (data.length < totalPoints) {
-
-            var prev = data.length > 0 ? data[data.length - 1] : 50,
-                    y = prev + Math.random() * 10 - 5;
-
-            if (y < 0) {
-              y = 0;
-            } else if (y > 100) {
-              y = 100;
-            }
-
-            data.push(y);
-          }
-
-          // Zip the generated y values with the x values
-          var res = [];
-          for (var i = 0; i < data.length; ++i) {
-            res.push([i, data[i]]);
-          }
-
-          return res;
-        }
-
-        var interactive_plot = $.plot("#interactive", [getRandomData()], {
-          grid: {
-            borderColor: "#f3f3f3",
-            borderWidth: 1,
-            tickColor: "#f3f3f3"
-          },
-          series: {
-            shadowSize: 0, // Drawing is faster without shadows
-            color: "#3c8dbc"
-          },
-          lines: {
-            fill: true, //Converts the line chart to area chart
-            color: "#3c8dbc"
-          },
-          yaxis: {
-            min: 0,
-            max: 100,
-            show: true
-          },
-          xaxis: {
-            show: true
-          }
-        });
-
-        var updateInterval = 500; //Fetch data ever x milliseconds
-        var realtime = "on"; //If == to on then fetch data every x seconds. else stop fetching
-        function update() {
-
-          interactive_plot.setData([getRandomData()]);
-
-          // Since the axes don't change, we don't need to call plot.setupGrid()
-          interactive_plot.draw();
-          if (realtime === "on")
-            setTimeout(update, updateInterval);
-        }
-
-        //INITIALIZE REALTIME DATA FETCHING
-        if (realtime === "on") {
-          update();
-        }
-        //REALTIME TOGGLE
-        $("#realtime .btn").click(function () {
-          if ($(this).data("toggle") === "on") {
-            realtime = "on";
-          }
-          else {
-            realtime = "off";
-          }
-          update();
-        });
-        /*
-         * END INTERACTIVE CHART
-         */
-
-
-        /*
-         * LINE CHART
-         * ----------
-         */
-        //LINE randomly generated data
-
-        var sin = [], cos = [];
-        for (var i = 0; i < 14; i += 0.5) {
-          sin.push([i, Math.sin(i)]);
-          cos.push([i, Math.cos(i)]);
-        }
-        var line_data1 = {
-          data: sin,
-          color: "#3c8dbc"
-        };
-        var line_data2 = {
-          data: cos,
-          color: "#00c0ef"
-        };
-        $.plot("#line-chart", [line_data1, line_data2], {
-          grid: {
-            hoverable: true,
-            borderColor: "#f3f3f3",
-            borderWidth: 1,
-            tickColor: "#f3f3f3"
-          },
-          series: {
-            shadowSize: 0,
-            lines: {
-              show: true
-            },
-            points: {
-              show: true
-            }
-          },
-          lines: {
-            fill: false,
-            color: ["#3c8dbc", "#f56954"]
-          },
-          yaxis: {
-            show: true,
-          },
-          xaxis: {
-            show: true
-          }
-        });
-        //Initialize tooltip on hover
-        $("<div class='tooltip-inner' id='line-chart-tooltip'></div>").css({
-          position: "absolute",
-          display: "none",
-          opacity: 0.8
-        }).appendTo("body");
-        $("#line-chart").bind("plothover", function (event, pos, item) {
-
-          if (item) {
-            var x = item.datapoint[0].toFixed(2),
-                    y = item.datapoint[1].toFixed(2);
-
-            $("#line-chart-tooltip").html(item.series.label + " of " + x + " = " + y)
-                    .css({top: item.pageY + 5, left: item.pageX + 5})
-                    .fadeIn(200);
-          } else {
-            $("#line-chart-tooltip").hide();
-          }
-
-        });
-        /* END LINE CHART */
-
-        /*
-         * FULL WIDTH STATIC AREA CHART
-         * -----------------
-         */
-        var areaData = [[2, 88.0], [3, 93.3], [4, 102.0], [5, 108.5], [6, 115.7], [7, 115.6],
-          [8, 124.6], [9, 130.3], [10, 134.3], [11, 141.4], [12, 146.5], [13, 151.7], [14, 159.9],
-          [15, 165.4], [16, 167.8], [17, 168.7], [18, 169.5], [19, 168.0]];
-        $.plot("#area-chart", [areaData], {
-          grid: {
-            borderWidth: 0
-          },
-          series: {
-            shadowSize: 0, // Drawing is faster without shadows
-            color: "#00c0ef"
-          },
-          lines: {
-            fill: true //Converts the line chart to area chart
-          },
-          yaxis: {
-            show: false
-          },
-          xaxis: {
-            show: false
-          }
-        });
-
-        /* END AREA CHART */
-
-        /*
-         * BAR CHART
-         * ---------
-         */
-
-        var bar_data = {
-          data: [["January", 10], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["June", 9]],
-          color: "#3c8dbc"
-        };
-        $.plot("#bar-chart", [bar_data], {
-          grid: {
-            borderWidth: 1,
-            borderColor: "#f3f3f3",
-            tickColor: "#f3f3f3"
-          },
-          series: {
-            bars: {
-              show: true,
-              barWidth: 0.5,
-              align: "center"
-            }
-          },
-          xaxis: {
-            mode: "categories",
-            tickLength: 0
-          }
-        });
-        /* END BAR CHART */
-
-        /*
-         * DONUT CHART
-         * -----------
-         */
-
-        var donutData = [
-          {label: "Series2", data: 30, color: "#3c8dbc"},
-          {label: "Series3", data: 20, color: "#0073b7"},
-          {label: "Series4", data: 50, color: "#00c0ef"}
-        ];
-        $.plot("#donut-chart", donutData, {
-          series: {
-            pie: {
-              show: true,
-              radius: 1,
-              innerRadius: 0.5,
-              label: {
-                show: true,
-                radius: 2 / 3,
-                formatter: labelFormatter,
-                threshold: 0.1
-              }
-
-            }
-          },
-          legend: {
-            show: false
-          }
-        });
-        /*
-         * END DONUT CHART
-         */
 		
       });
 	  
