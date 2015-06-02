@@ -76,6 +76,9 @@ include_once "sessaoAtiva.php";
 									</div>
 									<input class="form-control pull-right" id="reservationtime" type="text">
 								</div><!-- /.input group -->
+								<br>
+								<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+  <div id="material"></div>		
 							</div>
 							<div class="box-footer">
 								<button type="submit" class="btn btn-primary">Atualizar gráficos</button>
@@ -85,34 +88,6 @@ include_once "sessaoAtiva.php";
 				  </div><!-- /.box -->
 				</div><!-- /.col -->
 			</div><!-- /.row -->
-		
-			<div class="row">
-			  <div class="col-md-6">
-				  <!-- Line chart -->
-				  <div class="box box-primary">
-					<div class="box-header">
-					  <i class="fa fa-bar-chart-o"></i>
-					  <h3 class="box-title">Sensor 1 - Temperatura</h3>
-					</div>     
-						<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
-  <div id="material"></div>				
-				  </div><!-- /.box -->
-				</div>
-				
-				<div class="col-md-6">
-              <!-- Bar chart -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="fa fa-bar-chart-o"></i>
-                  <h3 class="box-title">Historico</h3>
-                </div>
-                <div class="box-body">
-                  <div id="bar-chart" style="height: 300px; padding: 0px; position: relative;"><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-base"></canvas><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text"><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-x-axis flot-x1-axis xAxis x1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 22px; text-align: center;">January</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 96px; text-align: center;">February</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 180px; text-align: center;">March</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 261px; text-align: center;">April</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 339px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 77px; top: 283px; left: 414px; text-align: center;">June</div></div><div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis"><div class="flot-tick-label tickLabel" style="position: absolute; top: 270px; left: 7px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 203px; left: 7px; text-align: right;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 135px; left: 1px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 68px; left: 1px; text-align: right;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">20</div></div></div><canvas height="300" width="467" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 467px; height: 300px;" class="flot-overlay"></canvas></div>
-                </div><!-- /.box-body-->
-              </div><!-- /.box -->
-            </div><!-- /.col -->
-			</div><!-- /.row -->
-		  
 		</section><!-- /.content -->
 	  </div><!-- /.content-wrapper -->
 	  
@@ -169,28 +144,20 @@ include_once "sessaoAtiva.php";
        var materialDiv = document.getElementById('material');
 
       var data = new google.visualization.DataTable();
-      data.addColumn('date', 'Month');
-      data.addColumn('number', "Average Temperature");
-      data.addColumn('number', "Average Hours of Daylight");
+      data.addColumn('date', 'Month', 'day');
+      data.addColumn('number', "Temperatura");
+      data.addColumn('number', "Humidade");
 
+			//[new Date(year, month, day, hours, minutes, seconds, milliseconds),  temperatura,  humidade]
       data.addRows([
-        [new Date(2014, 0),  -.5,  5.7],
-        [new Date(2014, 1),   .4,  8.7],
-        [new Date(2014, 2),   .5,   12],
-        [new Date(2014, 3),  2.9, 15.3],
-        [new Date(2014, 4),  6.3, 18.6],
-        [new Date(2014, 5),    9, 20.9],
-        [new Date(2014, 6), 10.6, 19.8],
-        [new Date(2014, 7), 10.3, 16.6],
-        [new Date(2014, 8),  7.4, 13.3],
-        [new Date(2014, 9),  4.4,  9.9],
-        [new Date(2014, 10), 1.1,  6.6],
-        [new Date(2014, 11), -.2,  4.5]
+        [new Date(2014, 0, 2, 10, 30),  -.5,  5.7],
+        [new Date(2014, 0, 10),   .4,  8.7],
+        [new Date(2014, 0, 20),   .5,   12]      
       ]);
 
       var materialOptions = {
         chart: {
-          title: 'Average Temperatures and Daylight in Iceland Throughout the Year'
+          title: 'Gráfico de Temperatura e Humidade'
         },
         width: 900,
         height: 500,
@@ -202,8 +169,8 @@ include_once "sessaoAtiva.php";
         axes: {
           // Adds labels to each axis; they don't have to match the axis names.
           y: {
-            Temps: {label: 'Temps (Celsius)'},
-            Daylight: {label: 'Daylight'}
+            Temps: {label: 'Temperatura (ºC)'},
+            Daylight: {label: 'Humidade (%)'}
           }
         }
       };
