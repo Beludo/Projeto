@@ -1,5 +1,5 @@
 <?php
-	include "sessaoAtiva.php"
+	include "sessaoAtiva.php";
 ?>
 
 <!DOCTYPE html>
@@ -38,9 +38,9 @@
 								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho de Compras</h5>
 							</div>
 							<div class="col-xs-6">
-								<button type="button" class="btn btn-primary btn-sm pull-right">
-									<span class="glyphicon glyphicon-share-alt"></span> Continuar a Comprar
-								</button>
+								<a href='loja.php' type="button" class="btn btn-primary btn-sm pull-right">
+									<span class="glyphicon glyphicon-share-alt"></span>Continuar a Comprar
+								</a>
 							</div>
 						</div>
 					</div>
@@ -50,15 +50,15 @@
 						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 						</div>
 						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Nome do Produto</strong></h4>
+							<h4 class="product-name"><strong><?php echo $products[$product_id]['name'] ?></strong></h4>
 							<h4><small>Descrição do Produto</small></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+								<h6><strong><?php echo $products[$product_id]['price'] ?><span class="text-muted">x</span></strong></h6>
 							</div>
 							<div class="col-xs-4">
-								<input type="text" class="form-control input-sm" value="1">
+								<input type="text" class="form-control input-sm" value="<?php echo $product['quantity'] ?>">
 							</div>
 							<div class="col-xs-2">
 								<button type="button" class="btn btn-link btn-xs">
@@ -104,9 +104,9 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<div class="row text-center">
+					<div class="row text-center"> 
 						<div class="col-xs-9">
-							<h4 class="text-right">Total <strong>€50.00</strong></h4>
+							<h4 class="text-right"><strong><?php echo $total_price ?></strong></h4>
 						</div>
 						<div class="col-xs-3">
 							<button type="button" class="btn btn-success btn-block">

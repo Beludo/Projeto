@@ -37,7 +37,7 @@
 							echo '<a id="menu1" data-toggle="dropdown" href="area-cliente.php">' . $_SESSION["visit"] . '<span class="caret"></span></a>';
 					?>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-										<li><a href="area-cliente.php">Area de cliente</a>
+										<li><a href="area-cliente.php">Área de cliente</a>
 										</li>
 										<li><a href="carrinho.php">Carrinho de Compras</a>
 										</li>
