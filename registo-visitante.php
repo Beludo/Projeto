@@ -134,7 +134,6 @@
 										<input type="email" class="form-control" id="email" placeholder="Insira o Email..." value="">
 									</div>
 								</div>
-								
 								<div class="form-group">
 									<label class="col-lg-3 control-label" for="exampleInputPassword1">Password</label>
 									<div class="col-lg-4">
@@ -149,12 +148,6 @@
 									<div class="col-lg-4">
 										<div id="div-caixa-erro-password"></div>
 										<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a password" onBlur="verificaPasswords();">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-lg-3 control-label" for="exampleInputEmail1">Email</label>
-									<div class="col-lg-4">
-										<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email" name="email">
 									</div>
 								</div>
 								<div class="form-group<?php echo $p_erro1; ?>">
