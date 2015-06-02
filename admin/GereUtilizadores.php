@@ -30,6 +30,7 @@ class GereUtilizadores {
             'U_FOTOGRAFIA' => $utilizador->getFotografia(),
             'U_ATIVO' => $utilizador->getAtivo()
         );
+        $nomeCompleto = $utilizador->getNomeCompleto();
 		/*
 		echo
             $utilizador->getNomeCompleto() . "<br>" .
@@ -46,38 +47,38 @@ class GereUtilizadores {
 
         $this->bd->inserir($sql, $dados_utilizador);
 
-        $user = array('U_NOME_COMPLETO' => $utilizador->getNomeCompleto());
-        $idPermissao = $utilizador->getPermissao();
-		$registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $user);
+        $user = array('U_NOMECOMPLETO' => $nomeCompleto);
+        $registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_NOMECOMPLETO = :U_NOMECOMPLETO", $user);
         $gerePermissoes = new GerePermissoes();
-		
+
 		// Atribuir permissões
-		if($permissoes->getPermTotal() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "1");
+
+		if($permissoes->getPermTotal() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 1);
 		}
 
-        if($permissoes->getPermLoja() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "2");
+        if($permissoes->getPermLoja() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 2);
 		}
 
-		if($permissoes->getPermEspaco() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "3");
+		if($permissoes->getPermEspaco() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 3);
 		}
 		
-		if($permissoes->getPermInventario() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "4");
+		if($permissoes->getPermInventario() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 4);
 		}
 		
-		if($permissoes->getPermAcervo() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "5");
+		if($permissoes->getPermAcervo() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 5);
 		}
 		
-		if($permissoes->getPermSocios() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "6");
+		if($permissoes->getPermSocios() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 6);
 		}
 		
-		if($permissoes->getPermMuseuVirt() == 1) {
-			$gerePermissoes->atribuiPermissao($registo, "7");
+		if($permissoes->getPermMuseuVirt() == "sim") {
+			$gerePermissoes->atribuiPermissao($registo[0]["U_ID"], 7);
 		}
     }
 	

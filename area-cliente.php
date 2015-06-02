@@ -5,6 +5,21 @@
 $gereVisitante = new GereVisitante();
 $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 
+if(
+    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+    isset($_POST["username"]) && !empty($_POST["username"]) &&
+    isset($_POST["morada"]) && !empty($_POST["morada"]) &&
+    isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
+    isset($_POST["email"]) && !empty($_POST["email"])){
+
+    $visitante->setNomeCompleto($_POST["nome"]);
+    $visitante->setUsername($_POST["username"]);
+    $visitante->setMorada($_POST["morada"]);
+    $visitante->setContatoTelefonico($_POST["telefone"]);
+    $visitante->setEmail($_POST["email"]);
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -99,35 +114,35 @@ $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 					<div id="edit-profile" class="tab-pane">
 						<section class="panel">
 							<div class="panel-body bio-graph-info">
-								<form class="form-horizontal" role="form" method="post">
+								<form class="form-horizontal" role="form" method="post" action="area-cliente.php">
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Nome</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="name" placeholder="Insira o Nome..." value="<?php echo $visitante->getNomeCompleto()?>">
+											<input type="text" class="form-control" id="name" placeholder="Insira o Nome..." value="<?php echo $visitante->getNomeCompleto()?>" name="nome">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Username</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="username" placeholder="Insira o Username..." value="<?php echo $visitante->getUsername()?>">
+											<input type="text" class="form-control" id="username" placeholder="Insira o Username..." value="<?php echo $visitante->getUsername()?>" name="username">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Telefone</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico..." value="<?php echo $visitante->getContatoTelefonico()?>">
+											<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico..." value="<?php echo $visitante->getContatoTelefonico()?>" name="telefone">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Morada</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="address" placeholder="Insira a Morada..." value="<?php echo $visitante->getMorada()?>">
+											<input type="text" class="form-control" id="address" placeholder="Insira a Morada..." value="<?php echo $visitante->getMorada()?>" name="morada">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Email</label>
 										<div class="col-lg-4">
-											<input type="email" class="form-control" id="email" placeholder="Insira o Email..." value="<?php echo $visitante->getEmail()?>">
+											<input type="email" class="form-control" id="email" placeholder="Insira o Email..." value="<?php echo $visitante->getEmail()?>" name ="email">
 										</div>
 									</div>
 									<div class="form-group">

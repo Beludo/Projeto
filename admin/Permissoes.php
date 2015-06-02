@@ -31,8 +31,7 @@ class Permissoes {
     /**
      * @param mixed idUser
      */
-    public function setIdUser($idUser)
-    {
+    public function setIdUser($idUser){
         $this->idUser = $idUser;
     }
 

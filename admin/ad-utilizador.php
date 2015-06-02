@@ -19,6 +19,7 @@ if(
 	isset($_POST["password2"]) && !empty($_POST["password2"]) &&
 	isset($_POST["email"]) && !empty($_POST["email"])
 	){
+        $permissoesUser = new Permissoes(0, "nao", "nao", "nao", "nao", "nao", "nao", "nao");
 		// verificar se foi escolhido um ficheiro de foto
 		if(file_exists($_FILES["foto"]["tmp_name"])){
 		
@@ -52,40 +53,61 @@ if(
 			// usar uma foto por omissão
 			$nome_foto = "sem-foto.png";
 		}
-		
-			// Obter as permissoes
-			$permissoesUser = new Permissoes(0, 0, 0, 0, 0, 0, 0, 0);
-			
-			if($_POST['total'] == 'sim') {
-				$permissoesUser->setPermTotal("1");
+        $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 0);
+
+    // Obter as permissoes
+
+        $modifica = false;
+			if(isset($_POST['total']) && !empty($_POST['total']) && $_POST['total'] == 1) {
+
+                $permissoesUser->setPermTotal("sim");
+                $modifica = true;
+
+			}
+            if(isset($_POST['loja']) && !empty($_POST['loja']) && $_POST['loja'] == 2) {
+
+				$permissoesUser->setPermLoja("sim");
+                $modifica = true;
+
+            }
+            if(isset($_POST['espaco']) && !empty($_POST['espaco']) && $_POST['espaco'] == 3) {
+
+				$permissoesUser->setPermEspaco("sim");
+                $modifica = true;
+
+			}
+            if(isset($_POST['inventario']) && !empty($_POST['inventario']) && $_POST['inventario'] == 4) {
+
+				$permissoesUser->setPermInventario("sim");
+                $modifica = true;
+
+			}
+            if(isset($_POST['acervo']) && !empty($_POST['acervo']) && $_POST['acervo'] == 5) {
+
+				$permissoesUser->setPermAcervo("sim");
+                $modifica = true;
+
+			}
+            if(isset($_POST['socios']) && !empty($_POST['socios']) && $_POST['socios'] == 6) {
+
+				$permissoesUser->setPermSocios("sim");
+                $modifica = true;
+
+			}
+            if(isset($_POST['museu_virtual']) && !empty($_POST['museu_virtual']) && $_POST['museu_virtual'] == 7) {
+
+				$permissoesUser->setPermMuseuVirt("sim");
+                $modifica = true;
+
 			}
 
-			if($_POST['loja'] == 'sim') {
-				$permissoesUser->setPermLoja("1");
-			}
+            if($modifica){
+                $gereUtilizadores->adicionarUtilizador($utilizador, $permissoesUser);
+            }else{
+                header("Location: ad-utilizador.php?erro=1");
+            }
 
-			if($_POST['espaco'] == 'sim') {
-				$permissoesUser->setPermEspaco("1");
-			}
-			
-			if($_POST['inventario'] == 'sim') {
-				$permissoesUser->setPermInventario("1");
-			}
-			
-			if($_POST['acervo'] == 'sim') {
-				$permissoesUser->setPermAcervo("1");
-			}
-			
-			if($_POST['socios'] == 'sim') {
-				$permissoesUser->setPermSocios("1");
-			}
-			
-			if($_POST['museu_virtual'] == 'sim') {
-				$permissoesUser->setPermMuseuVirt("1");
-			}
-			
-			$gereUtilizadores->adicionarUtilizador(new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1), $permissoesUser);
-			//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
+						//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
 	}
 	
 
@@ -217,7 +239,7 @@ if(
 							for($i=0; $i<count($dados); $i++){
 							?>
 												
-									<label><input type="checkbox"  value="sim" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_NOME"]?></label><br>
+									<label><input type="checkbox"  value="<?php echo $dados[$i]["P_ID"] ?>" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_NOME"]?></label><br>
 							<?php } ?> 
           </div>
                     
