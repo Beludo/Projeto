@@ -54,9 +54,17 @@ class Visitantes{
     /**
      * @param mixed $contatoTelefonico
      */
-    public function setContatoTelefonico($contatoTelefonico)
+    public function setContatoTelefonico($contatoTelefonico, $idVisitante)
     {
         $this->contatoTelefonico = $contatoTelefonico;
+        $this->contatoTelefonico = $contatoTelefonico;
+        $sql = "UPDATE visitante SET V_CONTATOTELEFONICO = :V_CONTATOTELEFONICO WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_CONTATOTELEFONICO' => $contatoTelefonico,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
@@ -86,9 +94,16 @@ class Visitantes{
     /**
      * @param mixed $email
      */
-    public function setEmail($email)
+    public function setEmail($email, $idVisitante)
     {
         $this->email = $email;
+        $sql = "UPDATE visitante SET V_EMAIL = :V_EMAIL WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_EMAIL' => $email,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
@@ -134,9 +149,16 @@ class Visitantes{
     /**
      * @param mixed $morada
      */
-    public function setMorada($morada)
+    public function setMorada($morada, $idVisitante)
     {
         $this->morada = $morada;
+        $sql = "UPDATE visitante SET V_MORADA = :V_MORADA WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_MORADA' => $morada,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
@@ -150,9 +172,16 @@ class Visitantes{
     /**
      * @param mixed $nomeCompleto
      */
-    public function setNomeCompleto($nomeCompleto)
+    public function setNomeCompleto($nomeCompleto, $idVisitante)
     {
         $this->nomeCompleto = $nomeCompleto;
+        $sql = "UPDATE visitante SET V_NOMECOMPLETO = :V_NOMECOMPLETO WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_EMAIL' => $nomeCompleto,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**

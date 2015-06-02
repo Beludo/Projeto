@@ -5,19 +5,24 @@
 $gereVisitante = new GereVisitante();
 $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 
-if(
-    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-    isset($_POST["username"]) && !empty($_POST["username"]) &&
-    isset($_POST["morada"]) && !empty($_POST["morada"]) &&
-    isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
-    isset($_POST["email"]) && !empty($_POST["email"])){
+if(isset($_POST["opcao"]) && !empty($_POST["opcao"])){
+    if($_POST["opcao"] == "editar"){
+        if(
+            isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+            isset($_POST["username"]) && !empty($_POST["username"]) &&
+            isset($_POST["morada"]) && !empty($_POST["morada"]) &&
+            isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
+            isset($_POST["email"]) && !empty($_POST["email"])){
 
-    $visitante->setNomeCompleto($_POST["nome"]);
-    $visitante->setUsername($_POST["username"]);
-    $visitante->setMorada($_POST["morada"]);
-    $visitante->setContatoTelefonico($_POST["telefone"]);
-    $visitante->setEmail($_POST["email"]);
+            $visitante->setNomeCompleto($_POST["nome"], $visitante->getId());
+            $visitante->setUsername($_POST["username"], $visitante->getId());
+            $visitante->setMorada($_POST["morada"], $visitante->getId());
+            $visitante->setContatoTelefonico($_POST["telefone"], $visitante->getId());
+            $visitante->setEmail($_POST["email"], $visitante->getId());
+        }
+    } elseif($_POST["adicionar"]){
 
+    }
 }
 
 ?>
