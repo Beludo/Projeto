@@ -194,7 +194,7 @@ if(
 					
 					<div id="div-password-utilizador" class="form-group">
 					  <label for="exampleInputPassword1">Confirmar Password</label>
-					  <div id="div-caixa-erro-password"></div>
+                      <div id="div-caixa-erro-password"></div>
 					  <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a password" onBlur="verificaPasswords();">
 					</div>
 					<div class="form-group">
