@@ -4,27 +4,25 @@ include_once "acessobd.php";
 class pecas {
     private $id;
     private $museu;
-    private $nInventário;
+    private $nInventario;
     private $categoria;
     private $nome;
     private $datacao;
     private $materia;
-    private $dimensoes;
     private $descricao;
     private $fotografia;
     private $origem;
     private $ativo;
 
-    function __construct($id, $museu, $nInventário, $categoria, $nome, $datacao, $materia, $dimensoes, $descricao, $fotografia, $origem, $ativo)
+    function __construct($id, $museu, $nInventario, $categoria, $nome, $datacao, $materia, $descricao, $fotografia, $origem, $ativo)
     {
         $this->id = $id;
         $this->museu = $museu;
-        $this->nInventário = $nInventário;
+        $this->nInventario = $nInventario;
         $this->categoria = $categoria;
         $this->nome = $nome;
         $this->datacao = $datacao;
         $this->materia = $materia;
-        $this->dimensoes = $dimensoes;
         $this->descricao = $descricao;
         $this->fotografia = $fotografia;
         $this->origem = $origem;
@@ -66,9 +64,9 @@ class pecas {
     /**
      * @return mixed
      */
-    public function getNInventário()
+    public function getNInventario()
     {
-        return $this->nInventário;
+        return $this->nInventario;
     }
 
     /**
@@ -141,22 +139,6 @@ class pecas {
     public function setMateria($materia)
     {
         $this->materia = $materia;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDimensoes()
-    {
-        return $this->dimensoes;
-    }
-
-    /**
-     * @param mixed $dimensoes
-     */
-    public function setDimensoes($dimensoes)
-    {
-        $this->dimensoes = $dimensoes;
     }
 
     /**

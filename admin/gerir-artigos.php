@@ -1,12 +1,10 @@
 <?php
 
 include_once "sessaoAtiva.php";
+include_once "GerePecas.php";
+include_once "pecas.php";
 
-//toca a compor isto!!!!! //
-include_once "GereLoja.php";
-include_once "Loja.php";
-
-$gere_produtos = new GereLoja();
+$gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
@@ -56,11 +54,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 		}
 		
 		.imagem-tabela{
-			width: 150px;
+			width: 100px;
 		}
 		
 		.descricao-tabela{
-			width: 200px;
+			width: 150px;
 		}
 	</style>
 	
@@ -100,10 +98,10 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 					  <tr>
 						<th class="imagem-tabela">Imagem</th>
 						<th>Nome</th>
-						<th>Código</th>
-						<th>Preço</th>
-						<th>Stock</th>
-						<th class="descricao-tabela">Observações</th>
+						<th>Nº Inventário</th>
+						<th>Categoria</th>
+						<th>Datação</th>
+						<th class="descricao-tabela">Descrição</th>
 						<th>Estado</th>
 						<th>Acções</th>
 					  </tr>
@@ -115,12 +113,12 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                           for($i = 0; $i<count($artigos); $i++) {
                       ?>
 					  <tr>
-						<td><img src="fotos/<?php echo $artigos[$i]->getFotografia()?>" height="128px" width="128px" alt="imagem do produto">
+						<td><img src="fotos/<?php echo $artigos[$i]->getFotografia()?>" alt="imagem do produto">
 						<td><?php echo $artigos[$i]->getNome() ?></td>
-						<td><?php echo $artigos[$i]->getCodigo() ?></td>
-						<td><?php echo $artigos[$i]->getPreco() ?> €</td>
-						<td><?php echo $artigos[$i]->getStock() ?></td>
-						<td><?php echo $artigos[$i]->getObservacoes() ?></td>
+						<td><?php echo $artigos[$i]->getNInventario() ?></td>
+						<td><?php echo $artigos[$i]->getCategoria()?></td>
+						<td><?php echo $artigos[$i]->getDatacao()?></td>
+						<td><?php echo $artigos[$i]->getDescricao() ?></td>
 						<?php
 							if($artigos[$i]->getAtivo() == 0) {
 							
@@ -138,11 +136,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                                     <?php
                                         if($artigos[$i]->getAtivo() == 1) {
                                             ?>
-                                            <a href="gerir-visitantes.php?ativo=0&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <a href="gerir-artigos.php?ativo=0&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
                                             <?php
                                         } else {
                                             ?>
-                                           <a href="gerir-visitantes.php?ativo=1&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                           <a href="gerir-artigos.php?ativo=1&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
                                             <?php
                                         }
                                     ?>
