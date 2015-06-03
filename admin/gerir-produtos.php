@@ -136,11 +136,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                                     <?php
                                         if($produtos[$i]->getAtivo() == 1) {
                                             ?>
-                                            <a href="gerir-visitantes.php?ativo=0&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <a href="gerir-produtos.php?ativo=0&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
                                             <?php
                                         } else {
                                             ?>
-                                           <a href="gerir-visitantes.php?ativo=1&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                           <a href="gerir-produtos.php?ativo=1&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
                                             <?php
                                         }
                                     ?>
