@@ -1,5 +1,57 @@
 <?php
 include_once "sessaoAtiva.php";
+include_once "GerePecas.php";
+include_once "pecas.php";
+
+$gerePeca = new GerePecas();
+
+// verificar se todos os campos foram preenchidos
+if(isset($_POST["museu"]) && !empty($_POST["museu"]) &&
+   isset($_POST["nInventario"]) && !empty($_POST["nInventario"]) &&
+   isset($_POST["categoria"]) && !empty($_POST["categoria"]) &&
+   isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+   isset($_POST["datacao"]) && !empty($_POST["datacao"]) &&
+   isset($_POST["materia"]) && !empty($_POST["materia"]) &&
+   isset($_POST["descricao"]) && !empty($_POST["descricao"]) &&
+   isset($_POST["origem"]) && !empty($_POST["origem"])
+	){
+
+    // verificar se foi escolhido um ficheiro de foto
+    if(file_exists($_FILES["foto"]["tmp_name"])){
+
+        // verificar o tipo e tamanho do ficheiro (< 2Mb)
+        if(
+            (($_FILES["foto"]["type"] == "image/gif") ||
+                ($_FILES["foto"]["type"] == "image/jpeg") ||
+                ($_FILES["foto"]["type"] == "image/jpg") ||
+                ($_FILES["foto"]["type"] == "image/png")) &&
+            $_FILES["foto"]["size"] < 2000000 &&
+            $_FILES["foto"]["error"] == 0
+        ){
+            // corrigir o nome do ficheiro
+            $separar = explode(".", $_FILES["foto"]["name"]);
+            $ext = $separar[count($separar)-1];
+            $nome_foto = $_POST["nome"] . "." . $ext;
+
+            // apagar o ficheiro actual
+            if(file_exists("fotos-pecas/" . $nome_foto)){
+                unlink("fotos-pecas/" . $nome_foto);
+            }
+
+            move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos-pecas/" . $nome_foto);
+
+
+        }else{
+            // mostrar mensagem de erro
+            header("Location: ad-artigo.php?erro=1");
+        }
+    }else{
+        // usar uma foto por omissão
+        $nome_foto = "sem-foto.png";
+    }
+    $artigo = new pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["materia"], $_POST["descricao"], nome_foto, $_POST["origem"], true);
+    $gerePecas->adicionaArtigos($artigo);
+}
 
 ?>
 
@@ -62,19 +114,15 @@ include_once "sessaoAtiva.php";
 				  <h3 class="box-title">Dados do artigo</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form">
+				<form role="form" method="post" action="ad-artigo.php" enctype="multipart/form-data">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome</label>
-					  <input type="text" class="form-control" placeholder="Insira o nome"/>
+					  <input type="text" class="form-control" name ="nome" placeholder="Insira o nome"/>
 					</div>
 					<div class="form-group">
 					  <label>Numero de inventário</label>
-					  <input type="text" class="form-control" placeholder="Insira o numero de inventário"/>
-					</div>
-					<div class="form-group">
-					  <label>Dimensões</label>
-					  <input type="text" class="form-control" placeholder="Insira as dimensões"/>
+					  <input type="text" class="form-control" name ="nInventario" placeholder="Insira o numero de inventário"/>
 					</div>
 					<div class="form-group">
 						<label>Datação</label>
@@ -82,24 +130,24 @@ include_once "sessaoAtiva.php";
 							<div class="input-group-addon">
 								<i class="fa fa-calendar"></i>
 							</div>
-							<input class="form-control pull-right" id="reservation" type="text">
+							<input class="form-control pull-right" id="datacao"  name ="datacao" type="text">
 						</div>
 					</div>
 					<div class="form-group">
 					  <label>Origem</label>
-					  <input type="text" class="form-control" placeholder="Insira a origem"/>
+					  <input type="text" class="form-control"  name ="origem" placeholder="Insira a origem"/>
 					</div>
 					<div class="form-group">
 					  <label>Museu</label>
-					  <input type="text" class="form-control" placeholder="Insira o museu"/>
+					  <input type="text" class="form-control"  name ="museu" placeholder="Insira o museu"/>
 					</div>
 					<div class="form-group">
                       <label>Descrição</label>
-                      <textarea class="form-control" rows="3" placeholder="Insira uma descrição"></textarea>
+                      <textarea class="form-control" rows="3"  name ="descricao" placeholder="Insira uma descrição"></textarea>
                     </div>
 					<div class="form-group">
 					  <label for="exampleInputFile">Fotografia</label>
-					  <input type="file" id="exampleInputFile">
+					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma fotografia para o artigo.</p>
 					</div>
 				  </div><!-- /.box-body -->

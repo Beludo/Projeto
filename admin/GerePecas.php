@@ -10,7 +10,7 @@ class GerePecas {
         $this->bd = new BaseDados();
     }
 
-    function adicionaPecas($pecas){
+    function adicionaArtigos($pecas){
         $sql = "INSERT INTO  pecas  ( PE_MUSEU , PE_NUMEROINVENTARIO , PE_CATEGORIA , PE_NOME , PE_DATACAO , PE_MATERIA , PE_DESCRICAO , PE_FOTOGRAFIA , PE_ORIGEM , PE_ATIVO )) VALUES(:PE_MUSEU , :PE_NUMEROINVENTARIO , :PE_CATEGORIA , :PE_NOME , :PE_DATACAO , :PE_MATERIA , :PE_DESCRICAO , :PE_FOTOGRAFIA , :PE_ORIGEM , :PE_ATIVO)";
 
         $dados_pecas = array(

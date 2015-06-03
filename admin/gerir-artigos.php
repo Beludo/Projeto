@@ -113,7 +113,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                           for($i = 0; $i<count($artigos); $i++) {
                       ?>
 					  <tr>
-						<td><img src="fotos/<?php echo $artigos[$i]->getFotografia()?>" alt="imagem do produto">
+						<td><img src="fotos-pecas/<?php echo $artigos[$i]->getFotografia()?>" alt="imagem do produto">
 						<td><?php echo $artigos[$i]->getNome() ?></td>
 						<td><?php echo $artigos[$i]->getNInventario() ?></td>
 						<td><?php echo $artigos[$i]->getCategoria()?></td>
