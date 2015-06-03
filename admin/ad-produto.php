@@ -1,6 +1,7 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
+include_once "Loja.php";
 
 $gereLoja = new GereLoja();
 
@@ -46,7 +47,7 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
         $nome_foto = "sem-foto.png";
     }
 
-    $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], 1, 1, 0, 0);
+    $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0);
     $gereLoja->adicionaProduto($produto);
 }
 
