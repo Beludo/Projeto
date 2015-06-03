@@ -47,13 +47,13 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-bar-chart-o"></i>
-					<span>Graficos</span>
+					<span>Registo climatico</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
 					<li><a href="graficos-temp.php"><i class="fa fa-fire"></i>Em Tempo Real</a>
 					</li>
-					<li><a href="graficos-humid.php"><i class="fa fa-tint"></i>Intervalo de Tempo</a>
+					<li><a href="graficos-intervalo.php"><i class="fa fa-tint"></i>Intervalo de Tempo</a>
 					</li>
 				</ul>
 			</li>
