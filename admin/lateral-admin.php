@@ -51,9 +51,9 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="graficos-temp.php"><i class="fa fa-fire"></i> Temperatura</a>
+					<li><a href="graficos-temp.php"><i class="fa fa-fire"></i>Em Tempo Real</a>
 					</li>
-					<li><a href="graficos-humid.php"><i class="fa fa-tint"></i> Humidade</a>
+					<li><a href="graficos-humid.php"><i class="fa fa-tint"></i>Intervalo de Tempo</a>
 					</li>
 				</ul>
 			</li>
@@ -87,7 +87,6 @@
 				<a href="log-utilizadores.php">
 					<i class="fa fa-users"></i>
 					<span>Log</span>
-					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 			</li>
 			<li class="treeview">
