@@ -121,25 +121,20 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 							?>
 							<td><span class="label label-success">Sim</span></td>
 							<td>
-							  <div class="btn-group">
-								<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><i class="fa fa-fw fa-edit"></i>Editar</li>
+								<span class="label label-default">
                                     <?php
                                         if($visitantes[$i]->getAtivo() == 1) {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=0&id=<?php echo $visitantes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                                            <a href="gerir-visitantes.php?ativo=0&id=<?php echo $visitantes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
                                             <?php
                                         } else {
                                             ?>
-                                            <li><a href="gerir-utilizadores.php?ativo=1&id=<?php echo $visitantes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+                                           <a href="gerir-visitantes.php?ativo=1&id=<?php echo $visitantes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
                                             <?php
                                         }
                                     ?>
-								</ul>
-							  </div>
+								</span>
+							  
 							</td>
 
 						  </tr>
