@@ -31,11 +31,11 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
             $nome_foto = $_POST["nome"] . "." . $ext;
 
             // apagar o ficheiro actual
-            if(file_exists("fotos/" . $nome_foto)){
-                unlink("fotos/" . $nome_foto);
+            if(file_exists("fotos-produtos/" . $nome_foto)){
+                unlink("fotos-produtos/" . $nome_foto);
             }
 
-            move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/" . $nome_foto);
+            move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos-produtos/" . $nome_foto);
 
 
         }else{

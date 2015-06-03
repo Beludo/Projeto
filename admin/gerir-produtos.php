@@ -113,7 +113,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                           for($i = 0; $i<count($produtos); $i++) {
                       ?>
 					  <tr>
-						<td><img src="fotos/<?php echo $produtos[$i]->getFotografia()?>" alt="imagem do produto">
+						<td><img src="fotos-produtos/<?php echo $produtos[$i]->getFotografia()?>" alt="imagem do produto">
 						<td><?php echo $produtos[$i]->getNome() ?></td>
 						<td><?php echo $produtos[$i]->getCodigo() ?></td>
 						<td><?php echo $produtos[$i]->getPreco() ?> €</td>
