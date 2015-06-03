@@ -5,23 +5,28 @@
 $gereVisitante = new GereVisitante();
 $visitante = $gereVisitante->obtemVisitanteUsername($_SESSION["visit"]);
 
-if(isset($_POST["opcao"]) && !empty($_POST["opcao"])){
-    if($_POST["opcao"] == "editar"){
+if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
+    $op = $_GET["opcao"];
+    if($op == "editar"){
         if(
             isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-            isset($_POST["username"]) && !empty($_POST["username"]) &&
             isset($_POST["morada"]) && !empty($_POST["morada"]) &&
             isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
             isset($_POST["email"]) && !empty($_POST["email"])){
 
             $visitante->setNomeCompleto($_POST["nome"], $visitante->getId());
-            $visitante->setUsername($_POST["username"], $visitante->getId());
             $visitante->setMorada($_POST["morada"], $visitante->getId());
             $visitante->setContatoTelefonico($_POST["telefone"], $visitante->getId());
             $visitante->setEmail($_POST["email"], $visitante->getId());
         }
-    } elseif($_POST["adicionar"]){
-
+    } elseif($op = "password"){
+        if(
+            isset($_POST["antigaPass"]) && !empty($_POST["antigaPass"]) &&
+            isset($_POST["password"]) && !empty($_POST["password"])){
+            if($visitante->getPassword() == $_POST["antigaPass"]){
+                $visitante->setPassword($_POST["password"], $visitante->getId());
+            }
+        }
     }
 }
 
@@ -36,6 +41,11 @@ if(isset($_POST["opcao"]) && !empty($_POST["opcao"])){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<script src="./js/bootstrap.min.js"></script>
+    <!-- AJAX para ver so o utilizador já está registado -->
+    <script src="ajax-visitante.js" ></script>
+
+    <!-- Verificações no formulario -->
+    <script src="verificacoes-form.js" ></script>
 </head>
 
 <body>
@@ -119,17 +129,11 @@ if(isset($_POST["opcao"]) && !empty($_POST["opcao"])){
 					<div id="edit-profile" class="tab-pane">
 						<section class="panel">
 							<div class="panel-body bio-graph-info">
-								<form class="form-horizontal" role="form" method="post" action="area-cliente.php">
+								<form class="form-horizontal" role="form" method="post" action="?opcao=editar">
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Nome</label>
 										<div class="col-lg-4">
 											<input type="text" class="form-control" id="name" placeholder="Insira o Nome..." value="<?php echo $visitante->getNomeCompleto()?>" name="nome">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-lg-3 control-label">Username</label>
-										<div class="col-lg-4">
-											<input type="text" class="form-control" id="username" placeholder="Insira o Username..." value="<?php echo $visitante->getUsername()?>" name="username">
 										</div>
 									</div>
 									<div class="form-group">
@@ -163,23 +167,26 @@ if(isset($_POST["opcao"]) && !empty($_POST["opcao"])){
 					<div id="edit-password" class="tab-pane">
 						<section class="panel">
 							<div class="panel-body bio-graph-info">
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" method="post" role="form" action="?opcao=password">
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Palavra-Passe Antiga</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="password-antiga" placeholder="Insira a Palavra-Passe...">
-										</div>
+											<input type="password" class="form-control" id="password-antiga" name="antigaPass" placeholder="Insira a Palavra-Passe...">
+                                        </div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Palavra-Passe Nova</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="password" placeholder="Insira a Palavra-Passe...">
-										</div>
+											<input type="password" class="form-control" id="password" name="password" placeholder="Insira a Palavra-Passe..." onKeyUp="forcaPassword();" onBlur="verificaPasswords();">
+                                            <div id="div-barra-forca-password" name="div-barra-forca-password" class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%; height: 20px;"></div>
+                                            <div id="div-forca-password"></div>
+                                        </div>
 									</div>
 									<div class="form-group">
 										<label class="col-lg-3 control-label">Confirmar Palavra-Passe</label>
 										<div class="col-lg-4">
-											<input type="text" class="form-control" id="confirma-password" placeholder="Confirme a Palavra-Passe...">
+                                            <div id="div-caixa-erro-password"></div>
+											<input type="password" class="form-control" id="password2" name="password2" placeholder="Confirme a Palavra-Passe..." onBlur="verificaPasswords();">
 										</div>
 									</div>
 									<div class="form-group">

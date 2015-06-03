@@ -1,5 +1,4 @@
 <?php
-	
 	include_once "GereVisitante.php";
 	
 	$gereVistantes = new GereVisitante();
@@ -49,9 +48,9 @@
 			// usar uma foto por omissão
 			$nome_foto = "sem-foto.png";
 		}
-		
-		$gereUtilizadores->adicionarVisitante(new Visitante(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST
-		["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1));
+        $visitante = new Visitantes(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST
+        ["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true);
+		$gereVistantes->adicionarVisitante($visitante);
 	}
 	
 	
@@ -103,35 +102,35 @@
 				<div class="col-xs-12">
 					<div id="edit-profile" class="tab-pane">
 						<div class="panel-body bio-graph-info">
-							<form class="form-horizontal" role="form" method="post">
+							<form class="form-horizontal" role="form" method="post" action="registo-visitante.php" enctype="multipart/form-data">
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Nome</label>
 									<div class="col-lg-4">
-										<input type="text" class="form-control" id="name" placeholder="Insira o Nome..." value="">
+										<input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o Nome..." value="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Username</label>
 									<div class="col-lg-4">
-										<input type="text" class="form-control" id="username" placeholder="Insira o Username..." value="">
+										<input type="text" class="form-control" id="username" name="username" placeholder="Insira o Username..." value="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Telefone</label>
 									<div class="col-lg-4">
-										<input type="text" class="form-control" id="mobile" placeholder="Insira o Contato Telefónico..." value="">
+										<input type="text" class="form-control" id="telefone" name="telefone" placeholder="Insira o Contato Telefónico..." value="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Morada</label>
 									<div class="col-lg-4">
-										<input type="text" class="form-control" id="address" placeholder="Insira a Morada..." value="">
+										<input type="text" class="form-control" id="address" name="morada" placeholder="Insira a Morada..." value="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-3 control-label">Email</label>
 									<div class="col-lg-4">
-										<input type="email" class="form-control" id="email" placeholder="Insira o Email..." value="">
+										<input type="email" class="form-control" id="email" name="email" placeholder="Insira o Email..." value="">
 									</div>
 								</div>
 								<div class="form-group">

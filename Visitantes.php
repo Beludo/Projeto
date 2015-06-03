@@ -34,7 +34,7 @@ class Visitantes{
     public function setAtivo($ativo, $idVisitante)
     {
         $this->ativo = $ativo;
-        $sql = "UPDATE visitante SET V_ATIVO = :V_ATIVO WHERE V_ID = :V_ID";
+        $sql = "UPDATE visitantes SET V_ATIVO = :V_ATIVO WHERE V_ID = :V_ID";
         $dados = array(
             'V_ATIVO' => $ativo,
             'V_ID' => $idVisitante
@@ -57,8 +57,7 @@ class Visitantes{
     public function setContatoTelefonico($contatoTelefonico, $idVisitante)
     {
         $this->contatoTelefonico = $contatoTelefonico;
-        $this->contatoTelefonico = $contatoTelefonico;
-        $sql = "UPDATE visitante SET V_CONTATOTELEFONICO = :V_CONTATOTELEFONICO WHERE V_ID = :V_ID";
+        $sql = "UPDATE visitantes SET V_CONTATOTELEFONICO = :V_CONTATOTELEFONICO WHERE V_ID = :V_ID";
         $dados = array(
             'V_CONTATOTELEFONICO' => $contatoTelefonico,
             'V_ID' => $idVisitante
@@ -97,7 +96,7 @@ class Visitantes{
     public function setEmail($email, $idVisitante)
     {
         $this->email = $email;
-        $sql = "UPDATE visitante SET V_EMAIL = :V_EMAIL WHERE V_ID = :V_ID";
+        $sql = "UPDATE visitantes SET V_EMAIL = :V_EMAIL WHERE V_ID = :V_ID";
         $dados = array(
             'V_EMAIL' => $email,
             'V_ID' => $idVisitante
@@ -152,7 +151,7 @@ class Visitantes{
     public function setMorada($morada, $idVisitante)
     {
         $this->morada = $morada;
-        $sql = "UPDATE visitante SET V_MORADA = :V_MORADA WHERE V_ID = :V_ID";
+        $sql = "UPDATE visitantes SET V_MORADA = :V_MORADA WHERE V_ID = :V_ID";
         $dados = array(
             'V_MORADA' => $morada,
             'V_ID' => $idVisitante
@@ -175,9 +174,9 @@ class Visitantes{
     public function setNomeCompleto($nomeCompleto, $idVisitante)
     {
         $this->nomeCompleto = $nomeCompleto;
-        $sql = "UPDATE visitante SET V_NOMECOMPLETO = :V_NOMECOMPLETO WHERE V_ID = :V_ID";
+        $sql = "UPDATE visitantes SET V_NOMECOMPLETO = :V_NOMECOMPLETO WHERE V_ID = :V_ID";
         $dados = array(
-            'V_EMAIL' => $nomeCompleto,
+            'V_NOMECOMPLETO' => $nomeCompleto,
             'V_ID' => $idVisitante
         );
 
@@ -195,9 +194,16 @@ class Visitantes{
     /**
      * @param mixed $password
      */
-    public function setPassword($password)
+    public function setPassword($password, $idVisitante)
     {
         $this->password = $password;
+        $sql = "UPDATE visitantes SET V_PASSWORD = :V_PASSWORD WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_PASSWORD' => $password,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
@@ -211,9 +217,16 @@ class Visitantes{
     /**
      * @param mixed $username
      */
-    public function setUsername($username)
+    public function setUsername($username, $idVisitante)
     {
         $this->username = $username;
+        $sql = "UPDATE visitantes SET V_USERNAME = :V_USERNAME WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_USERNAME' => $username,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
