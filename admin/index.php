@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if(isset($_SESSION["user"]) && !empty($_SESSION["user"])) {
+	header("Location: gerir-utilizadores.php");
+}
+
 include_once "acessobd.php";
 
 $bd = new BaseDados();
