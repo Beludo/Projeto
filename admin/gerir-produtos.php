@@ -86,31 +86,57 @@ include_once "sessaoAtiva.php";
 						<th>Código</th>
 						<th>Preço</th>
 						<th>Stock</th>
-						<th class="descricao-tabela">Descrição</th>
+						<th class="descricao-tabela">Observações</th>
+						<th>Estado</th>
 						<th>Acções</th>
 					  </tr>
 					</thead>
-					<tbody>
+					<tbody> 
+						<?php
+                      $produtos = $gere_loja->listarProdutos();
+                      if($produtos != null) {
+                          for($i = 0; $i<count($produtos); $i++) {
+                      ?>
 					  <tr>
-						<td><img src="img-produtos/tshirt.jpg" alt="Descrição do produto"></td>
-						<td>T-shirt do museu</td>
-						<td>TM123</td>
-						<td>5€</td>
-						<td>10</td>
-						<td>É uma t-shirt comemorativa do centenário da ponte de brooklyn</td>
+						<td><img src="fotos/<?php echo $loja[$i]->getFotografia()?>" height="128px" width="128px" alt="imagem do produto">
+						<td><?php echo $produtos[$i]->getNome() ?></td>
+						<td><?php echo $produtos[$i]->getCodigo() ?></td>
+						<td><?php echo $produtos[$i]->getPreco() ?> €</td>
+						<td><?php echo $produtos[$i]->getStock() ?></td>
+						<td><?php echo $produtos[$i]->getObservacoes() ?></td>
+						<?php
+							if($loja[$i]->getAtivo() == 0) {
+							
+							?>
+							<td><span class="label label-danger">Desativo</span></td>
+							<?php
+							} elseif($produtos[$i]->getAtivo() == 1) {
+							?>
+							<td><span class="label label-success">Ativo</span></td>
+							<?php
+							}
+							?>
 						<td>
-						  <div class="btn-group">
-							<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							  <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-							  <li><a href="#"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
-							  <li><a href="#"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
-							</ul>
-						  </div>
-						</td>
-					  </tr>
+								<span class="label label-default">
+                                    <?php
+                                        if($visitantes[$i]->getAtivo() == 1) {
+                                            ?>
+                                            <a href="gerir-visitantes.php?ativo=0&id=<?php echo $visitantes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                           <a href="gerir-visitantes.php?ativo=1&id=<?php echo $visitantes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                            <?php
+                                        }
+                                    ?>
+								</span>
+							  
+							</td>
+						  </tr>
+							<?php
+                            }
+                      }
+					?>
 					</tfoot>
 				  </table>
 				</div><!-- /.box-body -->
