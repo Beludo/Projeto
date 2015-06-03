@@ -32,7 +32,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="../widgets.html">
+				<a href="#">
 					<i class="fa fa-credit-card"></i>
 					<span>Loja</span>
 					<i class="fa fa-angle-left pull-right"></i>
