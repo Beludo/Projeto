@@ -1,28 +1,31 @@
 <?php
 
 include_once "sessaoAtiva.php";
+
+//toca a compor isto!!!!! //
 include_once "GereLoja.php";
 include_once "Loja.php";
 
 $gere_produtos = new GereLoja();
-$produtos = $gere_produtos ->listarProdutos();
+$artigos = $gere_artigos ->listarArtigos();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
     if($_GET["ativo"] == 1){
-        $produtos[$_GET["i"]]->setAtivo(false, $produtos[$_GET["i"]]->getId());
+        $artigos[$_GET["i"]]->setAtivo(false, $artigos[$_GET["i"]]->getId());
     } elseif($_GET["ativo"] == 0) {
-        $produtos[$_GET["i"]]->setAtivo(true, $produtos[$_GET["i"]]->getId());
+        $artigos[$_GET["i"]]->setAtivo(true, $artigos[$_GET["i"]]->getId());
     } else {
-        header("Location: gerir-produtos.php?erro=1");
+        header("Location: gerir-artigos.php?erro=1");
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Gerir produtos</title>
+	<title>Admin | Gerir Artigos</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -45,7 +48,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
 	
-	<!-- Estilos para formater a tabela de produtos -->
+	<!-- Estilos para formater a tabela de artigos -->
 	<style>
 		td img {
 			width: 90px;
@@ -53,11 +56,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 		}
 		
 		.imagem-tabela{
-			width: 100px;
+			width: 150px;
 		}
 		
 		.descricao-tabela{
-			width: 150px;
+			width: 200px;
 		}
 	</style>
 	
@@ -75,12 +78,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Gerir produtos
-			<small>descrição</small>
+			Gerir Artigos
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li class="active"><a href="#">Gestão de produtos</a></li>
+			<li class="active"><a href="#">Gestão de Artigos</a></li>
 		  </ol>
 		</section>
 
@@ -90,7 +92,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 			<div class="col-xs-12">
 			  <div class="box">
 				<div class="box-header">
-				  <h3 class="box-title">Produtos registados</h3>
+				  <h3 class="box-title">Artigos registados</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
 				  <table id="example1" class="table table-bordered table-striped">
@@ -108,24 +110,24 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 					</thead>
 					<tbody> 
 						<?php
-                      $produtos = $gere_produtos->listarProdutos();
-                      if($produtos != null) {
-                          for($i = 0; $i<count($produtos); $i++) {
+                      $artigos = $gere_artigos->listarArtigos();
+                      if($artigos != null) {
+                          for($i = 0; $i<count($artigos); $i++) {
                       ?>
 					  <tr>
-						<td><img src="fotos/<?php echo $produtos[$i]->getFotografia()?>" alt="imagem do produto">
-						<td><?php echo $produtos[$i]->getNome() ?></td>
-						<td><?php echo $produtos[$i]->getCodigo() ?></td>
-						<td><?php echo $produtos[$i]->getPreco() ?> €</td>
-						<td><?php echo $produtos[$i]->getStock() ?></td>
-						<td><?php echo $produtos[$i]->getObservacoes() ?></td>
+						<td><img src="fotos/<?php echo $artigos[$i]->getFotografia()?>" height="128px" width="128px" alt="imagem do produto">
+						<td><?php echo $artigos[$i]->getNome() ?></td>
+						<td><?php echo $artigos[$i]->getCodigo() ?></td>
+						<td><?php echo $artigos[$i]->getPreco() ?> €</td>
+						<td><?php echo $artigos[$i]->getStock() ?></td>
+						<td><?php echo $artigos[$i]->getObservacoes() ?></td>
 						<?php
-							if($produtos[$i]->getAtivo() == 0) {
+							if($artigos[$i]->getAtivo() == 0) {
 							
 							?>
 							<td><span class="label label-danger">Desativo</span></td>
 							<?php
-							} elseif($produtos[$i]->getAtivo() == 1) {
+							} elseif($artigos[$i]->getAtivo() == 1) {
 							?>
 							<td><span class="label label-success">Ativo</span></td>
 							<?php
@@ -134,13 +136,13 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 						<td>
 								<span class="label label-default">
                                     <?php
-                                        if($produtos[$i]->getAtivo() == 1) {
+                                        if($artigos[$i]->getAtivo() == 1) {
                                             ?>
-                                            <a href="gerir-visitantes.php?ativo=0&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <a href="gerir-visitantes.php?ativo=0&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
                                             <?php
                                         } else {
                                             ?>
-                                           <a href="gerir-visitantes.php?ativo=1&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                           <a href="gerir-visitantes.php?ativo=1&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
                                             <?php
                                         }
                                     ?>

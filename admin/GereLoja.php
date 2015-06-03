@@ -23,12 +23,34 @@ class GereLoja {
             'LA_OBSERVACOES' => $produto->getObservacoes(),
             'LA_PRECO' => $produto->getPreco(),
             'LA_DISPONIBILIDADE' => $produto->getDisponibilidade(),
-            'U_ATIVO' => $produto->getAtivo(),
+            'LA_ATIVO' => $produto->getAtivo(),
             'LA_ADICIONADO' => $produto->getAdicionado(),
             'LA_REMOVIDO' => $produto->getRemovido()
         );
         $this->bd->inserir($sql, $dados_produtos);
     }
+	
+		public function listarProdutos(){
+			$dados = array();
+
+							$registo = $this->bd->query("SELECT * FROM loja");
+							for($i=0; $i<count($registo); $i++){
+										$dados[] = new Loja(
+							$registo[$i]["LA_ID"],
+							$registo[$i]["LA_NOME"],
+							$registo[$i]["LA_CODIGO"],
+													$registo[$i]["LA_FOTOGRAFIA"],
+							$registo[$i]["LA_STOCK"],
+													$registo[$i]["LA_OBSERVACOES"],
+							$registo[$i]["LA_PRECO"],
+													$registo[$i]["LA_DISPONIBILIDADE"],
+							$registo[$i]["LA_ATIVO"],
+													$registo[$i]["LA_ADICIONADO"],
+													$registo[$i]["LA_REMOVIDO"]);
+							}
+							return $dados;
+			}
+	
 }
 
 ?>
