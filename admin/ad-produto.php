@@ -1,5 +1,54 @@
 <?php
 include_once "sessaoAtiva.php";
+include_once "GereLoja.php";
+
+$gereLoja = new GereLoja();
+
+// verificar se todos os campos foram preenchidos
+
+if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+   isset($_POST["codigo"]) && !empty($_POST["codigo"]) &&
+   isset($_POST["preco"]) && !empty($_POST["preco"]) &&
+   isset($_POST["stock"]) && !empty($_POST["stock"]) &&
+   isset($_POST["observacoes"]) && !empty($_POST["observacoes"])){
+
+    // verificar se foi escolhido um ficheiro de foto
+    if(file_exists($_FILES["foto"]["tmp_name"])){
+
+        // verificar o tipo e tamanho do ficheiro (< 2Mb)
+        if(
+            (($_FILES["foto"]["type"] == "image/gif") ||
+                ($_FILES["foto"]["type"] == "image/jpeg") ||
+                ($_FILES["foto"]["type"] == "image/jpg") ||
+                ($_FILES["foto"]["type"] == "image/png")) &&
+            $_FILES["foto"]["size"] < 2000000 &&
+            $_FILES["foto"]["error"] == 0
+        ){
+            // corrigir o nome do ficheiro
+            $separar = explode(".", $_FILES["foto"]["name"]);
+            $ext = $separar[count($separar)-1];
+            $nome_foto = $_POST["nome"] . "." . $ext;
+
+            // apagar o ficheiro actual
+            if(file_exists("fotos/" . $nome_foto)){
+                unlink("fotos/" . $nome_foto);
+            }
+
+            move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/" . $nome_foto);
+
+
+        }else{
+            // mostrar mensagem de erro
+            header("Location: ad-produto.php?erro=1");
+        }
+    }else{
+        // usar uma foto por omissão
+        $nome_foto = "sem-foto.png";
+    }
+
+    $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], 1, 1, 0, 0);
+    $gereLoja->adicionaProduto($produto);
+}
 
 ?>
 
@@ -61,31 +110,31 @@ include_once "sessaoAtiva.php";
 				  <h3 class="box-title">Dados do produto</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form">
+				<form role="form" method="post" action="ad-produto.php" enctype="multipart/form-data">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome</label>
-					  <input type="text" class="form-control" placeholder="Insira nome"/>
+					  <input type="text" class="form-control" placeholder="Insira nome" name="nome"/>
 					</div>
 					<div class="form-group">
 					  <label>Código</label>
-					  <input type="text" class="form-control" placeholder="Insira código"/>
+					  <input type="text" class="form-control" placeholder="Insira código" name="codigo"/>
 					</div>
 					<div class="form-group">
 					  <label>Preço</label>
-					  <input type="text" class="form-control" placeholder="Insira preço"/>
+					  <input type="text" class="form-control" placeholder="Insira preço" name="preco"/>
 					</div>
 					<div class="form-group">
 					  <label>Stock</label>
-					  <input type="text" class="form-control" placeholder="Insira a quantidade em stock"/>
+					  <input type="number" min="0" class="form-control" placeholder="Insira a quantidade em stock" name="stock"/>
 					</div>
 					<div class="form-group">
                       <label>Descrição</label>
-                      <textarea class="form-control" rows="3" placeholder="Insira uma descrição"></textarea>
+                      <textarea class="form-control" rows="3" placeholder="Insira uma descrição" name="observacoes"></textarea>
                     </div>
 					<div class="form-group">
 					  <label for="exampleInputFile">Imagem</label>
-					  <input type="file" id="exampleInputFile">
+					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma imagem para o produto.</p>
 					</div>
 				  </div><!-- /.box-body -->
