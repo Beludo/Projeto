@@ -63,7 +63,7 @@ include_once "sessaoAtiva.php";
 				  <!-- general form elements -->
 				  <div class="box box-primary">
 					<div class="box-header">
-					  <h3 class="box-title">Registo da temperatura</h3>
+					  <h3 class="box-title">Gráficos</h3>
 					</div><!-- /.box-header -->
 					<!-- form start -->
 						<div class="box-body">
@@ -75,13 +75,13 @@ include_once "sessaoAtiva.php";
 									</div>
 									<input class="form-control pull-right" name="reservationtime" id="reservationtime" type="text">
 								</div><!-- /.input group -->
-								<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
-							<div id="material"></div>		
 							</div>
-							<div class="box-footer">
+							<div class="">
 								<button onClick="pedeDadosGraficos();" class="btn btn-primary">Atualizar gráficos</button>
 								<!-- <button type="submit" class="btn btn-primary">Atualizar gráficos</button> -->
 							</div>
+							<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+							<div id="despejar-graficos-aqui"></div>
 						</div>
 				  </div><!-- /.box -->
 				</div><!-- /.col -->
@@ -134,14 +134,26 @@ include_once "sessaoAtiva.php";
 	
 	// Objeto
 	var dados_sensor = {
-		constructor: function c(temperatura, humidade, data){
-        this._temperatura = temperatura;
-        this._humidade = humidade;
-        this._data = data;
-    },
-    getTemperatura: function(){ return this._temperatura; },
-    getHumidade: function(){ return this._humidade; },
-    getData: function(){ return this._data; },
+		constructor: function c(temperatura, humidade, data, endereco){
+			this._temperatura = temperatura;
+			this._humidade = humidade;
+			this._data = data;
+			this._endereco = endereco;
+		},
+		getTemperatura: function() {
+			return this._temperatura;
+		},
+		
+		getHumidade: function() {
+			return this._humidade;
+		},
+		getData: function(){
+			return this._data;
+		},
+		
+		getEndereco: function() {
+			return this._endereco;
+		},
 	};
 	var tabela_dados_sensor = new Array();
 	
@@ -149,7 +161,9 @@ include_once "sessaoAtiva.php";
 	// Guarda os dados do grafico
 	var dados_grafico;
 	
-	// Indica quantos sensores existem
+	// Indica quantos dados existem por sensor
+	var tabela_enderecos_sensor = new Array();
+	var tabela_contagem_sensor = new Array();
 	
 	// Declarar o objeto getHTTPObject
 	var http = getHTTPObject();
@@ -204,16 +218,23 @@ include_once "sessaoAtiva.php";
 				tabela_dados_sensor = [];
 				
 				// Obtem os dados retornados pelo XML
+				sensor = xmlDocument.getElementsByTagName("sensor");
 				temp = xmlDocument.getElementsByTagName("temperatura");
 				humi = xmlDocument.getElementsByTagName("humidade");
 				data = xmlDocument.getElementsByTagName("data");
-				console.log('Listagem ----------');
 				for (i=0; i<temp.length; i++) {
 				
+					// Obter o endereco do sensor referente aos dados lidos (<sensor id="002542E700E9E511">)
+					atributos = sensor[i].attributes;
 					
 					// Guardar os valores
 					var novos_dados_sensor = Object.create(dados_sensor);
-					novos_dados_sensor.constructor(temp[i].childNodes[0].nodeValue, humi[i].childNodes[0].nodeValue, data[i].childNodes[0].nodeValue);
+					novos_dados_sensor.constructor(
+						temp[i].childNodes[0].nodeValue,
+						humi[i].childNodes[0].nodeValue,
+						data[i].childNodes[0].nodeValue,
+						atributos.getNamedItem("endereco").nodeValue
+					);
 					tabela_dados_sensor.push(novos_dados_sensor);
 				
 					//console.log('Sensor ' + i);
@@ -221,8 +242,16 @@ include_once "sessaoAtiva.php";
 					//console.log(tabela_dados_sensor[i].getHumidade());
 					
 					// console.log('Data: ' + separa_data[0] + ' ' + separa_data[1] + ' ' + separa_data[2] + ' ' + separa_hora[0] + ' ' + separa_hora[1] + ' ' + separa_hora[2]);
-					 
-					// console.log(new Date(tabela_dados_sensor[i].getData()));
+				}
+				
+				// Guardar a contagem de sensores
+				tabela_enderecos_sensor = new Array();
+				tabela_contagem_sensor = new Array();
+				cont = xmlDocument.getElementsByTagName("contagem");
+				for (i=0; i<cont.length; i++) {
+					atributos = cont[i].attributes;
+					tabela_enderecos_sensor.push(atributos.getNamedItem("endereco").nodeValue);
+					tabela_contagem_sensor.push(cont[i].childNodes[0].nodeValue);
 				}
 				
 				// Atualizar e mostrar os gráficos
@@ -238,96 +267,118 @@ include_once "sessaoAtiva.php";
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
- 
-      var materialChart;
-       var materialDiv = document.getElementById('material');
-
-      var dados_grafico = new google.visualization.DataTable();
-      dados_grafico.addColumn('date', 'Month', 'day');
-      dados_grafico.addColumn('number', "Humidade");
-      dados_grafico.addColumn('number', "Temperatura");
-
-	  //[new Date(year, month, day, hours, minutes, seconds, milliseconds), humidade,  temperatura]
-	  /*
-      dados_grafico.addRows([
-        [new Date(2014, 0, 2, 10, 30),  -.5,  5.7],
-		[new Date(2014, 0, 2, 12, 30),  -.5,  5.7],
-        [new Date(2014, 0, 6, 9, 50),   .4,  8.7],
-        [new Date(2014, 0, 11, 17, 40),   .5,   12]      
-      ]);
-	  */
-	  
-	  
 	
-	// Variaveis de separação da data/hora
-	var separa_data_hora = [];
-	var separa_data = [];
-	var separa_hora = [];
-	  
-	  // Atualizar os dados do gráfico
-	  todos_dados = new Array();
-	  
-	  for (i=0; i<tabela_dados_sensor.length; i++) {
-	  
-		// Separar a data/hora em arrays para criar um objeto Date
-		separa_data_hora = tabela_dados_sensor[i].getData().split(" ");
-		separa_data = separa_data_hora[0].split("-");
-		separa_hora = separa_data_hora[1].split(":");
+		// Esta div vai receber os gráficos gerados
+		var div_despejar = document.getElementById('despejar-graficos-aqui');
 		
-		// console.log('Data: ' + separa_data[0] + ' ' + separa_data[1] + ' ' + separa_data[2] + ' ' + separa_hora[0] + ' ' + separa_hora[1] + ' ' + separa_hora[2]);
-	  
-		todos_dados.push([
-			new Date(
-				separa_data[0],
-				separa_data[1]-1,
-				separa_data[2],
-				separa_hora[0],
-				separa_hora[1],
-				separa_hora[2]
-			),
-			parseInt(tabela_dados_sensor[i].getHumidade()),
-			parseInt(tabela_dados_sensor[i].getTemperatura())
-		]);
-	  }
-	  dados_grafico.addRows(todos_dados);
+		// Apagar os gráficos existentes
+		div_despejar.innerHTML = "";
+	
+		for (i=0; i<tabela_enderecos_sensor.length; i++) {
+					
+			console.log('Gráfico do sensor ' + tabela_enderecos_sensor[i]);
+			console.log(tabela_contagem_sensor[i] + ' pontos');
+ 
+			  var materialChart;
+			  
+			  var dados_grafico = new google.visualization.DataTable();
+			  dados_grafico.addColumn('date', 'Mes', 'day');
+			  dados_grafico.addColumn('number', "Humidade");
+			  dados_grafico.addColumn('number', "Temperatura");
 
-      var materialOptions = {
-        title: 'Gráfico da Temperatura e Humidade',
-        width: 900,
-        height: 500,
-        // Gives each series an axis that matches the vAxes number below.
-        series: {
-          0: {targetAxisIndex: 0},
-          1: {targetAxisIndex: 1}
-        },
-        vAxes: {
-          // Adds titles to each axis.
-          0: {title: 'Humidade (%)'},
-          1: {title: 'Temperatura (ºC)'}
-        },
-		pointSize:5,
+			  //[new Date(year, month, day, hours, minutes, seconds, milliseconds), humidade,  temperatura]
+			  /*
+			  dados_grafico.addRows([
+				[new Date(2014, 0, 2, 10, 30),  -.5,  5.7],
+				[new Date(2014, 0, 2, 12, 30),  -.5,  5.7],
+				[new Date(2014, 0, 6, 9, 50),   .4,  8.7],
+				[new Date(2014, 0, 11, 17, 40),   .5,   12]      
+			  ]);
+			  */
+			  
+			// Variaveis de separação da data/hora
+			var separa_data_hora = [];
+			var separa_data = [];
+			var separa_hora = [];
+			  
+			  // Atualizar os dados do gráfico
+			  todos_dados = new Array();
+			  
+			  for (j=0; j<tabela_dados_sensor.length; j++) {
+			  
+				// console.log(tabela_dados_sensor[j].getEndereco() +' = ' + tabela_enderecos_sensor[i]);
+			  
+				// Adicionar apenas os pontos pertencentes ao respetivo sensor
+				if(tabela_dados_sensor[j].getEndereco() == tabela_enderecos_sensor[i]) {
+					// Separar a data/hora em arrays para criar um objeto Date
+					separa_data_hora = tabela_dados_sensor[j].getData().split(" ");
+					separa_data = separa_data_hora[0].split("-");
+					separa_hora = separa_data_hora[1].split(":");
+				  
+					// O mês começa em zero (0 = Janeiro)
+					todos_dados.push([
+						new Date(
+							separa_data[0],
+							separa_data[1]-1,
+							separa_data[2],
+							separa_hora[0],
+							separa_hora[1],
+							separa_hora[2]
+						),
+						parseInt(tabela_dados_sensor[j].getHumidade()),
+						parseInt(tabela_dados_sensor[j].getTemperatura())
+					]);
+				}
+			  }
+			  dados_grafico.addRows(todos_dados);
+
+			  var materialOptions = {
+				title: 'Sensor ' + (i+1) + '   (endereço ' + tabela_enderecos_sensor[i] +')',
+				width: 900,
+				height: 500,
+				
+				// Gives each series an axis that matches the vAxes number below.
+				series: {
+				  0: {targetAxisIndex: 0},
+				  1: {targetAxisIndex: 1}
+				},
+				
+				vAxes: {
+				  // Adicionar o titulo dos eixos verticais
+				  0: {title: 'Humidade (%)'},
+				  1: {title: 'Temperatura (ºC)'}
+				},
+				pointSize:5,
+					
+					/*
+					**Como definir até onde vai o eixo do x**
+					 hAxis: {
+				  ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
+						  new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
+						  new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
+						 ]
+				},
+				
+				*/
+				// **Como definir até onde vai o eixo do y**
+				vAxis: {
+				  viewWindow: {
+					max: 100
+				  }
+				}
+			};
+
+			  // Criar e adicionar uma div para desenhar o gráfico
+			  var nova_div = document.createElement('div');
+			  nova_div.setAttribute('id', 'grafico_' + i);
+			  nova_div.innerHTML = 'iupiii sou uma div nova!';
+			  div_despejar.appendChild(nova_div);
 			
-			/*
-			**Como definir até onde vai o eixo do x**
-			 hAxis: {
-          ticks: [new Date(2014, 0), new Date(2014, 1), new Date(2014, 2), new Date(2014, 3),
-                  new Date(2014, 4),  new Date(2014, 5), new Date(2014, 6), new Date(2014, 7),
-                  new Date(2014, 8), new Date(2014, 9), new Date(2014, 10), new Date(2014, 11)
-                 ]
-        },
-		
-		
-		*/
-		// **Como definir até onde vai o eixo do y**
-        vAxis: {
-          viewWindow: {
-            max: 100
-		  }
+			  // Desenhar o grafico na nova div
+			  materialChart = new google.visualization.LineChart(nova_div);
+			  materialChart.draw(dados_grafico, materialOptions);
+		  
 		}
-    };
-
-      materialChart = new google.visualization.LineChart(materialDiv);
-      materialChart.draw(dados_grafico, materialOptions);
 
     }
 			
