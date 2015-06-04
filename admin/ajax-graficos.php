@@ -1,21 +1,21 @@
 <?php
-	// ajax-graficos.php - devolve os dados do grafico
+	// ajax-graficos.php - devolve os dados dos graficos de intervalo e hora
 	
-	//include "sessaoAtiva.php";
+	include "sessaoAtiva.php";
 	include "conf.php";
 	include "acessobd.php";
 	
-	if(isset($_GET["datas"]) && !empty($_GET["datas"])) {
+	$bd = new BaseDados();
 	
-		$bd = new BaseDados();
+	// Graficos de intervalo de tempo
+	if(isset($_GET["datas"]) && !empty($_GET["datas"])) {
 		
-		// verificar se existe algum utilizador com o username escolhido
-		
-		// Separar e formatar corretamente as datas
+		// Separar as datas
 		$datas = explode("*", $_GET["datas"]);
 		
 		/*  Este trabalho foi para o lado do cliente :)
 		
+		// Formatar corretamente as datas
 		$data_inf = new DateTime($datas[0]);
 		$data_inf->format('Y-m-d H:i:s');
 		$data_sup = new DateTime($datas[1]);
@@ -57,7 +57,48 @@
 		} else {
 			echo 'Sem dados! <a href="graficos-teste.php">Voltar</a>';
 		}
-	} else {
-		echo 'Datas não definidas! <a href="graficos-teste.php">Voltar</a>';
+	}
+	
+	
+	// Graficos de intervalo de hora
+	if(isset($_GET["dia"]) && !empty($_GET["dia"])) {
+	
+		// Separar os componentes da data (dia-mes-ano)
+		$dia = explode("-", $_GET["dia"]);
+		
+		$dados = array(
+			"DIA" => $dia[0],
+			"MES" => $dia[1],
+			"ANO" => $dia[2]
+		);
+		
+		/*
+		  exemplo de query - http://127.0.0.1/Projeto/admin/ajax-graficos.php?dia=05-06-2015
+		  $dados_bd = $bd->query("SELECT * FROM clima WHERE CL_ENDERECO_SENSOR = :CL_ENDERECO_SENSOR AND CL_DATAHORA BETWEEN :DATA_INF AND :DATA_SUP", $dados);
+		*/
+		
+		$dados_bd = $bd->query("SELECT * FROM clima WHERE DAY(CL_DATAHORA) = :DIA AND MONTH(CL_DATAHORA) = :MES AND YEAR(CL_DATAHORA) = :ANO", $dados);
+
+		// Devolver XML com dados apenas se houver dados para mostrar
+		if(count($dados_bd) > 0) {
+			header('Content-Type: text/xml');
+			echo "<?xml version=\"1.0\" standalone=\"yes\"?><valores>";
+	
+			// Dados de um sensor num determinado instante
+			$num_dados = count($dados_bd);
+			for($i=0; $i<$num_dados; $i++) {
+				echo "<sensor endereco=\"" . $dados_bd[$i]["CL_ENDERECO_SENSOR"] . "\"><temperatura>" . $dados_bd[$i]["CL_TEMPERATURA"] . "</temperatura><humidade>" . $dados_bd[$i]["CL_HUMIDADE"] . "</humidade><data>" . $dados_bd[$i]["CL_DATAHORA"] . "</data></sensor>";
+			}
+			
+			// Obter a contagem dos dados por sensor
+			$dados_bd = $bd->query("SELECT CL_ENDERECO_SENSOR, COUNT(*) as NUMERO FROM clima WHERE DAY(CL_DATAHORA) = :DIA AND MONTH(CL_DATAHORA) = :MES AND YEAR(CL_DATAHORA) = :ANO", $dados);
+			$num_dados = count($dados_bd);
+			for($i=0; $i<$num_dados; $i++) {
+				echo "<contagem endereco=\"" . $dados_bd[$i]["CL_ENDERECO_SENSOR"] . "\">" . $dados_bd[$i]["NUMERO"] . "</contagem>";
+			}
+			echo "</valores>";
+		} else {
+			echo 'Sem dados! <a href="graficos-teste.php">Voltar</a>';
+		}
 	}
 ?>
