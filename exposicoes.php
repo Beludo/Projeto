@@ -1,5 +1,21 @@
 <?php
-	include "sessaoAtiva.php"
+	include "sessaoAtiva.php";
+	include_once "/admin/GerePecas.php";
+	include_once "admin/pecas.php";
+
+$gere_artigos = new GerePecas();
+$artigos = $gere_artigos ->listarArtigos();
+if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
+    isset($_GET["id"]) && !empty($_GET["id"]) &&
+    isset($_GET["i"]) && !empty($_GET["i"])){
+    if($_GET["ativo"] == 1){
+        $artigos[$_GET["i"]]->setAtivo(false, $artigos[$_GET["i"]]->getId());
+    } elseif($_GET["ativo"] == 0) {
+        $artigos[$_GET["i"]]->setAtivo(true, $artigos[$_GET["i"]]->getId());
+    } else {
+        header("Location: gerir-artigos.php?erro=1");
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,66 +65,20 @@
 			<hr>
 
 			<div class="row">
+						<?php
+                      $artigos = $gere_artigos->listarArtigos();
+                      if($artigos != null) {
+                          for($i = 0; $i<count($artigos); $i++) {
+                      ?>
 				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
+					<a class="thumbnail" href="mostra-peca.php?id=<?php echo $artigos[$i]->getId() ?>">
+						<img src="./admin/fotos-pecas/<?php echo $artigos[$i]->getFotografia()?>" alt="">
 					</a>
 				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php">
-						<img class="img-responsive" src="http://placehold.it/400x300" alt="">
-					</a>
-				</div>
+				<?php
+							}
+						}
+							?>
 			</div>
 
 
