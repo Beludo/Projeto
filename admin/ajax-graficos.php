@@ -77,7 +77,7 @@
 		  $dados_bd = $bd->query("SELECT * FROM clima WHERE CL_ENDERECO_SENSOR = :CL_ENDERECO_SENSOR AND CL_DATAHORA BETWEEN :DATA_INF AND :DATA_SUP", $dados);
 		*/
 		
-		$dados_bd = $bd->query("SELECT * FROM clima WHERE DAY(CL_DATAHORA) = :DIA AND MONTH(CL_DATAHORA) = :MES AND YEAR(CL_DATAHORA) = :ANO", $dados);
+		$dados_bd = $bd->query("SELECT CL_ID, CL_ENDERECO_SENSOR, DATE_FORMAT(CL_DATAHORA,'%H:%i:%s') HORAS, CL_TEMPERATURA, CL_HUMIDADE FROM clima WHERE DAY(CL_DATAHORA) = :DIA AND MONTH(CL_DATAHORA) = :MES AND YEAR(CL_DATAHORA) = :ANO", $dados);
 
 		// Devolver XML com dados apenas se houver dados para mostrar
 		if(count($dados_bd) > 0) {
@@ -87,11 +87,11 @@
 			// Dados de um sensor num determinado instante
 			$num_dados = count($dados_bd);
 			for($i=0; $i<$num_dados; $i++) {
-				echo "<sensor endereco=\"" . $dados_bd[$i]["CL_ENDERECO_SENSOR"] . "\"><temperatura>" . $dados_bd[$i]["CL_TEMPERATURA"] . "</temperatura><humidade>" . $dados_bd[$i]["CL_HUMIDADE"] . "</humidade><data>" . $dados_bd[$i]["CL_DATAHORA"] . "</data></sensor>";
+				echo "<sensor endereco=\"" . $dados_bd[$i]["CL_ENDERECO_SENSOR"] . "\"><temperatura>" . $dados_bd[$i]["CL_TEMPERATURA"] . "</temperatura><humidade>" . $dados_bd[$i]["CL_HUMIDADE"] . "</humidade><hora>" . $dados_bd[$i]["HORAS"] . "</hora></sensor>";
 			}
 			
 			// Obter a contagem dos dados por sensor
-			$dados_bd = $bd->query("SELECT CL_ENDERECO_SENSOR, COUNT(*) as NUMERO FROM clima WHERE DAY(CL_DATAHORA) = :DIA AND MONTH(CL_DATAHORA) = :MES AND YEAR(CL_DATAHORA) = :ANO", $dados);
+			$dados_bd = $bd->query("SELECT CL_ENDERECO_SENSOR, COUNT(*) as NUMERO FROM clima WHERE DAY(CL_DATAHORA) = :DIA AND MONTH(CL_DATAHORA) = :MES AND YEAR(CL_DATAHORA) = :ANO GROUP BY CL_ENDERECO_SENSOR", $dados);
 			$num_dados = count($dados_bd);
 			for($i=0; $i<$num_dados; $i++) {
 				echo "<contagem endereco=\"" . $dados_bd[$i]["CL_ENDERECO_SENSOR"] . "\">" . $dados_bd[$i]["NUMERO"] . "</contagem>";
