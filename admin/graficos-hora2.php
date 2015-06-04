@@ -326,7 +326,7 @@ include_once "sessaoAtiva.php";
             Daylight: {label: 'Humidade (%)'}
           }
         }
-      }
+      };
 			
       // Criar e adicionar uma div para desenhar o gráfico
 	  var nova_div = document.createElement('div');
@@ -335,7 +335,7 @@ include_once "sessaoAtiva.php";
 	  div_despejar.appendChild(nova_div);
 	
 	  // Desenhar o grafico na nova div
-	  materialChart = new google.visualization.LineChart(nova_div);
+	  materialChart = new google.charts.Line(nova_div);
 	  materialChart.draw(dados_grafico, materialOptions);
 
       }
