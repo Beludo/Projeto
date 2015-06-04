@@ -7,7 +7,7 @@ include_once "sessaoAtiva.php";
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Graficos de temperatura</title>
+	<title>Admin | Graficos por intervalo</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -63,7 +63,7 @@ include_once "sessaoAtiva.php";
 				  <!-- general form elements -->
 				  <div class="box box-primary">
 					<div class="box-header">
-					  <h3 class="box-title">Gráficos</h3>
+					  <h3 class="box-title">Gráficos por intervalo de tempo</h3>
 					</div><!-- /.box-header -->
 					<!-- form start -->
 						<div class="box-body">
@@ -77,7 +77,7 @@ include_once "sessaoAtiva.php";
 								</div><!-- /.input group -->
 							</div>
 							<div class="">
-								<button onClick="pedeDadosGraficos();" class="btn btn-primary">Atualizar gráficos</button>
+								<button onclick="pedeDadosGraficos();" class="btn btn-primary">Atualizar gráficos</button>
 								<!-- <button type="submit" class="btn btn-primary">Atualizar gráficos</button> -->
 							</div>
 							<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
@@ -214,7 +214,7 @@ include_once "sessaoAtiva.php";
 			if (http.responseText.indexOf('invalid') == -1){
 				var xmlDocument = http.responseXML;
 				
-				// Limpara os dados anteriores
+				// Limpar os dados anteriores
 				tabela_dados_sensor = [];
 				
 				// Obtem os dados retornados pelo XML
@@ -276,15 +276,15 @@ include_once "sessaoAtiva.php";
 	
 		for (i=0; i<tabela_enderecos_sensor.length; i++) {
 					
-			console.log('Gráfico do sensor ' + tabela_enderecos_sensor[i]);
-			console.log(tabela_contagem_sensor[i] + ' pontos');
+			// console.log('Gráfico do sensor ' + tabela_enderecos_sensor[i]);
+			// console.log(tabela_contagem_sensor[i] + ' pontos');
  
 			  var materialChart;
 			  
 			  var dados_grafico = new google.visualization.DataTable();
 			  dados_grafico.addColumn('date', 'Mes', 'day');
-			  dados_grafico.addColumn('number', "Humidade");
 			  dados_grafico.addColumn('number', "Temperatura");
+			  dados_grafico.addColumn('number', "Humidade");
 
 			  //[new Date(year, month, day, hours, minutes, seconds, milliseconds), humidade,  temperatura]
 			  /*
