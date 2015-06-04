@@ -43,7 +43,7 @@
 			// Dados de um sensor num determinado instante
 			$num_dados = count($dados_bd);
 			for($i=0; $i<$num_dados; $i++) {
-				echo "<sensor id=\"" . $dados_bd[$i]["CL_ID"] . "\"><temperatura>" . $dados_bd[$i]["CL_TEMPERATURA"] . "</temperatura><humidade>" . $dados_bd[$i]["CL_HUMIDADE"] . "</humidade><data>" . $dados_bd[$i]["CL_DATAHORA"] . "</data></sensor>";
+				echo "<sensor endereco=\"" . $dados_bd[$i]["CL_ENDERECO_SENSOR"] . "\"><temperatura>" . $dados_bd[$i]["CL_TEMPERATURA"] . "</temperatura><humidade>" . $dados_bd[$i]["CL_HUMIDADE"] . "</humidade><data>" . $dados_bd[$i]["CL_DATAHORA"] . "</data></sensor>";
 			}
 			
 			// Obter a contagem dos dados por sensor
