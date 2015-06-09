@@ -106,7 +106,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 						<th>Acções</th>
 					  </tr>
 					</thead>
-					<tbody> 
+					<tbody>
 						<?php
                       $produtos = $gere_produtos->listarProdutos();
                       if($produtos != null) {
@@ -152,7 +152,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                             }
                       }
 					?>
-					</tfoot>
+					</tbody>
 				  </table>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->
