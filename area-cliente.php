@@ -87,6 +87,11 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
 							<i class="icon-envelope"></i> Alterar Palavra-Passe
 						</a>
 					</li>
+					<li class="">
+						<a data-toggle="tab" href="#socio">
+							<i class="icon-envelope"></i> Torna-te Sócio
+						</a>
+					</li>
 				</ul>
 				<div class="tab-content">
 
@@ -196,6 +201,55 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
 									</div>
 								</form>
 							</div>
+						</section>
+					</div>
+					
+					<!-- tornar sócio -->
+					<div id="socio" class="tab-pane">
+						<section class="panel">
+							<br>
+								<div class="row">
+			 <div class="col-md-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Normal</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="price"><sup>€</sup>0<sup>00</sup></span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>0%</strong> Desconto</li>
+                        <li class="list-group-item"><strong>1</strong> Pin</li>
+                        <li class="list-group-item"><strong>3</strong> Bilhetes Mensais</li>
+                        <li class="list-group-item"><strong></strong> Disk Space</li>
+                        <li class="list-group-item"><strong>100GB</strong> Monthly Bandwidth</li>
+                        <li class="list-group-item"><a href="#" class="btn btn-primary">Inscreve-te!!</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Sócio</h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="price"><sup>€</sup>39<sup>99</sup></span>
+                        <span class="period">mensal</span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>10%</strong> Desconto</li>
+                        <li class="list-group-item"><strong>2</strong> Pin</li>
+                        <li class="list-group-item"><strong>6</strong> Bilhetes Mensais</li>
+                        <li class="list-group-item"><strong>1000GB</strong> Disk Space</li>
+                        <li class="list-group-item"><strong>10000GB</strong> Monthly Bandwidth</li>
+                        <li class="list-group-item"><a href="#" class="btn btn-primary">Inscreve-te!!</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+					</div>
+        <!-- /.row -->
 						</section>
 					</div>
 					
