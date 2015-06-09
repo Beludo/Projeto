@@ -106,13 +106,21 @@ class GereUtilizadores {
             $idA = array("U_ID" => $id);
             $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_ID = :U_ID", $idA);
  
-            if (isset($dados)) {
-                $utilizador = new Utilizadores($registo["u_id"], $registo["u_nome"], $registo["u_numerofuncionario"], 
-                                           $registo["u_nomeutilizador"], $registo["u_palavrapasse"], 
-                                           $registo["u_tipoutilizador"], $registo["u_dataregisto"], 
-                                           $registo["u_morada"], $registo["u_contatotelefonico"], 
-                                           $registo["u_datanascimento"], $registo["u_funcao"],
-                                           $registo["u_ativo"], $registo["u_fotografia"]);
+            if (isset($registo)) {
+			
+                $utilizador = new Utilizadores(
+					$registo[0]["U_ID"],
+					$registo[0]["U_NOMECOMPLETO"],
+					$registo[0]["U_USERNAME"],
+					$registo[0]["U_PASSWORD"],
+					$registo[0]["U_DATAREGISTO"],
+					$registo[0]["U_CONTATOTELEFONICO"],
+					$registo[0]["U_EMAIL"],
+					$registo[0]["U_MORADA"],
+					$registo[0]["U_FOTOGRAFIA"],
+					$registo[0]["U_ATIVO"],
+					"0"
+				);
                 return $utilizador;
             }else{
                 return NULL;
