@@ -5,17 +5,17 @@ include_once "GereUtilizadores.php";
 include_once "Utilizadores.php";
 
 $gere_utilizador = new GereUtilizadores();
-$utilizador = $gere_utilizador->listarUtilizador();
+$utilizadores = $gere_utilizador->listarUtilizador();
 
 if(
     isset($_GET["accao"]) && !empty($_GET["accao"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
-    is_numeric($_GET["i"]) && !empty($_GET["i"])){
-
+    isset($_GET["i"]) && !empty($_GET["i"])){
+	
     if(!strcmp($_GET["accao"], "ativar")){
-        $utilizador[$_GET["i"]]->setAtivo(true, $utilizador[$_GET["i"]]->getId());
-    } elseif(strcmp($_GET["accao"], "desativar")){
-        $utilizador[$_GET["i"]]->setAtivo(false, $utilizador[$_GET["i"]]->getId());
+        $utilizadores[$_GET["i"]]->setAtivo(true, $utilizadores[$_GET["i"]]->getId());
+    } elseif(!strcmp($_GET["accao"], "desativar")){
+        $utilizadores[$_GET["i"]]->setAtivo(false, $utilizadores[$_GET["i"]]->getId());
     } else {
 
     }
@@ -102,7 +102,6 @@ if(
 					  </tr>
 					</thead>
                       <?php
-                      $utilizadores = $gere_utilizador->listarUtilizador();
                       if($utilizadores != null) {
                           for($i = 0; $i<count($utilizadores); $i++) {
                       ?>
