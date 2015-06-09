@@ -47,12 +47,12 @@ include_once "sessaoAtiva.php";
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Registo climatico
-			<small>Temperatura e humidade</small>
+			Graficos de temperatura
+			<small>Texto pequeno</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li class="active">Graficos por hora</li>
+			<li class="active">Graficos de temperatura</li>
 		  </ol>
 		</section>
 
@@ -63,15 +63,27 @@ include_once "sessaoAtiva.php";
 				  <!-- general form elements -->
 				  <div class="box box-primary">
 					<div class="box-header">
-					  <h3 class="box-title">Gráficos por hora</h3>
+					  <h3 class="box-title">Registo da temperatura</h3>
 					</div><!-- /.box-header -->
+					<!-- form start -->
+					<form role="form">
 						<div class="box-body">
-							<div class="">
-								<button onclick="pedeDadosGraficos();" class="btn btn-primary">Atualizar gráficos</button>
+							<div class="form-group">
+								<label>Intervalo de tempo a mostrar:</label>
+								<div class="input-group">
+									<div class="input-group-addon">
+										<i class="fa fa-clock-o"></i>
+									</div>
+									<input class="form-control pull-right" id="reservationtime" type="text">
+								</div><!-- /.input group -->
+								<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+  <div id="material"></div>		
 							</div>
-							<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
-							<div id="despejar-graficos-aqui"></div>
+							<div class="box-footer">
+								<button type="submit" class="btn btn-primary">Atualizar gráficos</button>
+							</div>
 						</div>
+					</form>
 				  </div><!-- /.box -->
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -120,155 +132,22 @@ include_once "sessaoAtiva.php";
 	
 	<!-- Script do seletor de data/hora -->	
     <script type="text/javascript">
-	
-	// Objeto
-	var dados_sensor = {
-		constructor: function c(temperatura, humidade, hora, endereco){
-			this._temperatura = temperatura;
-			this._humidade = humidade;
-			this._hora = hora;
-			this._endereco = endereco;
-		},
-		getTemperatura: function() {
-			return this._temperatura;
-		},
-		
-		getHumidade: function() {
-			return this._humidade;
-		},
-		getHora: function(){
-			return this._hora;
-		},
-		
-		getEndereco: function() {
-			return this._endereco;
-		},
-	};
-	var tabela_dados_sensor = new Array();
-	
-	
-	// Guarda os dados do grafico
-	var dados_grafico;
-	
-	// Indica quantos dados existem por sensor
-	var tabela_enderecos_sensor = new Array();
-	var tabela_contagem_sensor = new Array();
-	
-	// Declarar o objeto getHTTPObject
-	var http = getHTTPObject();
-
-	// Tentar obter um objeto ActiveXObject
-	function getHTTPObject() { 
-		http_request = false;
-		if (window.XMLHttpRequest) { // Mozilla, Safari,...
-			http_request = new XMLHttpRequest();
-			if (http_request.overrideMimeType) {
-				http_request.overrideMimeType('text/xml');
-			}
-		} else if (window.ActiveXObject) { // IE
-			try {
-				http_request = new ActiveXObject("Msxml2.XMLHTTP");
-			} catch (e) {
-				try {
-					http_request = new ActiveXObject("Microsoft.XMLHTTP");
-				} catch (e) {}
-			}
-		}
-		if (!http_request) {
-			alert('Erro ao criar uma instância XMLHTTP');
-			return false;
-		} else{
-		return http_request;
-	  }	
-	}
-	
-	// Obtem os dados dos gráficos
-	function pedeDadosGraficos() {
-		if (http) {
-			//var datasLidas = document.getElementById("reservationtime").value
-			var datasLidas = "04-06-2015";
-			var url = "ajax-graficos.php?dia="; 
 			
-			// O mesmo que ajax-graficos?datas=06/01/2015 12:00 AM*06/03/2015 12:00 AM
-			http.open("GET", url + escape(datasLidas), true); 
-
-			// Chamar a função que mostra a resposta na página
-			http.onreadystatechange = atualizaGraficos;
-			http.send(null);
-		}
-	}
-	
-	// Trata a resposta do pedido via GET com resposta em XML
-	function atualizaGraficos() {
-		if (http.readyState == 4){
-			if (http.responseText.indexOf('invalid') == -1){
-				var xmlDocument = http.responseXML;
-				
-				// Limpar os dados anteriores
-				tabela_dados_sensor = [];
-				
-				// Obtem os dados retornados pelo XML
-				sensor = xmlDocument.getElementsByTagName("sensor");
-				temp = xmlDocument.getElementsByTagName("temperatura");
-				humi = xmlDocument.getElementsByTagName("humidade");
-				hora = xmlDocument.getElementsByTagName("hora");
-				for (i=0; i<temp.length; i++) {
-				
-					// Obter o endereco do sensor referente aos dados lidos (<sensor id="002542E700E9E511">)
-					atributos = sensor[i].attributes;
-					
-					// Guardar os valores
-					var novos_dados_sensor = Object.create(dados_sensor);
-					novos_dados_sensor.constructor(
-						temp[i].childNodes[0].nodeValue,
-						humi[i].childNodes[0].nodeValue,
-						hora[i].childNodes[0].nodeValue,
-						atributos.getNamedItem("endereco").nodeValue
-					);
-					tabela_dados_sensor.push(novos_dados_sensor);
-				}
-				
-				// Guardar a contagem de sensores
-				tabela_enderecos_sensor = new Array();
-				tabela_contagem_sensor = new Array();
-				cont = xmlDocument.getElementsByTagName("contagem");
-				for (i=0; i<cont.length; i++) {
-					atributos = cont[i].attributes;
-					tabela_enderecos_sensor.push(atributos.getNamedItem("endereco").nodeValue);
-					tabela_contagem_sensor.push(cont[i].childNodes[0].nodeValue);
-				}
-				
-				// Atualizar e mostrar os gráficos
-				console.log("A atualizar o grafico");
-				drawChart();
-				
-			}
-		}
-	}
-			
-	//funcao do grafico
-	google.load('visualization', '1.1', {packages: ['line', 'corechart']});
+			//funcao do grafico
+			google.load('visualization', '1.1', {packages: ['line', 'corechart']});
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {
-	
-		// Esta div vai receber os gráficos gerados
-		var div_despejar = document.getElementById('despejar-graficos-aqui');
-		
-		// Apagar os gráficos existentes
-		div_despejar.innerHTML = "";
-	
-		for (i=0; i<tabela_enderecos_sensor.length; i++) {
-	   
-	    var materialChart;
  
-        var dados_grafico = new google.visualization.DataTable();
-        dados_grafico.addColumn('date', 'Horas', 'day');
-	    dados_grafico.addColumn('number', "Humidade");
-		dados_grafico.addColumn('number', "Temperatura");
+      var materialChart;
+       var materialDiv = document.getElementById('material');
+ 
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Month', 'day');
+      data.addColumn('number', "Temperatura");
+      data.addColumn('number', "Humidade");
 
-	  //[new Date(year, month, day, hours, minutes, seconds, milliseconds),  temperatura,  humidade]
-	  /*
+			//[new Date(year, month, day, hours, minutes, seconds, milliseconds),  temperatura,  humidade]
       data.addRows([
         [new Date(2015, 5, 2, 10, 30),  -.5,  5.7],
 				[new Date(2015, 5, 2, 10, 45),  8, 6.7],
@@ -276,41 +155,10 @@ include_once "sessaoAtiva.php";
 				[new Date(2015, 5, 2, 11, 30),  6,  15],
 				 [new Date(2015, 5, 2, 12, 30),  20,  10]  
       ]);
-	  */
 
-	  // Variavel de separação da hora
-	  var separa_hora = [];
-	  
-	  // Atualizar os dados do gráfico
-	  todos_dados = new Array();
-	  for (j=0; j<tabela_dados_sensor.length; j++) {
-	  
-		// Adicionar apenas os pontos pertencentes ao respetivo sensor
-		if(tabela_dados_sensor[j].getEndereco() == tabela_enderecos_sensor[i]) {
-			// Separar a hora em arrays para criar um objeto Date
-			separa_hora = tabela_dados_sensor[j].getHora().split(":");
-			
-			// O mês começa em zero (0 = Janeiro)
-			todos_dados.push([
-				new Date(
-					2015,
-					06,
-					01,
-					separa_hora[0],
-					separa_hora[1],
-					separa_hora[2]
-				),
-				parseInt(tabela_dados_sensor[j].getHumidade()),
-				parseInt(tabela_dados_sensor[j].getTemperatura())
-			]);
-		}
-	  }
-	  dados_grafico.addRows(todos_dados);
-	  
-	  
       var materialOptions = {
         chart: {
-		  title: 'Sensor ' + (i+1) + '   (endereço ' + tabela_enderecos_sensor[i] +')',
+          title: 'Gráfico da Temperatura e Humidade'
         },
         width: 900,
         height: 500,
@@ -326,20 +174,12 @@ include_once "sessaoAtiva.php";
             Daylight: {label: 'Humidade (%)'}
           }
         }
-      };
-			
-      // Criar e adicionar uma div para desenhar o gráfico
-	  var nova_div = document.createElement('div');
-	  nova_div.setAttribute('id', 'grafico_' + i);
-	  nova_div.innerHTML = 'iupiii sou uma div nova!';
-	  div_despejar.appendChild(nova_div);
-	
-	  // Desenhar o grafico na nova div
-	  materialChart = new google.charts.Line(nova_div);
-	  materialChart.draw(dados_grafico, materialOptions);
-
       }
-	}
+			
+      materialChart = new google.charts.Line(materialDiv);
+      materialChart.draw(data, materialOptions);
+
+    }
 			
 			//funcao para adicionar data/hora -->
 			
