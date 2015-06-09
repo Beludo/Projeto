@@ -26,7 +26,7 @@
 			global $conf_pass;
 			
 			try{
-				$this->DBH = new PDO("mysql:host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
+				$this->DBH = new PDO("mysql:charset=utf8mb4;host=$conf_servidor;dbname=$conf_bd", $conf_user, $conf_pass);
 			}catch(PDOException $e) {
 				echo $e->getMessage();
 				return false;
