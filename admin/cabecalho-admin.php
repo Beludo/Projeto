@@ -8,7 +8,7 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 ?>
 
 <header class="main-header">
-		<a href="index2.html" class="logo"><b>Admin</b>Backoffice</a>
+		<a href="info-gerais.php" class="logo"><b>Admin</b>Backoffice</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top" role="navigation">
 		  <!-- Sidebar toggle button-->

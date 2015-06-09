@@ -122,7 +122,7 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="general.html"><i class="fa fa-circle-o"></i> Adicionar fotos</a>
+					<li><a href="ad-fotos.php"><i class="fa fa-circle-o"></i> Adicionar fotos</a>
 					</li>
 					<li><a href="gerir-visita.php"><i class="fa fa-circle-o"></i> Gerir visita virtual</a>
 					</li>
@@ -134,7 +134,7 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="ad-exposicoes.html"><i class="fa fa-circle-o"></i> Adicionar Exposições</a>
+					<li><a href="ad-exposicoes.php"><i class="fa fa-circle-o"></i> Adicionar Exposições</a>
 					</li>
 					<li><a href="gerir-exposicoes.php"><i class="fa fa-circle-o"></i> Gerir Exposições</a>
 					</li>
@@ -146,7 +146,7 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="ad-eventos.html"><i class="fa fa-circle-o"></i> Adicionar Eventos</a>
+					<li><a href="ad-eventos.php"><i class="fa fa-circle-o"></i> Adicionar Eventos</a>
 					</li>
 					<li><a href="gerir-eventos.php"><i class="fa fa-circle-o"></i> Gerir Eventos</a>
 					</li>
