@@ -7,9 +7,9 @@ include_once "GerePermissoes.php";
 
 $gereUtilizadores = new GereUtilizadores();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
-    $utilizador = $gereUtilizadores->verDadosUtilizador($_GET["id"]);
-} else {
-    $utilizador = $gereUtilizadores->verDadosUtilizador($_POST["id"]);
+    $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_GET["id"]);
+} else if(!empty($_POST["id"]) && is_numeric($_POST["id"])) {
+    $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_POST["id"]);
 }
 
 // verificar se todos os campos foram preenchidos
@@ -54,6 +54,9 @@ if(
         // usar uma foto por omissão
         $nome_foto = "sem-foto.png";
     }
+	
+	// Guardar dados
+	
 
     // Obter as permissoes
     $permissoesUser = new Permissoes(0, 0, 0, 0, 0, 0, 0, 0);
@@ -86,8 +89,12 @@ if(
         $permissoesUser->setPermMuseuVirt("1");
     }
 
+	/* AQUI É EDITAR!!!
+	
     $gereUtilizadores->adicionarUtilizador(new Utilizadores($utilizador->getId(), $_POST["nome"], $utilizador->getUsername(), $_POST["password"], $utilizador->getDataRegisto(), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1), $permissoesUser);
-    //$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
+    */
+	
+	//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
 }
 
 
@@ -165,22 +172,22 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                     <!-- general form elements -->
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h3 class="box-title">Dados do utilizador "<?php echo $utilizador->getUsername(); ?>"</h3>
+                            <h3 class="box-title">Dados do utilizador "<?php echo $utilizador_editar->getUsername(); ?>"</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
                         <form role="form" method="post" action="editar-utilizador.php?id=<?php echo $_POST["id"] ?>" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Nome completo</label>
-                                    <input type="text" class="form-control" placeholder="Insira o nome" id="nome" name="nome" value="<?php echo $utilizador->getNomeCompleto(); ?>"/>
+                                    <input type="text" class="form-control" placeholder="Insira o nome" id="nome" name="nome" value="<?php echo $utilizador_editar->getNomeCompleto(); ?>"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Morada</label>
-                                    <input type="text" class="form-control" placeholder="Insira a morada" name="morada" value="<?php echo $utilizador->getMorada(); ?>"/>
+                                    <input type="text" class="form-control" placeholder="Insira a morada" name="morada" value="<?php echo $utilizador_editar->getMorada(); ?>"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Contacto telefonico</label>
-                                    <input type="text" class="form-control" placeholder="Insira o numero de telefone" name="telefone" value="<?php echo $utilizador->getContatoTelefonico(); ?>"/>
+                                    <input type="text" class="form-control" placeholder="Insira o numero de telefone" name="telefone" value="<?php echo $utilizador_editar->getContatoTelefonico(); ?>"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
@@ -196,14 +203,14 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email" name="email" value="<?php echo $utilizador->getEmail(); ?>">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Insira o email" name="email" value="<?php echo $utilizador_editar->getEmail(); ?>">
                                 </div>
                                 <div class="form-group<?php echo $p_erro1; ?>">
                                     <label for="exampleInputFile">Foto</label>
                                     <input type="file" id="exampleInputFile" name="foto">
                                     <p class="help-block">Seleccione uma foto de perfil.</p>
                                 </div>
-                                <input type="text" value="<?php echo $utilizador->getId() ?>" hidden="hidden" name="id">
+                                <input type="text" value="<?php echo $utilizador_editar->getId() ?>" hidden="hidden" name="id">
                                 <div class="form-group">
                                     <hr>
                                     <label >Permissões</label>
