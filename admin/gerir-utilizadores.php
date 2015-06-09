@@ -12,10 +12,9 @@ if(
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     is_numeric($_GET["i"]) && !empty($_GET["i"])){
 
-    if(strcmp($_GET["accao"], "ativar")){
+    if(!strcmp($_GET["accao"], "ativar")){
         $utilizador[$_GET["i"]]->setAtivo(true, $utilizador[$_GET["i"]]->getId());
     } elseif(strcmp($_GET["accao"], "desativar")){
-        header("Location: gerir-utilizadores.php?erro=1");
         $utilizador[$_GET["i"]]->setAtivo(false, $utilizador[$_GET["i"]]->getId());
     } else {
 
