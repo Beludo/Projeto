@@ -6,14 +6,11 @@ include_once "Permissoes.php";
 include_once "GerePermissoes.php";
 
 $gereUtilizadores = new GereUtilizadores();
-if(!empty($_GET["id"]) && isset($_GET["id"])){
+if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
     $utilizador = $gereUtilizadores->verDadosUtilizador($_GET["id"]);
 } else {
     $utilizador = $gereUtilizadores->verDadosUtilizador($_POST["id"]);
 }
-
-
-
 
 // verificar se todos os campos foram preenchidos
 if(
