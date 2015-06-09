@@ -1,20 +1,19 @@
 <?php
 include_once "acessobd.php";
 
-class pecas {
+class Pecas {
     private $id;
     private $museu;
     private $nInventario;
     private $categoria;
     private $nome;
     private $datacao;
-    private $materia;
     private $descricao;
     private $fotografia;
     private $origem;
     private $ativo;
 
-    function __construct($id, $museu, $nInventario, $categoria, $nome, $datacao, $materia, $descricao, $fotografia, $origem, $ativo)
+    function __construct($id, $museu, $nInventario, $categoria, $nome, $datacao, $descricao, $fotografia, $origem, $ativo)
     {
         $this->id = $id;
         $this->museu = $museu;
@@ -22,7 +21,6 @@ class pecas {
         $this->categoria = $categoria;
         $this->nome = $nome;
         $this->datacao = $datacao;
-        $this->materia = $materia;
         $this->descricao = $descricao;
         $this->fotografia = $fotografia;
         $this->origem = $origem;
@@ -72,9 +70,9 @@ class pecas {
     /**
      * @param mixed $nInventário
      */
-    public function setNInventário($nInventário)
+    public function setNInventario($nInventario)
     {
-        $this->nInventário = $nInventário;
+        $this->nInventario = $nInventario;
     }
 
     /**
@@ -125,21 +123,6 @@ class pecas {
         $this->datacao = $datacao;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getMateria()
-    {
-        return $this->materia;
-    }
-
-    /**
-     * @param mixed $materia
-     */
-    public function setMateria($materia)
-    {
-        $this->materia = $materia;
-    }
 
     /**
      * @return mixed

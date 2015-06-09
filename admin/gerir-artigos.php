@@ -2,7 +2,7 @@
 
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
-include_once "pecas.php";
+include_once "Pecas.php";
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
@@ -152,7 +152,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                             }
                       }
 					?>
-					</tfoot>
+					</tbody>
 				  </table>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->

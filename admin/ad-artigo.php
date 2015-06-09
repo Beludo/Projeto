@@ -1,21 +1,20 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
-include_once "pecas.php";
+include_once "Pecas.php";
 
-$gerePeca = new GerePecas();
+$gerePecas = new GerePecas();
 
 // verificar se todos os campos foram preenchidos
-if(isset($_POST["museu"]) && !empty($_POST["museu"]) &&
+if(
+    isset($_POST["museu"]) && !empty($_POST["museu"]) &&
    isset($_POST["nInventario"]) && !empty($_POST["nInventario"]) &&
    isset($_POST["categoria"]) && !empty($_POST["categoria"]) &&
    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
    isset($_POST["datacao"]) && !empty($_POST["datacao"]) &&
-   isset($_POST["materia"]) && !empty($_POST["materia"]) &&
    isset($_POST["descricao"]) && !empty($_POST["descricao"]) &&
    isset($_POST["origem"]) && !empty($_POST["origem"])
-	){
-
+){
     // verificar se foi escolhido um ficheiro de foto
     if(file_exists($_FILES["foto"]["tmp_name"])){
 
@@ -49,7 +48,7 @@ if(isset($_POST["museu"]) && !empty($_POST["museu"]) &&
         // usar uma foto por omissão
         $nome_foto = "sem-foto.png";
     }
-    $artigo = new pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["materia"], $_POST["descricao"], nome_foto, $_POST["origem"], true);
+    $artigo = new Pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
     $gerePecas->adicionaArtigos($artigo);
 }
 
@@ -133,6 +132,10 @@ if(isset($_POST["museu"]) && !empty($_POST["museu"]) &&
 							<input class="form-control pull-right" id="datacao"  name ="datacao" type="text">
 						</div>
 					</div>
+                    <div class="form-group">
+                      <label>Categoria</label>
+                      <input type="text" class="form-control"  name ="categoria" placeholder="Insira a categoria"/>
+                    </div>
 					<div class="form-group">
 					  <label>Origem</label>
 					  <input type="text" class="form-control"  name ="origem" placeholder="Insira a origem"/>

@@ -1,7 +1,7 @@
 <?php
 	include "sessaoAtiva.php";
 	include_once "/admin/GerePecas.php";
-	include_once "admin/pecas.php";
+	include_once "admin/Pecas.php";
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
