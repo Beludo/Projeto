@@ -85,7 +85,7 @@
 			</li>
 			<li class="treeview">
 				<a href="log-utilizadores.php">
-					<i class="fa fa-users"></i>
+					<i class="fa fa-archive"></i>
 					<span>Log</span>
 				</a>
 			</li>
@@ -128,15 +128,29 @@
 					</li>
 				</ul>
 			</li>
-			<li>
+			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-archive"></i> <span>Exposições</span>
+					<i class="fa fa-bars"></i> <span>Exposições</span>
+					<i class="fa fa-angle-left pull-right"></i>
 				</a>
+				<ul class="treeview-menu">
+					<li><a href="ad-exposicoes.html"><i class="fa fa-circle-o"></i> Adicionar Exposições</a>
+					</li>
+					<li><a href="gerir-exposicoes.php"><i class="fa fa-circle-o"></i> Gerir Exposições</a>
+					</li>
+				</ul>
 			</li>
-			<li>
+			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-calendar"></i> <span>Eventos</span> 
+					<i class="fa  fa-calendar-o"></i> <span>Eventos</span>
+					<i class="fa fa-angle-left pull-right"></i>
 				</a>
+				<ul class="treeview-menu">
+					<li><a href="ad-eventos.html"><i class="fa fa-circle-o"></i> Adicionar Eventos</a>
+					</li>
+					<li><a href="gerir-eventos.php"><i class="fa fa-circle-o"></i> Gerir Eventos</a>
+					</li>
+				</ul>
 			</li>
 			<li><a href="documentation/index.html"><i class="fa fa-question-circle"></i> Ajuda</a>
 			</li>
