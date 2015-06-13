@@ -1,8 +1,20 @@
 <?php
 	include "sessaoAtiva.php";
-    include_once "./admin/GereLoja.php";
+    include "./admin/GereLoja.php";
     $gereLoja = new GereLoja();
     $produto = $gereLoja->verProdutoId($_GET["id"]);
+
+    if(isset($_POST["quantidade"]) && !empty($_POST["quantidade"])){
+        $i=0;
+        while($_SESSION[$i]["produto"] != null){
+            $i++;
+        }
+        $_SESSION[$i]["produto"] = $_GET["id"];
+        $_SESSION[$i]["quantidade"] = $_POST["quantidade"];
+        $_SESSION[$i]["nome"] = $produto[0]["LA_NOME"];
+        $_SESSION[$i]["descricao"] = $produto[0]["LA_OBSERVACOES"];
+        $_SESSION[$i]["preco"] = $produto[0]["LA_PRECO"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +69,21 @@
 					<hr />
 
 					<div class="col-md-12">
-						<form class="form-horizontal" role="form">
+						<form method="post" class="form-horizontal" action="mostra-produto.php?id=<?php echo $produto[0]["LA_ID"] ?>" role="form" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="quantity" class="col-sm-2 control-label">Quantidade</label>
 								<div class="col-xs-9">
-									<input style="max-width: 50px;" id="quantity" type="number" min="1" max="5" value="1" name="quantity" />
+									<input style="max-width: 50px;" id="quantity" type="number" min="1" max="10" value="1" name="quantidade" />
 								</div>
-							</div>
-
+                                <br>
+                            <div class="col-md-12 text-center">
+                                <button type="submit" id="loadToSuccess" class="btn btn-primary-custom btn-lg pull-left"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+                            </div>
 						</form>
 					</div>
 					<hr>
 
-					<div class="col-md-12 text-center">
-						<button id="loadToSuccess" class="btn btn-primary-custom btn-lg pull-left"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</button>
-					</div>
+
 
 					<div class="col-md-12">
 						<br>

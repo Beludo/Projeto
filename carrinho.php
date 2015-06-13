@@ -46,34 +46,16 @@
 					</div>
 				</div>
 				<div class="panel-body">
+					<?php
+                    if(!isset($_SESSION["produto"])){
+                        for($i=0; $i < count($_SESSION["produto"]); $i++){
+					?>
 					<div class="row">
 						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 						</div>
 						<div class="col-xs-4">
-							<h4 class="product-name"><strong><?php echo $products[$product_id]['name'] ?></strong></h4>
-							<h4><small>Descrição do Produto</small></h4>
-						</div>
-						<div class="col-xs-6">
-							<div class="col-xs-6 text-right">
-								<h6><strong><?php echo $products[$product_id]['price'] ?><span class="text-muted">x</span></strong></h6>
-							</div>
-							<div class="col-xs-4">
-								<input type="text" class="form-control input-sm" value="<?php echo $product['quantity'] ?>">
-							</div>
-							<div class="col-xs-2">
-								<button type="button" class="btn btn-link btn-xs">
-									<span class="glyphicon glyphicon-trash"> </span>
-								</button>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="row">
-						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
-						</div>
-						<div class="col-xs-4">
-							<h4 class="product-name"><strong>Nome do Produto</strong></h4>
-							<h4><small>Descrição do Produto</small></h4>
+							<h4 class="product-name"><strong><?php echo $_SESSION[$i]["nome"] ?></strong></h4>
+							<h4><small><?php echo $_SESSION[$i]["descricao"] ?></small></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
@@ -89,7 +71,12 @@
 							</div>
 						</div>
 					</div>
-					<hr>
+                </div>
+                <hr>
+                <?php
+                    }
+                }
+					?>
 					<div class="row">
 						<div class="text-center">
 							<div class="col-xs-9">
@@ -106,7 +93,9 @@
 				<div class="panel-footer">
 					<div class="row text-center"> 
 						<div class="col-xs-9">
-							<h4 class="text-right"><strong><?php echo $total_price ?></strong></h4>
+							<h4 class="text-right"><strong><?php
+
+                                    echo $total_price ?></strong></h4>
 						</div>
 						<div class="col-xs-3">
 							<button type="button" class="btn btn-success btn-block">
