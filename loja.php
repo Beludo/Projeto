@@ -107,7 +107,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 						<a href="mostra-produto.php?id=<?php echo $produtos[$i]->getId() ?>"><img src="./admin/fotos-produtos/<?php echo $produtos[$i]->getFotografia()?>" height="320px" width="150px" alt="">
 						</a>
 						<div class="caption">
-							<h4 class="pull-right">€ <?php echo $produtos[$i]->getPreco() ?></h4>
+							<h4 class="pull-right"><?php echo $produtos[$i]->getPreco() ?>€</h4>
 							<h4><a href="mostra-produto.php?id=<?php echo $produtos[$i]->getId() ?>"><?php echo $produtos[$i]->getNome() ?></a>
                                 </h4>
 							<p><?php echo $produtos[$i]->getObservacoes() ?></p>
@@ -146,5 +146,4 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 	<!-- Acaba RODAPÉ!! -->
 
 </body>
-
 </html>

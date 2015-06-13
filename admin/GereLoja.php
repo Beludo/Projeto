@@ -50,7 +50,15 @@ class GereLoja {
 							}
 							return $dados;
 			}
-	
+
+        public function verProdutoId($idProduto){
+            $dados = array (
+                'LA_ID'=> $idProduto
+            );
+
+            $registo = $this->bd->query("SELECT * FROM loja WHERE LA_ID = :LA_ID", $dados);
+            return $registo;
+        }
 }
 
 ?>

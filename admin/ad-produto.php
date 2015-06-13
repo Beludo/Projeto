@@ -28,7 +28,7 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
             // corrigir o nome do ficheiro
             $separar = explode(".", $_FILES["foto"]["name"]);
             $ext = $separar[count($separar)-1];
-            $nome_foto = $_POST["nome"] . "." . $ext;
+            $nome_foto = $_POST["codigo"] . "." . $ext;
 
             // apagar o ficheiro actual
             if(file_exists("fotos-produtos/" . $nome_foto)){

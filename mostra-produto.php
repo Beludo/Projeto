@@ -1,5 +1,8 @@
 <?php
-	include "sessaoAtiva.php"
+	include "sessaoAtiva.php";
+    include_once "./admin/GereLoja.php";
+    $gereLoja = new GereLoja();
+    $produto = $gereLoja->verProdutoId($_GET["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +18,14 @@
 
 <body>
 	<!-- MENU!! -->
-	<?php $pagina="loja" ; include "inc-cabecalho.php" ?>
+	<?php $pagina="mostra-produto" ; include "inc-cabecalho.php" ?>
 	<!-- Acaba MENU!! Conteudo e Banner-->
 
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="loja.php">Loja</a>
 			</li>
-			<li class="active">Produto xpto</li>
+			<li class="active"><?php echo $produto[0]["LA_NOME"]  ?></li>
 		</ol>
 
 		<!-- Conteudo -->
@@ -31,19 +34,8 @@
 			<div class="container">
 				<!-- details-photo -->
 				<div class="details-photo col-sm-5">
-					<a href="#"><img class="img-responsive" src="http://placehold.it/350x400">
+					<a href="#"><img class="img-responsive" src="./admin/fotos-produtos/<?php echo $produto[0]["LA_FOTOGRAFIA"]?>" height="400" width="350">
 					</a>
-					<br>
-					<div>
-						<a href=""><img src="http://placehold.it/85x84" alt="">
-						</a>
-						<a href=""><img src="http://placehold.it/85x84" alt="">
-						</a>
-						<a href=""><img src="http://placehold.it/85x84" alt="">
-						</a>
-						<a href=""><img src="http://placehold.it/85x84" alt="">
-						</a>
-					</div>
 				</div>
 				<!-- .details-photo -->
 
@@ -52,13 +44,13 @@
 				<div class="col-sm-6 details-right">
 
 					<div class="col-md-6 pull-left">
-						<h3 class="h3"><a href="#"><strong>Primeiro Produto</strong></a></h3>
-						<p class="product-code">Código do Produto: <strong>ECOM1204</strong>
+						<h3 class="h3"><a href="#"><strong><?php echo $produto[0]["LA_NOME"]?></strong></a></h3>
+						<p class="product-code">Código do Produto: <strong><?php echo $produto[0]["LA_CODIGO"]?></strong>
 						</p>
 					</div>
 
 					<div class="col-md-6 pull-right text-right">
-						<h1 class="big-price"><strong>€34</strong></h1>
+						<h1 class="big-price"><strong><?php echo $produto[0]["LA_PRECO"]?>€</strong></h1>
 					</div>
 
 					<div class="clearfix"></div>
@@ -93,18 +85,23 @@
 						<div class="tab-content">
 							<div class="tab-pane active" id="detalhes">
 								<h4>Informação do Produto</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. Aliquam in felis sit amet augue.</p>
+								<p><?php echo $produto[0]["LA_OBSERVACOES"]?></p>
 							</div>
 
 							<div class="tab-pane" id="informacao">
-								<h4>Dimensões</h4>
-								<p>144x52</p>
+								<h4>Stock</h4>
+								<p><?php echo $produto[0]["LA_STOCK"]?></p>
 								<hr>
-								<h4>Portes</h4>
-								<p>Correio Normal: 5-7 dias utéis - €7</p>
-								<p>Correio Azul: 2 dias utéis - €15</p>
-								<p>Avião: Algumas horas - €30</p>
-
+								<h4>Disponibilidade</h4>
+								<?php
+                                    if($produto[0]["LA_DISPONIBILIDADE"] == true){
+                                        ?>
+                                <p>Está Dísponivel</p>
+                                    <?php
+                                    } else {
+                                        ?>
+                                <p>Não está Disponivel</p>
+                                   <?php } ?>
 							</div>
 						</div>
 						<!-- tab-content-->
