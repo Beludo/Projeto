@@ -6,9 +6,6 @@
 
     if(isset($_POST["quantidade"]) && !empty($_POST["quantidade"])){
         $i=0;
-        while(isset($_SESSION[$i]["produtos"])){
-            $i++;
-        }
         array_push($_SESSION["produtos"] , new Carrinho($_GET["id"], $produto[0]["LA_NOME"], $produto[0]["LA_PRECO"], $produto[0]["LA_OBSERVACOES"], $_POST["quantidade"]));
     }
 ?>

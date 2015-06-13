@@ -45,7 +45,7 @@ if(
 
             // Guardar o nome de utilizador da sessão
             $_SESSION["visit"] = $visitante->getUsername();
-            $_SESSION["produtos"] = null;
+            $_SESSION["produtos"] = array();
             header("Location: index.php");
             }else{
             header("Location: login.php?erro=1");

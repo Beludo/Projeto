@@ -49,15 +49,16 @@
 				<div class="panel-body">
 					<?php
                     $i = 0;
-                    while(!isset($_SESSION[$i]["produtos"])){
+                    $contador = count($_SESSION["produtos"]);
+                    for($i=0; $i<$contador; $i++){
 
 					?>
 					<div class="row">
 						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 						</div>
 						<div class="col-xs-4">
-							<h4 class="product-name"><strong><?php echo $_SESSION[$i]["produtos"]->getIdProduto() ?></strong></h4>
-							<h4><small><?php echo $_SESSION[$i]["produtos"]->getDescricao() ?></small></h4>
+							<h4 class="product-name"><strong><?php echo $_SESSION["produtos"][$i]->getIdProduto() ?></strong></h4>
+							<h4><small><?php echo $_SESSION["produtos"][$i]->getDescricao() ?></small></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
