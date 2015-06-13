@@ -74,5 +74,6 @@
 	<!-- RODAPÉ!! -->
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
+</body>
 
 </html>
