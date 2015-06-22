@@ -219,12 +219,9 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><strong>0%</strong> Desconto</li>
-                        <li class="list-group-item"><strong>1</strong> Pin</li>
-                        <li class="list-group-item"><strong>3</strong> Bilhetes Mensais</li>
-                        <li class="list-group-item"><strong></strong> Disk Space</li>
-                        <li class="list-group-item"><strong>100GB</strong> Monthly Bandwidth</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Inscreve-te!!</a>
-                        </li>
+                        <li class="list-group-item"><strong>0</strong> Bilhetes Mensais</li>
+                        <li class="list-group-item">Sem Oferta Produtos </li>
+												<li class="list-group-item"><strong>0</strong> Cabaz Anual</li>
                     </ul>
                 </div>
             </div>
@@ -239,10 +236,9 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item"><strong>10%</strong> Desconto</li>
-                        <li class="list-group-item"><strong>2</strong> Pin</li>
                         <li class="list-group-item"><strong>6</strong> Bilhetes Mensais</li>
-                        <li class="list-group-item"><strong>1000GB</strong> Disk Space</li>
-                        <li class="list-group-item"><strong>10000GB</strong> Monthly Bandwidth</li>
+                        <li class="list-group-item">Oferta Produtos</li>
+                        <li class="list-group-item"><strong>1</strong> Cabaz Anual</li>
                         <li class="list-group-item"><a href="#" class="btn btn-primary">Inscreve-te!!</a>
                         </li>
                     </ul>
