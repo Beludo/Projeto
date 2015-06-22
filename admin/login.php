@@ -40,7 +40,7 @@ if(
         //verifica se o username que veio da base de dados é igual ao inserido
         if(
             !strcmp($_POST["username"], $utilizador->getUsername()) &&
-            !strcmp($_POST["password"], $utilizador->getPassword()) &&
+            !strcmp(md5($_POST["password"]), $utilizador->getPassword()) &&
             $utilizador->getAtivo() == 1){
 
             // Guardar o nome de utilizador da sessão

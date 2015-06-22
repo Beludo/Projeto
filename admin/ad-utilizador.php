@@ -53,7 +53,7 @@ if(
 			// usar uma foto por omissão
 			$nome_foto = "sem-foto.png";
 		}
-        $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], $_POST["password"], date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 0);
+        $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], md5($_POST["password"]), date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 0);
 
     // Obter as permissoes
 
