@@ -14,7 +14,7 @@ class Visitantes{
     private $ativo;
     private $bd;
 
-    function __construct($id, $nomeCompleto, $username, $password, $dataRegisto, $contatoTelefonico, $email, $morada, $fotografia, $ativo = true){
+    function __construct($id, $nomeCompleto, $username, $password, $dataRegisto, $contatoTelefonico, $email, $morada, $fotografia, $ativo = true, $socio = false){
 		$this->id = $id;
         $this->nomeCompleto = $nomeCompleto;
         $this->username = $username;
@@ -25,6 +25,7 @@ class Visitantes{
         $this->morada = $morada;
         $this->fotografia = $fotografia;
         $this->ativo = $ativo;
+				$this->socio = $socio;
         $this->bd = new BaseDados();
     }
 
@@ -50,6 +51,30 @@ class Visitantes{
     {
         return $this->ativo;
     }
+
+    /**
+     * @return boolean
+     */
+    public function getSocio()
+    {
+        return $this->socio;
+    }
+
+    /**
+     * @param boolean $socio
+     */
+    public function setSocio($socio)
+    {
+       $this->socio = $socio;
+        $sql = "UPDATE visitantes SET V_SOCIO = :V_SOCIO WHERE V_ID = :V_ID";
+        $dados = array(
+            'V_SOCIO' => $socio,
+            'V_ID' => $idVisitante
+        );
+
+        $this->bd->editar($sql, $dados);
+    }
+
 
     /**
      * @param mixed $contatoTelefonico

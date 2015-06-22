@@ -1,7 +1,7 @@
 <?php
 	include_once "GereVisitante.php";
 	
-	$gereVistantes = new GereVisitante();
+	$gereVisitantes = new GereVisitante();
 	
 	
 	
@@ -48,9 +48,8 @@
 			// usar uma foto por omissão
 			$nome_foto = "sem-foto.png";
 		}
-        $visitante = new Visitantes(0, $_POST["nome"], $_POST["username"], md5($_POST["password"]), date("y-m-d", time()), $_POST
-        ["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true);
-		$gereVistantes->adicionarVisitante($visitante);
+        $visitante = new Visitantes(0, $_POST["nome"], $_POST["username"], md5($_POST["password"]), date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 0);
+		$gereVisitantes->adicionarVisitante($visitante);
 	}
 	
 	

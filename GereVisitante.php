@@ -14,8 +14,7 @@ class GereVisitante {
 		$data = time();
 
         $sql = "INSERT into visitantes (V_NOMECOMPLETO,V_USERNAME, V_PASSWORD, V_DATAREGISTO, V_CONTATOTELEFONICO,
-        V_EMAIL,V_MORADA, V_FOTOGRAFIA, V_ATIVO) VALUES(:V_NOMECOMPLETO , :V_USERNAME, :V_PASSWORD, :V_DATAREGISTO, :V_CONTATOTELEFONICO,
-        :V_EMAIL,:V_MORADA, :V_FOTOGRAFIA, :V_ATIVO)";
+        V_EMAIL,V_MORADA, V_FOTOGRAFIA, V_ATIVO, V_SOCIO) VALUES(:V_NOMECOMPLETO , :V_USERNAME, :V_PASSWORD, :V_DATAREGISTO, :V_CONTATOTELEFONICO, :V_EMAIL,:V_MORADA, :V_FOTOGRAFIA, :V_ATIVO, :V_SOCIO)";
 
         $dados_visitante = array(
             'V_NOMECOMPLETO' => $visitante->getNomeCompleto(),
@@ -26,7 +25,8 @@ class GereVisitante {
             'V_EMAIL' => $visitante->getEmail(),
             'V_MORADA' => $visitante->getMorada(),
             'V_FOTOGRAFIA' => $visitante->getFotografia(),
-            'V_ATIVO' => $visitante->getAtivo()
+            'V_ATIVO' => $visitante->getAtivo(),
+						'V_SOCIO' => $visitante->getSocio()
         );
 		/*
 		echo
@@ -38,7 +38,8 @@ class GereVisitante {
             $visitante->getEmail() . "<br>" .
             $visitante->getMorada() . "<br>" .
             $visitante->getFotografia() . "<br>" .
-            $visitante->getAtivo() . "<br>"
+            $visitante->getAtivo() . "<br>".
+						$visitante->getSocio() . "<br>"
         ;
 		*/
 
