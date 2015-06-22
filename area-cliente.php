@@ -23,8 +23,8 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
         if(
             isset($_POST["antigaPass"]) && !empty($_POST["antigaPass"]) &&
             isset($_POST["password"]) && !empty($_POST["password"])){
-            if($visitante->getPassword() == $_POST["antigaPass"]){
-                $visitante->setPassword($_POST["password"], $visitante->getId());
+            if($visitante->getPassword() == md5($_POST["antigaPass"])){
+                $visitante->setPassword(md5($_POST["password"]), $visitante->getId());
             }
         }
     }
