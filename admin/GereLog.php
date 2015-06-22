@@ -11,7 +11,7 @@ class GereLog{
             public function __construct() {
                 $this->bd = new BaseDados();
             }
-    function guardarAcaoUtilizador($acao){
+    function guardarLogUtilizador($acao){
         try{
             $instrucao = $LigacaoBD->prepare("INSERT INTO Logs SET (U_id, L_dataHora, L_acao) VALUES(?, ?, ?)");
             $instrucao->bind_param($acao->userId, $acao->dataHora, $acao->acao);
@@ -27,21 +27,25 @@ class GereLog{
             return "False";
         }
     }
+	
+	public function listarLog(){
+			$dados = array();
 
-    function listarAcoesUtilizadores(){
-            $dados=array();
-            $instrucao = $this->bd->query("SELECT * FROM logs");
-           
-            
-            for($i=0; $i<count($instrucao); $i++){
-                    $dados[] = new AcoesUtilizadores($instrucao[$i]["L_ID"],$instrucao[$i]["U_ID"],$instrucao[$i]["L_DATAHORA"],$instrucao[$i]["L_acao"]);
-
-
+            $registo = $this->bd->query("SELECT l.*, u.U_NOMECOMPLETO FROM log l, utilizadores u where l.u_id = u.u_id");
+            for($i=0; $i<count($registo); $i++){
+                	$dados[] = new LogUtilizadores(
+						$registo[$i]["L_ID"],
+                        $registo[$i]["U_ID"],
+						$registo[$i]["L_ACAO"],
+                        $registo[$i]["L_DATAHORA"],
+										$registo[$i]["U_NOMECOMPLETO"]
+                        );
             }
             return $dados;
     }
+	
 
-    function pesquisarAcoesData($dataHora){
+    function pesquisarLogData($dataHora){
         try{
             $instrucao = $LigacaoBD->prepare("SELECT * FROM Logs WHERE L_dataHora = ?");
             $instrucao->bind_param($dataHora);
@@ -60,7 +64,7 @@ class GereLog{
         }
     }
 
-    function pesquisarAcoesUtilizador ($nome){
+    function pesquisarLogUtilizador ($nome){
         try{
             $instrucao = $LigacaoBD->prepare("SELECT U_id FROM Utilizadores WHERE U_nome = ?");
             $instrucao->bind_param($nome);

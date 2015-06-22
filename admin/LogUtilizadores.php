@@ -11,11 +11,12 @@
  * Atributo acao:
  * - Indica que ação foi realizada.
  */
-class AcoesUtilizadores {
+class LogUtilizadores {
     private $id;
     private $idUtilizador;
     private $dataHora;
     private $acao;
+		private $nomeUtilizador;
     
      /*
          * Construtor da classe AcoesUtilizadores
@@ -27,14 +28,64 @@ class AcoesUtilizadores {
          * @param acao
          * @return 
          *          */
-    function __construct($id, $idUtilizador, $datahora, $acao) {
+    function __construct($id, $idUtilizador, $acao, $datahora, $nomecompleto) {
         $this->id= $id;
         $this->idUtilizador = $idUtilizador;
         $this->datahora = $datahora;
         $this->acao = $acao;
+				$this->nomecompleto = $nomecompleto;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNomecompleto()
+    {
+        return $this->nomecompleto;
+    }
+
+    /**
+     * @param mixed $nomecompleto
+     */
+    public function setNomecompleto($nomecompleto)
+    {
+        $this->nomecompleto = $nomecompleto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomeUtilizador()
+    {
+        return $this->nomeUtilizador;
+    }
+
+    /**
+     * @param mixed $nomeUtilizador
+     */
+    public function setNomeUtilizador($nomeUtilizador)
+    {
+        $this->nomeUtilizador = $nomeUtilizador;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUtilizador()
+    {
+        return $this->idUtilizador;
+    }
+
+    /**
+     * @param mixed $idUtilizador
+     */
+    public function setIdUtilizador($idUtilizador)
+    {
+        $this->idUtilizador = $idUtilizador;
+    }
+
     /*
-         * Getter da classe AcoesUtilizadores
+         *
          * @param 
          * @return id 
          */
@@ -42,7 +93,7 @@ class AcoesUtilizadores {
         return $this->id;
     }
     /*
-         * Getter da classe AcoesUtilizadores
+         *
          * @param 
          * @return idUtilizador 
          */
@@ -50,7 +101,7 @@ class AcoesUtilizadores {
         return $this->idUtilizador;
     }
     /*
-         * Getter da classe AcoesUtilizadores
+         *
          * @param 
          * @return data 
          */
@@ -58,7 +109,7 @@ class AcoesUtilizadores {
         return $this->datahora;
     }
      /*
-         * Getter da classe AcoesUtilizadores
+         *
          * @param 
          * @return hora 
          */
@@ -66,7 +117,7 @@ class AcoesUtilizadores {
         return $this->hora;
     }
     /*
-         * Getter da classe AcoesUtilizadores
+         *
          * @param 
          * @return acao 
          */
@@ -74,7 +125,7 @@ class AcoesUtilizadores {
         return $this->acao;
     }
      /*
-         * Setter da classe AcoesUtilizadores
+         * Setter da
          * @param id
          * @return  
          */
@@ -82,7 +133,7 @@ class AcoesUtilizadores {
         $this->id = $id;
     }
     /*
-         * Setter da classe AcoesUtilizadores
+         * Setter da
          * @param idUtilizador
          * @return  
          */
@@ -105,7 +156,5 @@ class AcoesUtilizadores {
     function setAcao($acao) {
         $this->acao = $acao;
     }
-
-
 
 }

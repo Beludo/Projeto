@@ -1,5 +1,11 @@
 <?php
 include_once "sessaoAtiva.php";
+include_once "LogUtilizadores.php";
+include_once "GereLog.php";
+
+
+$gere_log = new GereLog();
+$log_utilizadores = $gere_log->listarLog();
 
 ?>
 
@@ -51,7 +57,6 @@ include_once "sessaoAtiva.php";
 		<section class="content-header">
 		  <h1>
 			Log
-			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -65,34 +70,32 @@ include_once "sessaoAtiva.php";
 			<div class="col-xs-12">
 			  <div class="box">
 				<div class="box-header">
-				  <h3 class="box-title">Registo de ações</h3>
+				  <h3 class="box-title">Registo de Logs</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
 				  <table id="example1" class="table table-bordered table-striped">
 					<thead>
 					  <tr>
-						<th>Data / Hora</th>
+						<th>ID</th>
 						<th>Nome de utilizador</th>
 						<th>Ação</th>
+						<th>Data / Hora</th>
 					  </tr>
 					</thead>
-					<tbody>
+					 <?php
+                      if($log_utilizadores != null) {
+                          for($i = 0; $i<count($log_utilizadores); $i++) {
+                      ?>
 					  <tr>
-						<td>9:20 28/04/2015</td>
-						<td>dnovais17</td>
-						<td>Adicionou o produto "t-shirt" á loja</td>
+						<td><?php echo $log_utilizadores[$i]->getId(); ?></td>
+						<td><?php echo $log_utilizadores[$i]->getNomecompleto(); ?></td>
+						<td><?php echo $log_utilizadores[$i]->getAcao(); ?></td>
+						<td><?php echo $log_utilizadores[$i]->getDataHora(); ?></td>
 					  </tr>
-					  <tr>
-						<td>10:00 28/04/2015</td>
-						<td>marco.beludo</td>
-						<td>Removeu o produto "t-shirt" da loja</td>
-					  </tr>
-					  <tr>
-						<td>10:07 28/04/2015</td>
-						<td>diogo.alenxandre99</td>
-						<td>Adicionou um vértice ao grafo da visita virtual</td>
-					  </tr>
-					</tfoot>
+						<?php
+                            }
+                      }
+					?>
 				  </table>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->
