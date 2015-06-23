@@ -6,15 +6,20 @@ include_once "Loja.php";
 
 $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutos();
-if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
-    isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
-    if($_GET["ativo"] == 1){
+
+if(
+	isset($_GET["ativo"]) && is_numeric($_GET["ativo"]) &&
+    isset($_GET["id"]) && is_numeric($_GET["id"]) &&
+    isset($_GET["i"]) && is_numeric($_GET["i"]))
+{
+    if(!strcmp($_GET["ativo"], "1")){
         $produtos[$_GET["i"]]->setAtivo(false, $produtos[$_GET["i"]]->getId());
-    } elseif($_GET["ativo"] == 0) {
+		echo 'ativar ' . $_GET["i"];
+    } elseif(!strcmp($_GET["ativo"], "0")) {
         $produtos[$_GET["i"]]->setAtivo(true, $produtos[$_GET["i"]]->getId());
+		echo 'desativar ' . $_GET["i"];
     } else {
-        header("Location: gerir-produtos.php?erro=1");
+        header("Location: gerir-produtos.php");
     }
 }
 ?>
