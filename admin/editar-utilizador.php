@@ -22,8 +22,6 @@ if(
     isset($_POST["email"]) && !empty($_POST["email"])
 ){
 	
-	echo $_POST["nome"] . ' ' . $_POST["morada"] . ' ' . $_POST["telefone"] . ' ' . $_POST["email"];
-	
     // verificar se foi escolhido um ficheiro de foto
     if(file_exists($_FILES["foto"]["tmp_name"])){
 
@@ -114,6 +112,8 @@ if(
 	$utilizador_editado = new Utilizadores($_POST["u_id"], $_POST["nome"], "", $_POST["password"], "", $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, $permissoesUser);
 	
 	$gereUtilizadores->editarUtilizador($utilizador_editado, $permissoesUser);
+	
+	header("Location: gerir-utilizadores.php");
 
 	/* AQUI É EDITAR!!!
 	

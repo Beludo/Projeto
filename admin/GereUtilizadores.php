@@ -31,19 +31,6 @@ class GereUtilizadores {
             'U_ATIVO' => $utilizador->getAtivo()
         );
         $nomeCompleto = $utilizador->getNomeCompleto();
-		/*
-		echo
-            $utilizador->getNomeCompleto() . "<br>" .
-            $utilizador->getUsername() . "<br>" .
-            $utilizador->getPassword() . "<br>" .
-            $utilizador->getDataRegisto() . "<br>" .
-            $utilizador->getContatoTelefonico() . "<br>" .
-            $utilizador->getEmail() . "<br>" .
-            $utilizador->getMorada() . "<br>" .
-            $utilizador->getFotografia() . "<br>" .
-            $utilizador->getAtivo() . "<br>"
-        ;
-		*/
 
         $this->bd->inserir($sql, $dados_utilizador);
 
@@ -144,10 +131,9 @@ class GereUtilizadores {
             'U_CONTATOTELEFONICO' => $utilizador->getContatoTelefonico(),
             'U_EMAIL' => $utilizador->getEmail(),
             'U_MORADA' => $utilizador->getMorada(),
-            'U_FOTOGRAFIA' => $utilizador->getFotografia()
+            'U_FOTOGRAFIA' => $utilizador->getFotografia(),
+			'U_ID' => $utilizador->getId()
         );
-
-		echo "user editado!";
 		
         $this->bd->editar($sql, $dados_utilizador);
 
