@@ -85,7 +85,7 @@ class GereUtilizadores {
 	/*  POR FAZERR !!!!!!!! */
 			function alterarPalavraPasse($palavraPasse, $id) {
 				try {
-						$instrucao = $LigacaoBD->prepare("UPDATE Utilizadores SET (U_palavraPasse = ? WHERE U_id = ?) VALUES (?, ?)");
+						$instrucao = $LigacaoBD->prepare("UPDATE utilizadores SET (U_palavraPasse = ? WHERE U_id = ?) VALUES (?, ?)");
 						$instrucao->bind_param($palavraPasse, $id);
 						$sucesso_funcao = $instrucao->execute();
 						$instrucao->close();
@@ -99,7 +99,10 @@ class GereUtilizadores {
 				}
     	}
 	
-	/*  POR FAZERR !!!!!!!! */
+	/*
+	 *	POR FAZERR !!!!!!!!
+	 *  FEITO ;)
+	 */
 
     function verDadosUtilizador($id) {
         try {
@@ -107,7 +110,7 @@ class GereUtilizadores {
             $registo = $this->bd->query("SELECT * FROM Utilizadores WHERE U_ID = :U_ID", $idA);
  
             if (isset($registo)) {
-			
+				
                 $utilizador = new Utilizadores(
 					$registo[0]["U_ID"],
 					$registo[0]["U_NOMECOMPLETO"],
@@ -130,7 +133,59 @@ class GereUtilizadores {
             echo $e->getMessage();
         }
     }
+	
+	function editarUtilizador($utilizador, $permissoes){
 
+		$sql = "UPDATE utilizadores SET U_NOMECOMPLETO=:U_NOMECOMPLETO, U_PASSWORD=:U_PASSWORD, U_CONTATOTELEFONICO=:U_CONTATOTELEFONICO, U_EMAIL=:U_EMAIL, U_MORADA=:U_MORADA, U_FOTOGRAFIA=:U_FOTOGRAFIA WHERE  U_ID=:U_ID;";
+
+        $dados_utilizador = array(
+            'U_NOMECOMPLETO' => $utilizador->getNomeCompleto(),
+            'U_PASSWORD' => $utilizador->getPassword(),
+            'U_CONTATOTELEFONICO' => $utilizador->getContatoTelefonico(),
+            'U_EMAIL' => $utilizador->getEmail(),
+            'U_MORADA' => $utilizador->getMorada(),
+            'U_FOTOGRAFIA' => $utilizador->getFotografia()
+        );
+
+		echo "user editado!";
+		
+        $this->bd->editar($sql, $dados_utilizador);
+
+        //$user = array('U_ID' => $utilizador->getId());
+        //$registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_ID = :U_ID", $user);
+        $gerePermissoes = new GerePermissoes();
+
+		// Atribuir permissões
+
+		if($permissoes->getPermTotal() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 1);
+		}
+
+        if($permissoes->getPermLoja() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 2);
+		}
+
+		if($permissoes->getPermEspaco() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 3);
+		}
+		
+		if($permissoes->getPermInventario() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 4);
+		}
+		
+		if($permissoes->getPermAcervo() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 5);
+		}
+		
+		if($permissoes->getPermSocios() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 6);
+		}
+		
+		if($permissoes->getPermMuseuVirt() == "sim") {
+			$gerePermissoes->atribuiPermissao($utilizador->getId(), 7);
+		}
+    }
+	
     function obtemUtilizadorUsername($nomeUtilizador) {
 
         try {
