@@ -8,8 +8,10 @@ include_once "GerePermissoes.php";
 $gereUtilizadores = new GereUtilizadores();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
     $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_GET["id"]);
-} else if(!empty($_POST["id"]) && is_numeric($_POST["id"])) {
-    $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_POST["id"]);
+} else if(!empty($_POST["u_id"]) && is_numeric($_POST["u_id"])) {
+    $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_POST["u_id"]);
+}else{
+	header("Location: gerir-utilizadores.php");
 }
 
 // verificar se todos os campos foram preenchidos
@@ -17,10 +19,11 @@ if(
     isset($_POST["nome"]) && !empty($_POST["nome"]) &&
     isset($_POST["morada"]) && !empty($_POST["morada"]) &&
     isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
-    isset($_POST["password"]) && !empty($_POST["password"]) &&
-    isset($_POST["password2"]) && !empty($_POST["password2"]) &&
     isset($_POST["email"]) && !empty($_POST["email"])
 ){
+	
+	echo $_POST["nome"] . ' ' . $_POST["morada"] . ' ' . $_POST["telefone"] . ' ' . $_POST["email"];
+	
     // verificar se foi escolhido um ficheiro de foto
     if(file_exists($_FILES["foto"]["tmp_name"])){
 
@@ -53,41 +56,64 @@ if(
     }else{
         // usar uma foto por omissão
         $nome_foto = "sem-foto.png";
-    }
-	
-	// Guardar dados
-	
+    }	
 
     // Obter as permissoes
     $permissoesUser = new Permissoes(0, 0, 0, 0, 0, 0, 0, 0);
 
-    if($_POST['total'] == 'sim') {
-        $permissoesUser->setPermTotal("1");
-    }
+	if(isset($_POST["total"]) && !empty($_POST["total"])){
+		if($_POST['total'] == 'sim') {
+			$permissoesUser->setPermTotal("1");
+		}
+	}
 
-    if($_POST['loja'] == 'sim') {
-        $permissoesUser->setPermLoja("1");
-    }
+	if(isset($_POST["loja"]) && !empty($_POST["loja"])){
+		if($_POST['loja'] == 'sim') {
+			$permissoesUser->setPermLoja("1");
+		}
+	}
 
-    if($_POST['espaco'] == 'sim') {
-        $permissoesUser->setPermEspaco("1");
-    }
+	if(isset($_POST["espaco"]) && !empty($_POST["espaco"])){
+		if($_POST['espaco'] == 'sim') {
+			$permissoesUser->setPermEspaco("1");
+		}
+	}
 
-    if($_POST['inventario'] == 'sim') {
-        $permissoesUser->setPermInventario("1");
-    }
+	if(isset($_POST["inventario"]) && !empty($_POST["inventario"])){
+		if($_POST['inventario'] == 'sim') {
+			$permissoesUser->setPermInventario("1");
+		}
+	}
 
-    if($_POST['acervo'] == 'sim') {
-        $permissoesUser->setPermAcervo("1");
-    }
+	if(isset($_POST["acervo"]) && !empty($_POST["acervo"])){
+		if($_POST['acervo'] == 'sim') {
+			$permissoesUser->setPermAcervo("1");
+		}
+	}
 
-    if($_POST['socios'] == 'sim') {
-        $permissoesUser->setPermSocios("1");
-    }
+	if(isset($_POST["socios"]) && !empty($_POST["socios"])){
+		if($_POST['socios'] == 'sim') {
+			$permissoesUser->setPermSocios("1");
+		}
+	}
 
-    if($_POST['museu_virtual'] == 'sim') {
-        $permissoesUser->setPermMuseuVirt("1");
-    }
+	if(isset($_POST["museu_virtual"]) && !empty($_POST["museu_virtual"])){
+		if($_POST['museu_virtual'] == 'sim') {
+			$permissoesUser->setPermMuseuVirt("1");
+		}
+	}
+	
+	// Guardar dados
+	if(isset($_POST["password"]) && !empty($_POST["password"]) &&
+    isset($_POST["password2"]) && !empty($_POST["password2"])){
+	
+		// Alterar também a password
+		$gereUtilizadores->alterarPalavraPasse($_POST["password"], $_POST["u_id"]);
+	}
+	
+	$utilizador_editado = new Utilizadores($_POST["u_id"], $_POST["nome"], "", $_POST["password"], "", $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, $permissoesUser);
+	
+	$gereUtilizadores->editarUtilizador($utilizador_editado, $permissoesUser);
 
 	/* AQUI É EDITAR!!!
 	
@@ -105,10 +131,6 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
         $p_erro1 = ' has-error';
     }
 }
-
-// obter os dados da empresa
-//$dados_empresa = $bd->query("SELECT * FROM empresas LIMIT 1");
-
 ?>
 
 <!DOCTYPE html>
@@ -175,7 +197,7 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                             <h3 class="box-title">Dados do utilizador "<?php echo $utilizador_editar->getUsername(); ?>"</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" method="post" action="editar-utilizador.php?id=<?php echo $_POST["id"] ?>" enctype="multipart/form-data">
+                        <form role="form" method="post" action="editar-utilizador.php" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Nome completo</label>
@@ -210,7 +232,7 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                     <input type="file" id="exampleInputFile" name="foto">
                                     <p class="help-block">Seleccione uma foto de perfil.</p>
                                 </div>
-                                <input type="text" value="<?php echo $utilizador_editar->getId() ?>" hidden="hidden" name="id">
+                                <input type="text" value="<?php echo $utilizador_editar->getId() ?>" hidden="hidden" name="u_id" id="u_id">
                                 <div class="form-group">
                                     <hr>
                                     <label >Permissões</label>
@@ -225,7 +247,7 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                         <label><input type="checkbox"  value="sim" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_NOME"]?></label><br>
                                     <?php } ?>
                                 </div>
-
+								
                             </div><!-- /.box-body -->
                             <br>
                             <div class="box-footer">
