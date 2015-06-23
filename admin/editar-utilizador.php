@@ -241,11 +241,16 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                     <?php
                                     $gerePermissoes = new GerePermissoes();
                                     $dados = $gerePermissoes->listaPermissoes();
+									$sueca = $gerePermissoes->permissoesUtilizador($utilizador_editar->getId());
+										
                                     for($i=0; $i<count($dados); $i++){
-                                        ?>
-
-                                        <label><input type="checkbox"  value="sim" id="<?php echo  $dados[$i]["P_PERMISSAO"]?>" name="<?php echo  $dados[$i]["P_PERMISSAO"]?>"><?php echo  $dados[$i]["P_NOME"]?></label><br>
-                                    <?php } ?>
+									
+                                        echo '<label><input type="checkbox"  value="sim" id="' .$dados[$i]["P_PERMISSAO"] .
+										'" name="' . $dados[$i]["P_PERMISSAO"] .
+										(in_array($dados[$i]["P_ID"], $sueca) ? '" checked' : '"') .
+										'>' . $dados[$i]["P_NOME"] . '</label><br>';
+                                    }
+									?>
                                 </div>
 								
                             </div><!-- /.box-body -->
