@@ -45,4 +45,25 @@ class GerePermissoes {
             return $dados;
         }
     }
+	
+	function permissoesUtilizador($idUtilizador){
+		
+		$dados_tabela = array(
+            'U_ID' => $idUtilizador
+        );
+	
+        $sql = "SELECT P_ID FROM utilizadores_permissoes WHERE U_ID = :U_ID";
+        $dados = $this->bd->query($sql, $dados_tabela);
+		
+		$dados_devolver = array();
+		
+		// Simplificar o array associativo para um array simples
+		for($i=0; $i<count($dados); $i++){
+			$dados_devolver[] = $dados[$i]["P_ID"];
+		}
+		
+        if($dados_devolver != null){
+            return $dados_devolver;
+        }
+    }
 } 
