@@ -40,11 +40,11 @@ if(
             $nome_foto = $_POST["id"] . "." . $ext;
 
             // apagar o ficheiro actual
-            if(file_exists("fotos/" . $nome_foto)){
-                unlink("fotos/" . $nome_foto);
+            if(file_exists("img-users/" . $nome_foto)){
+                unlink("img-users/" . $nome_foto);
             }
 
-            move_uploaded_file($_FILES["foto"]["tmp_name"], "fotos/" . $nome_foto);
+            move_uploaded_file($_FILES["foto"]["tmp_name"], "img-users/" . $nome_foto);
 
 
         }else{
