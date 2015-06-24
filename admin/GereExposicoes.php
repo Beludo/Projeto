@@ -22,9 +22,10 @@ class GereExposicoes {
 						 );
 			
         $this->bd->inserir($sql, $dados_exposicoes);
+		}
 					
 	
-	public function listarExposicoes(){
+		function listarExposicoes(){
 			$dados = array();
 
             $registo = $this->bd->query("SELECT e.*, t.TE_NOME FROM exposicoes e, tipoexposicoes t where t.te_id = e.te_id");
@@ -40,6 +41,22 @@ class GereExposicoes {
             }
             return $dados;
     }
+			
+		function editarExposicoes($exposicoes){
+		
+		$sql = "UPDATE exposicoes SET TE_ID=:TE_ID , EX_NOME=:EX_NOME , EX_OBSERVACOES=:EX_OBSERVACOES, EX_ATIVO=:EX_ATIVO WHERE  EX_ID=:EX_ID";
+           $dados_exposicoes = array(
+						 'TE_ID' => $exposicoes->getTeID(),
+						 'EX_NOME' => $exposicoes->getNome(),
+						 'EX_OBSERVACOES' => $exposicoes->getObservacoes(),
+						 'EX_ATIVO' => $exposicoes->getAtivo(),
+						 'EX_ID' => $exposicoes->getId()
+        );
+		
+        $this->bd->editar($sql, $dados_exposicoes);
+
+ 	}
+	
 		
 }
 
