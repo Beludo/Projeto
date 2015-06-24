@@ -1,5 +1,7 @@
 <?php
 
+include_once "acessobd.php";
+
 class exposicoes
 {
     private $id;
@@ -17,6 +19,7 @@ class exposicoes
         $this->observacoes = $observacoes;
         $this->ativo = $ativo;
         $this->teNome = $teNome;
+				$this->bd = new BaseDados();
     }
 
     /**
@@ -94,9 +97,16 @@ class exposicoes
     /**
      * @param mixed $ativo
      */
-    public function setAtivo($ativo)
+    public function setAtivo($ativo, $id)
     {
-        $this->ativo = $ativo;
+       $this->ativo = $ativo;
+        $sql = "UPDATE exposicoes SET EX_ATIVO = :EX_ATIVO WHERE EX_ID = :EX_ID";
+        $dados = array(
+            'EX_ATIVO' => $ativo,
+            'EX_ID' => $id
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
     /**
