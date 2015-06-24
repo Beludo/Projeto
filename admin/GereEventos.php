@@ -12,20 +12,15 @@ class GereEventos {
 
     function adicionaEventos($eventos){
 
-        try{
-            $instrucao = $LigacaoBD->prepare("INSERT into eventos SET ( E_ID , E_NOME , E_DESCRICAO , E_FOTO, E_ATIVO) VALUES(?, ?, ?, ?, ?)");
-            $instrucao->bind_param($eventos->id, $eventos->nome, $eventos->descricao, $eventos->foto, $eventos->ativo);
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-        } catch(PDOException $e){
-            echo $e->getMessage();
-        }
-
-        if($sucesso_funcao){
-            return "True";
-        } else {
-            return "False";
-        }
+           $sql = "INSERT into eventos ( E_NOME , E_DESCRICAO , E_FOTO, E_ATIVO) VALUES( :E_NOME, :E_DESCRICAO, :E_FOTO, :E_ATIVO)";
+           $dados_eventos = array(
+						 'E_NOME' => $eventos->getNome(),
+						 'E_DESCRICAO' => $eventos->getDescricao(),
+						 'E_FOTO' => $eventos->getFoto(),
+						 'E_ATIVO' => $eventos->getAtivo(),
+						 );
+			
+        $this->bd->inserir($sql, $dados_eventos);
     }
 	
 	public function listarEventos(){
