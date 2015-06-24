@@ -85,11 +85,6 @@ class GereUtilizadores {
 						return "False";
 				}
     	}
-	
-	/*
-	 *	POR FAZERR !!!!!!!!
-	 *  FEITO ;)
-	 */
 
     function verDadosUtilizador($id) {
         try {

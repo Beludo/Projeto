@@ -43,8 +43,17 @@ if(
 	
 	<!-- Estilos para formatar a tabela -->
 	<style>
-		.accoes-tabela{
+		td img {
+			width: 90px;
+			height: 90px;
+		}
+		
+		.imagem-tabela{
 			width: 100px;
+		}
+		
+		.descricao-tabela{
+			width: 150px;
 		}
 	</style>
 
@@ -120,15 +129,15 @@ if(
 								  <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-								  <li><a href="editar-exposicoes.php?id=<?php echo $eventos[$i]->getId() ?>"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
+								  <li><a href="editar-eventos.php?id=<?php echo $eventos[$i]->getId() ?>"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
                                     <?php
                                         if($eventos[$i]->getAtivo() == 1) {
                                             ?>
-                                            <li><a href="gerir-exposicoes.php?accao=desativar&id=<?php echo $eventos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
+                                            <li><a href="gerir-eventos.php?accao=desativar&id=<?php echo $eventos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
                                         } elseif($eventos[$i]->getAtivo() == 0) {
                                             ?>
-                                            <li><a href="gerir-exposicoes.php?accao=ativar&id=<?php echo $eventos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
+                                            <li><a href="gerir-eventos.php?accao=ativar&id=<?php echo $eventos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>

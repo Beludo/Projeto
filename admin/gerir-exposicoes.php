@@ -43,8 +43,17 @@ if(
 	
 	<!-- Estilos para formatar a tabela -->
 	<style>
-		.accoes-tabela{
+		td img {
+			width: 90px;
+			height: 90px;
+		}
+		
+		.imagem-tabela{
 			width: 100px;
+		}
+		
+		.descricao-tabela{
+			width: 150px;
 		}
 	</style>
 
