@@ -2,7 +2,7 @@
 
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
-include_once "Loja.php";
+include_once "ALoja.php";
 
 $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutos();

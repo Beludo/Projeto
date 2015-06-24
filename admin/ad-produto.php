@@ -1,7 +1,7 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
-include_once "Loja.php";
+include_once "ALoja.php";
 
 $gereLoja = new GereLoja();
 

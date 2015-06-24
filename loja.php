@@ -1,7 +1,7 @@
 <?php
 	include "sessaoAtiva.php";
 	include_once "./admin/GereLoja.php";
-	include_once "./admin/Loja.php";
+	include_once "./admin/ALoja.php";
 
 $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutos();

@@ -1,6 +1,6 @@
 <?php
 
-include_once "Loja.php";
+include_once "ALoja.php";
 include_once "acessobd.php";
 
 class GereLoja {
