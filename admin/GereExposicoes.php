@@ -11,22 +11,18 @@ class GereExposicoes {
     }
 
     function adicionaExposcioes($exposicoes){
-
-        try{
-            $instrucao = $LigacaoBD->prepare("INSERT into  exposicoes SET ( EX_ID , TE_ID , EX_NOME , EX_OBSERVACOES , EX_ATIVO) VALUES(?, ?, ?, ?, ?)");
-            $instrucao->bind_param($exposicoes->id, $exposicoes->teID, $exposicoes->nome, $exposicoes->observacoes, $exposicoes->ativo);
-            $sucesso_funcao = $instrucao->execute();
-            $instrucao->close();
-        } catch(PDOException $e){
-            echo $e->getMessage();
-        }
-
-        if($sucesso_funcao){
-            return "True";
-        } else {
-            return "False";
-        }
-    }
+					
+           $sql = "INSERT into  exposicoes (TE_ID , EX_NOME , EX_OBSERVACOES , EX_ATIVO) VALUES( :TE_ID, :EX_NOME, :EX_OBSERVACOES, :EX_ATIVO)";
+			
+           $dados_exposicoes = array(
+						 'TE_ID' => $exposicoes->getTeID(),
+						 'EX_NOME' => $exposicoes->getNome(),
+						 'EX_OBSERVACOES' => $exposicoes->getObservacoes(),
+						 'EX_ATIVO' => $exposicoes->getAtivo()
+						 );
+			
+        $this->bd->inserir($sql, $dados_exposicoes);
+					
 	
 	public function listarExposicoes(){
 			$dados = array();
