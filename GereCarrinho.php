@@ -1,6 +1,7 @@
 <?php
 include_once "admin/acessobd.php";
 include "Carrinho.php";
+include_once "admin/ALoja.php";
 
 class GereCarrinho {
     private $bd;
@@ -63,7 +64,7 @@ class GereCarrinho {
         );
         $idVisitante = $this->bd->query($sql, $dados);
 
-        $sql2 = "SELECT * FROM carrinho WHERE V_ID = :V_ID AND C_VISTA = :C_VISTA";
+        $sql2 = "SELECT * FROM carrinho WHERE V_ID = :V_ID AND C_VISTA = :C_VISTA;";
         $dados2 = array(
             'V_ID' => $idVisitante[0]["V_ID"],
             'C_VISTA' => false
@@ -74,18 +75,19 @@ class GereCarrinho {
         $dados3 = array(
             'C_ID' => $dadosCarrinho[0]["C_ID"]
         );
-        $dadosCarrinho = $this->bd->query($sql3, $dados3);
+        $dadosCarrinho1 = $this->bd->query($sql3, $dados3);
 
-        for($i=0; $i<sizeof($dadosCarrinho); $i++){
-            $sql4 = "SELECT * FROM loja WHERE LA_ID = :LA_ID";
-            $dados4 = array(
-                'LA_ID' => $dadosCarrinho[$i]["LA_ID"]
-            );
-            $produto = $this->bd->query($sql2, $dados2);
-            array_push($produtos, $produto);
+
+        $sql4 = "SELECT * FROM loja WHERE LA_ID = :LA_ID;";
+        $dados4 = array(
+            'LA_ID' => $dadosCarrinho1[0]["LA_ID"]
+        );
+        $produto = $this->bd->query($sql4, $dados4);
+        for($i=0; $i<sizeof($produto); $i++){
+        array_push($produtos, new Loja($produto[$i]["LA_ID"],$produto[$i]["LA_NOME"],$produto[$i]["LA_CODIGO"], $produto[$i]["LA_FOTOGRAFIA"], $produto[$i]["LA_STOCK"],
+            $produto[$i]["LA_OBSERVACOES"],$produto[$i]["LA_PRECO"],$produto[$i]["LA_DISPONIBILIDADE"],$produto[$i]["LA_ATIVO"],$produto[$i]["LA_ADICIONADO"],$produto[$i]["LA_REMOVIDO"]));
         }
-
-            $carrinho = new Carrinho($dadosCarrinho[0]["C_ID"], $produtos);
-            return $carrinho;
+        $carrinho = new Carrinho($dadosCarrinho[0]["C_ID"], $produtos);
+        return $carrinho;
         }
 }

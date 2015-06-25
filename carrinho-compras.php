@@ -1,6 +1,7 @@
 <?php
 	include "sessaoAtiva.php";
     include_once "GereCarrinho.php";
+    include_once "admin/ALoja.php";
 
     $gereCarrinho = new GereCarrinho();
     $carrinho = $gereCarrinho->verIdCarrinho($_SESSION["visit"]);
@@ -60,8 +61,8 @@
 						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 						</div>
 						<div class="col-xs-4">
-							<h4 class="product-name"><strong><?php echo $produtos[$i]["LA_ID"] ?></strong></h4>
-							<h4><small><?php echo $produtos[$i]["LA_DESCRICAO"] ?></small></h4>
+							<h4 class="product-name"><strong><?php echo $produtos[$i]->getId(); ?></strong></h4>
+							<h4><small><?php echo $produtos[$i]->getObservacoes(); ?></small></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
@@ -80,7 +81,7 @@
                 </div>
                 <hr>
                 <?php
-                $total_price += $produtos[$i][0]["LA_PRECO"];
+                $total_price += $produtos[$i]->getPreco();
                 }
 					?>
 					<div class="row">
