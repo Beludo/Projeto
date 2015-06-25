@@ -5,17 +5,7 @@
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
-if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
-    isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
-    if($_GET["ativo"] == 1){
-        $artigos[$_GET["i"]]->setAtivo(false, $artigos[$_GET["i"]]->getId());
-    } elseif($_GET["ativo"] == 0) {
-        $artigos[$_GET["i"]]->setAtivo(true, $artigos[$_GET["i"]]->getId());
-    } else {
-        header("Location: gerir-artigos.php?erro=1");
-    }
-}
+
 ?>
 
 <!DOCTYPE html>

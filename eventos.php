@@ -1,5 +1,10 @@
 <?php
-	include "sessaoAtiva.php"
+	include_once "sessaoAtiva.php";
+	include_once "/admin/GereEventos.php";
+	include_once "admin/eventos.php";
+
+$gere_eventos = new GereEventos();
+$eventos = $gere_eventos ->listarEventos();
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<script src="./js/bootstrap.min.js"></script>
+	
 </head>
 
 <body>
@@ -49,60 +55,37 @@
 			<h3>Eventos</h3>
 
 			<hr>
-
-			<!-- Project One -->
+			<?php 
+			 $eventos = $gere_eventos->listarEventos();
+						if($eventos != null) {
+								for($i = 0; $i<count($eventos); $i++) {
+                      ?>
+			
+			<!-- Project One  -->
 			<div class="row">
 				<div class="col-md-7">
-					<a href="mostra-evento.php">
-						<img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+					<a href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">
+						<img style="width: 400px; height:200px; " class="img-responsive img-hover" src="./admin/img-eventos/<?php echo $eventos[$i]->getFoto()?>" alt="">
 					</a>
 				</div>
 				<div class="col-md-5">
-					<h3>Evento Um</h3>
-					<h4>Subtitulo</h4>
+					<h3><a class="thumbnail" href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">Evento Um</a></h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-					<a class="btn btn-primary" href="mostra-evento.php">Ver Mais</i></a>
+					<a class="btn btn-primary" href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">Ver Mais</i></a>
 				</div>
 			</div>
+	
+		<hr>
 			<!-- /.row -->
+			
+			<?php 
+							}
+					}
+			?>
 
-			<hr>
-
-			<!-- Project Two -->
-			<div class="row">
-				<div class="col-md-7">
-					<a href="mostra-evento.php">
-						<img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
-					</a>
-				</div>
-				<div class="col-md-5">
-					<h3>Evento Dois</h3>
-					<h4>Subtitulo</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-					<a class="btn btn-primary" href="mostra-evento.php">Ver Mais</i></a>
-				</div>
-			</div>
-			<!-- /.row -->
-
-			<hr>
-
-			<!-- Project Three -->
-			<div class="row">
-				<div class="col-md-7">
-					<a href="mostra-evento.php">
-						<img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
-					</a>
-				</div>
-				<div class="col-md-5">
-					<h3>Evento Três</h3>
-					<h4>Subtitulo</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-					<a class="btn btn-primary" href="mostra-evento.php">Ver Mais</i></a>
-				</div>
-			</div>
-			<!-- /.row -->
-
-			<hr>
+			
+	
+	
 
 			<!-- Pagination -->
 			<div class="row text-center">
