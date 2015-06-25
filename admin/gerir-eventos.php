@@ -10,7 +10,7 @@ $eventos = $gere_eventos->listarEventos();
 if(
     isset($_GET["accao"]) && !empty($_GET["accao"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
+    isset($_GET["i"]) && is_numeric($_GET["i"])){
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $eventos[$_GET["i"]]->setAtivo(true, $eventos[$_GET["i"]]->getId());

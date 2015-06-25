@@ -10,6 +10,7 @@ class eventos
     private $descricao;
     private $foto;
     private $ativo;
+	private $bd;
 
     function __construct($id, $nome, $descricao, $foto, $ativo)
     {
@@ -18,6 +19,7 @@ class eventos
         $this->descricao = $descricao;
         $this->foto = $foto;
         $this->ativo = $ativo;
+		$this->bd = new BaseDados();
     }
 
     /**
