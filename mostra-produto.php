@@ -1,6 +1,7 @@
 <?php
 	include "sessaoAtiva.php";
     include "./admin/GereLoja.php";
+    include "Carrinho.php";
     $gereLoja = new GereLoja();
     $produto = $gereLoja->verProdutoId($_GET["id"]);
 

@@ -28,6 +28,7 @@ class GereVisitante {
             'V_ATIVO' => $visitante->getAtivo(),
 						'V_SOCIO' => $visitante->getSocio()
         );
+
 		/*
 		echo
             $visitante->getNomeCompleto() . "<br>" .
@@ -44,6 +45,20 @@ class GereVisitante {
 		*/
 
         $this->bd->inserir($sql, $dados_visitante);
+
+        $sql = "SELECT V_ID FROM visitantes WHERE V_USERNAME = :V_USERNAME;";
+        $dados = array(
+            'V_USERNAME' => $visitante->getUsername()
+        );
+        $idVisitante = $this->bd->query($sql, $dados);
+
+        $sql2 = "INSERT INTO carrinho (V_ID, C_VISTA) VALUES(:V_ID , :C_VISTA);";
+        $dadosCarrinho = array(
+            'V_ID' => $idVisitante[0]["V_ID"],
+            'C_VISTA' => false
+        );
+
+        $this->bd->inserir($sql2, $dadosCarrinho);
     }
 	
 	/*  POR FAZERR !!!!!!!! */
