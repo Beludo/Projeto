@@ -1,7 +1,7 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
-include_once "Pecas.php";
+include_once "pecas.php";
 
 $gerePecas = new GerePecas();
 

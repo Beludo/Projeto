@@ -2,7 +2,7 @@
 
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
-include_once "Pecas.php";
+include_once "pecas.php";
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();

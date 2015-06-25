@@ -1,6 +1,6 @@
 <?php
 
-include_once "Pecas.php";
+include_once "pecas.php";
 include_once "acessobd.php";
 
 class GerePecas {
