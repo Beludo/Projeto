@@ -1,99 +1,44 @@
 <?php
 
 class Carrinho {
-    private $idProduto;
-    private $nome;
-    private $preco;
-    private $descricao;
-    private $quantidade;
+    private $idCarrinho;
+    private $produto;
 
-    function __construct($idProduto, $nome, $preco, $descricao, $quantidade){
-        $this->idProduto = $idProduto;
-        $this->nome = $nome;
-        $this->preco = $preco;
-        $this->descricao = $descricao;
-        $this->quantidade = $quantidade;
-    }
-
-    /**
-     * @param mixed $descricao
-     */
-    public function setDescricao($descricao)
-    {
-        $this->descricao = $descricao;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescricao()
-    {
-        return $this->descricao;
+    function __construct($idCarrinho, $produto){
+        $this->idCarrinho = $idCarrinho;
+        $this->produto = $produto;
     }
 
     /**
      * @param mixed $idProduto
      */
-    public function setIdProduto($idProduto)
+    public function setIdCarrinho($idCarrinho)
     {
-        $this->idProduto = $idProduto;
+        $this->idCarrinho = $idCarrinho;
     }
 
     /**
      * @return mixed
      */
-    public function getIdProduto()
+    public function getIdCarrinho()
     {
-        return $this->idProduto;
+        return $this->idCarrinho;
     }
 
     /**
-     * @param mixed $nome
+     * @param mixed $produto
      */
-    public function setNome($nome)
+    public function setProduto($produto)
     {
-        $this->nome = $nome;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNome()
-    {
-        return $this->nome;
-    }
-
-    /**
-     * @param mixed $quantidade
-     */
-    public function setQuantidade($quantidade)
-    {
-        $this->quantidade = $quantidade;
+        $this->produto = $produto;
     }
 
     /**
      * @return mixed
      */
-    public function getQuantidade()
+    public function getProduto()
     {
-        return $this->quantidade;
+        return $this->produto;
     }
-
-    /**
-     * @param mixed $preco
-     */
-    public function setPreco($preco)
-    {
-        $this->preco = $preco;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPreco()
-    {
-        return $this->preco;
-    }
-
 
 } 
