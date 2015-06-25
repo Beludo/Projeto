@@ -23,8 +23,14 @@ class GereTipoExposicoes{
             return $dados;
     }
 	
-	
-	
+	 function adicionaTipoExposicao($tipo_exposicao){
+        $sql = "INSERT into  tipoexposicoes  ( TE_NOME ) VALUES(:TE_NOME)";
+
+        $dados_tipo_exposicoes = array(
+            'TE_NOME' => $tipo_exposicao->getNome(),
+        );
+        $this->bd->inserir($sql, $dados_tipo_exposicoes);
+    }
 	
 }
 
