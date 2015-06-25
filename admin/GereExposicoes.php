@@ -57,6 +57,31 @@ class GereExposicoes {
 
  	}
 	
+	function verDadosExposicoes($id) {
+        try {
+            $idA = array("EX_ID" => $id);
+            $registo = $this->bd->query("SELECT e.*, T.TE_NOME FROM exposicoes e, tipoexposicoes t WHERE EX_ID = :EX_ID", $idA);
+ 
+            if (isset($registo)) {
+				
+                $exposicoes = new exposicoes(
+					$registo[0]["EX_ID"],
+					$registo[0]["TE_ID"],
+					$registo[0]["EX_NOME"],
+					$registo[0]["EX_OBSERVACOES"],
+					$registo[0]["EX_ATIVO"],
+					$registo[0]["TE_NOME"]
+				);
+                return $exposicoes;
+            }else{
+                return NULL;
+            }
+            
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+	
 		
 }
 
