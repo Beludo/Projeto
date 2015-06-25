@@ -115,7 +115,7 @@ if(
                       if($tipo_exposicoes != null) {
                           for($i = 0; $i<count($tipo_exposicoes); $i++) {
                       
-							echo '<option value="'. $tipo_exposicoes[$i]->getID().'">'. $tipo_exposicoes[$i]->getNome() . '</option>';
+							echo '<option value="'. $tipo_exposicoes[$i]->getID().'"' . ($tipo_exposicoes[$i]->getID() == $exposicoes_editar->getTeID() ? ' selected' : '') . '>'. $tipo_exposicoes[$i]->getNome() . '</option>';
 													}
 											}
 						?>
