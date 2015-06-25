@@ -7,13 +7,7 @@ $gere_tipoExposicoes = new GereTipoExposicoes();
 
 // verificar se todos os campos foram preenchidos
 if(
-   isset($_POST["museu"]) && !empty($_POST["museu"]) &&
-   isset($_POST["nInventario"]) && !empty($_POST["nInventario"]) &&
-   isset($_POST["categoria"]) && !empty($_POST["categoria"]) &&
-   isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-   isset($_POST["datacao"]) && !empty($_POST["datacao"]) &&
-   isset($_POST["descricao"]) && !empty($_POST["descricao"]) &&
-   isset($_POST["origem"]) && !empty($_POST["origem"])
+   isset($_POST["nome"]) && !empty($_POST["nome"])
 ){
 
 		$tipo_exposicao = new tipoexposicoes(0, $_POST["nome"]);
