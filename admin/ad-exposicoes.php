@@ -2,6 +2,10 @@
 	include_once "sessaoAtiva.php";
 	include_once "GereExposicoes.php";
 	include_once "exposicoes.php";
+	include_once "tipoexposicoes.php";
+	include_once "GereTipoExposicoes.php";
+
+$gere_tipoExposicoes = new GereTipoExposicoes();
 
 
 ?>
@@ -70,8 +74,15 @@
 						<label>Tipo de Exposição:</label>
 						<select class="form-control" name="te_id">
 							<option value="">Indique Tipo de Exposição</option>
-							<option value="1">Tipo 1</option>
-							<option value="2">Tipo 2</option>
+							 <?php
+											$tipo_exposicoes = $gere_tipoExposicoes->listarTipoExposicoes();
+                      if($tipo_exposicoes != null) {
+                          for($i = 0; $i<count($tipo_exposicoes); $i++) {
+                      
+							echo '<option value="'. $tipo_exposicoes[$i]->getID().'">'. $tipo_exposicoes[$i]->getNome() . '</option>';
+													}
+											}
+						?>
 						</select>
 					</div>			
 					<div class="form-group">
