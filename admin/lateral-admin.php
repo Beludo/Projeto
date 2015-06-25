@@ -142,6 +142,18 @@
 			</li>
 			<li class="treeview">
 				<a href="#">
+					<i class="fa fa-bars"></i> <span>Tipo de Exposições</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="ad-tipoexp.php"><i class="fa fa-circle-o"></i> Adicionar Tipo de Exposições</a>
+					</li>
+					<li><a href="gerir-tipoexp.php"><i class="fa fa-circle-o"></i> Gerir Tipo de Exposições</a>
+					</li>
+				</ul>
+			</li>
+			<li class="treeview">
+				<a href="#">
 					<i class="fa  fa-calendar-o"></i> <span>Eventos</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
