@@ -10,7 +10,7 @@ $utilizadores = $gere_utilizador->listarUtilizador();
 if(
     isset($_GET["accao"]) && !empty($_GET["accao"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
+    isset($_GET["i"]) && is_numeric($_GET["i"])){
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $utilizadores[$_GET["i"]]->setAtivo(true, $utilizadores[$_GET["i"]]->getId());
