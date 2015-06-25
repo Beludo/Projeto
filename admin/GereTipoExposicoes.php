@@ -13,7 +13,7 @@ class GereTipoExposicoes{
 	public function listarTipoExposicoes(){
 			$dados = array();
 
-            $registo = $this->bd->query("SELECT * FROM TIPOEXPOSICOES`");
+            $registo = $this->bd->query("SELECT * FROM TIPOEXPOSICOES");
             for($i=0; $i<count($registo); $i++){
                $dados[] = new tipoexposicoes(
 								$registo[$i]["TE_ID"],
