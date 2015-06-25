@@ -1,7 +1,5 @@
 <?php
 	include_once "sessaoAtiva.php";
-	include_once "GereExposicoes.php";
-	include_once "exposicoes.php";
 	include_once "tipoexposicoes.php";
 	include_once "GereTipoExposicoes.php";
 
@@ -9,13 +7,20 @@ $gere_tipoExposicoes = new GereTipoExposicoes();
 
 // verificar se todos os campos foram preenchidos
 if(
+   isset($_POST["museu"]) && !empty($_POST["museu"]) &&
+   isset($_POST["nInventario"]) && !empty($_POST["nInventario"]) &&
+   isset($_POST["categoria"]) && !empty($_POST["categoria"]) &&
    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-   isset($_POST["descricao"]) && !empty($_POST["descricao"])
-	){
-	
-		$exposicoes = new exposicoes(0, $_POST["te_id"], $_POST["nome"], $_POST["observacoes"], true);
-    $gereExposicoes->adicionaExposicoes($exposicoes);
+   isset($_POST["datacao"]) && !empty($_POST["datacao"]) &&
+   isset($_POST["descricao"]) && !empty($_POST["descricao"]) &&
+   isset($_POST["origem"]) && !empty($_POST["origem"])
+){
+
+		$tipo_exposicao = new tipoexposicoes(0, $_POST["nome"]);
+		$gere_tipoExposicoes->adicionaTipoExposicao($tipo_exposicao);
+
 }
+
 
 ?>
 
@@ -23,7 +28,7 @@ if(
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Adicionar Exposicoes</title>
+	<title>Admin | Adicionar Tipo de Exposições </title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -58,12 +63,12 @@ if(
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Adicionar Exposicoes
+			Adicionar Tipo de Exposições
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li><a href="gerir-exposicoes.php">Gestão de Exposicoes</a></li>
-			<li class="active">Adicionar Exposicoes</li>
+			<li><a href="gerir-tipoexp.php">Gestão de Tipo de Exposições</a></li>
+			<li class="active">Adicionar Tipo de Exposições</li>
 		  </ol>
 		</section>
 
@@ -74,34 +79,15 @@ if(
 			  <!-- general form elements -->
 			  <div class="box box-primary">
 				<div class="box-header">
-				  <h3 class="box-title">Dados da Exposição</h3>
+				  <h3 class="box-title">Dados do tipo de Exposição</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" method="post" action="ad-exposicoes.php" enctype="multipart/form-data">
-				  <div class="box-body">
-					<div class="form-group">
-						<label>Tipo de Exposição:</label>
-						<select class="form-control" name="te_id">
-							<option value="">Indique Tipo de Exposição</option>
-							 <?php
-											$tipo_exposicoes = $gere_tipoExposicoes->listarTipoExposicoes();
-                      if($tipo_exposicoes != null) {
-                          for($i = 0; $i<count($tipo_exposicoes); $i++) {
-                      
-							echo '<option value="'. $tipo_exposicoes[$i]->getID().'">'. $tipo_exposicoes[$i]->getNome() . '</option>';
-													}
-											}
-						?>
-						</select>
-					</div>			
+				<form role="form" method="post" action="ad-tipoexp.php" enctype="multipart/form-data">
+				  <div class="box-body">	
 					<div class="form-group">
 					  <label>Nome</label>
 					  <input type="text" class="form-control" name ="nome" placeholder="Insira o nome"/>
 					</div>
-					<div class="form-group">
-                      <label>Observações</label>
-                      <textarea class="form-control" rows="3"  name ="observacoes" placeholder="Insira uma descrição"></textarea>
-                    </div>
 				  </div><!-- /.box-body -->
 
 				  <div class="box-footer">
