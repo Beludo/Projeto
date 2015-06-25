@@ -1,13 +1,13 @@
 <?php
 	include "sessaoAtiva.php";
     include "./admin/GereLoja.php";
-    include "Carrinho.php";
+    include "GereCarrinho.php";
     $gereLoja = new GereLoja();
+    $gereCarrinho = new GereCarrinho();
     $produto = $gereLoja->verProdutoId($_GET["id"]);
 
     if(isset($_POST["quantidade"]) && !empty($_POST["quantidade"])){
-        $i=0;
-        array_push($_SESSION["produtos"] , new Carrinho($_GET["id"], $produto[0]["LA_NOME"], $produto[0]["LA_PRECO"], $produto[0]["LA_OBSERVACOES"], $_POST["quantidade"]));
+        $gereCarrinho->adicionaProduto($_GET["id"], $_SESSION["visit"], $_POST["quantidade"]);
     }
 ?>
 
