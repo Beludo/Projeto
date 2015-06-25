@@ -5,15 +5,15 @@
 	include_once "tipoexposicoes.php";
 	include_once "GereTipoExposicoes.php";
 
-$gere_tipoExposicoes = new GereTipoExposicoes();
+$gereExposicoes = new GereExposicoes();
 
 // verificar se todos os campos foram preenchidos
 if(
    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-   isset($_POST["descricao"]) && !empty($_POST["descricao"])
+   isset($_POST["observacoes"]) && !empty($_POST["observacoes"]) &&
+	isset($_POST["te_id"]) && !empty($_POST["te_id"])
 	){
-	
-		$exposicoes = new exposicoes(0, $_POST["te_id"], $_POST["nome"], $_POST["observacoes"], true);
+		$exposicoes = new exposicoes(0, $_POST["te_id"], $_POST["nome"], $_POST["observacoes"], true, $_POST["te_nome"]);
     $gereExposicoes->adicionaExposicoes($exposicoes);
 }
 
@@ -81,8 +81,8 @@ if(
 				  <div class="box-body">
 					<div class="form-group">
 						<label>Tipo de Exposição:</label>
-						<select class="form-control" name="te_id">
-							<option value="">Indique Tipo de Exposição</option>
+						<select class="form-control" name="te_id" id="te_id">
+							<option value=" ">Indique Tipo de Exposição</option>
 							 <?php
 											$tipo_exposicoes = $gere_tipoExposicoes->listarTipoExposicoes();
                       if($tipo_exposicoes != null) {

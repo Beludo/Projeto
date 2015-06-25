@@ -10,7 +10,7 @@ class GereExposicoes {
         $this->bd = new BaseDados();
     }
 
-    function adicionaExposcioes($exposicoes){
+    function adicionaExposicoes($exposicoes){
 					
            $sql = "INSERT into  exposicoes (TE_ID , EX_NOME , EX_OBSERVACOES , EX_ATIVO) VALUES( :TE_ID, :EX_NOME, :EX_OBSERVACOES, :EX_ATIVO)";
 			
