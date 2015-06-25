@@ -10,12 +10,12 @@ $exposicoes = $gere_exposicoes->listarExposicoes();
 if(
     isset($_GET["accao"]) && !empty($_GET["accao"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
+    isset($_GET["i"]) && is_numeric($_GET["i"])){
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $exposicoes[$_GET["i"]]->setAtivo(true, $exposicoes[$_GET["i"]]->getId());
     } elseif(!strcmp($_GET["accao"], "desativar")){
-        $exposicoes[$_GET["i"]]->setAtivo(false, $exposicoes[$_GET["i"]]->getId());
+		$exposicoes[$_GET["i"]]->setAtivo(false, $exposicoes[$_GET["i"]]->getId());
     }
 }
 
