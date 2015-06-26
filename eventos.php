@@ -64,13 +64,13 @@ $eventos = $gere_eventos ->listarEventos();
 			<!-- Project One  -->
 			<div class="row">
 				<div class="col-md-7">
-					<a href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">
+					<a href="mostra-evento.php?id="<?php echo $eventos[$i]->getId() ?>">
 						<img style="width: 400px; height:200px; " class="img-responsive img-hover" src="./admin/img-eventos/<?php echo $eventos[$i]->getFoto()?>" alt="">
 					</a>
 				</div>
 				<div class="col-md-5">
-					<h3><a class="thumbnail" href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">Evento Um</a></h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+					<h3><a class="thumbnail" href="mostra-evento.php?id=<?php echo $eventos[$i]->getId(); ?>"><?php echo $eventos[$i]->getNome(); ?></a></h3>
+					<p><?php echo $eventos[$i]->getDescricao(); ?></p>
 					<a class="btn btn-primary" href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">Ver Mais</i></a>
 				</div>
 			</div>
