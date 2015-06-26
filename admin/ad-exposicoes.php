@@ -5,6 +5,7 @@
 	include_once "tipoexposicoes.php";
 	include_once "GereTipoExposicoes.php";
 
+$gere_tipoExposicoes = new GereTipoExposicoes();
 $gereExposicoes = new GereExposicoes();
 
 // verificar se todos os campos foram preenchidos
@@ -13,8 +14,9 @@ if(
    isset($_POST["observacoes"]) && !empty($_POST["observacoes"]) &&
 	isset($_POST["te_id"]) && !empty($_POST["te_id"])
 	){
-		$exposicoes = new exposicoes(0, $_POST["te_id"], $_POST["nome"], $_POST["observacoes"], true, $_POST["te_nome"]);
+	$exposicoes = new exposicoes(0, $_POST["te_id"], $_POST["nome"], $_POST["observacoes"], true, $_POST["te_id"]);
     $gereExposicoes->adicionaExposicoes($exposicoes);
+	header("Location: gerir-exposicoes.php");
 }
 
 ?>
