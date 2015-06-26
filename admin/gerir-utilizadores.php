@@ -97,7 +97,6 @@ if(
 						<th>Nome de utilizador</th>
 						<th>Email</th>
 						<th>Estado</th>
-						<th>Sócio</th>
 						<th class="accoes-tabela">Acções</th>
 					  </tr>
 					</thead>
@@ -121,7 +120,6 @@ if(
 							<?php
 							}
 							?>
-							<td><span class="label label-success">Sim</span></td>
 							<td>
 							  <div class="btn-group">
 								<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
