@@ -88,6 +88,8 @@ $tipoExposicoes = $gere_tipoExposicoes ->listarTipoExposicoes();
 					  <tr>
 						<th>ID</th>
 						<th>Nome</th>
+						<th>Ativo</th>
+						<th>Opções</th>
 					  </tr>
 					</thead>
 					<tbody> 
@@ -98,6 +100,34 @@ $tipoExposicoes = $gere_tipoExposicoes ->listarTipoExposicoes();
 					  <tr>
 						<td><?php echo $tipoExposicoes[$i]->getID() ?></td>
 						<td><?php echo $tipoExposicoes[$i]->getNome() ?></td>
+						<?php
+							if($tipoExposicoes[$i]->getAtivo() == 0) {
+							
+							?>
+							<td><span class="label label-danger">Desativo</span></td>
+							<?php
+							} elseif($tipoExposicoes[$i]->getAtivo() == 1) {
+							?>
+							<td><span class="label label-success">Ativo</span></td>
+							<?php
+							}
+							?>
+							<td>
+								<span class="label label-default">
+                                    <?php
+                                        if($tipoExposicoes[$i]->getAtivo() == 1) {
+                                            ?>
+                                            <a href="gerir-tipoexp.php?ativo=0&id=<?php echo $tipoExposicoes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                           <a href="gerir-tipoexp.php?ativo=1&id=<?php echo $tipoExposicoes[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                            <?php
+                                        }
+                                    ?>
+								</span>
+							  
+							</td>
 						  </tr>
 							<?php
                             }
