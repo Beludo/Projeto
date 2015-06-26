@@ -6,15 +6,16 @@ include_once "pecas.php";
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
-if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
+
+if(isset($_GET["accao"]) && !empty($_GET["accao"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
-    if($_GET["ativo"] == 1){
-        $artigos[$_GET["i"]]->setAtivo(false, $artigos[$_GET["i"]]->getId());
-    } elseif($_GET["ativo"] == 0) {
+    isset($_GET["i"]) && is_numeric($_GET["i"])
+	){
+	
+ 		if(!strcmp($_GET["accao"], "ativar")){
         $artigos[$_GET["i"]]->setAtivo(true, $artigos[$_GET["i"]]->getId());
-    } else {
-        header("Location: gerir-artigos.php?erro=1");
+    } elseif(!strcmp($_GET["accao"], "desativar")){
+        $artigos[$_GET["i"]]->setAtivo(false, $artigos[$_GET["i"]]->getId());
     }
 }
 ?>
@@ -131,21 +132,26 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 							<?php
 							}
 							?>
-						<td>
-								<span class="label label-default">
+							<td>
+							  <div class="btn-group">
+								<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								  <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+								  <li><a href="editar-artigo.php?id=<?php echo $artigos[$i]->getId() ?>"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
                                     <?php
                                         if($artigos[$i]->getAtivo() == 1) {
                                             ?>
-                                            <a href="gerir-artigos.php?ativo=0&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <li><a href="gerir-artigos.php?accao=desativar&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
-                                        } else {
+                                        } elseif($artigos[$i]->getAtivo() == 0) {
                                             ?>
-                                           <a href="gerir-artigos.php?ativo=1&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                            <li><a href="gerir-artigos.php?accao=ativar&id=<?php echo $artigos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
-								</span>
-							  
+								</ul>
+							  </div>
 							</td>
 						  </tr>
 							<?php
