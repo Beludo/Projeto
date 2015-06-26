@@ -52,8 +52,8 @@ if(
             header("Location: editar-utilizador.php?erro=1");
         }
     }else{
-        // usar uma foto por omissão
-        $nome_foto = "sem-foto.png";
+        // usar a foto antiga (não alterar)
+        $nome_foto = $_POST["foto-original"];
     }	
 
     // Obter as permissoes
@@ -229,6 +229,8 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                 </div>
                                 <div class="form-group<?php echo $p_erro1; ?>">
                                     <label for="exampleInputFile">Foto</label>
+									<p><img src="img-users/<?php echo $utilizador_editar->getFotografia(); ?>" style="height:120px;width:120px;" alt="Imagem do utilizador"></p>
+									<input type="hidden" name="foto-original" value="<?php echo $utilizador_editar->getFotografia(); ?>">
                                     <input type="file" id="exampleInputFile" name="foto">
                                     <p class="help-block">Seleccione uma foto de perfil.</p>
                                 </div>

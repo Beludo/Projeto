@@ -49,8 +49,8 @@ if(
             header("Location: ad-eventos.php?erro=1");
         }
     }else{
-        // usar uma foto por omissão
-        $nome_foto = "sem-foto.png";
+        // usar a foto antiga (não alterar)
+        $nome_foto = $_POST["foto-original"];
     }
     $evento_editado = new eventos($_POST["e_id"], $_POST["nome"], $_POST["descricao"], $nome_foto, true);
 	
@@ -142,6 +142,8 @@ if(
 						<div class="form-group<?php echo $p_erro1; ?>"></div>
 					<div class="form-group">
 					  <label for="exampleInputFile">Fotografia</label>
+					  <p><img src="img-eventos/<?php echo $eventos_editar->getFoto(); ?>" style="height:120px;width:120px;" alt="Imagem do evento"></p>
+					  <input type="hidden" name="foto-original" value="<?php echo $eventos_editar->getFoto(); ?>">
 					  <input type="file" id="exampleInputFile" name="foto">
 					  <p class="help-block">Seleccione uma fotografia para o evento.</p>
 						</div>
