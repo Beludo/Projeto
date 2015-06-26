@@ -75,7 +75,7 @@ if(
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Adicionar Eventos</title>
+	<title>Admin | Editar Eventos</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -110,12 +110,12 @@ if(
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Adicionar Eventos
+			Editar Eventos
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
 			<li><a href="gerir-eventos.php">Gestão de Eventos</a></li>
-			<li class="active">Adicionar Eventos</li>
+			<li class="active">Editar Eventos</li>
 		  </ol>
 		</section>
 
