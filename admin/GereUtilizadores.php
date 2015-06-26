@@ -198,6 +198,24 @@ class GereUtilizadores {
             echo $e->getMessage();
         }
     }
+	
+	function verificaUserNaoExiste($nomeUtilizador) {
+
+        try {
+            $dados = array("U_USERNAME" => $nomeUtilizador);
+
+            $registo = $this->bd->query("SELECT U_ID FROM utilizadores WHERE U_USERNAME = :U_USERNAME", $dados);
+			
+			if(!strcmp($registo[0]["U_ID"], "")){
+				return true;
+			}else{
+				return false;
+			}
+            $id = array("U_ID" => $registo[0]["U_ID"]);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
     public function listarUtilizador(){
 		$dados = array();
