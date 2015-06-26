@@ -45,6 +45,7 @@ if(
     }
     $eventos = new eventos(0, $_POST["nome"], $_POST["descricao"], $nome_foto, true);
     $gereEventos->adicionaEventos($eventos);
+	header("Location: gerir-eventos.php");
 }
 
 ?>
