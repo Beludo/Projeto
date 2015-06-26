@@ -55,10 +55,10 @@ if(
         // usar a foto antiga (não alterar)
         $nome_foto = $_POST["foto-original"];
     }
-    $artigo_editado = new Pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
+    $artigo_editado = new Pecas($_POST["id"], $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
     $gerePecas->editarArtigo($artigo_editado);
 		
-		header("Location: gerir-artigos.php");
+	header("Location: gerir-artigos.php");
 		
 }
 	
@@ -76,7 +76,7 @@ if(
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Adicionar artigos</title>
+	<title>Admin | Editar artigos</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
