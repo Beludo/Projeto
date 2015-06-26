@@ -3,8 +3,14 @@
     include_once "GereCarrinho.php";
     include_once "admin/ALoja.php";
 
-    $gereCarrinho = new GereCarrinho();
-    $carrinho = $gereCarrinho->verIdCarrinho($_SESSION["visit"]);
+    if(isset($_POST["idProduto"]) && !empty($_POST["idProduto"])){
+        $gereCarrinho = new GereCarrinho();
+        $carrinho = $gereCarrinho->verIdCarrinho($_SESSION["visit"]);
+        $gereCarrinho->removerProduto($_POST["idProduto"], $carrinho->getIdCarrinho());
+    } else {
+        $gereCarrinho = new GereCarrinho();
+        $carrinho = $gereCarrinho->verIdCarrinho($_SESSION["visit"]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +56,7 @@
 						</div>
 					</div>
 				</div>
+                <form method="post" action="carrinho-compras.php">
 				<div class="panel-body">
 					<?php
                     $produtos = $carrinho->getProduto();
@@ -59,6 +66,7 @@
 
 					?>
 					<div class="row">
+                        <input hidden="hidden" name="idProduto" value="<?php $produtos[$i]->getId(); ?>">
 						<div class="col-xs-2"><img class="img-responsive" src="<?php $produtos[$i]->getFotografia() ?>">
 						</div>
 						<div class="col-xs-4">
@@ -73,13 +81,14 @@
 								<label class="form-control input-sm"><?php echo $quantidades[$i]; ?><label/>
 							</div>
 							<div class="col-xs-2">
-								<button type="button" class="btn btn-link btn-xs">
+								<button type="submit" class="btn btn-link btn-xs">
 									<span class="glyphicon glyphicon-trash"> </span>
 								</button>
 							</div>
 						</div>
 					</div>
                 </div>
+                </form>
                 <hr>
                 <?php
                 $total_price += $produtos[$i]->getPreco()*$quantidades[$i];
