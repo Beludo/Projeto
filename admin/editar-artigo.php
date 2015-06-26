@@ -1,24 +1,27 @@
 <?php
 include_once "sessaoAtiva.php";
-include_once "GereEventos.php";
-include_once "evento.php";
+include_once "GerePecas.php";
+include_once "pecas.php";
 
-$gereEventos = new GereEventos();
+$gerePecas = new GerePecas();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
-    $eventos_editar = $gereEventos->verDadosEventos($_GET["id"]);
-}else if(!empty($_POST["e_id"]) && is_numeric($_POST["e_id"])) {
-    $eventos_editar = $gereEventos->verDadosEventos($_POST["e_id"]);
+    $artigo_editar = $gerePecas->verDadosArtigo($_GET["id"]);
+}else if(!empty($_POST["id"]) && is_numeric($_POST["id"])) {
+    $artigo_editar = $gerePecas->verDadosArtigo($_POST["id"]);
 } else{
-	header("Location: gerir-eventos.php");
+	header("Location: gerir-artigos.php");
 }
-
-
 
 // verificar se todos os campos foram preenchidos
 if(
+    isset($_POST["museu"]) && !empty($_POST["museu"]) &&
+   isset($_POST["nInventario"]) && !empty($_POST["nInventario"]) &&
+   isset($_POST["categoria"]) && !empty($_POST["categoria"]) &&
    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-   isset($_POST["descricao"]) && !empty($_POST["descricao"])
-	){
+   isset($_POST["datacao"]) && !empty($_POST["datacao"]) &&
+   isset($_POST["descricao"]) && !empty($_POST["descricao"]) &&
+   isset($_POST["origem"]) && !empty($_POST["origem"])
+){
     // verificar se foi escolhido um ficheiro de foto
     if(file_exists($_FILES["foto"]["tmp_name"])){
 
@@ -37,26 +40,25 @@ if(
             $nome_foto = $_POST["nome"] . "." . $ext;
 
             // apagar o ficheiro actual
-            if(file_exists("img-eventos/" . $nome_foto)){
-                unlink("img-eventos/" . $nome_foto);
+            if(file_exists("img-pecas/" . $nome_foto)){
+                unlink("img-pecas/" . $nome_foto);
             }
 
-            move_uploaded_file($_FILES["foto"]["tmp_name"], "img-eventos/" . $nome_foto);
+            move_uploaded_file($_FILES["foto"]["tmp_name"], "img-pecas/" . $nome_foto);
 
 
         }else{
             // mostrar mensagem de erro
-            header("Location: ad-eventos.php?erro=1");
+            header("Location: ad-artigo.php?erro=1");
         }
     }else{
         // usar a foto antiga (não alterar)
         $nome_foto = $_POST["foto-original"];
     }
-    $evento_editado = new eventos($_POST["e_id"], $_POST["nome"], $_POST["descricao"], $nome_foto, true);
-	
-		$gereEventos->editarEventos($evento_editado);
-	
-		header("Location: gerir-eventos.php");
+    $artigo_editado = new Pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
+    $gerePecas->editarArtigo($artigo_editado);
+		
+		header("Location: gerir-artigos.php");
 		
 }
 	
@@ -68,14 +70,13 @@ if(
     }
 }
 
-
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Editar Eventos</title>
+	<title>Admin | Adicionar artigos</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -110,12 +111,12 @@ if(
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Editar Eventos
+			Editar artigos
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li><a href="gerir-eventos.php">Gestão de Eventos</a></li>
-			<li class="active">Editar Eventos</li>
+			<li><a href="gerir-artigos.php">Gestão de artigos</a></li>
+			<li class="active">Editar artigos</li>
 		  </ol>
 		</section>
 
@@ -126,29 +127,55 @@ if(
 			  <!-- general form elements -->
 			  <div class="box box-primary">
 				<div class="box-header">
-				  <h3 class="box-title">Dados do Evento</h3>
+				  <h3 class="box-title">Dados do artigo</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
-				<form role="form" method="post" action="editar-eventos.php" enctype="multipart/form-data">
+				<form role="form" method="post" action="editar-artigo.php" enctype="multipart/form-data">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome</label>
-					  <input type="text" class="form-control" name ="nome" placeholder="Insira o nome"/ value="<?php echo $eventos_editar->getNome()?>">
+					  <input type="text" class="form-control" name ="nome" placeholder="Insira o nome" value="<?php echo $artigo_editar->getNome()?>">
+					</div>
+					<div class="form-group">
+					  <label>Numero de inventário</label>
+					  <input type="text" class="form-control" name ="nInventario" placeholder="Insira o numero de inventário" value="<?php echo $artigo_editar->getNInventario()?>">
+					</div>
+					<div class="form-group">
+						<label>Datação</label>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</div>
+							<input class="form-control pull-right" id="datacao"  name ="datacao" type="text" value="<?php echo $artigo_editar->getDatacao()?>">
+						</div>
+					</div>
+                    <div class="form-group">
+                      <label>Categoria</label>
+                      <input type="text" class="form-control"  name ="categoria" placeholder="Insira a categoria" value="<?php echo $artigo_editar->getCategoria()?>">
+                    </div>
+					<div class="form-group">
+					  <label>Origem</label>
+					  <input type="text" class="form-control"  name ="origem" placeholder="Insira a origem" value="<?php echo $artigo_editar->getOrigem()?>">
+					</div>
+					<div class="form-group">
+					  <label>Museu</label>
+					  <input type="text" class="form-control"  name ="museu" placeholder="Insira o museu" value="<?php echo $artigo_editar->getMuseu()?>">
 					</div>
 					<div class="form-group">
                       <label>Descrição</label>
-                      <textarea class="form-control" rows="3"  name ="descricao" placeholder="Insira uma descrição"><?php echo $eventos_editar->getDescricao()?></textarea>
+                      <textarea class="form-control" rows="3"  name ="descricao" placeholder="Insira uma descrição"><?php echo $artigo_editar->getDescricao()?></textarea>
                     </div>
 						<div class="form-group<?php echo $p_erro1; ?>"></div>
 					<div class="form-group">
 					  <label for="exampleInputFile">Fotografia</label>
-					  <p><img src="img-eventos/<?php echo $eventos_editar->getFoto(); ?>" style="height:120px;width:120px;" alt="Imagem do evento"></p>
-					  <input type="hidden" name="foto-original" value="<?php echo $eventos_editar->getFoto(); ?>">
+						<p><img src="img-pecas/<?php echo $artigo_editar->getFotografia(); ?>" style="height:120px;width:120px;" alt="Imagem do evento"></p>
+					  <input type="hidden" name="foto-original" value="<?php echo $artigo_editar->getFotografia(); ?>">
 					  <input type="file" id="exampleInputFile" name="foto">
-					  <p class="help-block">Seleccione uma fotografia para o evento.</p>
-						</div>
-						<input type="text" value="<?php echo $eventos_editar->getId() ?>" hidden="hidden" name="e_id" id="e_id">
+					  <p class="help-block">Seleccione uma fotografia para o artigo.</p>
+					</div>
+					<input type="text" value="<?php echo $artigo_editar->getId() ?>" hidden="hidden" name="id" id="id">
 				  </div><!-- /.box-body -->
+
 				  <div class="box-footer">
 					<button type="submit" class="btn btn-primary">Guardar</button>
 				  </div>
