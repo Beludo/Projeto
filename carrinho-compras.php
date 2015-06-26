@@ -53,23 +53,24 @@
 				<div class="panel-body">
 					<?php
                     $produtos = $carrinho->getProduto();
+                    $quantidades = $carrinho->getQuantidade();
                     $total_price = 0.00;
                     for($i=0; $i<sizeof($produtos); $i++){
 
 					?>
 					<div class="row">
-						<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+						<div class="col-xs-2"><img class="img-responsive" src="<?php $produtos[$i]->getFotografia() ?>">
 						</div>
 						<div class="col-xs-4">
-							<h4 class="product-name"><strong><?php echo $produtos[$i]->getId(); ?></strong></h4>
+							<h4 class="product-name"><strong><?php echo $produtos[$i]->getNome(); ?></strong></h4>
 							<h4><small><?php echo $produtos[$i]->getObservacoes(); ?></small></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
-								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+								<h6><strong><?php echo $produtos[$i]->getPreco(); ?> <span class="text-muted">x</span></strong></h6>
 							</div>
 							<div class="col-xs-4">
-								<input type="text" class="form-control input-sm" value="1">
+								<label class="form-control input-sm"><?php echo $quantidades[$i]; ?><label/>
 							</div>
 							<div class="col-xs-2">
 								<button type="button" class="btn btn-link btn-xs">
@@ -81,7 +82,7 @@
                 </div>
                 <hr>
                 <?php
-                $total_price += $produtos[$i]->getPreco();
+                $total_price += $produtos[$i]->getPreco()*$quantidades[$i];
                 }
 					?>
 					<div class="row">
@@ -100,9 +101,7 @@
 				<div class="panel-footer">
 					<div class="row text-center"> 
 						<div class="col-xs-9">
-							<h4 class="text-right"><strong><?php
-
-                                    echo $total_price ?></strong></h4>
+							<h4 class="text-right"><strong><?php echo $total_price ?></strong></h4>
 						</div>
 						<div class="col-xs-3">
 							<button type="button" class="btn btn-success btn-block">

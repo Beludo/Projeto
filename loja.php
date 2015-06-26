@@ -104,7 +104,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                       ?>
 				<div class="col-sm-4 col-lg-4 col-md-4">
 					<div class="thumbnail">
-						<a href="mostra-produto.php?id=<?php echo $produtos[$i]->getId() ?>"><img src="./admin/fotos-produtos/<?php echo $produtos[$i]->getFotografia()?>" height="320px" width="150px" alt="">
+						<a href="mostra-produto.php?id=<?php echo $produtos[$i]->getId() ?>"><img src="./admin/img-produtos/<?php echo $produtos[$i]->getFotografia()?>" height="320px" width="150px" alt="">
 						</a>
 						<div class="caption">
 							<h4 class="pull-right"><?php echo $produtos[$i]->getPreco() ?>€</h4>

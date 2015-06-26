@@ -40,7 +40,7 @@
 			<div class="container">
 				<!-- details-photo -->
 				<div class="details-photo col-sm-5">
-					<a href="#"><img class="img-responsive" src="./admin/fotos-produtos/<?php echo $produto[0]["LA_FOTOGRAFIA"]?>" height="400" width="350">
+					<a href="#"><img class="img-responsive" src="./admin/img-produtos/<?php echo $produto[0]["LA_FOTOGRAFIA"]?>" height="400" width="350">
 					</a>
 				</div>
 				<!-- .details-photo -->

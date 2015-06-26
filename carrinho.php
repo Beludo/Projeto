@@ -3,10 +3,28 @@
 class Carrinho {
     private $idCarrinho;
     private $produto;
+    private $quantidade;
 
-    function __construct($idCarrinho, $produto){
+    function __construct($idCarrinho, $produto, $quantidade){
         $this->idCarrinho = $idCarrinho;
         $this->produto = $produto;
+        $this->quantidade  = $quantidade;
+    }
+
+    /**
+     * @param mixed $quantidade
+     */
+    public function setQuantidade($quantidade)
+    {
+        $this->quantidade = $quantidade;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantidade()
+    {
+        return $this->quantidade;
     }
 
     /**
