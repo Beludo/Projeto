@@ -62,7 +62,7 @@ $artigos = $gere_artigos ->listarArtigos();
                       ?>
 				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
 					<a class="thumbnail" href="mostra-peca.php?id=<?php echo $artigos[$i]->getId() ?>">
-						<img src="./admin/fotos-pecas/<?php echo $artigos[$i]->getFotografia()?>" alt="">
+						<img src="admin/img-pecas/<?php echo $artigos[$i]->getFotografia()?>" alt="">
 					</a>
 				</div>
 				<?php
