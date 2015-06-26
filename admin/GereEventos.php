@@ -1,6 +1,6 @@
 <?php
 
-include_once "eventos.php";
+include_once "evento.php";
 include_once "acessobd.php";
 
 class GereEventos {

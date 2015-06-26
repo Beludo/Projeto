@@ -1,6 +1,6 @@
 <?php
 include_once "sessaoAtiva.php";
-include_once "eventos.php";
+include_once "evento.php";
 include_once "GereEventos.php";
 
 

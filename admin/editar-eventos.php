@@ -1,7 +1,7 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GereEventos.php";
-include_once "eventos.php";
+include_once "evento.php";
 
 $gereEventos = new GereEventos();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){

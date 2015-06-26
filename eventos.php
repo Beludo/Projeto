@@ -1,7 +1,7 @@
 <?php
 	include_once "sessaoAtiva.php";
 	include_once "/admin/GereEventos.php";
-	include_once "admin/eventos.php";
+	include_once "admin/evento.php";
 
 $gere_eventos = new GereEventos();
 $eventos = $gere_eventos ->listarEventos();
