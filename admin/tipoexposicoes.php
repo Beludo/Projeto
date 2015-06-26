@@ -6,11 +6,13 @@ class tipoexposicoes
 {
     private $id;
     private $nome;
+	private $ativo;
 
-    function __construct($id, $nome)
+    function __construct($id, $nome, $ativo)
     {
         $this->id = $id;
         $this->nome = $nome;
+		$this->ativo = $ativo;
     }
 
     /**
@@ -45,6 +47,18 @@ class tipoexposicoes
         $this->nome = $nome;
     }
 
+	public function getAtivo()
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param mixed $nome
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
+    }
 }
 
 ?>
