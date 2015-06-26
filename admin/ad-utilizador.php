@@ -115,16 +115,17 @@ if(
 						//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
 	}
 	
-
+	$p_erro1 = '';
+	$p_erro2 = 0;
 	if(isset($_GET["erro"]) && !empty($_GET["erro"])){
 		// erro 1 - ficheiro invalido
-		$p_erro1 = '';
+		
 		if($_GET["erro"] == 1){
 			$p_erro1 = ' has-error';
 		}
 		
 		// erro 2 - utilizador já existe
-		$p_erro2 = 0;
+		
 		if($_GET["erro"] == 2){
 			$p_erro2 = 1;
 		}
