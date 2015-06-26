@@ -17,7 +17,8 @@ class GereTipoExposicoes{
             for($i=0; $i<count($registo); $i++){
                $dados[] = new tipoexposicoes(
 								$registo[$i]["TE_ID"],
-								$registo[$i]["TE_NOME"]
+								$registo[$i]["TE_NOME"],
+								$registo[$i]["TE_ATIVO"]
                         );
             }
             return $dados;
