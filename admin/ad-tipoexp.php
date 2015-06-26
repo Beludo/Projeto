@@ -12,7 +12,7 @@ if(
 
 		$tipo_exposicao = new tipoexposicoes(0, $_POST["nome"]);
 		$gere_tipoExposicoes->adicionaTipoExposicao($tipo_exposicao);
-
+		header("Location: gerir-tipoexp.php");
 }
 
 
