@@ -31,26 +31,9 @@ $eventos = $gere_eventos ->listarEventos();
 			<li class="active">Eventos</li>
 		</ol>
 
-		<!-- Menu Lateral -->
-		<div style="float:left; margin-top:10px; margin-right:0px; width:25%;">
-			<div class="list-group">
-				<!-- Exemplo de opção ativa
-			
-			  <a href="#" class="list-group-item active">
-				Cras justo odio
-			  </a>
-			  -->
-				<a href="#" class="list-group-item">Categoria 1</a>
-				<a href="#" class="list-group-item">Categoria 2</a>
-				<a href="#" class="list-group-item">Categoria 3</a>
-				<a href="#" class="list-group-item">SE HOUVER TEMPO</a>
-			</div>
-		</div>
-		<!-- Acaba menu Lateral -->
-
 		<!-- Conteudo -->
 
-		<div class="panel panel-default" style="float:right; padding:10px; padding-top: 0px;; margin-top:10px; width:74%;">
+		<div class="panel panel-default" style="padding:10px; padding-top: 0px; margin-top:10px;">
 
 			<h3>Eventos</h3>
 
@@ -91,9 +74,9 @@ $eventos = $gere_eventos ->listarEventos();
 			<div class="row text-center">
 				<div class="dataTables_paginate paging_bootstrap">
 					<ul class="pagination">
-							<li class="prev disabled"><a href="#">← Previous</a></li>
+							<li class="prev disabled"><a href="#">← Anterior</a></li>
 							<li class="active"><a href="#">1</a></li>
-							<li class="next disabled"><a href="#">Next → </a></li>
+							<li class="next disabled"><a href="#">Seguinte → </a></li>
 					</ul>
 				</div>
 			</div>
