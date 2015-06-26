@@ -19,45 +19,48 @@ if(
 	isset($_POST["password2"]) && !empty($_POST["password2"]) &&
 	isset($_POST["email"]) && !empty($_POST["email"])
 	){
-        $permissoesUser = new Permissoes(0, "nao", "nao", "nao", "nao", "nao", "nao", "nao");
-		// verificar se foi escolhido um ficheiro de foto
-		if(file_exists($_FILES["foto"]["tmp_name"])){
+		// Não permitir registar um nome de utilizador que já existe
+		if($gereUtilizadores->verificaUserNaoExiste($_POST["username"])){
 		
-			// verificar o tipo e tamanho do ficheiro (< 2Mb)
-			if(
-			(($_FILES["foto"]["type"] == "image/gif") ||
-			($_FILES["foto"]["type"] == "image/jpeg") ||
-			($_FILES["foto"]["type"] == "image/jpg") ||
-			($_FILES["foto"]["type"] == "image/png")) &&
-			$_FILES["foto"]["size"] < 2000000 &&
-			$_FILES["foto"]["error"] == 0
-			){
-				// corrigir o nome do ficheiro
-				$separar = explode(".", $_FILES["foto"]["name"]);
-				$ext = $separar[count($separar)-1];
-				$nome_foto = $_POST["username"] . "." . $ext;
-				
-				// apagar o ficheiro actual
-				if(file_exists("img-users/" . $nome_foto)){
-					unlink("img-users/" . $nome_foto);
+			$permissoesUser = new Permissoes(0, "nao", "nao", "nao", "nao", "nao", "nao", "nao");
+			// verificar se foi escolhido um ficheiro de foto
+			if(file_exists($_FILES["foto"]["tmp_name"])){
+			
+				// verificar o tipo e tamanho do ficheiro (< 2Mb)
+				if(
+				(($_FILES["foto"]["type"] == "image/gif") ||
+				($_FILES["foto"]["type"] == "image/jpeg") ||
+				($_FILES["foto"]["type"] == "image/jpg") ||
+				($_FILES["foto"]["type"] == "image/png")) &&
+				$_FILES["foto"]["size"] < 2000000 &&
+				$_FILES["foto"]["error"] == 0
+				){
+					// corrigir o nome do ficheiro
+					$separar = explode(".", $_FILES["foto"]["name"]);
+					$ext = $separar[count($separar)-1];
+					$nome_foto = $_POST["username"] . "." . $ext;
+					
+					// apagar o ficheiro actual
+					if(file_exists("img-users/" . $nome_foto)){
+						unlink("img-users/" . $nome_foto);
+					}
+					
+					move_uploaded_file($_FILES["foto"]["tmp_name"], "img-users/" . $nome_foto);
+					
+					
+				}else{
+					// mostrar mensagem de erro
+					header("Location: ad-utilizador.php?erro=1"); 
 				}
-				
-				move_uploaded_file($_FILES["foto"]["tmp_name"], "img-users/" . $nome_foto);
-				
-				
 			}else{
-				// mostrar mensagem de erro
-				header("Location: ad-utilizador.php?erro=1"); 
+				// usar uma foto por omissão
+				$nome_foto = "sem-foto.png";
 			}
-		}else{
-			// usar uma foto por omissão
-			$nome_foto = "sem-foto.png";
-		}
-        $utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], md5($_POST["password"]), date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 0);
+			$utilizador = new Utilizadores(0, $_POST["nome"], $_POST["username"], md5($_POST["password"]), date("y-m-d", time()), $_POST["telefone"], 		$_POST["email"], $_POST["morada"], $nome_foto, true, 0);
 
-    // Obter as permissoes
+			// Obter as permissoes
 
-        $modifica = false;
+			$modifica = false;
 			if(isset($_POST['total']) && !empty($_POST['total']) && $_POST['total'] == 1) {
 
                 $permissoesUser->setPermTotal("sim");
@@ -106,7 +109,9 @@ if(
             }else{
                 header("Location: ad-utilizador.php?erro=1");
             }
-
+		}else{
+			header("Location: ad-utilizador.php?erro=2");
+		}
 						//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
 	}
 	
@@ -116,6 +121,12 @@ if(
 		$p_erro1 = '';
 		if($_GET["erro"] == 1){
 			$p_erro1 = ' has-error';
+		}
+		
+		// erro 2 - utilizador já existe
+		$p_erro2 = 0;
+		if($_GET["erro"] == 2){
+			$p_erro2 = 1;
 		}
 	}
 
@@ -169,7 +180,6 @@ if(
 		<section class="content-header">
 		  <h1>
 			Adicionar Utilizador
-			<small>Texto pequeno</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -187,6 +197,18 @@ if(
 				<div class="box-header">
 				  <h3 class="box-title">Dados do utilizador</h3>
 				</div><!-- /.box-header -->
+				
+				<?php
+					if($p_erro2 == 1){
+				?>
+					<div class="alert alert-danger alert-dismissable" style="margin:10px;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Aviso!</h4>
+                    Já existe alguém com este nome de utilizador
+					</div>
+				<?php
+					}
+				?>
 				<!-- form start -->
 				<form role="form" method="post" action="ad-utilizador.php" enctype="multipart/form-data">
 				  <div class="box-body">
