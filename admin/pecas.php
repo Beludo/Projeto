@@ -25,6 +25,7 @@ class Pecas {
         $this->fotografia = $fotografia;
         $this->origem = $origem;
         $this->ativo = $ativo;
+		$this->bd = new BaseDados();
     }
 
     /**
@@ -183,9 +184,16 @@ class Pecas {
     /**
      * @param mixed $ativo
      */
-    public function setAtivo($ativo)
+    public function setAtivo($ativo, $id)
     {
-        $this->ativo = $ativo;
+         $this->ativo = $ativo;
+        $sql = "UPDATE pecas SET PE_ATIVO = :PE_ATIVO WHERE PE_ID = :PE_ID";
+        $dados = array(
+            'PE_ATIVO' => $ativo,
+            'PE_ID' => $id
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 
 
