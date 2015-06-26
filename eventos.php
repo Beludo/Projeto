@@ -43,7 +43,7 @@ $eventos = $gere_eventos ->listarEventos();
 				<a href="#" class="list-group-item">Categoria 1</a>
 				<a href="#" class="list-group-item">Categoria 2</a>
 				<a href="#" class="list-group-item">Categoria 3</a>
-				<a href="#" class="list-group-item">Categoria 4</a>
+				<a href="#" class="list-group-item">SE HOUVER TEMPO</a>
 			</div>
 		</div>
 		<!-- Acaba menu Lateral -->
@@ -64,7 +64,7 @@ $eventos = $gere_eventos ->listarEventos();
 			<!-- Project One  -->
 			<div class="row">
 				<div class="col-md-7">
-					<a href="mostra-evento.php?id="<?php echo $eventos[$i]->getId() ?>">
+					<a href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">
 						<img style="width: 400px; height:200px; " class="img-responsive img-hover" src="./admin/img-eventos/<?php echo $eventos[$i]->getFoto()?>" alt="">
 					</a>
 				</div>
