@@ -6,13 +6,13 @@ include_once "../Visitantes.php";
 
 $gere_visitante = new GereVisitante();
 $visitante = $gere_visitante->listarVisitante();
-if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
+if(isset($_GET["ativo"]) && is_numeric($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
-    isset($_GET["i"]) && !empty($_GET["i"])){
+    isset($_GET["i"]) && is_numeric($_GET["i"])){
     if($_GET["ativo"] == 1){
-        $visitante[$_GET["i"]]->setAtivo(false, $visitante[$_GET["i"]]->getId());
-    } elseif($_GET["ativo"] == 0) {
         $visitante[$_GET["i"]]->setAtivo(true, $visitante[$_GET["i"]]->getId());
+    } elseif($_GET["ativo"] == 0) {
+        $visitante[$_GET["i"]]->setAtivo(false, $visitante[$_GET["i"]]->getId());
     } else {
         header("Location: gerir-visitantes.php?erro=1");
     }
