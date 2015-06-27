@@ -56,17 +56,16 @@
 						</div>
 					</div>
 				</div>
-                <form method="post" action="carrinho-compras.php">
-				<div class="panel-body">
-					<?php
+                <form method="post" action="carrinho-compras.php" enctype="multipart/form-data">
+                    <?php
                     $produtos = $carrinho->getProduto();
                     $quantidades = $carrinho->getQuantidade();
                     $total_price = 0.00;
                     for($i=0; $i<sizeof($produtos); $i++){
-
-					?>
+                    ?>
+				<div class="panel-body">
 					<div class="row">
-                        <input hidden="hidden" name="idProduto" value="<?php $produtos[$i]->getId(); ?>">
+                        <input hidden="hidden" name="idProduto" value="<?php echo $produtos[$i]->getId(); ?>">
 						<div class="col-xs-2"><img class="img-responsive" src="<?php $produtos[$i]->getFotografia() ?>">
 						</div>
 						<div class="col-xs-4">
@@ -88,12 +87,13 @@
 						</div>
 					</div>
                 </div>
+                        <?php
+                        $total_price += $produtos[$i]->getPreco()*$quantidades[$i];
+                    }
+                    ?>
                 </form>
                 <hr>
-                <?php
-                $total_price += $produtos[$i]->getPreco()*$quantidades[$i];
-                }
-					?>
+
 					<div class="row">
 						<div class="text-center">
 							<div class="col-xs-9">

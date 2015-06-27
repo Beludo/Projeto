@@ -71,12 +71,12 @@
 		}
 		
 		// apagar dados de uma tabela
-		public function apagar($sql, $id = 0){
+		public function apagar($sql, $dados = null, $id = 0){
 			try{
 				$STH = $this->DBH->prepare($sql);
 				$STH->bindParam(1, $id);
 
-				if(!$STH->execute()){
+				if(!$STH->execute($dados)){
 					echo "Ocorreu um erro ao apagar os dados!<br>";
 				}
 			}catch(PDOException $e){

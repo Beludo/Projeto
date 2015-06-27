@@ -69,7 +69,7 @@ class GereCarrinho {
             );
             $this->bd->inserir($sql4, $dadosCarrinho);
 
-            $sql5 = "UPDATE loja SET LA_ADICIONADO += 1 WHERE LA_ID = :LA_ID;";
+            $sql5 = "UPDATE loja SET LA_ADICIONADO = LA_ADICIONADO + 1 WHERE LA_ID = :LA_ID;";
             $produto = array(
                 'LA_ID' => $idLoja
             );
@@ -78,12 +78,19 @@ class GereCarrinho {
     }
 
     function removerProduto($idLoja, $idCarrinho){
-        $sql = "DELETE FROM loja_carrinho WHERE LA_ID = :LA_ID AND C_ID = C_ID";
+        $sql = "DELETE FROM loja_carrinho WHERE LA_ID = :LA_ID AND C_ID = :C_ID;";
         $dados = array(
             'LA_ID'=> $idLoja,
             'C_ID' => $idCarrinho
         );
-        $this->bd->apagar($sql,$dados);
+        $this->bd->apagar($sql,$dados, $idCarrinho);
+
+        $sql2 = "UPDATE loja SET LA_REMOVIDO = LA_REMOVIDO + 1 WHERE LA_ID = :LA_ID;";
+        $produto = array(
+            'LA_ID' => $idLoja
+        );
+        $this->bd->editar($sql2, $produto);
+        header("Location: carrinho-compras.php");
     }
 
     function verIdCarrinho($username){
