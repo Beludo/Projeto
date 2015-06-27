@@ -10,7 +10,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
     if($_GET["ativo"] == 1){
         $produtos[$_GET["i"]]->setAtivo(false, $produtos[$_GET["i"]]->getId());
-    } elseif($_GET["ativo"] == 0) {
+		} elseif($_GET["ativo"] == 0) {
         $produtos[$_GET["i"]]->setAtivo(true, $produtos[$_GET["i"]]->getId());
     } else {
         header("Location: gerir-produtos.php?erro=1");
@@ -25,7 +25,10 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 	<title>Museu</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!-- Font Awesome Icons -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<script src="./js/bootstrap.min.js"></script>
 </head>
 

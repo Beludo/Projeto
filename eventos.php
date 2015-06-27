@@ -14,9 +14,11 @@ $eventos = $gere_eventos ->listarEventos();
 	<title>Museu</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" />
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<script src="./js/bootstrap.min.js"></script>
-	
+	<!-- Font Awesome Icons -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
