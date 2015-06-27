@@ -52,6 +52,10 @@
               if(isset($_GET["logout"]) && !empty($_GET["logout"]) && $_GET["logout"] == 1){
                   echo '<div class="alert alert-success">Acabou de fazer logout!</div>';
               }
+			  
+			  if(isset($_GET["registo"]) && !empty($_GET["registo"]) && $_GET["registo"] == 1){
+                  echo '<div class="alert alert-success">Registo completo, pode agora fazer login</div>';
+              }
               ?>
           <div class="row">
             <div class="col-xs-6">

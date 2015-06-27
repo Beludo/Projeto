@@ -50,6 +50,9 @@
 		}
         $visitante = new Visitantes(0, $_POST["nome"], $_POST["username"], md5($_POST["password"]), date("y-m-d", time()), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 0);
 		$gereVisitantes->adicionarVisitante($visitante);
+		
+		// Mostrar mensagem de registo concluido
+		header("Location: login.php?registo=1"); 
 	}
 	
 	
