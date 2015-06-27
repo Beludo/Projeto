@@ -31,17 +31,18 @@
 					<?php
 						if(isset($_SESSION["visit"])){
 					?>
+						
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown" role="menu" aria-labelledby="menu1" style="z-index: 1">
 					<?php
-							echo '<a id="menu1" data-toggle="dropdown" href="area-cliente.php">' . $_SESSION["visit"] . '<span class="caret"></span></a>';
+							echo '<a id="menu1" data-toggle="dropdown" href="area-cliente.php" style="padding-top:10px;padding-bottom:8px;"><img src="fotos/' . $_SESSION["v-foto"] . '" alt="Imagem de perfil" style="width:32px;height:32px;margin-right:5px;">' . $_SESSION["visit"] . '<span class="caret"></span></a>';
 					?>
 									<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-										<li><a href="area-cliente.php">Área de cliente</a>
+										<li><a href="area-cliente.php"><i class="fa fa-user"></i> Área de cliente</a>
 										</li>
-										<li><a href="carrinho-compras.php">Carrinho de Compras</a>
+										<li><a href="carrinho-compras.php"><i class="fa fa-shopping-cart"></i> Carrinho de Compras</a>
 										</li>
-										<li><a href="login.php?logout=1">Terminar Sessão</a>
+										<li><a href="login.php?logout=1"><i class="fa fa-sign-out"></i> Terminar Sessão</a>
 										</li>
 									</ul>
 								</li>
