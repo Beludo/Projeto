@@ -2711,7 +2711,7 @@
 			 * sZeroRecords - assuming that is given.
 			 */
 			if ( !oLanguage.sEmptyTable && oLanguage.sZeroRecords &&
-				oDefaults.sEmptyTable === "No data available in table" )
+				oDefaults.sEmptyTable === "Sem dados!" )
 			{
 				_fnMap( oLanguage, oLanguage, 'sZeroRecords', 'sEmptyTable' );
 			}
@@ -9261,12 +9261,12 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "oLanguage": {
-			 *          "sEmptyTable": "No data available in table"
+			 *          "sEmptyTable": "Sem dados!"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "Sem dados!",
 		
 		
 			/**
