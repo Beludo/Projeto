@@ -33,7 +33,7 @@
 			</li>
 			<li>
 				<a href="#">
-					<i class="fa fa-credit-card"></i>
+					<i class="fa fa-shopping-cart"></i>
 					<span>Loja</span><!-- retirar --><small class="label pull-right bg-red">não</small><!-- retirar até aqui -->
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
@@ -51,9 +51,9 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="graficos-hora.php"><i class="fa fa-fire"></i>Por hora</a>
+					<li><a href="graficos-hora.php"><i class="fa fa-clock-o"></i>Por hora</a>
 					</li>
-					<li><a href="graficos-intervalo.php"><i class="fa fa-tint"></i>Intervalo de Tempo</a>
+					<li><a href="graficos-intervalo.php"><i class="fa fa-calendar"></i>Intervalo de Tempo</a>
 					</li>
 				</ul>
 			</li>
@@ -79,7 +79,7 @@
 				<ul class="treeview-menu">
 					<li><a href="gerir-visitantes.php"><i class="fa fa-users"></i> Gerir Visitantes</a>
 					</li>
-					<li><a href="gerir-quotas.php"><i class="fa fa-users"></i> Quotas de Sócios</a>
+					<li><a href="gerir-quotas.php"><i class="fa fa-eur"></i> Quotas de Sócios</a>
 					</li>
 				</ul>
 			</li>
@@ -158,9 +158,9 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="ad-eventos.php"><i class="fa fa-circle-o"></i> Adicionar Eventos</a>
+					<li><a href="ad-eventos.php"><i class="fa fa-edit"></i> Adicionar Eventos</a>
 					</li>
-					<li><a href="gerir-eventos.php"><i class="fa fa-circle-o"></i> Gerir Eventos</a>
+					<li><a href="gerir-eventos.php"><i class="fa fa-book"></i> Gerir Eventos</a>
 					</li>
 				</ul>
 			</li>

@@ -52,7 +52,7 @@
 					?>
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<a href="login.php">Iniciar sessão</a>
+								<a href="login.php"><i class="fa fa-sign-in"></i> Iniciar sessão</a>
 							</li>
 						</ul>
 					<?php		
