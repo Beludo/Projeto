@@ -46,6 +46,7 @@ class GereCarrinho {
                         'LA_ID' => $idLoja
                     );
                     $this->bd->editar($sql5, $produto);
+                    header("Location: loja.php?sucesso=true");
                 } else {
                     $variavel = true;
                 }
@@ -74,6 +75,7 @@ class GereCarrinho {
                 'LA_ID' => $idLoja
             );
             $this->bd->editar($sql5, $produto);
+            header("Location: loja.php?sucesso=true");
         }
     }
 
@@ -90,7 +92,7 @@ class GereCarrinho {
             'LA_ID' => $idLoja
         );
         $this->bd->editar($sql2, $produto);
-        header("Location: carrinho-compras.php");
+        header("Location: carrinho-compras.php?sucesso=true");
     }
 
     function verIdCarrinho($username){
