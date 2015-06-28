@@ -30,7 +30,7 @@
 	<!-- Acaba MENU!! -->
 
 	<!-- /conteudo -->
-	<div class="container theme-showcase" role="main">
+	<div>
 
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
@@ -113,9 +113,9 @@
 							<h4 class="text-right"><strong><?php echo $total_price ?></strong></h4>
 						</div>
 						<div class="col-xs-3">
-							<button type="button" class="btn btn-success btn-block">
+							<a href="finaliza-compra.php" class="btn btn-success btn-block">
 								Continuar
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>
