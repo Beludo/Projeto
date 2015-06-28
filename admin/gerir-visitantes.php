@@ -70,7 +70,6 @@ if(isset($_GET["ativo"]) && is_numeric($_GET["ativo"]) &&
 		<section class="content-header">
 		  <h1>
 			Gerir Visitantes
-			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -119,7 +118,17 @@ if(isset($_GET["ativo"]) && is_numeric($_GET["ativo"]) &&
 							<?php
 							}
 							?>
-							<td><span class="label label-success">Sim</span></td>
+							<?php
+								if($visitantes[$i]->getSocio() == 1){
+							?>
+								<td><span class="label label-success">Sim</span></td>
+							<?php
+								} elseif($visitantes[$i]->getSocio() == 0) {
+							?>
+								<td><span class="label label-danger">Não</span></td>
+							<?php
+								}
+							?>
 							<td>
 								<span class="label label-default">
                                     <?php

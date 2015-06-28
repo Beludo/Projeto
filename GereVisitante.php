@@ -141,7 +141,8 @@ class GereVisitante {
 						$registo[$i]["V_EMAIL"],
                         $registo[$i]["V_MORADA"],
 						$registo[$i]["V_FOTOGRAFIA"],
-                        $registo[$i]["V_ATIVO"]);
+						$registo[$i]["V_ATIVO"],
+                        $registo[$i]["V_SOCIO"]);
             }
             return $dados;
     }
