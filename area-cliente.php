@@ -19,7 +19,7 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
             $visitante->setContatoTelefonico($_POST["telefone"], $visitante->getId());
             $visitante->setEmail($_POST["email"], $visitante->getId());
         }
-    } elseif($op = "password"){
+    } elseif($op == "password"){
         if(
             isset($_POST["antigaPass"]) && !empty($_POST["antigaPass"]) &&
             isset($_POST["password"]) && !empty($_POST["password"])){
@@ -27,7 +27,9 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
                 $visitante->setPassword(md5($_POST["password"]), $visitante->getId());
             }
         }
-    }
+    } elseif($op == "socio"){
+		$visitante->setSocio("1");
+	}
 }
 
 ?>
@@ -239,7 +241,14 @@ if(isset($_GET["opcao"]) && !empty($_GET["opcao"])){
                         <li class="list-group-item"><strong>6</strong> Bilhetes Mensais</li>
                         <li class="list-group-item">Oferta Produtos</li>
                         <li class="list-group-item"><strong>1</strong> Cabaz Anual</li>
-                        <li class="list-group-item"><a href="#" class="btn btn-primary">Inscreve-te!!</a>
+						<?php
+							if($visitante->getSocio() == 1){
+								echo '<li class="list-group-item"><a href="#" class="btn btn-success">Já sócio</a>';
+							}else{
+								echo '<li class="list-group-item"><a href="area-cliente.php?opcao=socio" class="btn btn-primary">Inscreve-te!!!</a>';
+							}
+                        
+						?>
                         </li>
                     </ul>
                 </div>

@@ -69,7 +69,7 @@ class Visitantes{
         $sql = "UPDATE visitantes SET V_SOCIO = :V_SOCIO WHERE V_ID = :V_ID";
         $dados = array(
             'V_SOCIO' => $socio,
-            'V_ID' => $idVisitante
+            'V_ID' => $this->id
         );
 
         $this->bd->editar($sql, $dados);
