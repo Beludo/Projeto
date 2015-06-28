@@ -82,15 +82,15 @@ class GereVisitante {
 
     function verDadosVisitante($id) {
         try {
-            $registo = $this->bd->query("SELECT * FROM Visitantes WHERE V_ID = :V_ID", $id);
+			$user = array("V_ID" => $id);
+            $registo = $this->bd->query("SELECT * FROM Visitantes WHERE V_ID = :V_ID", $user);
  
-            if (isset($dados)) {
-                $visitante = new Visitantes($registo["v_id"], $registo["v_nome"], $registo["v_numerofuncionario"], 
-                                           $registo["v_nomevisitante"], $registo["v_palavrapasse"], 
-                                           $registo["v_tipovisitante"], $registo["v_dataregisto"], 
-                                           $registo["v_morada"], $registo["v_contatotelefonico"], 
-                                           $registo["v_datanascimento"], $registo["v_funcao"],
-                                           $registo["v_ativo"], $registo["v_fotografia"]);
+            if ($registo != null) {
+                $visitante = new Visitantes($registo[0]["V_ID"], $registo[0]["V_NOMECOMPLETO"], $registo[0]["V_USERNAME"],
+                    $registo[0]["V_PASSWORD"], $registo[0]["V_DATAREGISTO"],
+                    $registo[0]["V_CONTATOTELEFONICO"], $registo[0]["V_EMAIL"],
+                    $registo[0]["V_MORADA"], $registo[0]["V_FOTOGRAFIA"],
+                    $registo[0]["V_ATIVO"]);
                 return $visitante;
             }else{
                 return NULL;
