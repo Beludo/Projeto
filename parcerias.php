@@ -1,5 +1,11 @@
 <?php
-	include "sessaoAtiva.php"
+	include_once "sessaoAtiva.php";
+	include_once "admin/parceria.php";
+	include_once "admin/GereParceria.php";
+
+
+$gere_parceria = new GereParceria();
+$parceria = $gere_parceria->listarParceria();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +30,7 @@
 			</li>
 			<li><a href="contatos.php">Informações</a>
 			</li>
-			<li class="active">Ligações</li>
+			<li class="active">Parcerias</li>
 		</ol>
 
 		<!-- Menu Lateral -->
@@ -38,9 +44,8 @@
 			  -->
 				<a href="contatos.php" class="list-group-item">Contatos</a>
 				<a href="horario.php" class="list-group-item">Horário de Funcionamento</a>
-				<a href="mapasite.php" class="list-group-item">Mapa do Site</a>
 				<a href="normas.php" class="list-group-item">Normas de Conduta</a>
-				<a href="ligacoes.php" class="list-group-item active">Ligações</a>
+				<a href="parcerias.php" class="list-group-item">Parcerias</a>
 
 			</div>
 		</div>
@@ -48,14 +53,30 @@
 
 		<!-- Conteudo -->
 		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;min-height: 205px;">
-			<h3>Ligações</h3>
+			<h3>Parcerias</h3>
 			<hr>
 			
-			Conteudo principal
-			<br> Linha 1
-			<br> Linha 2
-			<br> Linha 3
-			<br>
+			 <table id="example1" class="table table-bordered table-striped">
+					<thead>
+					  <tr>
+						<th>Entidade Parceira</th>
+						<th>Condição da Parceria</th>
+					  </tr>
+					</thead>
+					 <?php
+                      if($parceria != null) {
+                          for($i = 0; $i<count($parceria); $i++) {
+                      ?>
+					  <tr>
+						<td><?php echo $parceria[$i]->getEntidade(); ?></td>
+						<td><?php echo $parceria[$i]->getCondicao(); ?></td>
+							
+					  </tr>
+						<?php
+                            }
+                      }
+					?>
+				  </table>
 		</div>
 		<!-- Acaba o conteudo -->
 

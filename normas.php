@@ -38,9 +38,8 @@
 			  -->
 				<a href="contatos.php" class="list-group-item">Contatos</a>
 				<a href="horario.php" class="list-group-item">Horário de Funcionamento</a>
-				<a href="mapasite.php" class="list-group-item">Mapa do Site</a>
 				<a href="normas.php" class="active list-group-item">Normas de Conduta</a>
-				<a href="ligacoes.php" class="list-group-item">Ligações</a>
+				<a href="parcerias.php" class="list-group-item">Parcerias</a>
 			</div>
 		</div>
 		<!-- Acaba menu Lateral -->
