@@ -7,9 +7,70 @@ include_once "Quota.php";
 include_once "GereQuotas.php";
 
 $gere_visitante = new GereVisitante();
+$gere_quotas = new GereQuotas();
 
 if(isset($_GET["id"]) && !empty($_GET["id"])){
+	
+	// Adicionar um ano
+	if(isset($_POST["ano"]) && !empty($_POST["ano"])){
+		$gere_quotas->adicionarAno($_GET["id"], $_POST["ano"]);
+	}
+	
+	// Apagar um ano
+	if(
+		isset($_GET["ano"]) && !empty($_GET["ano"]) &&
+		isset($_GET["apagar"]) && !empty($_GET["apagar"])
+	){
+		$gere_quotas->removerAno($_GET["id"], $_GET["ano"]);
+	}
+	
+	// Pagar (ou não) as quotas referentes a um mês/ano
+	if(
+		isset($_GET["mes"]) && !empty($_GET["mes"]) &&
+		isset($_GET["ano"]) && !empty($_GET["ano"]) &&
+		isset($_GET["pago"]) && is_numeric($_GET["pago"])
+	){
+		// Pagar o respetivo mês
+		if($_GET["mes"] == 1){
+			$gere_quotas->pagarJaneiro($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 2){
+			$gere_quotas->pagarFevereiro($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 3){
+			$gere_quotas->pagarMarco($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 4){
+			$gere_quotas->pagarAbril($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 5){
+			$gere_quotas->pagarMaio($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 6){
+			$gere_quotas->pagarJunho($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 7){
+			$gere_quotas->pagarJulho($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 8){
+			$gere_quotas->pagarAgosto($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 9){
+			$gere_quotas->pagarSetembro($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 10){
+			$gere_quotas->pagarOutubro($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 11){
+			$gere_quotas->pagarNovembro($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+		if($_GET["mes"] == 12){
+			$gere_quotas->pagarDezembro($_GET["id"], $_GET["ano"], $_GET["pago"]);
+		}
+	}
+	
 	$visitante = $gere_visitante->verDadosVisitante($_GET["id"]);
+	$quotas = $gere_quotas->listarQuotasSocio($_GET["id"]);
 }else{
 	header("Location: gerir-quotas.php");
 }
@@ -100,27 +161,262 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
 					  <th>Out</th>
 					  <th>Nov</th>
 					  <th>Dez</th>
+					  <th>Acções</th>
                       <!--<th style="width: 40px">Label</th>-->
                     </tr>
+					<?php
+						for($i=0; $i<count($quotas); $i++){
+					?>
                     <tr>
-						<td>2015</td>
+						<td><?php echo $quotas[$i]->getAno(); ?></td>
 						<td>
-							<?php //if() ?>
+							<?php
+							if($quotas[$i]->getJaneiro() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=1' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getJaneiro() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=1' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getJaneiro() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+							?>
 						</td>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
+						<td>
+						<?php
+							if($quotas[$i]->getFevereiro() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=2' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getFevereiro() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=2' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getFevereiro() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getMarco() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=3' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getMarco() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=3' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getMarco() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getAbril() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=4' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getAbril() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=4' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getAbril() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getMaio() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=5' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getMaio() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=5' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getMaio() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getJunho() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=6' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getJunho() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=6' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getJunho() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getJulho() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=7' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getJulho() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=7' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getJulho() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getAgosto() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=8' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getAgosto() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=8' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getAgosto() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getSetembro() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=9' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getSetembro() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=9' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getSetembro() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getOutubro() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=10' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getOutubro() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=10' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getOutubro() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getNovembro() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=11' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getNovembro() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=11' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getNovembro() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td>
+						<?php
+							if($quotas[$i]->getDezembro() == 1){
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=12' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getDezembro() .
+								'"><span class="label label-success">Pago</span></a>';
+							}else{
+								echo '<a href="gerir-quotas-socio.php?' .
+								'id=' . $visitante->getId() .
+								'&mes=12' .
+								'&ano=' . $quotas[$i]->getAno() .
+								'&pago=' . $quotas[$i]->getDezembro() .
+								'"><span class="label label-danger">Não</span></a>';
+							}
+						?>
+						</td>
+						<td><a class="btn btn-danger btn-xs" href="gerir-quotas-socio.php?id=<?php echo $visitante->getId(); ?>&ano=<?php echo $quotas[$i]->getAno(); ?>&apagar=1"><i class="fa fa-trash-o"> Apagar ano</a></td>
                     </tr>
+					<?php
+						}
+					?>
                   </tbody></table>
                 </div><!-- /.box-body -->
+				<div class="box-footer clearfix">
+					<form role="form" method="post" action="gerir-quotas-socio.php?id=<?php echo $_GET["id"]; ?>">
+						<div class="box-body">	
+							<div class="form-group">
+							  <label>Adicionar ano de pagamento</label>
+							  <input type="text" class="form-control" name ="ano" placeholder="Insira o ano"/>
+							</div>
+						</div><!-- /.box-body -->
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Adicionar</button>
+						</div>
+					</form>
+                </div>
               </div>
 			</div><!-- /.col -->
 		  </div><!-- /.row -->
