@@ -114,7 +114,7 @@ class GereVisitante {
                     $registo[0]["V_PASSWORD"], $registo[0]["V_DATAREGISTO"],
                     $registo[0]["V_CONTATOTELEFONICO"], $registo[0]["V_EMAIL"],
                     $registo[0]["V_MORADA"], $registo[0]["V_FOTOGRAFIA"],
-                    $registo[0]["V_ATIVO"]);
+                    $registo[0]["V_ATIVO"], $registo[0]["V_SOCIO"]);
 							
 					return $visitante;
             }else{
