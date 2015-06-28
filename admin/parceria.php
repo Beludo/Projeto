@@ -99,7 +99,15 @@ class parceria
      */
     public function setAtivo($ativo)
     {
-        $this->ativo = $ativo;
+         $this->ativo = $ativo;
+        $sql = "UPDATE parcerias SET PA_ATIVO = :PA_ATIVO WHERE PA_ID = :PA_ID";
+        $dados = array(
+            'PA_ATIVO' => $ativo,
+            'PA_ID' => $id
+        );
+
+        $this->bd->editar($sql, $dados);
+    }
     }
 
 }

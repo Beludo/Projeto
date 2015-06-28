@@ -48,7 +48,15 @@ class Loja {
      */
     public function setAtivo($ativo)
     {
-        $this->ativo = $ativo;
+          $this->ativo = $ativo;
+        $sql = "UPDATE loja SET LA_ATIVO = :LA_ATIVO WHERE LA_ID = :LA_ID";
+        $dados = array(
+            'LA_ATIVO' => $ativo,
+            'LA_ID' => $id
+        );
+
+        $this->bd->editar($sql, $dados);
+    }
     }
 
     /**
