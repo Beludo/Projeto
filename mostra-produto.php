@@ -67,7 +67,7 @@
 							<div class="form-group">
 								<label for="quantity" class="col-sm-2 control-label">Quantidade</label>
 								<div class="col-xs-9">
-									<input style="max-width: 50px;" id="quantity" type="number" min="1" max="10" value="1" name="quantidade" />
+									<input style="max-width: 50px;" id="quantity" type="number" min="1" max="<?php echo $produto[0]["LA_STOCK"]; ?>" value="1" name="quantidade" />
 								</div>
                                 <br>
                             <div class="col-md-12 text-center">
