@@ -80,6 +80,9 @@
             <div class="col-xs-6">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Recuperar password"/>
             </div><!-- /.col -->
+						 <div class="col-xs-6">
+							 <a type="button" href="index.php" class="btn btn-danger btn-block btn-flat">Voltar</a>
+            </div><!-- /.col -->
           </div>
         </form>
 

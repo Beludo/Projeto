@@ -59,6 +59,56 @@ class GereLoja {
             $registo = $this->bd->query("SELECT * FROM loja WHERE LA_ID = :LA_ID", $dados);
             return $registo;
         }
+	
+		function verDadosProdutos($id) {
+        try {
+            $idA = array("LA_ID" => $id);
+            $registo = $this->bd->query("SELECT * FROM loja WHERE LA_ID = :LA_ID", $idA);
+ 
+            if (isset($registo)) {
+				
+                $produtos = new Loja(
+					$registo[0]["LA_ID"],
+					$registo[0]["LA_NOME"],
+					$registo[0]["LA_CODIGO"],
+					$registo[0]["LA_FOTOGRAFIA"],
+					$registo[0]["LA_STOCK"],
+					$registo[0]["LA_OBSERVACOES"],
+					$registo[0]["LA_PRECO"],
+					$registo[0]["LA_DISPONIBILIDADE"],
+					$registo[0]["LA_ATIVO"],
+					$registo[0]["LA_ADICIONADO"],
+					$registo[0]["LA_REMOVIDO"]
+				);
+                return $produtos;
+            }else{
+                return NULL;
+            }
+            
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+	
+	function editarProdutos($produtos){
+		$sql = "UPDATE eventos SET LA_NOME=:LA_NOME , LA_CODIGO=:LA_CODIGO , LA_FOTOGRAFIA=:LA_FOTOGRAFIA, LA_STOCK=:LA_STOCK, LA_OBSERVACOES=:LA_OBSERVACOES, LA_PRECO=:LA_PRECO, LA_DISPONIBILIDADE=:LA_DISPONIBILIDADE, LA_ATIVO=:LA_ATIVO, LA_ADICIONADO=:LA_ADICIONADO, LA_REMOVIDO=:LA_REMOVIDO  WHERE  LA_ID=:LA_ID";
+           $dados_loja = array(
+						 'LA_NOME' => $produtos->getNome(),
+						 'LA_CODIGO' => $produtos->getCodigo(),
+						 'LA_FOTOGRAFIA' => $produtos->getFotografia(),
+						 'LA_STOCK' => $produtos->getStock(),
+						 'LA_OBSERVACOES' => $produtos->getObservacoes(),
+						 'LA_PRECO' => $produtos->getPreco(),
+						 'LA_DISPONIBILIDADE' => $produtos->getDisponibilidade(),
+						 'LA_ATIVO' => $produtos->getAtivo(),
+						 'LA_ADICIONADO' => $produtos->getAdicionado(),
+						 'LA_REMOVIDO' => $produtos->getRemovido(),
+						 'LA_ID' => $produtos->getId()
+        );
+		
+        $this->bd->editar($sql, $dados_loja);
+
+ 	}	
 }
 
 ?>

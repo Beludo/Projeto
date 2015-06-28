@@ -1,18 +1,24 @@
 <?php
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
-include_once "ALoja.php";
+include_once "Aloja.php";
 
 $gereLoja = new GereLoja();
+if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
+    $produtos_editar = $gereLoja->verDadosProdutos($_GET["id"]);
+}else if(!empty($_POST["id"]) && is_numeric($_POST["id"])) {
+    $produtos_editar = $gereLoja->verDadosProdutos($_POST["id"]);
+} else{
+	header("Location: gerir-produtos.php");
+}
+
+
 
 // verificar se todos os campos foram preenchidos
-
-if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
-   isset($_POST["codigo"]) && !empty($_POST["codigo"]) &&
-   isset($_POST["preco"]) && !empty($_POST["preco"]) &&
-   isset($_POST["stock"]) && !empty($_POST["stock"]) &&
-   isset($_POST["observacoes"]) && !empty($_POST["observacoes"])){
-
+if(
+   isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+   isset($_POST["descricao"]) && !empty($_POST["descricao"])
+	){
     // verificar se foi escolhido um ficheiro de foto
     if(file_exists($_FILES["foto"]["tmp_name"])){
 
@@ -28,7 +34,7 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
             // corrigir o nome do ficheiro
             $separar = explode(".", $_FILES["foto"]["name"]);
             $ext = $separar[count($separar)-1];
-            $nome_foto = $_POST["codigo"] . "." . $ext;
+            $nome_foto = $_POST["nome"] . "." . $ext;
 
             // apagar o ficheiro actual
             if(file_exists("img-produtos/" . $nome_foto)){
@@ -43,13 +49,25 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
             header("Location: ad-produto.php?erro=1");
         }
     }else{
-        // usar uma foto por omissão
-        $nome_foto = "sem-foto.png";
+        // usar a foto antiga (não alterar)
+        $nome_foto = $_POST["foto-original"];
     }
-
-    $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0);
-    $gereLoja->adicionaProduto($produto);
+    $produto_editado = new Loja($_POST["id"], $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0);
+	
+		$gereLoja->editarProdutos($produto_editado);
+	
+		header("Location: gerir-produtos.php");
+		
 }
+	
+	if(isset($_GET["erro"]) && !empty($_GET["erro"])){
+    // erro 1 - ficheiro invalido
+    $p_erro1 = '';
+    if($_GET["erro"] == 1){
+        $p_erro1 = ' has-error';
+    }
+}
+
 
 ?>
 
@@ -57,7 +75,7 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Adicionar produtos</title>
+	<title>Admin | Editar Produtos</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -84,20 +102,20 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
 	<?php
 		include("cabecalho-admin.php");
 		include("lateral-admin.php");
-	?>
+		?>
+		
 
 	  <!-- Content Wrapper. Contains page content -->
 	  <div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Adicionar produtos
-			<small>Texto pequeno</small>
+			Editar Produtos
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-			<li><a href="gerir-produtos.php">Gestão de produtos</a></li>
-			<li class="active">Adicionar produtos</li>
+			<li><a href="gerir-produtos.php">Gestão de Produtos</a></li>
+			<li class="active">Editar Produtos</li>
 		  </ol>
 		</section>
 
@@ -108,38 +126,41 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
 			  <!-- general form elements -->
 			  <div class="box box-primary">
 				<div class="box-header">
-				  <h3 class="box-title">Dados do produto</h3>
+				  <h3 class="box-title">Dados do Evento</h3>
 				</div><!-- /.box-header -->
 				<!-- form start -->
 				<form role="form" method="post" action="ad-produto.php" enctype="multipart/form-data">
 				  <div class="box-body">
 					<div class="form-group">
 					  <label>Nome</label>
-					  <input type="text" class="form-control" placeholder="Insira nome" name="nome"/>
+					  <input type="text" class="form-control" placeholder="Insira nome" name="nome" value="<?php echo $produtos_editar->getNome() ?>">
 					</div>
 					<div class="form-group">
 					  <label>Código</label>
-					  <input type="text" class="form-control" placeholder="Insira código" name="codigo"/>
+					  <input type="text" class="form-control" placeholder="Insira código" name="codigo" value="<?php echo $produtos_editar->getCodigo() ?>">
 					</div>
 					<div class="form-group">
 					  <label>Preço</label>
-					  <input type="text" class="form-control" placeholder="Insira preço" name="preco"/>
+					  <input type="text" class="form-control" placeholder="Insira preço" name="preco" value="<?php echo $produtos_editar->getPreco() ?>">
 					</div>
 					<div class="form-group">
 					  <label>Stock</label>
-					  <input type="number" min="0" class="form-control" placeholder="Insira a quantidade em stock" name="stock"/>
+					  <input type="number" min="0" class="form-control" placeholder="Insira a quantidade em stock" name="stock" value="<?php echo $produtos_editar->getStock() ?>">
 					</div>
 					<div class="form-group">
                       <label>Observacoes</label>
-                      <textarea class="form-control" rows="3" placeholder="Insira observacoes" name="observacoes"></textarea>
+                      <textarea class="form-control" rows="3" placeholder="Insira observacoes" name="observacoes"><?php echo $produtos_editar->getObservacoes() ?></textarea>
                     </div>
+						<div class="form-group<?php echo $p_erro1; ?>"></div>
 					<div class="form-group">
-					  <label for="exampleInputFile">Imagem</label>
+					  <label for="exampleInputFile">Fotografia</label>
+					  <p><img src="img-produtos/<?php echo $produtos_editar->getFotografia(); ?>" style="height:120px;width:120px;" alt="Imagem do produto"></p>
+					  <input type="hidden" name="foto-original" value="<?php echo $produtos_editar->getFotografia(); ?>">
 					  <input type="file" id="exampleInputFile" name="foto">
-					  <p class="help-block">Seleccione uma imagem para o produto.</p>
-					</div>
+					  <p class="help-block">Seleccione uma fotografia para o produto.</p>
+						</div>
+						<input type="text" value="<?php echo $produtos_editar->getId() ?>" hidden="hidden" name="id" id="id">
 				  </div><!-- /.box-body -->
-
 				  <div class="box-footer">
 					<button type="submit" class="btn btn-primary">Guardar</button>
 				  </div>

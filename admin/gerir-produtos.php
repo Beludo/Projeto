@@ -8,20 +8,18 @@ $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutos();
 
 if(
-	isset($_GET["ativo"]) && is_numeric($_GET["ativo"]) &&
-    isset($_GET["id"]) && is_numeric($_GET["id"]) &&
-    isset($_GET["i"]) && is_numeric($_GET["i"]))
-{
-    if(!strcmp($_GET["ativo"], "1")){
-        $produtos[$_GET["i"]]->setAtivo(false, $produtos[$_GET["i"]]->getId());
-		echo 'ativar ' . $_GET["i"];
-    } elseif(!strcmp($_GET["ativo"], "0")) {
-        $produtos[$_GET["i"]]->setAtivo(true, $produtos[$_GET["i"]]->getId());
-		echo 'desativar ' . $_GET["i"];
-    } else {
-        header("Location: gerir-produtos.php");
-    }
-}
+    isset($_GET["accao"]) && !empty($_GET["accao"]) &&
+    isset($_GET["id"]) && !empty($_GET["id"]) &&
+    isset($_GET["i"]) && is_numeric($_GET["i"])
+	){
+	
+			if(!strcmp($_GET["accao"], "ativar")){
+					$eventos[$_GET["i"]]->setAtivo(true, $eventos[$_GET["i"]]->getId());
+			} elseif(!strcmp($_GET["accao"], "desativar")){
+					$eventos[$_GET["i"]]->setAtivo(false, $eventos[$_GET["i"]]->getId());
+			}
+	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +79,6 @@ if(
 		<section class="content-header">
 		  <h1>
 			Gerir produtos
-			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -136,20 +133,25 @@ if(
 							<?php
 							}
 							?>
-						<td>
-								<span class="label label-default">
+							<td>
+							  <div class="btn-group">
+								<button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								  <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+								  <li><a href="editar-produtos.php?id=<?php echo $produtos[$i]->getId() ?>"><i class="fa fa-fw fa-edit"></i>Editar</a></li>
                                     <?php
                                         if($produtos[$i]->getAtivo() == 1) {
                                             ?>
-                                            <a href="gerir-produtos.php?ativo=0&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a>
+                                            <li><a href="gerir-produtos.php?accao=desativar&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-minus-square"></i>Desativar</a></li>
                                             <?php
-                                        } else {
+                                        } elseif($produtos[$i]->getAtivo() == 0) {
                                             ?>
-                                           <a href="gerir-produtos.php?ativo=1&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a>
+                                            <li><a href="gerir-produtos.php?accao=ativar&id=<?php echo $produtos[$i]->getId() ?>&i=<?php echo $i; ?>"><i class="fa fa-fw fa-plus-square"></i>Ativar</a></li>
                                             <?php
                                         }
                                     ?>
-								</span>
+								</ul>
 							  
 							</td>
 						  </tr>
