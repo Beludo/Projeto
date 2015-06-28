@@ -57,7 +57,6 @@ class Loja {
 
         $this->bd->editar($sql, $dados);
     }
-    }
 
     /**
      * @return mixed
