@@ -164,6 +164,18 @@
 					</li>
 				</ul>
 			</li>
+			<li class="treeview">
+				<a href="#">
+					<i class="fa  fa-calendar-o"></i> <span>Informações</span><!-- retirar --><small class="label pull-right bg-yellow">Não!</small><!-- retirar até aqui -->
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="ad-parceria.php"><i class="fa fa-edit"></i> Adicionar Parcerias</a>
+					</li>
+					<li><a href="gerir-parcerias.php"><i class="fa fa-book"></i> Gerir Parcerias</a>
+					</li>
+				</ul>
+			</li>
 			<li><a href="documentation/index.html"><!-- retirar --><small class="label pull-right bg-red">Manual!</small><!-- retirar até aqui --><i class="fa fa-question-circle"></i> Ajuda</a>
 			</li>
 		</ul>
