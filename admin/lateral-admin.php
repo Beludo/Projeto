@@ -12,8 +12,6 @@
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="info-gerais.php"><i class="fa fa-dashboard"></i> Informações gerais</a>
-					</li>
 					<li><a href="conf-gerais.php"><i class="fa fa-cog"></i> Configurações gerais</a>
 					</li>
 				</ul>
