@@ -2,7 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereEventos.php";
 include_once "evento.php";
+include_once "GereLog.php";
 
+$gere_log = new GereLog();
 $gereEventos = new GereEventos();
 
 // verificar se todos os campos foram preenchidos
@@ -45,6 +47,7 @@ if(
     }
     $eventos = new eventos(0, $_POST["nome"], $_POST["descricao"], $nome_foto, true);
     $gereEventos->adicionaEventos($eventos);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o evento "' . $_POST["nome"] . '"');
 	header("Location: gerir-eventos.php");
 }
 
