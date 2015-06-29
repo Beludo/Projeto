@@ -14,17 +14,22 @@ if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
 */
 
 
-/*
+
 // verificar se todos os campos foram preenchidos
 if(
-    isset($_POST["nome"]) && !empty($_POST["nome"]) &&
+    isset($_POST["nome-museu"]) && !empty($_POST["nome-museu"]) &&
     isset($_POST["morada"]) && !empty($_POST["morada"]) &&
-    isset($_POST["telefone"]) && !empty($_POST["telefone"]) &&
-    isset($_POST["email"]) && !empty($_POST["email"])
+    isset($_POST["gmaps"]) && !empty($_POST["gmaps"]) &&
+	isset($_POST["abertura"]) && !empty($_POST["abertura"]) &&
+	isset($_POST["encerr"]) && !empty($_POST["encerr"]) &&
+	isset($_POST["atend-tlf"]) && !empty($_POST["atend-tlf"]) &&
+	isset($_POST["corf1"]) && !empty($_POST["corf1"]) &&
+	isset($_POST["corf2"]) && !empty($_POST["corf2"]) &&
+	isset($_POST["cort"]) && !empty($_POST["cort"])
 ){
 	
-    // verificar se foi escolhido um ficheiro de foto
-    if(file_exists($_FILES["foto"]["tmp_name"])){
+    // verificar se foi escolhido um ficheiro de icone
+    if(file_exists($_FILES["icone"]["tmp_name"])){
 
         // verificar o tipo e tamanho do ficheiro (< 2Mb)
         if(
@@ -218,7 +223,7 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
 								</div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Abertura</label>
-                                    <input type="password" class="form-control" id="abertura" name="email" placeholder="Insira os dias e a hora de abertura">
+                                    <input type="password" class="form-control" id="abertura" name="abertura" placeholder="Insira os dias e a hora de abertura">
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputPassword1">Encerramento</label>
@@ -226,7 +231,7 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputPassword1">Horário de atendimento telefónico</label>
-                                    <input type="password" class="form-control" id="abertura" name="email" placeholder="Insira o horário de atendimento">
+                                    <input type="password" class="form-control" id="atend-tlf" name="atend-tlf" placeholder="Insira o horário de atendimento">
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputPassword1">Normas de conduta</label>
@@ -236,7 +241,7 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                                     <label for="exampleInputFile">Icone</label>
 									<p><img src="img-users/<?php //echo $utilizador_editar->getFotografia(); ?>" style="height:120px;width:120px;" alt="Icone do site"></p>
 									<input type="hidden" name="foto-original" value="<?php //echo $utilizador_editar->getFotografia(); ?>">
-                                    <input type="file" id="exampleInputFile" name="foto">
+                                    <input type="file" id="exampleInputFile" name="icone">
                                     <p class="help-block">Seleccione um icone para o site</p>
                                 </div>
 								<div class="form-group">
