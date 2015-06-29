@@ -45,6 +45,10 @@ if(
 
             // Guardar o nome de utilizador da sessão
             $_SESSION["user"] = $utilizador->getUsername();
+			
+			// Guardar o id de utilizador da sessão
+			$_SESSION["iduser"] = $utilizador->getId();
+			
             echo $utilizador->getPermissao();
             // Verificar se se trata de um utilizador comum ou administrador
             if($utilizador->getPermissao() == 1){
