@@ -4,7 +4,9 @@ include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
 include_once "Permissoes.php";
 include_once "GerePermissoes.php";
+include_once "GereLog.php";
 
+$gere_log = new GereLog();
 $gereUtilizadores = new GereUtilizadores();
 
 
@@ -106,6 +108,7 @@ if(
 
             if($modifica){
                 $gereUtilizadores->adicionarUtilizador($utilizador, $permissoesUser);
+							$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o utilizador "' . $_POST["nome"] . '"');
             }else{
                 header("Location: ad-utilizador.php?erro=1");
             }

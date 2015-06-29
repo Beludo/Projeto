@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
 include_once "Aloja.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gereLoja = new GereLoja();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
@@ -55,6 +58,7 @@ if(
     $produto_editado = new Loja($_POST["id"], $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0);
 	
 		$gereLoja->editarProdutos($produto_editado);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Editou o produto "' . $_POST["nome"] . '"');
 	
 		header("Location: gerir-produtos.php");
 		

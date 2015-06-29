@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
 include_once "pecas.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gerePecas = new GerePecas();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
@@ -57,6 +60,7 @@ if(
     }
     $artigo_editado = new Pecas($_POST["id"], $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
     $gerePecas->editarArtigo($artigo_editado);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Editou o artigo "' . $_POST["nome"] . '"');
 		
 	header("Location: gerir-artigos.php");
 		

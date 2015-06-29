@@ -4,6 +4,9 @@
 	include_once "exposicoes.php";
 	include_once "tipoexposicoes.php";
 	include_once "GereTipoExposicoes.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gere_tipoExposicoes = new GereTipoExposicoes();
 $gereExposicoes = new GereExposicoes();
@@ -31,6 +34,7 @@ if(
 	$exposicoes_editado = new exposicoes($_POST["ex_id"],$_POST["te_id"], $_POST["nome"], $_POST["observacoes"], true, $te_nome);
 	
 		$gereExposicoes->editarExposicoes($exposicoes_editado, $dados);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'editou a exposição "' . $_POST["nome"] . '"');
 	
 		header("Location: gerir-exposicoes.php");
 	}

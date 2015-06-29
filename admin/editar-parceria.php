@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereParceria.php";
 include_once "parceria.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gereParceria = new GereParceria();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
@@ -22,6 +25,7 @@ if(
     $parceria_editado = new parceria($_POST["id"], $_POST["nome"], $_POST["condicao"], $_POST["data"], true);
 	
 		$gereParceria->editarParceria($parceria_editado);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'editou a parceria "' . $_POST["nome"] . '"');
 	
 		header("Location: gerir-parcerias.php");
 		

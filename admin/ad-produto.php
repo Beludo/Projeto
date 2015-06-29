@@ -2,7 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
 include_once "ALoja.php";
+include_once "GereLog.php";
 
+$gere_log = new GereLog();
 $gereLoja = new GereLoja();
 
 // verificar se todos os campos foram preenchidos
@@ -49,6 +51,8 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
 
     $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0);
     $gereLoja->adicionaProduto($produto);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o produto "' . $_POST["nome"] . '"');
+	 header("Location: gerir-produtos.php");
 }
 
 ?>

@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereEventos.php";
 include_once "evento.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gereEventos = new GereEventos();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
@@ -55,6 +58,7 @@ if(
     $evento_editado = new eventos($_POST["e_id"], $_POST["nome"], $_POST["descricao"], $nome_foto, true);
 	
 		$gereEventos->editarEventos($evento_editado);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Editou o evento "' . $_POST["nome"] . '"');
 	
 		header("Location: gerir-eventos.php");
 		

@@ -4,6 +4,9 @@ include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
 include_once "Permissoes.php";
 include_once "GerePermissoes.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gereUtilizadores = new GereUtilizadores();
 if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
@@ -112,6 +115,7 @@ if(
 	$utilizador_editado = new Utilizadores($_POST["u_id"], $_POST["nome"], "", $_POST["password"], "", $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, $permissoesUser);
 	
 	$gereUtilizadores->editarUtilizador($utilizador_editado, $permissoesUser);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Editou o utilizador "' . $_POST["nome"] . '"');
 	
 	header("Location: gerir-utilizadores.php");
 

@@ -2,7 +2,9 @@
 	include_once "sessaoAtiva.php";
 	include_once "tipoexposicoes.php";
 	include_once "GereTipoExposicoes.php";
+include_once "GereLog.php";
 
+$gere_log = new GereLog();
 $gere_tipoExposicoes = new GereTipoExposicoes();
 
 // verificar se todos os campos foram preenchidos
@@ -12,6 +14,7 @@ if(
 
 		$tipo_exposicao = new tipoexposicoes(0, $_POST["nome"]);
 		$gere_tipoExposicoes->adicionaTipoExposicao($tipo_exposicao);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o tipo de exposicção "' . $_POST["nome"] . '"');
 		header("Location: gerir-tipoexp.php");
 }
 

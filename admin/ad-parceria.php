@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereParceria.php";
 include_once "parceria.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gereParceria = new GereParceria();
 
@@ -13,6 +16,7 @@ if(
 	
     $parceria = new parceria(0, $_POST["nome"], $_POST["condicao"], $_POST["data"], true);
     $gereParceria->adicionaParceria($parceria);
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado a parceria "' . $_POST["nome"] . '"');
 	header("Location: gerir-parcerias.php");
 }
 

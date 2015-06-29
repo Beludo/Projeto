@@ -2,7 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
 include_once "pecas.php";
+include_once "GereLog.php";
 
+$gere_log = new GereLog();
 $gerePecas = new GerePecas();
 
 // verificar se todos os campos foram preenchidos
@@ -50,6 +52,8 @@ if(
     }
     $artigo = new Pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
     $gerePecas->adicionaArtigos($artigo);
+		$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o artigo "' . $_POST["nome"] . '"');
+		header("Location: gerir-artigos.php");
 }
 
 ?>
