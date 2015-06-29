@@ -8,7 +8,7 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-dashboard"></i>
-					<span>Geral</span><!-- retirar --><small class="label pull-right bg-red">Não</small><!-- retirar até aqui -->
+					<span>Geral</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -19,7 +19,7 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-files-o"></i>
-					<span>Artigos</span><!-- retirar --><small class="label pull-right bg-green">feito!</small><!-- retirar até aqui -->
+					<span>Artigos</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -32,7 +32,7 @@
 			<li>
 				<a href="#">
 					<i class="fa fa-shopping-cart"></i>
-					<span>Loja</span><!-- retirar --><small class="label pull-right bg-red">não</small><!-- retirar até aqui -->
+					<span>Loja</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -45,7 +45,7 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-bar-chart-o"></i>
-					<span>Registo climatico</span><!-- retirar --><small class="label pull-right bg-green">feito!</small><!-- retirar até aqui -->
+					<span>Registo climatico</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -58,7 +58,7 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-users"></i>
-					<span>Utilizadores</span><!-- retirar --><small class="label pull-right bg-green">Feito</small><!-- retirar até aqui -->
+					<span>Utilizadores</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -71,7 +71,7 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-users"></i>
-					<span>Visitantes</span><!-- retirar --><small class="label pull-right bg-yellow">Parcial!</small><!-- retirar até aqui -->
+					<span>Visitantes</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -84,12 +84,12 @@
 			<li class="treeview">
 				<a href="log-utilizadores.php">
 					<i class="fa fa-archive"></i>
-					<span>Log</span><!-- retirar --><small class="label pull-right bg-green">feito!</small><!-- retirar até aqui -->
+					<span>Log</span>
 				</a>
 			</li>
 			<li class="treeview">
 				<a href="mailbox.html">
-					<i class="fa fa-envelope"></i> <span>Mensagens</span><!-- retirar --><small class="label pull-right bg-red">não!</small><!-- retirar até aqui -->
+					<i class="fa fa-envelope"></i> <span>Mensagens</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -116,7 +116,7 @@
 			-->
 			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-camera"></i> <span>Visita virtual</span><!-- retirar --><small class="label pull-right bg-red">não!</small><!-- retirar até aqui -->
+					<i class="fa fa-camera"></i> <span>Visita virtual</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -128,7 +128,7 @@
 			</li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa fa-bars"></i> <span>Exposições</span><!-- retirar --><small class="label pull-right bg-green">feito!</small><!-- retirar até aqui -->
+					<i class="fa fa-bars"></i> <span>Exposições</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -152,7 +152,7 @@
 			</li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa  fa-calendar-o"></i> <span>Eventos</span><!-- retirar --><small class="label pull-right bg-green">feito!</small><!-- retirar até aqui -->
+					<i class="fa  fa-calendar-o"></i> <span>Eventos</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -164,7 +164,7 @@
 			</li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa  fa-calendar-o"></i> <span>Parcerias</span><!-- retirar --><small class="label pull-right bg-yellow">Não!</small><!-- retirar até aqui -->
+					<i class="fa  fa-calendar-o"></i> <span>Parcerias</span>
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
@@ -174,7 +174,7 @@
 					</li>
 				</ul>
 			</li>
-			<li><a href="documentation/index.html"><!-- retirar --><small class="label pull-right bg-red">Manual!</small><!-- retirar até aqui --><i class="fa fa-question-circle"></i> Ajuda</a>
+			<li><a href="documentation/GM_ManualUtilizador_28-06-2015_V1.0.pdf"><i class="fa fa-question-circle"></i> Ajuda</a>
 			</li>
 		</ul>
 	</section>
