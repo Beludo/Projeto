@@ -164,7 +164,7 @@
 			</li>
 			<li class="treeview">
 				<a href="#">
-					<i class="fa  fa-calendar-o"></i> <span>Informações</span><!-- retirar --><small class="label pull-right bg-yellow">Não!</small><!-- retirar até aqui -->
+					<i class="fa  fa-calendar-o"></i> <span>Parcerias</span><!-- retirar --><small class="label pull-right bg-yellow">Não!</small><!-- retirar até aqui -->
 					<i class="fa fa-angle-left pull-right"></i>
 				</a>
 				<ul class="treeview-menu">
