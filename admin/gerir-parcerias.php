@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "parceria.php";
 include_once "GereParceria.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 
 $gere_parceria = new GereParceria();
@@ -14,8 +17,10 @@ if(
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $parceria[$_GET["i"]]->setAtivo(true, $parceria[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou a parceria "' . $parceria[$_GET["i"]]->getNome() . '"');
     } elseif(!strcmp($_GET["accao"], "desativar")){
         $parceria[$_GET["i"]]->setAtivo(false, $parceria[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou a parceria "' . $parceria[$_GET["i"]]->getNome() . '"');
     }
 }
 

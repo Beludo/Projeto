@@ -3,6 +3,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereLoja.php";
 include_once "ALoja.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutos();
@@ -14,9 +17,11 @@ if(
 	){
 	
 			if(!strcmp($_GET["accao"], "ativar")){
-					$eventos[$_GET["i"]]->setAtivo(true, $eventos[$_GET["i"]]->getId());
+					$produtos[$_GET["i"]]->setAtivo(true, $produtos[$_GET["i"]]->getId());
+				$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o produto "' . $produtos[$_GET["i"]]->getNome() . '"');
 			} elseif(!strcmp($_GET["accao"], "desativar")){
-					$eventos[$_GET["i"]]->setAtivo(false, $eventos[$_GET["i"]]->getId());
+					$produtos[$_GET["i"]]->setAtivo(false, $produtos[$_GET["i"]]->getId());
+				$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o produto "' . $produtos[$_GET["i"]]->getNome() . '"');
 			}
 	}
 

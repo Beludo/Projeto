@@ -14,7 +14,7 @@ if(
 
 		$tipo_exposicao = new tipoexposicoes(0, $_POST["nome"]);
 		$gere_tipoExposicoes->adicionaTipoExposicao($tipo_exposicao);
-	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o tipo de exposicção "' . $_POST["nome"] . '"');
+	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o tipo de exposição "' . $_POST["nome"] . '"');
 		header("Location: gerir-tipoexp.php");
 }
 

@@ -3,6 +3,9 @@
 include_once "sessaoAtiva.php";
 include_once "GereUtilizadores.php";
 include_once "Utilizadores.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gere_utilizador = new GereUtilizadores();
 $utilizadores = $gere_utilizador->listarUtilizador();
@@ -14,8 +17,10 @@ if(
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $utilizadores[$_GET["i"]]->setAtivo(true, $utilizadores[$_GET["i"]]->getId());
+				$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o utilizador "' . $utilizadores[$_GET["i"]]->getNome() . '"');
     } elseif(!strcmp($_GET["accao"], "desativar")){
         $utilizadores[$_GET["i"]]->setAtivo(false, $utilizadores[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o utilizador "' . $utilizadores[$_GET["i"]]->getNome() . '"');
     } else {
 
     }

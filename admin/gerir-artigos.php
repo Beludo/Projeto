@@ -3,6 +3,9 @@
 include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
 include_once "pecas.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
@@ -14,8 +17,10 @@ if(isset($_GET["accao"]) && !empty($_GET["accao"]) &&
 	
  		if(!strcmp($_GET["accao"], "ativar")){
         $artigos[$_GET["i"]]->setAtivo(true, $artigos[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o artigo "' . $artigos[$_GET["i"]]->getNome() . '"');
     } elseif(!strcmp($_GET["accao"], "desativar")){
         $artigos[$_GET["i"]]->setAtivo(false, $artigos[$_GET["i"]]->getId());
+				$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o artigo "' . $artigos[$_GET["i"]]->getNome() . '"');
     }
 }
 ?>

@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "evento.php";
 include_once "GereEventos.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 
 $gere_eventos = new GereEventos();
@@ -14,8 +17,10 @@ if(
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $eventos[$_GET["i"]]->setAtivo(true, $eventos[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o evento "' . $eventos[$_GET["i"]]->getNome() . '"');
     } elseif(!strcmp($_GET["accao"], "desativar")){
         $eventos[$_GET["i"]]->setAtivo(false, $eventos[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o evento "' . $eventos[$_GET["i"]]->getNome() . '"');
     }
 }
 

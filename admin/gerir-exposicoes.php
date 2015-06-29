@@ -2,6 +2,9 @@
 include_once "sessaoAtiva.php";
 include_once "exposicoes.php";
 include_once "GereExposicoes.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 
 $gere_exposicoes = new GereExposicoes();
@@ -14,8 +17,10 @@ if(
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $exposicoes[$_GET["i"]]->setAtivo(true, $exposicoes[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o exposição "' . $exposicoes[$_GET["i"]]->getNome() . '"');
     } elseif(!strcmp($_GET["accao"], "desativar")){
 		$exposicoes[$_GET["i"]]->setAtivo(false, $exposicoes[$_GET["i"]]->getId());
+		$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o exposição "' . $exposicoes[$_GET["i"]]->getNome() . '"');
     }
 }
 

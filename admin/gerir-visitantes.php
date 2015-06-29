@@ -3,6 +3,9 @@
 include_once "sessaoAtiva.php";
 include_once "../GereVisitante.php";
 include_once "../Visitantes.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gere_visitante = new GereVisitante();
 $visitante = $gere_visitante->listarVisitante();
@@ -11,8 +14,10 @@ if(isset($_GET["ativo"]) && is_numeric($_GET["ativo"]) &&
     isset($_GET["i"]) && is_numeric($_GET["i"])){
     if($_GET["ativo"] == 1){
         $visitante[$_GET["i"]]->setAtivo(true, $visitante[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o visitante "' . $visitante[$_GET["i"]]->getNome() . '"');
     } elseif($_GET["ativo"] == 0) {
         $visitante[$_GET["i"]]->setAtivo(false, $visitante[$_GET["i"]]->getId());
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o visitante "' . $visitante[$_GET["i"]]->getNome() . '"');
     } else {
         header("Location: gerir-visitantes.php?erro=1");
     }

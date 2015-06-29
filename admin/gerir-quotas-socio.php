@@ -5,6 +5,9 @@ include_once "../GereVisitante.php";
 include_once "../Visitantes.php";
 include_once "Quota.php";
 include_once "GereQuotas.php";
+include_once "GereLog.php";
+
+$gere_log = new GereLog();
 
 $gere_visitante = new GereVisitante();
 $gere_quotas = new GereQuotas();
@@ -14,6 +17,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
 	// Adicionar um ano
 	if(isset($_POST["ano"]) && !empty($_POST["ano"])){
 		$gere_quotas->adicionarAno($_GET["id"], $_POST["ano"]);
+		$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionou o Ano "' . $_POST["ano"] . '"');
 	}
 	
 	// Apagar um ano
@@ -22,6 +26,7 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
 		isset($_GET["apagar"]) && !empty($_GET["apagar"])
 	){
 		$gere_quotas->removerAno($_GET["id"], $_GET["ano"]);
+		$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Removeu o Ano "' . $_GET["ano"] . '"');
 	}
 	
 	// Pagar (ou não) as quotas referentes a um mês/ano
