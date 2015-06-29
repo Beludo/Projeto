@@ -108,7 +108,6 @@ class parceria
 
         $this->bd->editar($sql, $dados);
     }
-    }
 
 }
 
