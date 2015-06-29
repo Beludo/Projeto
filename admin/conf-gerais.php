@@ -1,19 +1,9 @@
 <?php
 
 include_once "sessaoAtiva.php";
+include_once "acessobd.php";
 
-/*
-$gereUtilizadores = new GereUtilizadores();
-if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
-    $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_GET["id"]);
-} else if(!empty($_POST["u_id"]) && is_numeric($_POST["u_id"])) {
-    $utilizador_editar = $gereUtilizadores->verDadosUtilizador($_POST["u_id"]);
-}else{
-	header("Location: gerir-utilizadores.php");
-}
-*/
-
-
+$bd = new BaseDados();
 
 // verificar se todos os campos foram preenchidos
 if(
@@ -23,6 +13,7 @@ if(
 	isset($_POST["abertura"]) && !empty($_POST["abertura"]) &&
 	isset($_POST["encerr"]) && !empty($_POST["encerr"]) &&
 	isset($_POST["atend-tlf"]) && !empty($_POST["atend-tlf"]) &&
+	isset($_POST["normas"]) && !empty($_POST["normas"]) &&
 	isset($_POST["corf1"]) && !empty($_POST["corf1"]) &&
 	isset($_POST["corf2"]) && !empty($_POST["corf2"]) &&
 	isset($_POST["cort"]) && !empty($_POST["cort"])
@@ -33,105 +24,55 @@ if(
 
         // verificar o tipo e tamanho do ficheiro (< 2Mb)
         if(
-            (($_FILES["foto"]["type"] == "image/gif") ||
-                ($_FILES["foto"]["type"] == "image/jpeg") ||
-                ($_FILES["foto"]["type"] == "image/jpg") ||
-                ($_FILES["foto"]["type"] == "image/png")) &&
-            $_FILES["foto"]["size"] < 2000000 &&
-            $_FILES["foto"]["error"] == 0
+            (($_FILES["icone"]["type"] == "image/gif") ||
+                ($_FILES["icone"]["type"] == "image/jpeg") ||
+                ($_FILES["icone"]["type"] == "image/jpg") ||
+                ($_FILES["icone"]["type"] == "image/png")) &&
+            $_FILES["icone"]["size"] < 2000000 &&
+            $_FILES["icone"]["error"] == 0
         ){
             // corrigir o nome do ficheiro
-            $separar = explode(".", $_FILES["foto"]["name"]);
+            $separar = explode(".", $_FILES["icone"]["name"]);
             $ext = $separar[count($separar)-1];
-            $nome_foto = $_POST["id"] . "." . $ext;
+            $nome_foto = "icone." . $ext;
 
             // apagar o ficheiro actual
             if(file_exists("img-users/" . $nome_foto)){
-                unlink("img-users/" . $nome_foto);
+                unlink($nome_foto);
             }
 
-            move_uploaded_file($_FILES["foto"]["tmp_name"], "img-users/" . $nome_foto);
+            move_uploaded_file($_FILES["icone"]["tmp_name"], $nome_foto);
 
 
         }else{
             // mostrar mensagem de erro
-            header("Location: editar-utilizador.php?erro=1");
+            header("Location: conf-gerais.php.php?erro=1");
         }
     }else{
-        // usar a foto antiga (n�o alterar)
-        $nome_foto = $_POST["foto-original"];
-    }	
-
-    // Obter as permissoes
-    $permissoesUser = new Permissoes(0, 0, 0, 0, 0, 0, 0, 0);
-
-	if(isset($_POST["total"]) && !empty($_POST["total"])){
-		if($_POST['total'] == 'sim') {
-			$permissoesUser->setPermTotal("1");
-		}
-	}
-
-	if(isset($_POST["loja"]) && !empty($_POST["loja"])){
-		if($_POST['loja'] == 'sim') {
-			$permissoesUser->setPermLoja("1");
-		}
-	}
-
-	if(isset($_POST["espaco"]) && !empty($_POST["espaco"])){
-		if($_POST['espaco'] == 'sim') {
-			$permissoesUser->setPermEspaco("1");
-		}
-	}
-
-	if(isset($_POST["inventario"]) && !empty($_POST["inventario"])){
-		if($_POST['inventario'] == 'sim') {
-			$permissoesUser->setPermInventario("1");
-		}
-	}
-
-	if(isset($_POST["acervo"]) && !empty($_POST["acervo"])){
-		if($_POST['acervo'] == 'sim') {
-			$permissoesUser->setPermAcervo("1");
-		}
-	}
-
-	if(isset($_POST["socios"]) && !empty($_POST["socios"])){
-		if($_POST['socios'] == 'sim') {
-			$permissoesUser->setPermSocios("1");
-		}
-	}
-
-	if(isset($_POST["museu_virtual"]) && !empty($_POST["museu_virtual"])){
-		if($_POST['museu_virtual'] == 'sim') {
-			$permissoesUser->setPermMuseuVirt("1");
-		}
-	}
+        // usar a foto antiga (não alterar)
+        $nome_foto = $_POST["icone-original"];
+    }
 	
-	// Guardar dados
-	if(isset($_POST["password"]) && !empty($_POST["password"]) &&
-    isset($_POST["password2"]) && !empty($_POST["password2"])){
+	$sql = "UPDATE conf_gerais SET CONF_NOME=:CONF_NOME, CONF_MORADA=:CONF_MORADA, CONF_GMAPS=:CONF_GMAPS, CONF_ABERTURA=:CONF_ABERTURA, CONF_ENCERR=:CONF_ENCERR, CONF_ATEND_TELEF=:CONF_ATEND_TELEF, CONF_NORMAS=:CONF_NORMAS, CONF_ICONE=:CONF_ICONE, CONF_COR_F1=:CONF_COR_F1, CONF_COR_F2=:CONF_COR_F2, CONF_COR_TXT=:CONF_COR_TXT WHERE CONF_ID=1;";
 	
-		// Alterar também a password
-		$gereUtilizadores->alterarPalavraPasse($_POST["password"], $_POST["u_id"]);
-	}
-	
-	$utilizador_editado = new Utilizadores($_POST["u_id"], $_POST["nome"], "", $_POST["password"], "", $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, $permissoesUser);
-	
-	$gereUtilizadores->editarUtilizador($utilizador_editado, $permissoesUser);
-	
-	header("Location: gerir-utilizadores.php");
-	}
-	
-	
+	$dados = array(
+		'CONF_NOME' => $_POST["nome-museu"],
+		'CONF_MORADA' => $_POST["morada"],
+		'CONF_GMAPS' => $_POST["gmaps"],
+		'CONF_ABERTURA' => $_POST["abertura"],
+		'CONF_ENCERR' => $_POST["encerr"],
+		'CONF_ATEND_TELEF' => $_POST["atend-tlf"],
+		'CONF_NORMAS' => $_POST["normas"],
+		'CONF_ICONE' => $nome_foto,
+		'CONF_COR_F1' => $_POST["corf1"],
+		'CONF_COR_F2' => $_POST["corf2"],
+		'CONF_COR_TXT' => $_POST["cort"]
+	);
 
-	/* AQUI é EDITAR!!!
-	
-    $gereUtilizadores->adicionarUtilizador(new Utilizadores($utilizador->getId(), $_POST["nome"], $utilizador->getUsername(), $_POST["password"], $utilizador->getDataRegisto(), $_POST["telefone"], $_POST["email"], $_POST["morada"], $nome_foto, true, 1), $permissoesUser);
-    *
-	
-	//$bd->editar("UPDATE empresas SET nome = :nome, email = :email, url = :url, tlf = :tlf, fax = :fax, morada = :morada, logo = :logo WHERE id = :id LIMIT 1", $dados);
+    $bd->editar($sql, $dados);
 }
-*/
+
+$conf_atuais = $bd->query("SELECT * FROM conf_gerais WHERE CONF_ID = 1;");
 
 /*
 if(isset($_GET["erro"]) && !empty($_GET["erro"])){
@@ -208,54 +149,54 @@ if(isset($_GET["erro"]) && !empty($_GET["erro"])){
                             <h3 class="box-title">Dados do museu</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" method="post" action="editar-utilizador.php" enctype="multipart/form-data">
+                        <form role="form" method="post" action="conf-gerais.php" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label>Nome do museu</label>
-                                    <input type="text" class="form-control" placeholder="Insira o nome" id="nome-museu" name="nome-museu" value="<?php //echo $utilizador_editar->getNomeCompleto(); ?>"/>
+                                    <input type="text" class="form-control" placeholder="Insira o nome" id="nome-museu" name="nome-museu" value="<?php echo $conf_atuais[0]["CONF_NOME"]; ?>"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Morada</label>
-                                    <input type="text" class="form-control" placeholder="Insira a morada" name="morada" value="<?php //echo $utilizador_editar->getMorada(); ?>"/>
+                                    <input type="text" class="form-control" placeholder="Insira a morada" name="morada" value="<?php echo $conf_atuais[0]["CONF_MORADA"]; ?>"/>
                                 </div>
 								<div class="form-group">
 									<label>Código do google maps (localização)</label>
-									<textarea class="form-control" rows="3" id="gmaps" name="gmaps" placeholder="Insira uma descrição"></textarea>
+									<textarea class="form-control" rows="3" id="gmaps" name="gmaps" placeholder="Insira uma descrição"><?php echo $conf_atuais[0]["CONF_GMAPS"]; ?></textarea>
 								</div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Abertura</label>
-                                    <input type="password" class="form-control" id="abertura" name="abertura" placeholder="Insira os dias e a hora de abertura">
+                                    <input type="text" class="form-control" id="abertura" name="abertura" placeholder="Insira os dias e a hora de abertura" value="<?php echo $conf_atuais[0]["CONF_ABERTURA"]; ?>">
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputPassword1">Encerramento</label>
-                                    <input type="password" class="form-control" id="encerr" name="encerr" placeholder="Insira os dias e a hora de encerramento">
+                                    <input type="text" class="form-control" id="encerr" name="encerr" placeholder="Insira os dias e a hora de encerramento" value="<?php echo $conf_atuais[0]["CONF_ENCERR"]; ?>">
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputPassword1">Horário de atendimento telefónico</label>
-                                    <input type="password" class="form-control" id="atend-tlf" name="atend-tlf" placeholder="Insira o horário de atendimento">
+                                    <input type="text" class="form-control" id="atend-tlf" name="atend-tlf" placeholder="Insira o horário de atendimento" value="<?php echo $conf_atuais[0]["CONF_ATEND_TELEF"]; ?>">
                                 </div>
 								<div class="form-group">
                                     <label for="exampleInputPassword1">Normas de conduta</label>
-                                    <textarea class="form-control" rows="3" id="normas" name="normas" placeholder="Insira as normas"></textarea>
+                                    <textarea class="form-control" rows="3" id="normas" name="normas" placeholder="Insira as normas"><?php echo $conf_atuais[0]["CONF_NORMAS"]; ?></textarea>
                                 </div>
 								<div class="form-group<?php echo $p_erro1; ?>">
                                     <label for="exampleInputFile">Icone</label>
-									<p><img src="img-users/<?php //echo $utilizador_editar->getFotografia(); ?>" style="height:120px;width:120px;" alt="Icone do site"></p>
-									<input type="hidden" name="foto-original" value="<?php //echo $utilizador_editar->getFotografia(); ?>">
+									<p><img src="<?php echo $conf_atuais[0]["CONF_ICONE"]; ?>" style="height:120px;width:120px;" alt="Icone do site"></p>
+									<input type="hidden" name="icone-original" value="<?php echo $conf_atuais[0]["CONF_ICONE"]; ?>">
                                     <input type="file" id="exampleInputFile" name="icone">
                                     <p class="help-block">Seleccione um icone para o site</p>
                                 </div>
 								<div class="form-group">
 									<label>Cor de fundo 1</label>
-									<input class="form-control my-colorpicker1 colorpicker-element" type="text" name="corf1">
+									<input class="form-control my-colorpicker1 colorpicker-element" type="text" name="corf1" value="<?php echo $conf_atuais[0]["CONF_COR_F1"]; ?>">
 								</div>
 								<div class="form-group">
 									<label>Cor de fundo 2</label>
-									<input class="form-control my-colorpicker1 colorpicker-element" type="text" name="corf2">
+									<input class="form-control my-colorpicker1 colorpicker-element" type="text" name="corf2" value="<?php echo $conf_atuais[0]["CONF_COR_F2"]; ?>">
 								</div>
 								<div class="form-group">
 									<label>Cor do texto</label>
-									<input class="form-control my-colorpicker1 colorpicker-element" type="text" name="cort">
+									<input class="form-control my-colorpicker1 colorpicker-element" type="text" name="cort" value="<?php echo $conf_atuais[0]["CONF_COR_TXT"]; ?>">
 								</div>
                             </div><!-- /.box-body -->
                             <br>
