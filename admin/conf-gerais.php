@@ -120,6 +120,7 @@ if(
 	$gereUtilizadores->editarUtilizador($utilizador_editado, $permissoesUser);
 	
 	header("Location: gerir-utilizadores.php");
+	}
 	
 	
 
