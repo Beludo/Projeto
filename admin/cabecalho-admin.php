@@ -37,46 +37,46 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="Imagem do utilizador"/>
 						  </div>
 						  <h4>
-							Equipa de suporte
-							<small><i class="fa fa-clock-o"></i> 5 mins</small>
+							Staff
+							<small><i class="fa fa-clock-o"></i> 5 minutos</small>
 						  </h4>
-						  <p>Heyyyy</p>
+						  <p>teste 1</p>
 						</a>
 					  </li><!-- end message -->
 					  <li>
 						<a href="#">
 						  <div class="pull-left">
-							<img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
+							<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
 						  </div>
 						  <h4>
-							Boa tarde
-							<small><i class="fa fa-clock-o"></i> 2 hours</small>
+							Teste 2
+							<small><i class="fa fa-clock-o"></i> 2 horas</small>
 						  </h4>
-						  <p>Heyyyy</p>
+						  <p>Mensagem 2</p>
 						</a>
 					  </li>
 					  <li>
 						<a href="#">
 						  <div class="pull-left">
-							<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
+							<img src="dist/img/user5-128x128.jpg" class="img-circle" alt="user image"/>
 						  </div>
 						  <h4>
-							Meu
+							Teste 3
 							<small><i class="fa fa-clock-o"></i> Hoje</small>
 						  </h4>
-						  <p>Heyyyy ta tudo?</p>
+						  <p>Mensagem 3</p>
 						</a>
 					  </li>
 					  <li>
 						<a href="#">
 						  <div class="pull-left">
-							<img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
+							<img src="dist/img/user1-128x128.jpg" class="img-circle" alt="user image"/>
 						  </div>
 						  <h4>
-							Olá
+							Teste 4
 							<small><i class="fa fa-clock-o"></i> Ontem</small>
 						  </h4>
-						  <p>E adeus!</p>
+						  <p>Mensagem 4</p>
 						</a>
 					  </li>
 					  <li>
@@ -85,15 +85,15 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 							<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
 						  </div>
 						  <h4>
-							Coiso 1
+							Teste 5
 							<small><i class="fa fa-clock-o"></i> 2 dias</small>
 						  </h4>
-						  <p>Descrição</p>
+						  <p>Mensagem 5</p>
 						</a>
 					  </li>
 					</ul>
 				  </li>
-				  <li class="footer"><a href="#">Ver todas as mensagens</a></li>
+				  <li class="footer"><a href="mensagens.php">Ver todas as mensagens</a></li>
 				</ul>
 			  </li>
 			  <!-- Notifications: style can be found in dropdown.less -->

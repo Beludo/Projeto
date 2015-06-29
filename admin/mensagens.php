@@ -51,7 +51,6 @@ include_once "sessaoAtiva.php";
 		<section class="content-header">
 		  <h1>
 			Mensagens
-			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
