@@ -3,8 +3,6 @@
 include_once "acessobd.php";
 include_once "LogUtilizadores.php";
 
-
-
 class GereLog{
             private $bd;
 
@@ -92,6 +90,20 @@ class GereLog{
         } else {
             return NULL;
         }
+    }
+	
+	function adicionarEntradaLog($u_id, $acao){
+		$data = date("Y-m-d H:i:s");
+
+        $sql = "INSERT INTO log (U_ID, L_ACAO, L_DATAHORA) VALUES (:U_ID, :L_ACAO, :L_DATAHORA);";
+
+        $dados_quotas = array(
+            'U_ID' => $u_id,
+            'L_ACAO' => $acao,
+			'L_DATAHORA' => $data
+        );
+
+        $this->bd->inserir($sql, $dados_quotas);
     }
 }
 ?>
