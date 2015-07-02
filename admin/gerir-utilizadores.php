@@ -17,10 +17,10 @@ if(
 	
     if(!strcmp($_GET["accao"], "ativar")){
         $utilizadores[$_GET["i"]]->setAtivo(true, $utilizadores[$_GET["i"]]->getId());
-				$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o utilizador "' . $utilizadores[$_GET["i"]]->getNome() . '"');
+				$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Ativou o utilizador "' . $utilizadores[$_GET["i"]]->getNomeCompleto() . '"');
     } elseif(!strcmp($_GET["accao"], "desativar")){
         $utilizadores[$_GET["i"]]->setAtivo(false, $utilizadores[$_GET["i"]]->getId());
-			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o utilizador "' . $utilizadores[$_GET["i"]]->getNome() . '"');
+			$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Desativou o utilizador "' . $utilizadores[$_GET["i"]]->getNomeCompleto() . '"');
     } else {
 
     }
