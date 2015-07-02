@@ -71,7 +71,17 @@
 								</div>
                                 <br>
                             <div class="col-md-12 text-center">
+                                <?php
+                                if(!empty($_SESSION["visit"]) ){
+                                ?>
                                 <button type="submit" id="loadToSuccess" class="btn btn-primary-custom btn-lg pull-left"><i class="fa fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+                                <?php
+                                } else {
+                                ?>
+                                <a href="login.php"><button type="button" id="loadToSuccess" class="btn btn-primary-custom btn-lg pull-left"><i class="fa fa-shopping-cart"></i> Faça o login!</button></a>
+                                <?php
+                                }
+                                ?>
                             </div>
 						</form>
 					</div>
