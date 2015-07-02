@@ -1,6 +1,8 @@
 <?php
 include_once "acessobd.php";
+
 class Loja {
+
     private $id;
     private $nome;
     private $codigo;
@@ -12,6 +14,7 @@ class Loja {
     private $ativo;
     private $adicionado;
     private $removido;
+    private $bd;
 
     function __construct($id, $nome,$codigo,$fotografia,$stock, $observacoes, $preco, $disponibilidade, $ativo, $adicionado, $removido){
         $this->id = $id;
@@ -25,6 +28,7 @@ class Loja {
         $this->ativo = $ativo;
         $this->adicionado = $adicionado;
         $this->removido = $removido;
+        $this->bd = new BaseDados();
     }
 
     /**
@@ -46,7 +50,7 @@ class Loja {
     /**
      * @param mixed $ativo
      */
-    public function setAtivo($ativo)
+    public function setAtivo($ativo, $id)
     {
           $this->ativo = $ativo;
         $sql = "UPDATE loja SET LA_ATIVO = :LA_ATIVO WHERE LA_ID = :LA_ID";
