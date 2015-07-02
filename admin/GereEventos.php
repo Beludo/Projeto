@@ -40,6 +40,23 @@ class GereEventos {
     }
 	
 	
+	public function listarEventos3(){
+			$dados = array();
+
+            $registo = $this->bd->query("SELECT * FROM eventos ORDER BY E_ID DESC LIMIT 3");
+            for($i=0; $i<count($registo); $i++){
+                	$dados[] = new eventos(
+										$registo[$i]["E_ID"],
+										$registo[$i]["E_NOME"],
+										$registo[$i]["E_DESCRICAO"],
+                    $registo[$i]["E_FOTO"],
+										$registo[$i]["E_ATIVO"]
+                        );
+            }
+            return $dados;
+    }
+	
+	
 	function verDadosEventos($id) {
         try {
             $idA = array("E_ID" => $id);

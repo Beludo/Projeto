@@ -1,5 +1,10 @@
 <?php
-	include "sessaoAtiva.php"
+	include_once "sessaoAtiva.php";
+	include_once "admin/evento.php";
+	include_once "admin/GereEventos.php";
+	
+$gere_eventos = new GereEventos();
+$eventos = $gere_eventos->listarEventos3();
 ?>
 
 <!DOCTYPE html>
@@ -39,11 +44,10 @@
 					<h3 class="panel-title">Noticias</h3>
 				</div>
 				<div class="panel-body">
-					Noticia 1
-					<br> Noticia 2
-					<br> Noticia 3
-					<br> Noticia 4
-					<br>
+					<br> Linha 1
+			<br> Linha 2
+			<br> Linha 3
+			<br>
 				</div>
 			</div>
 
@@ -61,14 +65,19 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
-			Conteudo principal
-			<br> Linha 1
-			<br> Linha 2
-			<br> Linha 3
-			<br>
-		</div>
+	
+	<?php 
+	if(count($eventos) != 0){
+		echo '<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">';
+			
+		for ($i=0; $i<count($eventos); $i++){ 
+		echo '<div>'; 
+		echo '<p> <img src="admin/img-eventos/'. $eventos[$i]->getFoto(). '" style = "width: 150px; height: 150px; "alt="imagem do evento"></p>'; 
+		echo '<p>' . $eventos[$i]->getNome() . '</p>'; 
+		echo '<p>Descrição:</p><div>' . nl2br($eventos[$i]->getDescricao()) . '</div>';
+			echo '<hr class="novidades">'; }
+		echo '</div>';
+			 } ?>
 
 	</div>
 
