@@ -49,6 +49,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<script src="./js/bootstrap.min.js"></script>
+	
+	<!-- Font Awesome Icons -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -68,7 +71,7 @@
 		<div class="panel panel-default" style="padding:10px; margin: auto; margin-top: 10px; max-width: 350px;">
 
 
-			   <div class="login-box-body">
+		<div class="login-box-body">
         <p class="login-box-msg">Insira o seu email para recuperar a password</p>
         <form method="post" action="rec-password.php">
           <div class="form-group has-feedback">
@@ -82,7 +85,7 @@
             <div class="col-xs-6">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Recuperar password"/>
             </div><!-- /.col -->
-          </div>
+			</div>
         </form>
       </div><!-- /.login-box-body -->
 		</div>

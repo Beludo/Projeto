@@ -11,6 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<script src="./js/bootstrap.min.js"></script>
+	
+	<!-- Font Awesome Icons -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -18,7 +21,7 @@
 	<?php $pagina="informacoes" ; include "inc-cabecalho.php" ?>
 	<!-- Acaba MENU!! Conteudo e Banner-->
 
-		<!-- BREADCRUMB -->
+<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="index.php">Página Inicial</a>
 			</li>

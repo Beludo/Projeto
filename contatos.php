@@ -55,23 +55,17 @@
 			<div class="row">
 				<!-- Map Column -->
 				<div class="col-md-8">
-					<!-- Embedded Google Map -->
-					<iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d194196.948980895!2d-7.597556!3d40.4901443!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xebe374323bbcfce1!2sEscola+Secund%C3%A1ria+de+Gouveia!5e0!3m2!1sen!2s!4v1429020387178"></iframe>
+					<!-- Codigo do Google Maps -->
+					<?php echo ""; ?>
 				</div>
 				<!-- Contact Details Column -->
 				<div class="col-md-4">
 					<h3>Contatos</h3>
 					<hr>
 					<p>
-						<i class="fa fa-envelope-o"></i> Travessa Dona Eulália Tavares Ferreira
+						<i class="fa fa-envelope-o"></i> <? php echo ""; ?>
 						<br>
 					</p>
-					<p>
-						6290-335 Gouveia
-						<br>Portugal
-						<br>
-					</p>
-
 					<p><i class="fa fa-phone"></i> Telefone: (+351) 238491018</p>
 					<p><i class="fa fa-envelope-o"></i> Email: <a href="mailto:geral@esgouveia.pt">geral@esgouveia.pt</a>
 					</p>
