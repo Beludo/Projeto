@@ -7,6 +7,44 @@
 	$dados = array('ME_DESTINATARIO' => $_SESSION["iduser"]);
 	
 	$mensagens = $bd->query("SELECT u.U_NOMECOMPLETO, m.ME_ID, m.ME_REMETENTE, m.ME_ASSUNTO, SUBSTR(m.ME_MENSAGEM, 1, 40) as 'MSG', m.ME_DATAHORA, m.ME_VISTA FROM mensagens m, utilizadores u WHERE m.ME_REMETENTE = u.U_ID AND m.ME_DESTINATARIO = :ME_DESTINATARIO;", $dados);
+	
+	// Mostra o tempo passado desde o tempo passado por parâmetro
+	function tempo_passado($tempo){
+		$tempo_contar = time() - $tempo;
+
+		if ($tempo_contar < 1){
+			return 'agora!';
+		}
+
+		// Quantidade de sugundos correspondente
+		$valores = array(
+			31536000  =>  'ano',
+			2592000  =>  'mês',
+			86400  =>  'dia',
+			3600  =>  'hora',
+			60  =>  'minuto',
+			1  =>  'segundo'
+		);
+		
+		// Nomes a apresentar
+		$nomes_mostrar = array(
+			'ano'   => 'anos',
+			'mês'  => 'meses',
+			'dia'    => 'dias',
+			'hora'   => 'horas',
+			'minuto' => 'minutos',
+			'segundo' => 'segundos'
+		);
+
+		// Retirar anos, meses, etc até não haverem mais segundos (resto da divisão)
+		foreach ($valores as $segundos => $str){
+			$d = $tempo_contar / $segundos;
+			if ($d >= 1){
+				$r = round($d);
+				return 'há ' . $r . ' ' . ($r > 1 ? $nomes_mostrar[$str] : $str);
+			}
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +139,7 @@
                           <td class="mailbox-name"><a href="ver-mensagem.php"><?php echo $mensagens[$i]["U_NOMECOMPLETO"]; ?></a></td>
                           <td class="mailbox-subject"><b><?php echo $mensagens[$i]["ME_ASSUNTO"]; ?></b> - <?php echo strip_tags($mensagens[$i]["MSG"]); ?></td>
                           <td class="mailbox-attachment"></td>
-                          <td class="mailbox-date">à 5 mins</td>
+                          <td class="mailbox-date"><?php echo tempo_passado(strtotime($mensagens[$i]["ME_DATAHORA"])); ?></td>
                         </tr>
 						<?php
 							}
