@@ -1,6 +1,12 @@
 <?php
-include_once "sessaoAtiva.php";
-
+	include "sessaoAtiva.php";
+	include "acessobd.php";
+	
+	$bd = new BaseDados();
+	
+	$dados = array('ME_DESTINATARIO' => $_SESSION["iduser"]);
+	
+	$mensagens = $bd->query("SELECT u.U_NOMECOMPLETO, m.ME_ID, m.ME_REMETENTE, m.ME_ASSUNTO, SUBSTR(m.ME_MENSAGEM, 1, 40) as 'MSG', m.ME_DATAHORA, m.ME_VISTA FROM mensagens m, utilizadores u WHERE m.ME_DESTINATARIO = u.U_ID AND m.ME_DESTINATARIO = :ME_DESTINATARIO;", $dados);
 ?>
 
 <!DOCTYPE html>
@@ -87,111 +93,19 @@ include_once "sessaoAtiva.php";
                   <div class="table-responsive mailbox-messages">
                     <table class="table table-hover table-striped">
                       <tbody>
+						<?php 
+							for($i=0; $i<count($mensagens); $i++){
+						?>
                         <tr>
                           <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Titulo da mensagem</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
+                          <td class="mailbox-name"><a href="ver-mensagem.php"><?php echo $mensagens[$i]["U_NOMECOMPLETO"]; ?></a></td>
+                          <td class="mailbox-subject"><b><?php echo $mensagens[$i]["ME_ASSUNTO"]; ?></b> - <?php echo $mensagens[$i]["MSG"]; ?></td>
                           <td class="mailbox-attachment"></td>
                           <td class="mailbox-date">à 5 mins</td>
                         </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 28 mins</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 11 horas</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"></td>
-                          <td class="mailbox-date">à 15 horas</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">Ontem</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 2 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 2 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"></td>
-                          <td class="mailbox-date">à 2 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"></td>
-                          <td class="mailbox-date">à 2 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"></td>
-                          <td class="mailbox-date">à 2 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 4 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"></td>
-                          <td class="mailbox-date">à 12 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 12 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 14 dias</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php">Diogo Alexandre</a></td>
-                          <td class="mailbox-subject"><b>Aqui aparece o titulo</b> - Aqui vão aparecer os primeiros 40 caracteres da mensagem</td>
-                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                          <td class="mailbox-date">à 15 dias</td>
-                        </tr>
+						<?php
+							}
+						?>
                       </tbody>
                     </table><!-- /.table -->
                   </div><!-- /.mail-box-messages -->
