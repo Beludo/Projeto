@@ -1,5 +1,9 @@
 <?php
-	include "sessaoAtiva.php"
+	include "sessaoAtiva.php";
+	include "admin/acessobd.php";
+	
+	$bd = new BaseDados();
+	$info_geral = $bd->query("SELECT CONF_NOME, CONF_MORADA, CONF_GMAPS, CONF_EMAIL, CONF_TELEFONE FROM conf_gerais LIMIT 1");
 ?>
 
 <!DOCTYPE html>
@@ -56,64 +60,22 @@
 				<!-- Map Column -->
 				<div class="col-md-8">
 					<!-- Codigo do Google Maps -->
-					<?php echo ""; ?>
+					<?php echo $info_geral[0]["CONF_GMAPS"]; ?>
 				</div>
 				<!-- Contact Details Column -->
 				<div class="col-md-4">
 					<h3>Contatos</h3>
 					<hr>
 					<p>
-						<i class="fa fa-envelope-o"></i> <? php echo ""; ?>
+						<i class="fa fa-envelope-o"></i> <?php echo $info_geral[0]["CONF_EMAIL"]; ?>
 						<br>
 					</p>
-					<p><i class="fa fa-phone"></i> Telefone: (+351) 238491018</p>
-					<p><i class="fa fa-envelope-o"></i> Email: <a href="mailto:geral@esgouveia.pt">geral@esgouveia.pt</a>
+					<p><i class="fa fa-phone"></i> Telefone: <?php echo $info_geral[0]["CONF_TELEFONE"]; ?></p>
+					<p><i class="fa fa-envelope-o"></i> Email: <a href="mailto:geral@esgouveia.pt"><?php echo $info_geral[0]["CONF_EMAIL"]; ?></a>
 					</p>
 				</div>
 			</div>
 			<!-- /.row -->
-
-			<!-- Contact Form -->
-
-			<div class="row">
-				<div class="col-md-8">
-					<h3>Enviar uma Mensagem</h3>
-					<form name="sentMessage" id="contactForm" novalidate>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>Nome Completo:</label>
-								<input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-								<p class="help-block"></p>
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>Número Telefone:</label>
-								<input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>Email:</label>
-								<input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>Mensagem:</label>
-								<textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<!-- For success/fail messages -->
-						<button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-					</form>
-				</div>
-
-			</div>
-			<!-- /.row -->
-
-
 		</div>
 		<!-- Acaba o conteudo -->
 
