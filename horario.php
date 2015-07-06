@@ -1,5 +1,9 @@
 <?php
-	include "sessaoAtiva.php"
+	include "sessaoAtiva.php";
+	include "admin/acessobd.php";
+	
+	$bd = new BaseDados();
+	$info_geral = $bd->query("SELECT CONF_NOME, CONF_ABERTURA, CONF_ENCERR, CONF_ATEND_TELEF FROM conf_gerais LIMIT 1");
 ?>
 
 <!DOCTYPE html>
@@ -63,9 +67,9 @@
 			</ul>
 
 			<ul style="display: inline-block; list-style: none;">
-				<li>2.ª Feira a 6.ª Feira - 8h30</li>
-				<li> 2.ª Feira a 6.ª Feira - 17h00</li>
-				<li>Dias úteis das 10h00 às 12h00 e das 14h00 às 17h00</li>
+				<li><?php echo $info_geral[0]["CONF_ABERTURA"]; ?></li>
+				<li><?php echo $info_geral[0]["CONF_ENCERR"]; ?></li>
+				<li><?php echo $info_geral[0]["CONF_ATEND_TELEF"]; ?></li>
 			</ul>
 		</div>
 		<!-- Acaba o conteudo -->
