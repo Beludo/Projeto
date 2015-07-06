@@ -1,6 +1,34 @@
 <?php
 include_once "sessaoAtiva.php";
+include_once "GereUtilizadores.php";
+include_once "Utilizadores.php";
 
+$gere_utilizador = new GereUtilizadores();
+$utilizadores = $gere_utilizador->listarUtilizador();
+
+// verificar se todos os campos foram preenchidos
+if(
+   isset($_POST["msg_dest"]) && !empty($_POST["msg_dest"]) &&
+   isset($_POST["msg_assunto"]) && !empty($_POST["msg_assunto"]) &&
+	isset($_POST["msg_corpo"]) && !empty($_POST["msg_corpo"])
+	){
+	
+	$bd = new BaseDados();
+	$dados = array(
+		'ME_REMETENTE' => $_SESSION["iduser"],
+		'ME_DESTINATARIO' => $_POST["msg_dest"],
+		'ME_ASSUNTO' => $_POST["msg_assunto"],
+		'ME_MENSAGEM' => $_POST["msg_corpo"],
+		'ME_DATAHORA' => date("Y-m-d"),
+		'ME_VISTA' => 0
+	);
+	
+	$mensagens = $bd->inserir("INSERT INTO mensagens (ME_REMETENTE, ME_DESTINATARIO, ME_ASSUNTO, ME_MENSAGEM, ME_DATAHORA, ME_VISTA) VALUES (:ME_REMETENTE, :ME_DESTINATARIO, :ME_ASSUNTO, :ME_MENSAGEM, :ME_DATAHORA, :ME_VISTA);", $dados);
+	
+	// header("Location: mensagens.php");
+	
+	// Verificar se o ID do utilizador é igual ao ID do remetente!
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +77,6 @@ include_once "sessaoAtiva.php";
 		<section class="content-header">
 		  <h1>
 			Nova mensagem
-			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -67,40 +94,51 @@ include_once "sessaoAtiva.php";
                   <h3 class="box-title">Escrever uma nova mensagem</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Para"/>
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Assunto"/>
-                  </div>
-                  <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      <h1><u>Apps MEO Music com mais de 1 milhão de downloads</u></h1>
-                      <h4>Sub-titulo</h4>
-                      <p>Os serviços de música via Streaming estão na moda. A nível mundial o Spotify lidera a preferência dos utilizadores à  mas em Portugal está disponível o Meo Music da Portugal Telecom. O serviço está disponível para utilizadores de todas as redes móveis nacionais, com vantagens exclusivas para clientes MEO.</p>
-                      <ul>
-                        <li>Item um</li>
-                        <li>Item dois</li>
-                        <li>Item três</li>
-                      </ul>
-                      <p>Fica bem,</p>
-                      <p>Zé Tobias</p>
-                    </textarea>
-                  </div>
-                  <div class="form-group">
-                    <div class="btn btn-default btn-file">
-                      <i class="fa fa-paperclip"></i> Anexo
-                      <input type="file" name="attachment"/>
-                    </div>
-                    <p class="help-block">Max. 32MB</p>
-                  </div>
-                </div><!-- /.box-body -->
-                <div class="box-footer">
-                  <div class="pull-right">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar</button>
-                  </div>
-                  <button class="btn btn-default"><i class="fa fa-times"></i> Cancelar</button>
-                </div><!-- /.box-footer -->
+					<form role="form" method="post" action="nova-mensagem.php" enctype="multipart/form-data">
+					  <div class="form-group">
+						<select class="form-control" name="msg_dest" id="msg_dest">
+								<option value="0">-- Seleccione o destinatário --</option>
+								 <?php
+									if($utilizadores != null) {
+										for($i = 0; $i<count($utilizadores); $i++) {
+											echo '<option value="'. $utilizadores[$i]->getID().'">'. $utilizadores[$i]->getNomeCompleto() . '</option>';
+										}
+									}
+							?>
+							</select>
+					  </div>
+					  <div class="form-group">
+						<input class="form-control" placeholder="Assunto" name="msg_assunto" id="msg_assunto"/>
+					  </div>
+					  <div class="form-group">
+						<textarea id="compose-textarea" class="form-control" style="height: 300px" name="msg_corpo" id="msg_corpo">
+						  <h1><u>Apps MEO Music com mais de 1 milhão de downloads</u></h1>
+						  <h4>Sub-titulo</h4>
+						  <p>Os serviços de música via Streaming estão na moda. A nível mundial o Spotify lidera a preferência dos utilizadores à  mas em Portugal está disponível o Meo Music da Portugal Telecom. O serviço está disponível para utilizadores de todas as redes móveis nacionais, com vantagens exclusivas para clientes MEO.</p>
+						  <ul>
+							<li>Item um</li>
+							<li>Item dois</li>
+							<li>Item três</li>
+						  </ul>
+						  <p>Fica bem,</p>
+						  <p>Zé Tobias</p>
+						</textarea>
+					  </div>
+					  <div class="form-group">
+						<div class="btn btn-default btn-file">
+						  <i class="fa fa-paperclip"></i> Anexo
+						  <input type="file" name="anexo" id="anexo"/>
+						</div>
+						<p class="help-block">Max. 2MB</p>
+					  </div>
+					</div><!-- /.box-body -->
+					<div class="box-footer">
+					  <div class="pull-right">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar</button>
+					  </div>
+					  <button class="btn btn-default"><i class="fa fa-times"></i> Cancelar</button>
+					</div><!-- /.box-footer -->
+				</form>
               </div><!-- /. box -->
             </div><!-- /.col -->
           </div><!-- /.row -->
