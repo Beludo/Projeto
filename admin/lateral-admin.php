@@ -174,7 +174,7 @@
 					</li>
 				</ul>
 			</li>
-			<li><a href="documentation/GM_ManualUtilizador_28-06-2015_V1.0.pdf"><i class="fa fa-question-circle"></i> Ajuda</a>
+			<li><a href="documentacao/GM_ManualUtilizador_28-06-2015_V1.0.pdf"><i class="fa fa-question-circle"></i> Ajuda</a>
 			</li>
 		</ul>
 	</section>
