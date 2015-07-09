@@ -34,7 +34,7 @@
 			<h3>Aplicação Multimédia</h3>
 			<hr>
 			<div style="text-align:center;">
-			<img src="./admin/img-museu/01.jpg" alt="imagem museu" usemap="#Mapa">
+			<img src="./admin/img-visitavirtual/01.jpg" alt="imagem museu" usemap="#Mapa">
 			<map name="Mapa" id="Mapa">
 				<area alt="" title="" href="#" shape="poly" coords="82,257,82,338,163,336,163,257" alt="1" />
 				<area alt="" title="" href="#" shape="poly" coords="408,231,409,292,435,296,434,226" alt="2" />

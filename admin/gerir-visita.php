@@ -74,7 +74,7 @@ include_once "sessaoAtiva.php";
 				  <h3 class="box-title">Entrada do museu</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
-					<div id="imagem-museu" onclick="adicionar_ponto(event)" style = "background-image:url('img-museu/01.jpg'); width:800px; height:534px;">
+					<div id="imagem-museu" onclick="adicionar_ponto(event)" style = "background-image:url('img-visitavirtual/01.jpg'); width:800px; height:534px;">
 					</div>
 				</div><!-- /.box-body -->
 			  </div><!-- /.box -->

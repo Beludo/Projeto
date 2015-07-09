@@ -34,7 +34,16 @@ $eventos = $gere_eventos->listarEventos3();
 			</li>
 		</ol>
 		</div>
+<div>
+	<?php
+			 if(count($avisos) != 0){			
+		for ($i=0; $i<count($avisos); $i++){ 
+		echo '<div> '; 
 
+		echo '</div>';
+			 }
+			 ?>
+	</div>
 
 		<!-- Informações Laterais -->
 		<div style="float:left; margin-top:10px; margin-right:0px; width:25%;">
@@ -72,17 +81,18 @@ $eventos = $gere_eventos->listarEventos3();
 		echo '<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">';
 			
 		for ($i=0; $i<count($eventos); $i++){ 
-		echo '<div>'; 
-		echo '<p> <img src="admin/img-eventos/'. $eventos[$i]->getFoto(). '" style = "width: 150px; height: 150px; "alt="imagem do evento"></p>'; 
-		echo '<p>' . $eventos[$i]->getNome() . '</p>'; 
-		echo '<p>Descrição:</p><div>' . nl2br($eventos[$i]->getDescricao()) . '</div>';
-			echo '<hr class="novidades">'; }
+		echo '<div> '; 
+		echo '<img src="admin/img-eventos/'. $eventos[$i]->getFoto(). '" style="width:40%;" alt="imagem do evento">'; 
+		echo '<div style="width:59%; float: right;">' . $eventos[$i]->getNome() . '</p>'; 
+		echo '<p>Descrição:</p><p><p>' . nl2br($eventos[$i]->getDescricao()) . '</p></div></div>';
+			 echo '<hr>';}
 		echo '</div>';
 			 } ?>
 
 	</div>
 
 	<!-- RODAPÉ!! -->
+	<br>
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
 </body>
