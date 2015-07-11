@@ -1,42 +1,35 @@
 <?php
-include_once "sessaoAtiva.php";
-include_once "GereUtilizadores.php";
-include_once "Utilizadores.php";
-include_once "acessobd.php";
+	include_once "sessaoAtiva.php";
+	include "acessobd.php";
 
-$gere_utilizador = new GereUtilizadores();
-$utilizadores = $gere_utilizador->listarUtilizador();
-
-// verificar se todos os campos foram preenchidos
-if(
-   isset($_POST["msg_dest"]) && !empty($_POST["msg_dest"]) &&
-   isset($_POST["msg_assunto"]) && !empty($_POST["msg_assunto"]) &&
-	isset($_POST["msg_corpo"]) && !empty($_POST["msg_corpo"])
-	){
+	if(isset($_GET["id"]) && !empty($_GET["id"])){
 	
-	$bd = new BaseDados();
-	$dados = array(
-		'ME_REMETENTE' => $_SESSION["iduser"],
-		'ME_DESTINATARIO' => $_POST["msg_dest"],
-		'ME_ASSUNTO' => $_POST["msg_assunto"],
-		'ME_MENSAGEM' => $_POST["msg_corpo"],
-		'ME_DATAHORA' => date("Y-m-d"),
-		'ME_VISTA' => 0
-	);
+		$bd = new BaseDados();
+		
+		// Apagar (se foi pedido)
+		if(isset($_GET["apagar"]) && !empty($_GET["apagar"])){
+			
+		}
+		
+		//DELETE FROM mensagens WHERE ME_ID = 6;
 	
-	$mensagens = $bd->inserir("INSERT INTO mensagens (ME_REMETENTE, ME_DESTINATARIO, ME_ASSUNTO, ME_MENSAGEM, ME_DATAHORA, ME_VISTA) VALUES (:ME_REMETENTE, :ME_DESTINATARIO, :ME_ASSUNTO, :ME_MENSAGEM, :ME_DATAHORA, :ME_VISTA);", $dados);
-	
-	header("Location: mensagens.php");
-	
-	// Verificar se o ID do utilizador é igual ao ID do remetente!
-}
+		// Mostrar a mensagem
+		$dados = array(
+			'ME_REMETENTE' => $_SESSION["iduser"],
+			'ME_ID' => $_GET["id"]
+		);
+		$mensagens = $bd->query("SELECT u.U_NOMECOMPLETO, m.ME_ID, m.ME_REMETENTE, m.ME_ASSUNTO, m.ME_MENSAGEM, m.ME_DATAHORA, m.ME_VISTA FROM mensagens m, utilizadores u WHERE m.ME_DESTINATARIO = u.U_ID AND m.ME_REMETENTE = :ME_REMETENTE AND ME_ID = :ME_ID;", $dados);		
+		
+	}else{
+		header("Location: mensagens.php");
+	}
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
 	<meta charset="UTF-8">
-	<title>Admin | Nova mensagem</title>
+	<title>Admin | Ver mensagem</title>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	<!-- Bootstrap 3.3.2 -->
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -63,6 +56,14 @@ if(
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
+	
+	<!-- Função para imprimir -->
+	<script>
+		function imprimirMail() {
+			window.print();
+		}
+	</script>
+	
   </head>
   <body class="skin-blue">
 	<div class="wrapper">
@@ -77,12 +78,12 @@ if(
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 		  <h1>
-			Nova mensagem
+			Ver mensagem
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
 			<li class="active"><a href="mensagens.php">Mensagens</a></li>
-			<li class="active"><a href="#">Nova mensagem</a></li>
+			<li class="active"><a href="#">Ver mensagem</a></li>
 		  </ol>
 		</section>
 
@@ -92,56 +93,43 @@ if(
             <div class="col-md-12">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Escrever uma nova mensagem</h3>
+                  <div class="box-tools pull-right">
+                    <a data-original-title="Previous" href="#" class="btn btn-box-tool" data-toggle="tooltip" title=""><i class="fa fa-chevron-left"></i></a>
+                    <a data-original-title="Next" href="#" class="btn btn-box-tool" data-toggle="tooltip" title=""><i class="fa fa-chevron-right"></i></a>
+                  </div>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-					<form role="form" method="post" action="nova-mensagem.php" enctype="multipart/form-data">
-					  <div class="form-group">
-						<select class="form-control" name="msg_dest" id="msg_dest">
-								<option value="0">-- Seleccione o destinatário --</option>
-								 <?php
-									if($utilizadores != null) {
-										for($i = 0; $i<count($utilizadores); $i++) {
-											echo '<option value="'. $utilizadores[$i]->getID().'">'. $utilizadores[$i]->getNomeCompleto() . '</option>';
-										}
-									}
-							?>
-							</select>
-					  </div>
-					  <div class="form-group">
-						<input class="form-control" placeholder="Assunto" name="msg_assunto" id="msg_assunto"/>
-					  </div>
-					  <div class="form-group">
-						<textarea id="compose-textarea" class="form-control" style="height: 300px" name="msg_corpo" id="msg_corpo">
-						  <h1><u>Apps MEO Music com mais de 1 milhão de downloads</u></h1>
-						  <h4>Sub-titulo</h4>
-						  <p>Os serviços de música via Streaming estão na moda. A nível mundial o Spotify lidera a preferência dos utilizadores à  mas em Portugal está disponível o Meo Music da Portugal Telecom. O serviço está disponível para utilizadores de todas as redes móveis nacionais, com vantagens exclusivas para clientes MEO.</p>
-						  <ul>
-							<li>Item um</li>
-							<li>Item dois</li>
-							<li>Item três</li>
-						  </ul>
-						  <p>Fica bem,</p>
-						  <p>Zé Tobias</p>
-						</textarea>
-					  </div>
-					  <div class="form-group">
-						<div class="btn btn-default btn-file">
-						  <i class="fa fa-paperclip"></i> Anexo
-						  <input type="file" name="anexo" id="anexo"/>
-						</div>
-						<p class="help-block">Max. 2MB</p>
-					  </div>
-					</div><!-- /.box-body -->
-					<div class="box-footer">
-					  <div class="pull-right">
-						<button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Enviar</button>
-					  </div>
-					  <a href="mensagens.php" class="btn btn-default"><i class="fa fa-times"></i> Cancelar</a>
-					</div><!-- /.box-footer -->
-				</form>
+                <div class="box-body no-padding">
+                  <div class="mailbox-read-info">
+                    <h3><?php echo $mensagens[0]["ME_ASSUNTO"]; ?></h3>
+                    <h5>De: <?php echo $mensagens[0]["U_NOMECOMPLETO"]; ?> <span class="mailbox-read-time pull-right"><?php echo $mensagens[0]["ME_DATAHORA"]; ?></span></h5>
+                  </div><!-- /.mailbox-read-info -->
+                  <div class="mailbox-read-message">
+                    <?php echo $mensagens[0]["ME_MENSAGEM"]; ?>
+                  </div><!-- /.mailbox-read-message -->
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                  <ul class="mailbox-attachments clearfix">
+                    <li>
+                      <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
+                      <div class="mailbox-attachment-info">
+                        <a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Relatorio_Semanal_6.pdf</a>
+                        <span class="mailbox-attachment-size">
+                          1,245 KB
+                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
+                        </span>
+                      </div>
+                    </li>
+                  </ul>
+                </div><!-- /.box-footer -->
+                <div class="box-footer">
+                  <div class="pull-right">
+                    <button class="btn btn-default"><i class="fa fa-reply"></i> Responder</button>
+                  </div>
+                  <a href="ver-mensagem.php?apagar=1&id=<?php echo $_GET["id"]; ?>" class="btn btn-default"><i class="fa fa-trash-o"></i> Apagar</a>
+                  <button onclick="imprimirMail()" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</button>
+                </div><!-- /.box-footer -->
               </div><!-- /. box -->
-            </div><!-- /.col -->
+            </div>
           </div><!-- /.row -->
         </section><!-- /.content -->
 	  </div><!-- /.content-wrapper -->

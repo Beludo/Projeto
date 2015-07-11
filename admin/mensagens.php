@@ -1,6 +1,6 @@
 <?php
 	include "sessaoAtiva.php";
-	include "acessobd.php";
+	include_once "acessobd.php";
 	
 	$bd = new BaseDados();
 	
@@ -66,13 +66,6 @@
 	<!-- AdminLTE Skins. Choose a skin from the css/skins 
 		 folder instead of downloading all of them to reduce the load. -->
 	<link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-	
-	<!-- Estilos para formatar a tabela de utilizadores -->
-	<style>
-		.accoes-tabela{
-			width: 100px;
-		}
-	</style>
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -108,7 +101,7 @@
             <div class="col-md-12">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Caixa Entrada</h3>
+                  <h3 class="box-title">Mensagens recebidas</h3>
                   <div class="box-tools pull-right">
                   </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
@@ -134,11 +127,11 @@
 						<?php 
 							for($i=0; $i<count($mensagens); $i++){
 						?>
-                        <tr>
+                        <tr<?php echo ($mensagens[$i]["ME_VISTA"] == 1 ? '' : ' style="background-color: #F0AD4E"'); ?>>
                           <td><input type="checkbox" /></td>
-                          <td class="mailbox-name"><a href="ver-mensagem.php"><?php echo $mensagens[$i]["U_NOMECOMPLETO"]; ?></a></td>
-                          <td class="mailbox-subject"><b><?php echo $mensagens[$i]["ME_ASSUNTO"]; ?></b> - <?php echo strip_tags($mensagens[$i]["MSG"]); ?></td>
-                          <td class="mailbox-attachment"></td>
+                          <td class="mailbox-name"><?php echo $mensagens[$i]["U_NOMECOMPLETO"]; ?></td>
+                          <td class="mailbox-subject"><a href="ver-mensagem.php?id=<?php echo $mensagens[$i]["ME_ID"]; ?>"><b><?php echo $mensagens[$i]["ME_ASSUNTO"]; ?></b> - <?php echo strip_tags($mensagens[$i]["MSG"]); ?></a></td>
+                          <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
                           <td class="mailbox-date"><?php echo tempo_passado(strtotime($mensagens[$i]["ME_DATAHORA"])); ?></td>
                         </tr>
 						<?php

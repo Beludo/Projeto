@@ -1,6 +1,37 @@
 <?php
-include_once "sessaoAtiva.php";
+	include_once "sessaoAtiva.php";
+	include "acessobd.php";
 
+	if(isset($_GET["id"]) && !empty($_GET["id"])){
+	
+		$bd = new BaseDados();
+		
+		// Apagar (se foi pedido)
+		if(isset($_GET["apagar"]) && !empty($_GET["apagar"])){
+			
+		}
+		
+		//DELETE FROM mensagens WHERE ME_ID = 6;
+	
+		// Mostrar a mensagem
+		$dados = array(
+			'ME_DESTINATARIO' => $_SESSION["iduser"],
+			'ME_ID' => $_GET["id"]
+		);
+		$mensagens = $bd->query("SELECT u.U_NOMECOMPLETO, m.ME_ID, m.ME_REMETENTE, m.ME_ASSUNTO, m.ME_MENSAGEM, m.ME_DATAHORA, m.ME_VISTA FROM mensagens m, utilizadores u WHERE m.ME_REMETENTE = u.U_ID AND m.ME_DESTINATARIO = :ME_DESTINATARIO AND ME_ID = :ME_ID;", $dados);
+		
+		// Marcar como lida
+		if($mensagens[0]["ME_VISTA"] == 0){
+			$dados = array('ME_ID' => $_GET["id"]);
+			$bd->editar("UPDATE mensagens SET ME_VISTA = 1 WHERE ME_ID = :ME_ID;", $dados);
+		}
+		
+		//if($mensagens[0][""])
+		
+		
+	}else{
+		header("Location: mensagens.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +65,14 @@ include_once "sessaoAtiva.php";
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 	<![endif]-->
+	
+	<!-- Função para imprimir -->
+	<script>
+		function imprimirMail() {
+			window.print();
+		}
+	</script>
+	
   </head>
   <body class="skin-blue">
 	<div class="wrapper">
@@ -49,7 +88,6 @@ include_once "sessaoAtiva.php";
 		<section class="content-header">
 		  <h1>
 			Ver mensagem
-			<small>descrição</small>
 		  </h1>
 		  <ol class="breadcrumb">
 			<li><a href="index.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -64,7 +102,6 @@ include_once "sessaoAtiva.php";
             <div class="col-md-12">
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Ver mensagem</h3>
                   <div class="box-tools pull-right">
                     <a data-original-title="Previous" href="#" class="btn btn-box-tool" data-toggle="tooltip" title=""><i class="fa fa-chevron-left"></i></a>
                     <a data-original-title="Next" href="#" class="btn btn-box-tool" data-toggle="tooltip" title=""><i class="fa fa-chevron-right"></i></a>
@@ -72,21 +109,11 @@ include_once "sessaoAtiva.php";
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <div class="mailbox-read-info">
-                    <h3>Apps MEO Music com mais de 1 milhão de downloads</h3>
-                    <h5>De: newsletter@pplware.com <span class="mailbox-read-time pull-right">28 de Abril de 2015 11:03</span></h5>
+                    <h3><?php echo $mensagens[0]["ME_ASSUNTO"]; ?></h3>
+                    <h5>De: <?php echo $mensagens[0]["U_NOMECOMPLETO"]; ?> <span class="mailbox-read-time pull-right"><?php echo $mensagens[0]["ME_DATAHORA"]; ?></span></h5>
                   </div><!-- /.mailbox-read-info -->
-                  <div class="mailbox-controls with-border text-center">
-                    <div class="btn-group">
-                      <button data-original-title="Delete" class="btn btn-default btn-sm" data-toggle="tooltip" title=""><i class="fa fa-trash-o"></i></button>
-                      <button data-original-title="Reply" class="btn btn-default btn-sm" data-toggle="tooltip" title=""><i class="fa fa-reply"></i></button>
-                      <button data-original-title="Forward" class="btn btn-default btn-sm" data-toggle="tooltip" title=""><i class="fa fa-share"></i></button>
-                    </div><!-- /.btn-group -->
-                    <button data-original-title="Print" class="btn btn-default btn-sm" data-toggle="tooltip" title=""><i class="fa fa-print"></i></button>
-                  </div><!-- /.mailbox-controls -->
                   <div class="mailbox-read-message">
-                    <p>Caro utilizador segue-se a sua mensagem,</p>
-                    <p>Os serviços de música via Streaming estão na moda. A nível mundial o Spotify lidera a preferência dos utilizadores à  mas em Portugal está disponível o Meo Music da Portugal Telecom. O serviço está disponível para utilizadores de todas as redes móveis nacionais, com vantagens exclusivas para clientes MEO.</p>
-                    <p>Sem mais de momento,<br>pplware</p>
+                    <?php echo $mensagens[0]["ME_MENSAGEM"]; ?>
                   </div><!-- /.mailbox-read-message -->
                 </div><!-- /.box-body -->
                 <div class="box-footer">
@@ -107,8 +134,8 @@ include_once "sessaoAtiva.php";
                   <div class="pull-right">
                     <button class="btn btn-default"><i class="fa fa-reply"></i> Responder</button>
                   </div>
-                  <button class="btn btn-default"><i class="fa fa-trash-o"></i> Apagar</button>
-                  <button class="btn btn-default"><i class="fa fa-print"></i> Imprimir</button>
+                  <a href="ver-mensagem.php?apagar=1&id=<?php echo $_GET["id"]; ?>" class="btn btn-default"><i class="fa fa-trash-o"></i> Apagar</a>
+                  <button onclick="imprimirMail()" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</button>
                 </div><!-- /.box-footer -->
               </div><!-- /. box -->
             </div>

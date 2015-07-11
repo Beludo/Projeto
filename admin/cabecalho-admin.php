@@ -1,9 +1,57 @@
 <?php
 include_once "GereUtilizadores.php";
+include_once "acessobd.php";
 
+$bd = new BaseDados();
 
 $gereUtilizadores = new GereUtilizadores();
 $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
+
+$dados = array('ME_DESTINATARIO' => $_SESSION["iduser"]);
+	
+$num_mensagens = $bd->query("SELECT COUNT(m.ME_ID) as 'NUM_MENSAGENS' FROM mensagens m, utilizadores u WHERE m.ME_REMETENTE = u.U_ID AND m.ME_DESTINATARIO = :ME_DESTINATARIO AND ME_VISTA = 0;", $dados);
+
+$n_msg = $num_mensagens[0]["NUM_MENSAGENS"];
+
+$menu_mensagens = $bd->query("SELECT u.U_NOMECOMPLETO, u.U_FOTOGRAFIA, m.ME_ID, m.ME_REMETENTE, m.ME_ASSUNTO, SUBSTR(m.ME_MENSAGEM, 1, 20) as 'MSG', m.ME_DATAHORA, m.ME_VISTA FROM mensagens m, utilizadores u WHERE m.ME_REMETENTE = u.U_ID AND m.ME_DESTINATARIO = :ME_DESTINATARIO AND ME_VISTA = 0 LIMIT 5;", $dados);
+
+// Mostra o tempo passado desde o tempo passado por parâmetro
+function tempopassado($tempo){
+	$tempo_contar = time() - $tempo;
+
+	if ($tempo_contar < 1){
+		return 'agora!';
+	}
+
+	// Quantidade de sugundos correspondente
+	$valores = array(
+		31536000  =>  'ano',
+		2592000  =>  'mês',
+		86400  =>  'dia',
+		3600  =>  'hora',
+		60  =>  'minuto',
+		1  =>  'segundo'
+	);
+	
+	// Nomes a apresentar
+	$nomes_mostrar = array(
+		'ano'   => 'anos',
+		'mês'  => 'meses',
+		'dia'    => 'dias',
+		'hora'   => 'horas',
+		'minuto' => 'minutos',
+		'segundo' => 'segundos'
+	);
+
+	// Retirar anos, meses, etc até não haverem mais segundos (resto da divisão)
+	foreach ($valores as $segundos => $str){
+		$d = $tempo_contar / $segundos;
+		if ($d >= 1){
+			$r = round($d);
+			return 'há ' . $r . ' ' . ($r > 1 ? $nomes_mostrar[$str] : $str);
+		}
+	}
+}
 
 ?>
 
@@ -24,73 +72,31 @@ $utilizador = $gereUtilizadores->obtemUtilizadorUsername($_SESSION["user"]);
 			  <li class="dropdown messages-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				  <i class="fa fa-envelope-o"></i>
-				  <span class="label label-success">4</span>
+				  <span class="label label-success"><?php echo $num_mensagens[0]["NUM_MENSAGENS"]; ?></span>
 				</a>
 				<ul class="dropdown-menu">
-				  <li class="header">Tem 4 mensagens novas</li>
+				  <li class="header">Tem <?php echo $n_msg . ($n_msg == 1 ? ' mensagem nova' : ' mensagens novas'); ?></li>
 				  <li>
 					<!-- inner menu: contains the actual data -->
 					<ul class="menu">
-					  <li><!-- start message -->
-						<a href="#">
-						  <div class="pull-left">
-							<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="Imagem do utilizador"/>
-						  </div>
-						  <h4>
-							Staff
-							<small><i class="fa fa-clock-o"></i> 5 minutos</small>
-						  </h4>
-						  <p>teste 1</p>
-						</a>
-					  </li><!-- end message -->
+					<?php 
+						for($i=0; $i<count($menu_mensagens); $i++){
+					?>
 					  <li>
-						<a href="#">
+						<a href="ver-mensagem.php?id=<?php echo $menu_mensagens[$i]["ME_ID"]; ?>">
 						  <div class="pull-left">
-							<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
+							<img src="img-users/<?php echo $menu_mensagens[$i]["U_FOTOGRAFIA"]; ?>" class="img-circle" alt="Imagem do utilizador"/>
 						  </div>
 						  <h4>
-							Teste 2
-							<small><i class="fa fa-clock-o"></i> 2 horas</small>
+							<?php echo $menu_mensagens[$i]["ME_ASSUNTO"]; ?>
+							<small><i class="fa fa-clock-o"></i> <?php echo tempo_passado(strtotime($mensagens[$i]["ME_DATAHORA"])); ?></small>
 						  </h4>
-						  <p>Mensagem 2</p>
+						  <p><?php echo strip_tags($menu_mensagens[$i]["MSG"]); ?></p>
 						</a>
 					  </li>
-					  <li>
-						<a href="#">
-						  <div class="pull-left">
-							<img src="dist/img/user5-128x128.jpg" class="img-circle" alt="user image"/>
-						  </div>
-						  <h4>
-							Teste 3
-							<small><i class="fa fa-clock-o"></i> Hoje</small>
-						  </h4>
-						  <p>Mensagem 3</p>
-						</a>
-					  </li>
-					  <li>
-						<a href="#">
-						  <div class="pull-left">
-							<img src="dist/img/user1-128x128.jpg" class="img-circle" alt="user image"/>
-						  </div>
-						  <h4>
-							Teste 4
-							<small><i class="fa fa-clock-o"></i> Ontem</small>
-						  </h4>
-						  <p>Mensagem 4</p>
-						</a>
-					  </li>
-					  <li>
-						<a href="#">
-						  <div class="pull-left">
-							<img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-						  </div>
-						  <h4>
-							Teste 5
-							<small><i class="fa fa-clock-o"></i> 2 dias</small>
-						  </h4>
-						  <p>Mensagem 5</p>
-						</a>
-					  </li>
+					  <?php
+						  }
+					  ?>
 					</ul>
 				  </li>
 				  <li class="footer"><a href="mensagens.php">Ver todas as mensagens</a></li>
