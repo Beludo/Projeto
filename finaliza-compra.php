@@ -1,7 +1,17 @@
 <?php
 
 include "sessaoAtiva.php";
+include "GereCarrinho.php";
 
+if(isset($_POST["metodo"]) && !empty($_POST["metodo"]) &&
+   isset($_POST["peso"]) && !empty($_POST["peso"]) &&
+   isset($_POST["preco"]) && !empty($_POST["preco"]) &&
+    isset($_POST["idCarrinho"]) && !empty($_POST["idCarrinho"])){
+    $peso = $_POST["peso"];
+    $preco = $_POST["preco"];
+    $idCarrinho = $_POST["idCarrinho"];
+    $gereCarrinho = new GereCarrinho();
+    $metodo = $gereCarrinho->verMetodo($_POST["metodo"], $peso);
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -39,26 +49,48 @@ include "sessaoAtiva.php";
                 <div class="panel-title">
                     <div class="row">
                         <div class="col-xs-6">
-                            <h5><span class="glyphicon glyphicon-shopping-cart"></span> Finalizar o Carrinho</h5>
+                            <h5><span class="glyphicon glyphicon-shopping-cart"></span>Métodos de Entrega</h5>
                         </div>
                     </div>
                 </div>
             </div>
-            <form method="post" action="carrinho-compras.php?sucesso=true" enctype="multipart/form-data">
-                <div class="panel-footer">
-                    <div class="row text-center">
-                        <div class="col-xs-3">
-                            <button type="submit" class="btn btn-success btn-block">
-                                Finalizar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+
         </div>
+        <div>
+           <span>Preço total a Pagar
+               <?php
+                     echo $preco;
+               ?>
+               € + Portes de Envio
+               <?php
+               if($metodo[0]["T_PRECO"] == 0)
+                   echo 0;
+               else
+                   echo $metodo[0]["T_PRECO"];
+               ?>
+               €
+           </span>
+            <br>
+            <span><strong>Total a Pagar =
+                <?php
+                echo $preco += $metodo[0]["T_PRECO"];
+                ?>
+                    €</strong>
+            </span>
+
+        </div>
+        <form method="post" action="finaliza-compra.php" enctype="multipart/form-data">
+        <div class="col-xs-3">
+            <input type="hidden" value="<?php echo $metodo[0]["T_ID"]; ?>" name="metodoFinal">
+            <input type="hidden" value="<?php echo $idCarrinho; ?>" name="idCarrinho">
+            <input type="hidden" value="<?php echo $preco; ?>" name="preco">
+            <button type="submit" class="btn btn-success btn-block">
+                Finalizar
+            </button>
+        </div>
+        </form>
     </div>
 </div>
-
 <!-- Acaba o conteudo -->
 
 <!-- RODAPÉ!! -->
@@ -68,3 +100,12 @@ include "sessaoAtiva.php";
 </body>
 
 </html>
+<?php
+} elseif(isset($_POST["metodoFinal"]) && !empty($_POST["metodoFinal"]) &&
+         isset($_POST["idCarrinho"]) && !empty($_POST["idCarrinho"]) &&
+        isset($_POST["preco"]) && !empty($_POST["preco"])) {
+    $gereCarrinho = new GereCarrinho();
+    $gereCarrinho->finalizarCarrinho($_POST["idCarrinho"], $_POST["metodoFinal"], $_POST["preco"]);
+
+}
+?>

@@ -2,14 +2,16 @@
 	include "sessaoAtiva.php";
     include_once "GereCarrinho.php";
     include_once "admin/ALoja.php";
-
+    $metodo = null;
     if(isset($_POST["idProduto"]) && !empty($_POST["idProduto"])){
         $gereCarrinho = new GereCarrinho();
         $carrinho = $gereCarrinho->verIdCarrinho($_SESSION["visit"]);
+        $metodo = $gereCarrinho->listarMetodosPagamentos();
         $gereCarrinho->removerProduto($_POST["idProduto"], $carrinho->getIdCarrinho());
     } else {
         $gereCarrinho = new GereCarrinho();
         $carrinho = $gereCarrinho->verIdCarrinho($_SESSION["visit"]);
+        $metodo = $gereCarrinho->listarMetodosPagamentos();
     }
 ?>
 
@@ -33,7 +35,6 @@
 
 	<!-- /conteudo -->
 	<div>
-
 		<!-- BREADCRUMB -->
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="loja.php">Loja</a>
@@ -58,11 +59,12 @@
 						</div>
 					</div>
 				</div>
-                <form method="post" action="carrinho-compras.php" enctype="multipart/form-data">
+                <form method="post" action="finaliza-compra.php" enctype="multipart/form-data">
                     <?php
                     $produtos = $carrinho->getProduto();
                     $quantidades = $carrinho->getQuantidade();
                     $total_price = 0.00;
+                    $total_peso = 0.00;
                     for($i=0; $i<sizeof($produtos); $i++){
                     ?>
 				<div class="panel-body">
@@ -79,7 +81,7 @@
 								<h6><strong><?php echo $produtos[$i]->getPreco(); ?> <span class="text-muted">x</span></strong></h6>
 							</div>
 							<div class="col-xs-4">
-								<label class="form-control input-sm"><?php echo $quantidades[$i]; ?><label/>
+								<label class="form-control input-sm"><?php echo $quantidades[$i]; ?></label>
 							</div>
 							<div class="col-xs-2">
 								<button type="submit" class="btn btn-link btn-xs">
@@ -90,10 +92,29 @@
 					</div>
                 </div>
                         <?php
+                        $total_peso += $produtos[$i]->getPeso()*$quantidades[$i];
                         $total_price += $produtos[$i]->getPreco()*$quantidades[$i];
                     }
                     ?>
-                </form>
+
+                    <div class="col-lg-3">
+                        <?php
+                        for($i=0; $i< sizeof($metodo); $i++){
+                        ?>
+                        <div class="input-group">
+                      <span class="input-group-addon">
+                        <input type="radio" aria-label="..." name="metodo" value="<?php echo $metodo[$i]["T_NOME"]; ?>">
+                      </span>
+                            <label class="form-control" aria-label="..."><?php echo $metodo[$i]["T_NOME"]; ?></label>
+                        </div><!-- /input-group -->
+                    <?php
+                    }
+                    ?>
+                    </div><!-- /.col-lg-3 -->
+                    <input hidden="hidden" name="peso" value="<?php echo $total_peso; ?>">
+                    <input hidden="hidden" name="preco" value="<?php echo $total_price; ?>">
+                    <input hidden="hidden" name="idCarrinho" value="<?php echo $carrinho->getIdCarrinho(); ?>">
+
                 <hr>
 
 					<div class="row">
@@ -112,15 +133,16 @@
 				<div class="panel-footer">
 					<div class="row text-center"> 
 						<div class="col-xs-9">
-							<h4 class="text-right"><strong><?php echo $total_price ?></strong></h4>
+							<h4 class="text-right"><strong><?php echo $total_price ?>€</strong></h4>
 						</div>
 						<div class="col-xs-3">
-							<a href="finaliza-compra.php" class="btn btn-success btn-block">
+							<button type="submit" class="btn btn-success btn-block">
 								Continuar
-							</a>
+							</button>
 						</div>
 					</div>
 				</div>
+            </form>
 			</div>
 		</div>
 	</div>

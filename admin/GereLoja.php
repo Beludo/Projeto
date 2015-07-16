@@ -12,8 +12,8 @@ class GereLoja {
 
     function adicionaProduto($produto){
         $sql = "INSERT into loja (LA_NOME, LA_CODIGO, LA_FOTOGRAFIA, LA_STOCK,
-        LA_OBSERVACOES, LA_PRECO, LA_DISPONIBILIDADE, LA_ATIVO, LA_ADICIONADO, LA_REMOVIDO) VALUES(:LA_NOME, :LA_CODIGO, :LA_FOTOGRAFIA, :LA_STOCK,
-        :LA_OBSERVACOES, :LA_PRECO, :LA_DISPONIBILIDADE, :LA_ATIVO, :LA_ADICIONADO, :LA_REMOVIDO)";
+        LA_OBSERVACOES, LA_PRECO, LA_DISPONIBILIDADE, LA_ATIVO, LA_ADICIONADO, LA_REMOVIDO, LA_PESO) VALUES(:LA_NOME, :LA_CODIGO, :LA_FOTOGRAFIA, :LA_STOCK,
+        :LA_OBSERVACOES, :LA_PRECO, :LA_DISPONIBILIDADE, :LA_ATIVO, :LA_ADICIONADO, :LA_REMOVIDO, :LA_PESO)";
 
         $dados_produtos = array(
             'LA_NOME' => $produto->getNome(),
@@ -25,7 +25,8 @@ class GereLoja {
             'LA_DISPONIBILIDADE' => $produto->getDisponibilidade(),
             'LA_ATIVO' => $produto->getAtivo(),
             'LA_ADICIONADO' => $produto->getAdicionado(),
-            'LA_REMOVIDO' => $produto->getRemovido()
+            'LA_REMOVIDO' => $produto->getRemovido(),
+            'LA_PESO' => $produto->getPeso()
         );
         $this->bd->inserir($sql, $dados_produtos);
     }
@@ -46,7 +47,9 @@ class GereLoja {
 													$registo[$i]["LA_DISPONIBILIDADE"],
 							$registo[$i]["LA_ATIVO"],
 													$registo[$i]["LA_ADICIONADO"],
-													$registo[$i]["LA_REMOVIDO"]);
+													$registo[$i]["LA_REMOVIDO"],
+                            $registo[$i]["LA_PESO"]
+                                        );
 							}
 							return $dados;
 			}
@@ -78,7 +81,8 @@ class GereLoja {
 					$registo[0]["LA_DISPONIBILIDADE"],
 					$registo[0]["LA_ATIVO"],
 					$registo[0]["LA_ADICIONADO"],
-					$registo[0]["LA_REMOVIDO"]
+					$registo[0]["LA_REMOVIDO"],
+                    $registo[0]["LA_PESO"]
 				);
                 return $produtos;
             }else{
@@ -91,7 +95,7 @@ class GereLoja {
     }
 	
 	function editarProdutos($produtos){
-		$sql = "UPDATE eventos SET LA_NOME=:LA_NOME , LA_CODIGO=:LA_CODIGO , LA_FOTOGRAFIA=:LA_FOTOGRAFIA, LA_STOCK=:LA_STOCK, LA_OBSERVACOES=:LA_OBSERVACOES, LA_PRECO=:LA_PRECO, LA_DISPONIBILIDADE=:LA_DISPONIBILIDADE, LA_ATIVO=:LA_ATIVO, LA_ADICIONADO=:LA_ADICIONADO, LA_REMOVIDO=:LA_REMOVIDO  WHERE  LA_ID=:LA_ID";
+		$sql = "UPDATE eventos SET LA_NOME=:LA_NOME , LA_CODIGO=:LA_CODIGO , LA_FOTOGRAFIA=:LA_FOTOGRAFIA, LA_STOCK=:LA_STOCK, LA_OBSERVACOES=:LA_OBSERVACOES, LA_PRECO=:LA_PRECO, LA_DISPONIBILIDADE=:LA_DISPONIBILIDADE, LA_ATIVO=:LA_ATIVO, LA_ADICIONADO=:LA_ADICIONADO, LA_REMOVIDO=:LA_REMOVIDO, LA_PESO=:LA_PESO  WHERE  LA_ID=:LA_ID";
            $dados_loja = array(
 						 'LA_NOME' => $produtos->getNome(),
 						 'LA_CODIGO' => $produtos->getCodigo(),
@@ -103,12 +107,13 @@ class GereLoja {
 						 'LA_ATIVO' => $produtos->getAtivo(),
 						 'LA_ADICIONADO' => $produtos->getAdicionado(),
 						 'LA_REMOVIDO' => $produtos->getRemovido(),
-						 'LA_ID' => $produtos->getId()
+						 'LA_ID' => $produtos->getId(),
+                         'LA_PESO' => $produtos->getPeso()
         );
 		
         $this->bd->editar($sql, $dados_loja);
 
- 	}	
+    }
 }
 
 ?>

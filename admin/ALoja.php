@@ -15,8 +15,9 @@ class Loja {
     private $adicionado;
     private $removido;
     private $bd;
+    private $peso;
 
-    function __construct($id, $nome,$codigo,$fotografia,$stock, $observacoes, $preco, $disponibilidade, $ativo, $adicionado, $removido){
+    function __construct($id, $nome,$codigo,$fotografia,$stock, $observacoes, $preco, $disponibilidade, $ativo, $adicionado, $removido, $peso){
         $this->id = $id;
         $this->nome = $nome;
         $this->codigo = $codigo;
@@ -28,7 +29,24 @@ class Loja {
         $this->ativo = $ativo;
         $this->adicionado = $adicionado;
         $this->removido = $removido;
+        $this->peso = $peso;
         $this->bd = new BaseDados();
+    }
+
+    /**
+     * @param mixed $peso
+     */
+    public function setPeso($peso)
+    {
+        $this->peso = $peso;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPeso()
+    {
+        return $this->peso;
     }
 
     /**

@@ -13,7 +13,8 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
    isset($_POST["codigo"]) && !empty($_POST["codigo"]) &&
    isset($_POST["preco"]) && !empty($_POST["preco"]) &&
    isset($_POST["stock"]) && !empty($_POST["stock"]) &&
-   isset($_POST["observacoes"]) && !empty($_POST["observacoes"])){
+   isset($_POST["observacoes"]) && !empty($_POST["observacoes"]) &&
+   isset($_POST["peso"]) && !empty($_POST["peso"])){
 
     // verificar se foi escolhido um ficheiro de foto
     if(file_exists($_FILES["foto"]["tmp_name"])){
@@ -49,7 +50,7 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
         $nome_foto = "sem-foto.png";
     }
 
-    $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0);
+    $produto = new Loja(0, $_POST["nome"], $_POST["codigo"], $nome_foto, $_POST["stock"], $_POST["observacoes"], $_POST["preco"], true, true, 0, 0, $_POST["peso"]);
     $gereLoja->adicionaProduto($produto);
 	$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o produto "' . $_POST["nome"] . '"');
 	 header("Location: gerir-produtos.php");
@@ -137,6 +138,10 @@ if(isset($_POST["nome"]) && !empty($_POST["nome"]) &&
                       <label>Observacoes</label>
                       <textarea class="form-control" rows="3" placeholder="Insira observacoes" name="observacoes"></textarea>
                     </div>
+                      <div class="form-group">
+                          <label>Peso</label>
+                          <input type="text" min="0" class="form-control" placeholder="Insira o peso do produto" name="peso"/>
+                      </div>
 					<div class="form-group">
 					  <label for="exampleInputFile">Imagem</label>
 					  <input type="file" id="exampleInputFile" name="foto">
