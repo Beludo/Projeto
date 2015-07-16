@@ -53,6 +53,29 @@ class GereLoja {
 							}
 							return $dados;
 			}
+	
+		public function listarProdutosAtivos(){
+			$dados = array();
+
+							$registo = $this->bd->query("SELECT * FROM loja where la_ativo = 1");
+							for($i=0; $i<count($registo); $i++){
+										$dados[] = new Loja(
+							$registo[$i]["LA_ID"],
+							$registo[$i]["LA_NOME"],
+							$registo[$i]["LA_CODIGO"],
+													$registo[$i]["LA_FOTOGRAFIA"],
+							$registo[$i]["LA_STOCK"],
+													$registo[$i]["LA_OBSERVACOES"],
+							$registo[$i]["LA_PRECO"],
+													$registo[$i]["LA_DISPONIBILIDADE"],
+							$registo[$i]["LA_ATIVO"],
+													$registo[$i]["LA_ADICIONADO"],
+													$registo[$i]["LA_REMOVIDO"],
+                            $registo[$i]["LA_PESO"]
+                                        );
+							}
+							return $dados;
+			}
 
         public function verProdutoId($idProduto){
             $dados = array (

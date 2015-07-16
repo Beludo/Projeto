@@ -4,7 +4,7 @@
 	include_once "./admin/ALoja.php";
 
 $gere_produtos = new GereLoja();
-$produtos = $gere_produtos ->listarProdutos();
+$produtos = $gere_produtos ->listarProdutosAtivos();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
@@ -102,7 +102,6 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 
 			<div class="row">
 				<?php
-                      $produtos = $gere_produtos->listarProdutos();
                       if($produtos != null) {
                           for($i = 0; $i<count($produtos); $i++) {
                       ?>
