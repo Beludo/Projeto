@@ -16,7 +16,7 @@ $n_msg = $num_mensagens[0]["NUM_MENSAGENS"];
 $menu_mensagens = $bd->query("SELECT u.U_NOMECOMPLETO, u.U_FOTOGRAFIA, m.ME_ID, m.ME_REMETENTE, m.ME_ASSUNTO, SUBSTR(m.ME_MENSAGEM, 1, 20) as 'MSG', m.ME_DATAHORA, m.ME_VISTA FROM mensagens m, utilizadores u WHERE m.ME_REMETENTE = u.U_ID AND m.ME_DESTINATARIO = :ME_DESTINATARIO AND ME_VISTA = 0 LIMIT 5;", $dados);
 
 // Mostra o tempo passado desde o tempo passado por parâmetro
-function tempopassado($tempo){
+function tempo_passado($tempo){
 	$tempo_contar = time() - $tempo;
 
 	if ($tempo_contar < 1){
