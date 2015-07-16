@@ -59,7 +59,7 @@ $artigos = $gere_artigos ->listarArtigos();
 
 			<div class="row">
 						<?php
-                      $artigos = $gere_artigos->listarArtigos();
+                      $artigos = $gere_artigos->listarArtigosAtivos();
                       if($artigos != null) {
                           for($i = 0; $i<count($artigos); $i++) {
                       ?>

@@ -41,7 +41,7 @@ $eventos = $gere_eventos ->listarEventos();
 
 			<hr>
 			<?php 
-			 $eventos = $gere_eventos->listarEventos();
+			 $eventos = $gere_eventos->listarEventosAtivos();
 						if($eventos != null) {
 								for($i = 0; $i<count($eventos); $i++) {
                       ?>

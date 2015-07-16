@@ -49,6 +49,29 @@ class GerePecas {
 							return $dados;
 			}
 	
+	public function listarArtigosAtivos(){
+			$dados = array();
+
+							$registo = $this->bd->query("SELECT * FROM pecas where PE_ATIVO = 1");
+							for($i=0; $i<count($registo); $i++){
+										$dados[] = new pecas(
+											$registo[$i]["PE_ID"],
+											$registo[$i]["PE_MUSEU"],
+											$registo[$i]["PE_NUMEROINVENTARIO"],
+											$registo[$i]["PE_CATEGORIA"],
+											$registo[$i]["PE_NOME"],
+											$registo[$i]["PE_DATACAO"],
+											$registo[$i]["PE_DESCRICAO"],
+											$registo[$i]["PE_FOTOGRAFIA"],
+											$registo[$i]["PE_ORIGEM"],
+											$registo[$i]["PE_ATIVO"]
+										);
+							}
+							return $dados;
+			}
+	
+	
+	
 	function verDadosArtigo($id) {
         try {
             $idA = array("PE_ID" => $id);
