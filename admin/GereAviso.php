@@ -54,7 +54,7 @@ class GereAviso {
     }
 	
 	
-	function verDadosAvisos($id) {
+	function verDadosAviso($id) {
         try {
             $idA = array("AV_ID" => $id);
             $registo = $this->bd->query("SELECT * FROM avisos WHERE AV_ID = :AV_ID", $idA);
@@ -62,10 +62,10 @@ class GereAviso {
             if (isset($registo)) {
 				
                 $aviso = new aviso(
-									$registo[$i]["AV_ID"],
-									$registo[$i]["AV_TITULO"],
-									$registo[$i]["AV_AVISO"],
-									$registo[$i]["AV_ATIVO"]
+									$registo[0]["AV_ID"],
+									$registo[0]["AV_TITULO"],
+									$registo[0]["AV_AVISO"],
+									$registo[0]["AV_ATIVO"]
 				);
                 return $aviso;
             }else{
@@ -79,12 +79,12 @@ class GereAviso {
 	
 	function editarAviso($avisos){
 		
-		$sql = "UPDATE eventos SET AV_TITULO=:AV_TITULO , AV_AVISO=:AV_AVISO, AV_ATIVO=:AV_ATIVO WHERE  AV_ID=:AV_ID";
-           $dados_eventos = array(
+		$sql = "UPDATE avisos SET AV_TITULO=:AV_TITULO , AV_AVISO=:AV_AVISO, AV_ATIVO=:AV_ATIVO WHERE  AV_ID=:AV_ID";
+           $dados_aviso = array(
 						 'AV_TITULO' => $avisos->getTitulo(),
 						 'AV_AVISO' => $avisos->getAviso(),
 						 'AV_ATIVO' => $avisos->getAtivo(),
-						 'AV_ID' => $eventos->getId()
+						 'AV_ID' => $avisos->getId()
         );
 		
         $this->bd->editar($sql, $dados_aviso);
