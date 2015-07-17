@@ -136,7 +136,7 @@ class GereCarrinho {
 
             array_push($quantidades, $dadosCarrinho1[$i]["C_QUANTIDADE"]);
         }
-            $carrinho = new Carrinho($dadosCarrinho[0]["C_ID"], $produtos, $quantidades);
+            $carrinho = new Carrinho($dadosCarrinho[0]["C_ID"], $produtos, $quantidades, $dadosCarrinho[0]["C_PRECO"]);
             return $carrinho;
     }
 
@@ -208,5 +208,79 @@ class GereCarrinho {
             $this->bd->editar($sql4, $dados4);
         }
         header("Location: carrinho-compras.php?sucesso=true");
+    }
+
+    function listarCarrinhos(){
+        $sql = "SELECT * FROM carrinho WHERE C_VISTA = :C_VISTA;";
+
+        $dados = array(
+            'C_VISTA' => false
+        );
+
+        $carrinho = $this->bd->query($sql, $dados);
+
+        return $carrinho;
+    }
+
+    function buscarEncomenda($idCarrinho){
+        $sql3 = "SELECT C_PRECO FROM carrinho WHERE C_ID = :C_ID;";
+
+        $dados3 = array(
+            'C_ID' => $idCarrinho
+        );
+
+        $preco = $this->bd->query($sql3, $dados3);
+        $sql = "SELECT * FROM loja_carrinho WHERE C_ID = :C_ID;";
+
+        $dados = array(
+            'C_ID' => $idCarrinho
+        );
+        $produtos = array();
+        $quantidades = array();
+        $dCarrinho = $this->bd->query($sql, $dados);
+        for($i=0; $i<sizeof($dCarrinho); $i++){
+            $sql4 = "SELECT * FROM loja WHERE LA_ID = :LA_ID;";
+            $dados4 = array(
+                'LA_ID' => $dCarrinho[$i]["LA_ID"]
+            );
+            $produto = $this->bd->query($sql4, $dados4);
+            array_push($produtos, new Loja($produto[0]["LA_ID"],$produto[0]["LA_NOME"],$produto[0]["LA_CODIGO"], $produto[0]["LA_FOTOGRAFIA"], $produto[0]["LA_STOCK"],
+                $produto[0]["LA_OBSERVACOES"],$produto[0]["LA_PRECO"],$produto[0]["LA_DISPONIBILIDADE"],$produto[0]["LA_ATIVO"],$produto[0]["LA_ADICIONADO"],$produto[0]["LA_REMOVIDO"], $produto[0]["LA_PESO"]));
+
+            array_push($quantidades, $dCarrinho[$i]["C_QUANTIDADE"]);
+        }
+        $carrinho = new Carrinho($idCarrinho, $produtos, $quantidades, $preco[0]["C_PRECO"]);
+        return $carrinho;
+    }
+
+    function buscarMetodos($idCarrinho){
+        $sql = "SELECT * FROM loja_carrinho WHERE C_ID = :C_ID;";
+
+        $dados = array(
+            'C_ID' => $idCarrinho
+        );
+
+        $produtos = $this->bd->query($sql, $dados);
+
+        $sql2 = "SELECT * FROM taxasentrega WHERE T_ID = :T_ID;";
+
+        $dados2 = array(
+            'T_ID' => $produtos[0]["T_ID"]
+        );
+
+        $metodo = $this->bd->query($sql2, $dados2);
+
+        return $metodo;
+    }
+
+    function encomendarEncomenda($idCarrinho){
+        $sql = "UPDATE carrinho SET C_VISTA = :C_VISTA WHERE C_ID = :C_ID;";
+
+        $dados = array(
+            'C_VISTA' => true,
+            'C_ID' => $idCarrinho
+        );
+
+        $this->bd->editar($sql, $dados);
     }
 }

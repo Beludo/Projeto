@@ -4,12 +4,32 @@ class Carrinho {
     private $idCarrinho;
     private $produto;
     private $quantidade;
+    private $preco;
 
-    function __construct($idCarrinho, $produto, $quantidade){
+    function __construct($idCarrinho, $produto, $quantidade, $preco){
         $this->idCarrinho = $idCarrinho;
         $this->produto = $produto;
         $this->quantidade  = $quantidade;
+        $this->preco = $preco;
     }
+
+    /**
+     * @param mixed $preco
+     */
+    public function setPreco($preco)
+    {
+        $this->preco = $preco;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreco()
+    {
+        return $this->preco;
+    }
+
+
 
     /**
      * @param mixed $quantidade

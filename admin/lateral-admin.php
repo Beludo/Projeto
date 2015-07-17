@@ -40,6 +40,8 @@
 					</li>
 					<li><a href="gerir-produtos.php"><i class="fa fa-book"></i> Gerir Produtos</a>
 					</li>
+                    <li><a href="encomendas.php"><i class="fa fa-book"></i> Gerir Encomendas</a>
+                    </li>
 				</ul>
 			</li>
 			<li class="treeview">
