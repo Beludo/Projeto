@@ -1,5 +1,14 @@
 <?php
-	include "sessaoAtiva.php"
+	include "sessaoAtiva.php";
+	include_once "admin/pecas.php";
+	include_once "admin/GerePecas.php";
+	
+	$gerePecas = new GerePecas();
+	if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
+		$pecas = $gerePecas->verDadosArtigo($_GET["id"]);
+	}else{
+		header("Location: eventos.php");
+	}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +34,7 @@
 		<ol class="breadcrumb" style="margin-bottom:1px;">
 			<li><a href="exposicoes.php">Exposições</a>
 				</li>
-			<li class="active">Peça xpto</li>
+			<li class="active"><?php echo $pecas->getNome()?></li>
 		</ol>
 
 		<!-- Conteudo -->
@@ -34,7 +43,7 @@
 			<div class="container">
 				<!-- details-photo -->
 				<div class="details-photo col-sm-5">
-					<a href="#"><img class="img-responsive" src="http://placehold.it/350x400">
+					<a href="#"><img class="img-responsive" style="width:350px; height: 400px;" src="admin/img-pecas/<?php echo $pecas->getFotografia() ?>">
 					</a>
 					<br>
 				</div>
@@ -45,32 +54,28 @@
 				<div class="col-sm-6 details-right">
 
 					<div class="col-md-6 pull-left">
-						<h3 class="h3"><a href="#"><strong>Primeira Peça</strong></a></h3>
-						<p class="product-code">Nº de Inventário: <strong>ECOM1204</strong>
+						<h3 class="h3"><a href="#"><strong><?php echo $pecas->getNome()?></strong></a></h3>
+						<p class="product-code">Nº de Inventário: <strong><?php echo $pecas->getNInventario()?></strong>
 						</p>
 					</div>
 
 					<div class="clearfix"></div>
 					<hr />
 					<div class="col-md-12">
-						<h4>Nome</h4>
+						<h4>Datação</h4>
 						<p>
-						Qualqer coisa
+						<?php echo $pecas->getDatacao()?>
 						</p>
-						<h4>Dimensões</h4>
+						<h4>Categoria</h4>
 						<p>
-						144x54cm
-						</p>
-						<h4></h4>
-						<p>
-						Qualqer coisa
+						<?php echo $pecas->getCategoria()?>
 						</p>
 						<h4>Origem</h4>
 						<p>
-						Algarve
+						<?php echo $pecas->getOrigem()?>
 						</p>
-						<h4>Outras Informações</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. Aliquam in felis sit amet augue.</p>
+						<h4>Descrição</h4>
+						<p><?php echo $pecas->getDescricao()?></p>
 					</div>
 
 				</div>
