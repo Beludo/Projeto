@@ -4,6 +4,7 @@ include_once "acessobd.php";
 class Pecas {
     private $id;
     private $museu;
+		private $exposicao;
     private $nInventario;
     private $categoria;
     private $nome;
@@ -13,10 +14,11 @@ class Pecas {
     private $origem;
     private $ativo;
 
-    function __construct($id, $museu, $nInventario, $categoria, $nome, $datacao, $descricao, $fotografia, $origem, $ativo)
+    function __construct($id, $exposicao, $museu, $nInventario, $categoria, $nome, $datacao, $descricao, $fotografia, $origem, $ativo)
     {
         $this->id = $id;
-        $this->museu = $museu;
+        $this->exposicao = $exposicao;
+				$this->museu = $museu;
         $this->nInventario = $nInventario;
         $this->categoria = $categoria;
         $this->nome = $nome;
@@ -44,6 +46,22 @@ class Pecas {
         $this->id = $id;
     }
 
+		/**
+     * @return mixed
+     */
+    public function getExposicao()
+    {
+        return $this->exposicao;
+    }
+
+    /**
+     * @param mixed $museu
+     */
+    public function setExposicao($exposicao)
+    {
+        $this->exposicao = $exposicao;
+    }
+	
     /**
      * @return mixed
      */

@@ -105,6 +105,7 @@ if(isset($_GET["accao"]) && !empty($_GET["accao"]) &&
 						<th class="imagem-tabela">Imagem</th>
 						<th>Nome</th>
 						<th>Nº Inventário</th>
+						<th>Exposição</th>
 						<th>Categoria</th>
 						<th>Datação</th>
 						<th class="descricao-tabela">Descrição</th>
@@ -122,7 +123,8 @@ if(isset($_GET["accao"]) && !empty($_GET["accao"]) &&
 						<td><img src="img-pecas/<?php echo $artigos[$i]->getFotografia()?>" alt="imagem do produto">
 						<td><?php echo $artigos[$i]->getNome() ?></td>
 						<td><?php echo $artigos[$i]->getNInventario() ?></td>
-						<td><?php echo $artigos[$i]->getCategoria()?></td>
+						<td><?php echo $artigos[$i]->getExposicao() ?></td>
+						<td><?php echo $artigos[$i]->getCategoria() ?></td>
 						<td><?php echo $artigos[$i]->getDatacao()?></td>
 						<td><?php echo $artigos[$i]->getDescricao() ?></td>
 						<?php

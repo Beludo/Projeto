@@ -24,6 +24,20 @@ class GereTipoExposicoes{
             return $dados;
     }
 	
+	public function listarTipoExposicoesAtivas(){
+			$dados = array();
+
+            $registo = $this->bd->query("SELECT * FROM TIPOEXPOSICOES where TE_ATIVO = 1");
+            for($i=0; $i<count($registo); $i++){
+               $dados[] = new tipoexposicoes(
+								$registo[$i]["TE_ID"],
+								$registo[$i]["TE_NOME"],
+								$registo[$i]["TE_ATIVO"]
+                        );
+            }
+            return $dados;
+    }
+	
 	 function adicionaTipoExposicao($tipo_exposicao){
         $sql = "INSERT into  tipoexposicoes  ( TE_NOME ) VALUES(:TE_NOME)";
 

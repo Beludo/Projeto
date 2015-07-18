@@ -41,6 +41,23 @@ class GereExposicoes {
             }
             return $dados;
     }
+	
+	function listarExposicoesAtivas(){
+			$dados = array();
+
+            $registo = $this->bd->query("SELECT e.*, t.TE_NOME FROM exposicoes e, tipoexposicoes t where t.te_id = e.te_id and ex_ativo =1");
+            for($i=0; $i<count($registo); $i++){
+                	$dados[] = new exposicoes(
+										$registo[$i]["EX_ID"],
+										$registo[$i]["TE_ID"],
+										$registo[$i]["EX_NOME"],
+                    $registo[$i]["EX_OBSERVACOES"],
+										$registo[$i]["EX_ATIVO"],
+										$registo[$i]["TE_NOME"]
+                        );
+            }
+            return $dados;
+    }
 			
 		function editarExposicoes($exposicoes){
 		

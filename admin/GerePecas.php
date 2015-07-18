@@ -11,11 +11,12 @@ class GerePecas {
     }
 
     function adicionaArtigos($pecas){
-        $sql = "INSERT into  pecas  ( PE_MUSEU , PE_NUMEROINVENTARIO , PE_CATEGORIA , PE_NOME , PE_DATACAO , PE_DESCRICAO , PE_FOTOGRAFIA , PE_ORIGEM , PE_ATIVO )
-        VALUES(:PE_MUSEU , :PE_NUMEROINVENTARIO , :PE_CATEGORIA , :PE_NOME , :PE_DATACAO , :PE_DESCRICAO , :PE_FOTOGRAFIA , :PE_ORIGEM , :PE_ATIVO)";
+        $sql = "INSERT into  pecas  ( EX_ID, PE_MUSEU , PE_NUMEROINVENTARIO , PE_CATEGORIA , PE_NOME , PE_DATACAO , PE_DESCRICAO , PE_FOTOGRAFIA , PE_ORIGEM , PE_ATIVO )
+        VALUES(:EX_ID, :PE_MUSEU , :PE_NUMEROINVENTARIO , :PE_CATEGORIA , :PE_NOME , :PE_DATACAO , :PE_DESCRICAO , :PE_FOTOGRAFIA , :PE_ORIGEM , :PE_ATIVO)";
 
         $dados_pecas = array(
-            'PE_MUSEU' => $pecas->getMuseu(),
+            'EX_ID' => $pecas->getExposicao(),
+						'PE_MUSEU' => $pecas->getMuseu(),
             'PE_NUMEROINVENTARIO' => $pecas->getNInventario(),
             'PE_CATEGORIA' => $pecas->getCategoria(),
             'PE_NOME' => $pecas->getNome(),
@@ -35,6 +36,7 @@ class GerePecas {
 							for($i=0; $i<count($registo); $i++){
 										$dados[] = new pecas(
 											$registo[$i]["PE_ID"],
+											$registo[$i]["EX_ID"],
 											$registo[$i]["PE_MUSEU"],
 											$registo[$i]["PE_NUMEROINVENTARIO"],
 											$registo[$i]["PE_CATEGORIA"],
@@ -56,6 +58,30 @@ class GerePecas {
 							for($i=0; $i<count($registo); $i++){
 										$dados[] = new pecas(
 											$registo[$i]["PE_ID"],
+											$registo[$i]["EX_ID"],
+											$registo[$i]["PE_MUSEU"],
+											$registo[$i]["PE_NUMEROINVENTARIO"],
+											$registo[$i]["PE_CATEGORIA"],
+											$registo[$i]["PE_NOME"],
+											$registo[$i]["PE_DATACAO"],
+											$registo[$i]["PE_DESCRICAO"],
+											$registo[$i]["PE_FOTOGRAFIA"],
+											$registo[$i]["PE_ORIGEM"],
+											$registo[$i]["PE_ATIVO"]
+										);
+							}
+							return $dados;
+			}
+	
+	public function listarArtigosPorExposicao($exposicao){
+		$exposicaoA = array("EX_ID" => $exposicao);
+			$dados = array();
+
+							$registo = $this->bd->query("SELECT * FROM pecas where PE_ATIVO = 1 and EX_ID = :EX_ID", $exposicaoA);
+							for($i=0; $i<count($registo); $i++){
+										$dados[] = new pecas(
+											$registo[$i]["PE_ID"],
+											$registo[$i]["EX_ID"],
 											$registo[$i]["PE_MUSEU"],
 											$registo[$i]["PE_NUMEROINVENTARIO"],
 											$registo[$i]["PE_CATEGORIA"],
@@ -81,6 +107,7 @@ class GerePecas {
 				
                 $artigo = new pecas(
 									$registo[0]["PE_ID"],
+									$registo[0]["EX_ID"],
 									$registo[0]["PE_MUSEU"],
 									$registo[0]["PE_NUMEROINVENTARIO"],
 									$registo[0]["PE_CATEGORIA"],
@@ -103,8 +130,9 @@ class GerePecas {
 	
 	function editarArtigo($artigo){
 		
-		$sql = "UPDATE pecas SET PE_MUSEU = :PE_MUSEU, PE_NUMEROINVENTARIO = :PE_NUMEROINVENTARIO, PE_CATEGORIA = :PE_CATEGORIA , PE_NOME = :PE_NOME , PE_DATACAO = :PE_DATACAO, PE_DESCRICAO = :PE_DESCRICAO , PE_FOTOGRAFIA = :PE_FOTOGRAFIA , PE_ORIGEM = :PE_ORIGEM , PE_ATIVO = :PE_ATIVO WHERE PE_ID = :PE_ID;";
+		$sql = "UPDATE pecas SET PE_MUSEU = :PE_MUSEU, EX_MUSEU = :EX_MUSEU, PE_NUMEROINVENTARIO = :PE_NUMEROINVENTARIO, PE_CATEGORIA = :PE_CATEGORIA , PE_NOME = :PE_NOME , PE_DATACAO = :PE_DATACAO, PE_DESCRICAO = :PE_DESCRICAO , PE_FOTOGRAFIA = :PE_FOTOGRAFIA , PE_ORIGEM = :PE_ORIGEM , PE_ATIVO = :PE_ATIVO WHERE PE_ID = :PE_ID;";
            $dados_artigo = array(
+						 'EX_MUSEU' => $artigo->getExposicao(),
 						 'PE_MUSEU' => $artigo->getMuseu(),
 						 'PE_NUMEROINVENTARIO' => $artigo->getNInventario(),
 						 'PE_CATEGORIA' => $artigo->getCategoria(),

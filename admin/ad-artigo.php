@@ -3,9 +3,12 @@ include_once "sessaoAtiva.php";
 include_once "GerePecas.php";
 include_once "pecas.php";
 include_once "GereLog.php";
+include_once "GereExposicoes.php";
+include_once "exposicoes.php";
 
 $gere_log = new GereLog();
 $gerePecas = new GerePecas();
+$gereExposicoes = new GereExposicoes();
 
 // verificar se todos os campos foram preenchidos
 if(
@@ -50,7 +53,7 @@ if(
         // usar uma foto por omissão
         $nome_foto = "sem-foto.png";
     }
-    $artigo = new Pecas(0, $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
+    $artigo = new Pecas(0, $_POST["ex_id"], $_POST["museu"], $_POST["nInventario"], $_POST["categoria"], $_POST["nome"], $_POST["datacao"], $_POST["descricao"], $nome_foto, $_POST["origem"], true);
     $gerePecas->adicionaArtigos($artigo);
 		$gere_log->adicionarEntradaLog($_SESSION["iduser"], 'Adicionado o artigo "' . $_POST["nome"] . '"');
 		header("Location: gerir-artigos.php");
@@ -127,6 +130,21 @@ if(
 					  <label>Numero de inventário</label>
 					  <input type="text" class="form-control" name ="nInventario" placeholder="Insira o numero de inventário"/>
 					</div>
+					<div class="form-group">
+						<label>Exposição:</label>
+						<select class="form-control" name="ex_id" id="ex_id">
+							<option value=" ">Indique a Exposição</option>
+							 <?php
+											$exposicoes = $gereExposicoes->listarExposicoes();
+                      if($exposicoes != null) {
+                          for($i = 0; $i<count($exposicoes); $i++) {
+                      
+							echo '<option value="'. $exposicoes[$i]->getID().'">'. $exposicoes[$i]->getNome() . '</option>';
+													}
+											}
+						?>
+						</select>
+					</div>			
 					<div class="form-group">
 						<label>Datação</label>
 						<div class="input-group">
