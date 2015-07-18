@@ -57,32 +57,19 @@ $eventos = $gere_eventos->listarEventos3();
 		<!-- Informações Laterais -->
 		<div style="float:left; margin-right:0px; width:25%;">
 
-			<!-- Primeiro Painel -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Noticias</h3>
-				</div>
-				<div class="panel-body">
-					<br> Linha 1
-			<br> Linha 2
-			<br> Linha 3
-			<br>
-				</div>
-			</div>
-
-			<!-- Segundo Painel -->
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Outras Cenas</h3>
-				</div>
-				<div class="panel-body">
-					Outras cenas 1
-					<br> Outras cenas 2
-					<br> Outras cenas 3
-					<br> Outras cenas 4
-					<br>
-				</div>
-			</div>
+                    <a href="#"><img src="//placehold.it/300x120" class="img-responsive"></a>
+                    <div class="text-muted"><small>15 de Agosto de 2015</small></div>
+                    <p>
+                    Web design has come a long way since 1999.
+                    </p>
+                    <hr>
+                    <a href="#"><img src="//placehold.it/300x120" class="img-responsive"></a>
+                    <div class="text-muted"><small>13 de Julho de 2015</small></div>
+                    <p>
+                    The "flat" look was a big trend this year.
+                    </p>
+                  
+			
 		</div>
 	
 	<?php 
