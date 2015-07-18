@@ -2,9 +2,13 @@
 	include "sessaoAtiva.php";
 	include_once "/admin/GerePecas.php";
 	include_once "admin/Pecas.php";
+	include_once "/admin/GereExposicoes.php";
+	include_once "/admin/exposicoes.php";
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
+$gere_exposicoes = new GereExposicoes();
+$exposicoes = $gere_exposicoes ->listarExposicoesAtivas();
 
 ?>
 
@@ -34,59 +38,70 @@ $artigos = $gere_artigos ->listarArtigos();
 			<li class="active">Exposições</li>
 		</ol>
 
-		<!-- Menu Lateral -->
-		<div style="float:left; margin-top:10px; margin-right:0px; width:25%;">
-			<div class="list-group">
-				<!-- Exemplo de opção ativa
-			
-			  <a href="#" class="list-group-item active">
-				Cras justo odio
-			  </a>
-			  -->
-				<a href="#" class="list-group-item">Exposição 1</a>
-				<a href="#" class="list-group-item">Exposição 2</a>
-				<a href="#" class="list-group-item">Exposição 3</a>
-				<a href="#" class="list-group-item">Exposição 4</a>
-			</div>
-		</div>
-		<!-- Acaba menu Lateral -->
-
 		<!-- Conteudo -->
-		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width:74%;">
+		<div class="panel panel-default" style="float:right; padding:10px; margin-top:10px; width: 100%">
+		<section class="panel">
 
-			<h3>Exposições</h3>
-			<hr>
 
-			<div class="row">
+				<ul class="nav nav-tabs">
+					<?php
+						if($exposicoes != null) {
+								for($i = 0; $i<count($exposicoes); $i++) {
+						?>
+					
+						<li class="">
+							<a data-toggle="tab" href="#<?php echo $exposicoes[$i]->getId(); ?>">
+								<?php echo $exposicoes[$i]->getNome() ?>
+							</a>
+						</li>
+					
 						<?php
-                      $artigos = $gere_artigos->listarArtigosAtivos();
-                      if($artigos != null) {
-                          for($i = 0; $i<count($artigos); $i++) {
-                      ?>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-					<a class="thumbnail" href="mostra-peca.php?id=<?php echo $artigos[$i]->getId() ?>">
-						<img src="admin/img-pecas/<?php echo $artigos[$i]->getFotografia()?>" alt="">
-					</a>
-				</div>
-				<?php
+								}
 							}
-						}
 							?>
-			</div>
 
+				</ul>
+		
+				<div class="tab-content">
 
-
-
-
+					<?php
+						if($exposicoes != null) {
+								for($i = 0; $i<count($exposicoes); $i++) {
+						?>
+							<div id="<?php echo $exposicoes[$i]->getId(); ?>" class="tab-pane">
+								<div class="col-lg-2 col-sm-2" style="width:100%; padding-top:10px;">
+										<div class="col-lg-2 col-sm-2" style="width:100%;">
+													<?php
+																		$artigos = $gere_artigos->listarArtigosPorExposicao($exposicoes[$i]->getId());
+																		if($artigos != null) {
+																				for($j = 0; $j<count($artigos); $j++) {
+																		?>
+													<div class="col-lg-2 col-md-3 col-xs-5 thumb">
+														<a class="thumbnail" href="mostra-peca.php?id=<?php echo $artigos[$j]->getId() ?>">
+															<img src="admin/img-pecas/<?php echo $artigos[$j]->getFotografia()?>" alt="">
+														</a>
+													</div>
+													<?php
+																}
+															}
+																?>
+									</div>
+								</div>
+						</div>
+					
+						<?php
+								}
+							}
+							?>					
+				</div>
 		</div>
+		</section>
+	
 		<!-- Acaba o conteudo -->
-
-	</div>
 
 	<!-- RODAPÉ!! -->
 	<?php include "inc-rodape.php" ?>
 	<!-- Acaba RODAPÉ!! -->
-
 </body>
 
 </html>
