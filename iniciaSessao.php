@@ -44,6 +44,7 @@ if(
             $visitante->getAtivo() == 1){
 
             // Guardar o nome de utilizador da sessão
+			$_SESSION["v-id"] = $visitante->getId();
             $_SESSION["visit"] = $visitante->getUsername();
 			$_SESSION["v-foto"] = $visitante->getFotografia();
             $_SESSION["produtos"] = array();
