@@ -27,6 +27,8 @@
 				</li>
 				<li <?php echo($pagina=="informacoes" ? "class=\"active\"": ""); ?>><a href="contatos.php">Informações</a>
 				</li>
+				<li <?php echo($pagina=="marcacao" ? "class=\"active\"": ""); ?>><a href="marcacao_visita.php">Marcação de Visita</a>
+				</li>
 			</ul>
 					<?php
 						if(isset($_SESSION["visit"])){
