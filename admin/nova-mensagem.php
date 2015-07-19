@@ -20,7 +20,7 @@ if(
 		'ME_DESTINATARIO' => $_POST["msg_dest"],
 		'ME_ASSUNTO' => $_POST["msg_assunto"],
 		'ME_MENSAGEM' => $_POST["msg_corpo"],
-		'ME_DATAHORA' => date("Y-m-d"),
+		'ME_DATAHORA' => date("Y-m-d H:i:s"),
 		'ME_VISTA' => 0
 	);
 	
