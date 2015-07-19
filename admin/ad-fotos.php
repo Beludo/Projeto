@@ -24,8 +24,8 @@ if(isset($_POST["hafoto"])){
 			$nome_foto = $_FILES["foto"]["name"];
 			
 			// apagar o ficheiro actual
-			if(file_exists("img-users/" . $nome_foto)){
-				unlink("img-users/" . $nome_foto);
+			if(file_exists("img-vvirt/" . $nome_foto)){
+				unlink("img-vvirt/" . $nome_foto);
 			}
 			
 			move_uploaded_file($_FILES["foto"]["tmp_name"], "img-vvirt/" . $nome_foto);
