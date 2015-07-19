@@ -266,6 +266,17 @@ include_once "sessaoAtiva.php";
 					</li>
 				</ul>
 			</li>
+			<li class="treeview">
+				<a href="#">
+					<i class="fa fa-files-o"></i>
+					<span>Marcação de Visitas</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="gerir-marcacao.php"><i class="fa fa-book"></i> Gerir Marcação</a>
+					</li>
+				</ul>
+			</li>
 			<li><a href="documentacao/GM_ManualUtilizador_28-06-2015_V1.0.pdf"><i class="fa fa-question-circle"></i> Ajuda</a>
 			</li>
 		</ul>
