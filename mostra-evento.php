@@ -3,9 +3,30 @@
 	include_once "admin/evento.php";
 	include_once "admin/GereEventos.php";
 	
+	$bd = new BaseDados();
+	
 	$gereEventos = new GereEventos();
 	if(!empty($_GET["id"]) && is_numeric($_GET["id"])){
 		$evento = $gereEventos->verDadosEventos($_GET["id"]);
+		
+		// Adicionar comentario (se for o caso)
+		if(isset($_POST["comentario"]) && !empty($_POST["comentario"])){
+	
+			$dados = array(
+				'CEV_EVENTO' => $_GET["id"],
+				'CEV_VISITANTE' => $_SESSION["v-id"],
+				'CEV_COMENTARIO' => $_POST["comentario"],
+				'CEV_DATAHORA' => date("Y-m-d H:i:s")
+			);
+		
+			$bd->inserir("INSERT INTO comentarios_eventos (CEV_EVENTO, CEV_VISITANTE, CEV_COMENTARIO, CEV_DATAHORA) VALUES (:CEV_EVENTO, :CEV_VISITANTE, :CEV_COMENTARIO, :CEV_DATAHORA);", $dados);
+		}
+		
+		// Carregar os comentários do evento
+		$dados = array(
+			'CEV_EVENTO' => $evento->getId()
+		);
+		$comentarios = $bd->query("SELECT v.V_FOTOGRAFIA, v.V_USERNAME, ce.CEV_COMENTARIO, ce.CEV_DATAHORA FROM comentarios_eventos ce, eventos e, visitantes v WHERE ce.CEV_EVENTO = e.E_ID AND ce.CEV_VISITANTE = v.V_ID AND ce.CEV_EVENTO = :CEV_EVENTO;", $dados);
 	}else{
 		header("Location: eventos.php");
 	}
@@ -44,7 +65,7 @@
 			<h3><?php echo $evento->getNome()?></h3>
 			<hr>
 			<!-- Date/Time -->
-			<p><i class="fa fa-clock-o"></i> Posted on August 24, 2013 at 9:00 PM</p>
+			<p><i class="fa fa-clock-o"></i> 18 de Julho de 2013 ás 19:42</p>
 
 			<hr>
 
@@ -60,59 +81,49 @@
 			<br>
 			<hr>
 
-			<!-- Blog Comments -->
-
-			<!-- Comments Form -->
+			<?php 
+				// Só os visitantes resgistados é que podem comentar
+				if(isset($_SESSION["visit"])){
+			?>
+			<!-- Enviar comentario -->
 			<div class="well">
 				<h4>Deixar Comentário:</h4>
-				<form role="form">
+				<form role="form" method="post" action="mostra-evento.php?id=<?php echo $_GET["id"]; ?>">
 					<div class="form-group">
-						<textarea class="form-control" rows="3"></textarea>
+						<textarea class="form-control" rows="3" name="comentario" id="comentario"></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">Enviar</button>
 				</form>
 			</div>
-
 			<hr>
-
-			<!-- Posted Comments -->
-
-			<!-- Comment -->
-			<div class="media">
-				<a class="pull-left" href="#">
-					<img class="media-object" src="http://placehold.it/64x64" alt="">
-				</a>
-				<div class="media-body">
-					<h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+			<?php
+				}else{
+			?>
+				<div class="well">
+				<h4>Inicie sessão para comentar - <a href="login.php">Iniciar sessão</a></h4>
 				</div>
-			</div>
+				<hr>
+			<?php
+				}
+			?>
 
-			<!-- Comment -->
-			<div class="media">
-				<a class="pull-left" href="#">
-					<img class="media-object" src="http://placehold.it/64x64" alt="">
-				</a>
-				<div class="media-body">
-					<h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					<!-- Nested Comment -->
-					<div class="media">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="http://placehold.it/64x64" alt="">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-						</div>
+			<!-- Comentarios -->
+			<?php 
+				for($i=0; $i<count($comentarios); $i++){
+			?>
+				<div class="media">
+					<a class="pull-left" href="#">
+						<img class="media-object" style="width:64px; height:64px;" src="fotos/<?php echo $comentarios[$i]["V_FOTOGRAFIA"]; ?>" alt="Imagem do utilizador">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading"><?php echo $comentarios[$i]["V_USERNAME"]; ?>
+							<small><?php echo $comentarios[$i]["CEV_DATAHORA"]; ?></small>
+						</h4><?php echo nl2br($comentarios[$i]["CEV_COMENTARIO"]); ?>
 					</div>
-					<!-- End Nested Comment -->
 				</div>
-			</div>
-
+			<?php
+				}
+			?>
 		</div>
 		<!-- Acaba o conteudo -->
 
