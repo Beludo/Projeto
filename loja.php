@@ -5,6 +5,7 @@
 
 $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutosAtivos();
+$imagens = $gere_produtos->imagensProdutos();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
@@ -46,23 +47,6 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 			<li class="active">Loja</li>
 		</ol>
 
-		<!-- Menu Lateral -->
-		<div style="float:left; margin-top:10px; margin-right:0px; width:25%;">
-			<div class="list-group">
-				<!-- Exemplo de opção ativa
-			
-			  <a href="#" class="list-group-item active">
-				Cras justo odio
-			  </a>
-			  -->
-				<a href="#" class="list-group-item">Categoria 1</a>
-				<a href="#" class="list-group-item">Categoria 2</a>
-				<a href="#" class="list-group-item">Categoria 3</a>
-				<a href="#" class="list-group-item">Categoria 4</a>
-			</div>
-		</div>
-		<!-- Acaba menu Lateral -->
-
 		<!-- Conteudo -->
 		<div class="panel-default" style="float:right; padding:10px; width:74%;">
 
@@ -77,15 +61,15 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/800x300" alt="">
+								<a href="mostra-produto.php"><img class="slide-image" src="./admin/img-produtos/<?php echo $imagens[0]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
 								</a>
 							</div>
 							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/800x300" alt="">
+								<a href="mostra-produto.php"><img class="slide-image" src="./admin/img-produtos/<?php echo $imagens[1]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
 								</a>
 							</div>
 							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="http://placehold.it/800x300" alt="">
+								<a href="mostra-produto.php"><img class="slide-image" src="./admin/img-produtos/<?php echo $imagens[2]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
 								</a>
 							</div>
 						</div>

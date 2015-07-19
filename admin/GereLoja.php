@@ -137,6 +137,14 @@ class GereLoja {
         $this->bd->editar($sql, $dados_loja);
 
     }
+
+    function imagensProdutos(){
+        $sql = "SELECT * FROM loja ORDER BY LA_ADICIONADO DESC LIMIT 3;";
+
+        $dados = $this->bd->query($sql, null);
+
+        return $dados;
+    }
 }
 
 ?>
