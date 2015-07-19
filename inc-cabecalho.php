@@ -42,7 +42,7 @@
 										</li>
 										<li><a href="carrinho-compras.php"><i class="fa fa-shopping-cart"></i> Carrinho de Compras</a>
 										</li>
-										<li><a href="login.php?logout=1"><i class="fa fa-sign-out"></i> Terminar Sessão</a>
+										<li><a href="iniciaSessao.php?logout=1"><i class="fa fa-sign-out"></i> Terminar Sessão</a>
 										</li>
 									</ul>
 								</li>
