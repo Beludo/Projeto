@@ -82,18 +82,27 @@
 							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 						</ol>
 						<div class="carousel-inner">
-							<div class="item active">
-								<a href="mostra-evento.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
-								</a>
-							</div>
+						<?php
+							include_once "admin/acessobd.php";
+							$bd = new BaseDados();
+							
+							$imagens_cabecalho = $bd->query("SELECT * FROM img_cabecalho;");
+							
+							for($i=0; $i<count($imagens_cabecalho); $i++){
+						?>
+								<div class="item<?php if($i == 0) {echo ' active';} ?>">
+									<a href="#"><img class="slide-image" style="width:1140px; height:150px;" src="img-cabecalho/<?php echo $imagens_cabecalho[$i]["IR_FICHEIRO"]; ?>" alt="">
+									</a>
+								</div>
+						<?php
+							}
+						?>
+						<!-- exemplo
 							<div class="item">
 								<a href="mostra-evento.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
 								</a>
 							</div>
-							<div class="item">
-								<a href="mostra-evento.php"><img class="slide-image" src="http://placehold.it/1140x150" alt="">
-								</a>
-							</div>
+						-->
 						</div>
 						<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
 							<span class="glyphicon glyphicon-chevron-left"></span>
