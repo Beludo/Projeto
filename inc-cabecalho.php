@@ -77,17 +77,21 @@
 			<div class="col-md-14">
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							<?php
+								include_once "admin/acessobd.php";
+								$bd = new BaseDados();
+								
+								$imagens_cabecalho = $bd->query("SELECT * FROM img_cabecalho;");
+								
+								for($i=0; $i<count($imagens_cabecalho); $i++){
+							?>
+									<li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>"<?php if($i == 0) {echo ' class="active"';} ?>></li>
+							<?php
+								}
+							?>
 						</ol>
 						<div class="carousel-inner">
 						<?php
-							include_once "admin/acessobd.php";
-							$bd = new BaseDados();
-							
-							$imagens_cabecalho = $bd->query("SELECT * FROM img_cabecalho;");
-							
 							for($i=0; $i<count($imagens_cabecalho); $i++){
 						?>
 								<div class="item<?php if($i == 0) {echo ' active';} ?>">
