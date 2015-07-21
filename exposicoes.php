@@ -49,8 +49,8 @@ $exposicoes = $gere_exposicoes ->listarExposicoesAtivas();
 								for($i = 0; $i<count($exposicoes); $i++) {
 						?>
 					
-						<li class="">
-							<a data-toggle="tab" href="#<?php echo $exposicoes[$i]->getId(); ?>">
+						<li <?php if($i == 0) {echo ' class="active"';} ?>>
+							<a data-toggle="tab" <?php if($i == 0) {echo ' aria-expanded="true"';} ?> href="#<?php echo $exposicoes[$i]->getId(); ?>">
 								<?php echo $exposicoes[$i]->getNome() ?>
 							</a>
 						</li>
@@ -68,7 +68,7 @@ $exposicoes = $gere_exposicoes ->listarExposicoesAtivas();
 						if($exposicoes != null) {
 								for($i = 0; $i<count($exposicoes); $i++) {
 						?>
-							<div id="<?php echo $exposicoes[$i]->getId(); ?>" class="tab-pane">
+							<div id="<?php echo $exposicoes[$i]->getId(); ?>" class="tab-pane <?php if($i == 0) {echo ' active';} ?>">
 								<div class="col-lg-2 col-sm-2" style="width:100%; padding-top:10px;">
 										<div class="col-lg-2 col-sm-2" style="width:100%;">
 													<?php
