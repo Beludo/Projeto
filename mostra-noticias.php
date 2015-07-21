@@ -75,7 +75,7 @@
 			<hr>
 			<div style="padding:10px;">
 				<!-- Post Content -->
-				<p class="lead"><?php echo $noticia->getDescricao()?></p>
+				<p class="lead"><?php echo nl2br($noticia->getDescricao())?></p>
 			</div>
 			<a class="btn btn-primary btn-flat pull-right" href="noticias.php"><i class="fa fa-fw glyphicon glyphicon-arrow-left"></i> Voltar</a>
 			<br>
