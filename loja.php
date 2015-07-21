@@ -1,7 +1,7 @@
 <?php
 	include "sessaoAtiva.php";
-	include_once "./admin/GereLoja.php";
-	include_once "./admin/ALoja.php";
+	include_once "admin/GereLoja.php";
+	include_once "admin/ALoja.php";
 
 $gere_produtos = new GereLoja();
 $produtos = $gere_produtos ->listarProdutosAtivos();
@@ -48,7 +48,7 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 		</ol>
 
 		<!-- Conteudo -->
-		<div class="panel-default" style="float:right; padding:10px; width:74%;">
+		<div class="panel-default" style="float:right; padding:10px; width:100%;">
 
 			<div class="row carousel-holder">
 
@@ -61,15 +61,15 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<a href="mostra-produto.php"><img class="slide-image" src="./admin/img-produtos/<?php echo $imagens[0]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
+								<a href="mostra-produto.php"><img class="slide-image" src="admin/img-produtos/<?php echo $imagens[0]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
 								</a>
 							</div>
 							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="./admin/img-produtos/<?php echo $imagens[1]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
+								<a href="mostra-produto.php"><img class="slide-image" src="admin/img-produtos/<?php echo $imagens[1]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
 								</a>
 							</div>
 							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="./admin/img-produtos/<?php echo $imagens[2]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
+								<a href="mostra-produto.php"><img class="slide-image" src="admin/img-produtos/<?php echo $imagens[2]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
 								</a>
 							</div>
 						</div>
@@ -89,9 +89,9 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
                       if($produtos != null) {
                           for($i = 0; $i<count($produtos); $i++) {
                       ?>
-				<div class="col-sm-4 col-lg-4 col-md-4">
+				<div class="col-sm-3 col-lg-3 col-md-3">
 					<div class="thumbnail">
-						<a href="mostra-produto.php?id=<?php echo $produtos[$i]->getId() ?>"><img src="./admin/img-produtos/<?php echo $produtos[$i]->getFotografia()?>" height="320px" width="150px" alt="">
+						<a href="mostra-produto.php?id=<?php echo $produtos[$i]->getId() ?>"><img src="admin/img-produtos/<?php echo $produtos[$i]->getFotografia()?>" height="320px" width="150px" alt="">
 						</a>
 						<div class="caption">
 							<h4 class="pull-right"><?php echo $produtos[$i]->getPreco() ?>€</h4>

@@ -1,9 +1,9 @@
 <?php
 	include "sessaoAtiva.php";
-	include_once "/admin/GerePecas.php";
+	include_once "admin/GerePecas.php";
 	include_once "admin/Pecas.php";
-	include_once "/admin/GereExposicoes.php";
-	include_once "/admin/exposicoes.php";
+	include_once "admin/GereExposicoes.php";
+	include_once "admin/aexposicoes.php";
 
 $gere_artigos = new GerePecas();
 $artigos = $gere_artigos ->listarArtigos();
@@ -68,7 +68,7 @@ $exposicoes = $gere_exposicoes ->listarExposicoesAtivas();
 						if($exposicoes != null) {
 								for($i = 0; $i<count($exposicoes); $i++) {
 						?>
-							<div id="<?php echo $exposicoes[$i]->getId(); ?>" class="tab-pane <?php if($i == 0) {echo ' active';} ?>">
+							<div id="<?php echo $exposicoes[$i]->getId(); ?>" class="tab-pane<?php if($i == 0) {echo ' active';} ?>">
 								<div class="col-lg-2 col-sm-2" style="width:100%; padding-top:10px;">
 										<div class="col-lg-2 col-sm-2" style="width:100%;">
 													<?php

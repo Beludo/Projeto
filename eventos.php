@@ -1,6 +1,6 @@
 <?php
 	include_once "sessaoAtiva.php";
-	include_once "/admin/GereEventos.php";
+	include_once "admin/GereEventos.php";
 	include_once "admin/evento.php";
 
 $gere_eventos = new GereEventos();
@@ -50,7 +50,7 @@ $eventos = $gere_eventos ->listarEventos();
 			<div class="row">
 				<div class="col-md-7">
 					<a href="mostra-evento.php?id=<?php echo $eventos[$i]->getId() ?>">
-						<img style="width: 400px; height:200px; " class="img-responsive img-hover" src="./admin/img-eventos/<?php echo $eventos[$i]->getFoto()?>" alt="">
+						<img style="width: 400px; height:200px; " class="img-responsive img-hover" src="admin/img-eventos/<?php echo $eventos[$i]->getFoto()?>" alt="">
 					</a>
 				</div>
 				<div class="col-md-5">

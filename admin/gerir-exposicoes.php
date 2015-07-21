@@ -1,6 +1,6 @@
 <?php
 include_once "sessaoAtiva.php";
-include_once "exposicoes.php";
+include_once "aexposicoes.php";
 include_once "GereExposicoes.php";
 include_once "GereLog.php";
 

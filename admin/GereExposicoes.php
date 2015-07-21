@@ -1,6 +1,6 @@
 <?php
 
-include_once "exposicoes.php";
+include_once "aexposicoes.php";
 include_once "acessobd.php";
 
 class GereExposicoes {
