@@ -53,7 +53,7 @@
 				<!-- Sidebar Grid -->
 				<div class="col-sm-6 details-right">
 
-					<div class="col-md-6 pull-left">
+					<div class="col-md-12 pull-left">
 						<h3 class="h3"><a href="#"><strong><?php echo $pecas->getNome()?></strong></a></h3>
 						<p class="product-code">Nº de Inventário: <strong><?php echo $pecas->getNInventario()?></strong>
 						</p>
