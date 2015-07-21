@@ -17,6 +17,8 @@
 			<ul class="nav navbar-nav">
 				<li <?php echo($pagina=="index" ? "class=\"active\"" : ""); ?>> <a href="index.php">Página Inicial</a>
 				</li>
+				<li <?php echo($pagina=="noticias" ? "class=\"active\"" : ""); ?>> <a href="noticias.php">Notícias</a>
+				</li>
 				<li <?php echo($pagina=="visitavirtual" ? "class=\"active\"": ""); ?>><a href="visitavirtual.php">Visita virtual</a>
 				</li>
 				<li <?php echo($pagina=="loja" ? "class=\"active\"": ""); ?>><a href="loja.php">Loja</a>
