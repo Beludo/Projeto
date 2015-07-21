@@ -1,6 +1,6 @@
 <?php
 	include "sessaoAtiva.php";
-    include "./admin/GereLoja.php";
+    include "admin/GereLoja.php";
     include "GereCarrinho.php";
     $gereLoja = new GereLoja();
     $gereCarrinho = new GereCarrinho();
@@ -43,7 +43,7 @@
 			<div class="container">
 				<!-- details-photo -->
 				<div class="details-photo col-sm-5">
-					<a href="#"><img class="img-responsive" src="./admin/img-produtos/<?php echo $produto[0]["LA_FOTOGRAFIA"]?>" height="400" width="350">
+					<a href="#"><img class="img-responsive" src="admin/img-produtos/<?php echo $produto[0]["LA_FOTOGRAFIA"]?>" height="400" width="350">
 					</a>
 				</div>
 				<!-- .details-photo -->
