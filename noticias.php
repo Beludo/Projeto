@@ -1,6 +1,6 @@
 <?php
 	include_once "sessaoAtiva.php";
-	include_once "/admin/gere_noticias.php";
+	include_once "admin/gere_noticias.php";
 	include_once "admin/noticia.php";
 
 $gere_noticias = new GereNoticias();
