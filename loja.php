@@ -53,11 +53,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 			<div class="row carousel-holder">
 
 				<div class="col-md-12" style="padding-bottom: 15px;">
-					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<div id="slide_loja" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							<li data-target="#slide_loja" data-slide-to="0" class="active"></li>
+							<li data-target="#slide_loja" data-slide-to="1"></li>
+							<li data-target="#slide_loja" data-slide-to="2"></li>
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
@@ -73,10 +73,10 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 								</a>
 							</div>
 						</div>
-						<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+						<a class="left carousel-control" href="#slide_loja" data-slide="prev">
 							<span class="glyphicon glyphicon-chevron-left"></span>
 						</a>
-						<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+						<a class="right carousel-control" href="#slide_loja" data-slide="next">
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</a>
 					</div>
