@@ -4,7 +4,7 @@ include_once "GerePecas.php";
 include_once "pecas.php";
 include_once "GereLog.php";
 include_once "GereExposicoes.php";
-include_once "exposicoes.php";
+include_once "aexposicoes.php";
 
 $gere_log = new GereLog();
 $gereExposicoes = new GereExposicoes();

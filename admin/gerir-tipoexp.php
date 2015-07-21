@@ -2,7 +2,7 @@
 
 include_once "sessaoAtiva.php";
 include_once "GereTipoExposicoes.php";
-include_once "exposicoes.php";
+include_once "aexposicoes.php";
 
 $gere_tipoExposicoes = new GereTipoExposicoes();
 $tipoExposicoes = $gere_tipoExposicoes ->listarTipoExposicoes();
