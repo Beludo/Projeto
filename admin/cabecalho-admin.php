@@ -89,7 +89,7 @@ function tempo_passado($tempo){
 						  </div>
 						  <h4>
 							<?php echo $menu_mensagens[$i]["ME_ASSUNTO"]; ?>
-							<small><i class="fa fa-clock-o"></i> <?php echo tempo_passado(strtotime($mensagens[$i]["ME_DATAHORA"])); ?></small>
+							<small><i class="fa fa-clock-o"></i> <?php echo tempo_passado(strtotime($menu_mensagens[$i]["ME_DATAHORA"])); ?></small>
 						  </h4>
 						  <p><?php echo strip_tags($menu_mensagens[$i]["MSG"]); ?></p>
 						</a>
