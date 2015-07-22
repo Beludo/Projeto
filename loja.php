@@ -2,10 +2,13 @@
 	include "sessaoAtiva.php";
 	include_once "admin/GereLoja.php";
 	include_once "admin/ALoja.php";
+	include_once "admin/gere_imgloja.php";
+	include_once "admin/imgloja.php";
 
 $gere_produtos = new GereLoja();
+$gere_imgloja = new gere_imgloja();
 $produtos = $gere_produtos ->listarProdutosAtivos();
-$imagens = $gere_produtos->imagensProdutos();
+$imagens = $gere_imgloja->listarImgAtivo();
 if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
     isset($_GET["id"]) && !empty($_GET["id"]) &&
     isset($_GET["i"]) && !empty($_GET["i"])){
@@ -50,28 +53,32 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 		<!-- Conteudo -->
 		<div class="panel-default" style="float:right; padding:10px; width:100%;">
 
-			<div class="row carousel-holder">
+			<div class="row carousel-holder center-block" style="height: 200px; width: 800px;">
 
-				<div class="col-md-12" style="padding-bottom: 15px;">
 					<div id="slide_loja" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
-							<li data-target="#slide_loja" data-slide-to="0" class="active"></li>
-							<li data-target="#slide_loja" data-slide-to="1"></li>
-							<li data-target="#slide_loja" data-slide-to="2"></li>
+							<?php
+                      if($imagens != null) {
+                          for($i = 0; $i<count($imagens); $i++) {
+                      ?>
+							<li data-target="#slide_loja" data-slide-to="<?php echo $i; ?>" class="<?php if($i == 0) {echo 'active';} ?>"></li>
+							<?php
+											}
+													}
+							?>
 						</ol>
-						<div class="carousel-inner">
-							<div class="item active">
-								<a href="mostra-produto.php"><img class="slide-image" src="admin/img-produtos/<?php echo $imagens[0]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
-								</a>
-							</div>
-							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="admin/img-produtos/<?php echo $imagens[1]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
-								</a>
-							</div>
-							<div class="item">
-								<a href="mostra-produto.php"><img class="slide-image" src="admin/img-produtos/<?php echo $imagens[2]["LA_FOTOGRAFIA"]; ?>" alt="" style="height: 200px; width: 200px;">
-								</a>
-							</div>
+						<div class="carousel-inner">	
+							<?php
+                      if($imagens != null) {
+                          for($i = 0; $i<count($imagens); $i++) {
+                      ?>
+						<div class="item <?php if($i == 0) {echo ' active';} ?>">
+							<a href="#"><img class="slide-image" src="admin/img-loja/<?php echo $imagens[$i]->getFicheiro(); ?>" alt="" style="height: 200px; width: 800px;"></a>
+						</div>
+					<?php
+							}
+						}
+							?>
 						</div>
 						<a class="left carousel-control" href="#slide_loja" data-slide="prev">
 							<span class="glyphicon glyphicon-chevron-left"></span>
@@ -80,11 +87,11 @@ if(isset($_GET["ativo"]) && !empty($_GET["ativo"]) &&
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</a>
 					</div>
-				</div>
+			
 
 			</div>
 
-			<div class="row">
+			<div class="row" style="padding-top: 15px;">
 				<?php
                       if($produtos != null) {
                           for($i = 0; $i<count($produtos); $i++) {

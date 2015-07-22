@@ -65,6 +65,18 @@ include_once "sessaoAtiva.php";
                         </li>
                         <li><a href="encomendas.php"><i class="fa fa-book"></i> Gerir Encomendas</a>
                         </li>
+												<li class="treeview">
+													<a href="#">
+															<i class="fa fa-bars"></i> <span>Banner da Loja</span>
+															<i class="fa fa-angle-left pull-right"></i>
+													</a>
+													<ul class="treeview-menu">
+															<li><a href="ad-imgloja.php"><i class="fa fa-circle-o"></i> Adicionar Banner da Loja</a>
+															</li>
+															<li><a href="gerir-imgloja.php"><i class="fa fa-circle-o"></i> Gerir Banners</a>
+															</li>
+													</ul>
+                				</li>
                     </ul>
                 </li>
                 <?php
