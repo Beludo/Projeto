@@ -48,7 +48,7 @@ $parceria = $gere_parceria->listarParceria();
 				<a href="contatos.php" class="list-group-item">Contatos</a>
 				<a href="horario.php" class="list-group-item">Horário de Funcionamento</a>
 				<a href="normas.php" class="list-group-item">Normas de Conduta</a>
-				<a href="parcerias.php" class="list-group-item">Parcerias</a>
+				<a href="parcerias.php" class="active list-group-item">Parcerias</a>
 
 			</div>
 		</div>
